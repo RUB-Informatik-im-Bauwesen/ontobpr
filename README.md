@@ -56,7 +56,11 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.4
 [Building](#Building),
 [Building application](#Buildingapplication),
 [Building authority](#Buildingauthority),
+[Condition](#Condition),
 [Dictionary](#Dictionary),
+[Justification](#Justification),
+[Review checking result](#Reviewcheckingresult),
+[Review statement](#Reviewstatement),
 [Review status](#Reviewstatus),
 [Shacl shapes set](#Shaclshapesset),
 ### Activity
@@ -65,9 +69,9 @@ Property | Value
 IRI | `https://w3id.org/ontobpr#Activity`
 Is Defined By | https://w3id.org/obpa#Activity
 Super-classes |[owl:Thing](http://www.w3.org/2002/07/owl#Thing) (c)<br />
-Sub-classes |[ontobpr:RequestReviewResults]((5.1)Requestreviewresults) (c)<br />[ontobpr:IssuingNotificationLetter]((5)Issuingnotificationletter) (c)<br />[ontobpr:ContentReview]((4)Contentreview) (c)<br />[ontobpr:Assignment]((2)Assignment) (c)<br />[ontobpr:CompletenessCheck]((1.1)Completenesscheck) (c)<br />[ontobpr:JustificationOfNegativeDecision]((5.3b)Justificationofnegativedecision) (c)<br />[ontobpr:CreatingNotificationLetter]((5.4)Creatingnotificationletter) (c)<br />[ontobpr:FormalReview]((1)Formalreview) (c)<br />[ontobpr:Participation]((3)Participation) (c)<br />[ontobpr:ReviewPreparation]((1.2)Reviewpreparation) (c)<br />[ontobpr:PositivePermitDecision]((5.2a)Positivepermitdecision) (c)<br />[ontobpr:NegativePermitDecision]((5.2b)Negativepermitdecision) (c)<br />[ontobpr:FormulationOfCondition]((5.3a)Formulationofcondition) (c)<br />
+Sub-classes |[ontobpr:JustificationOfNegativeDecision]((5.3b)Justificationofnegativedecision) (c)<br />[ontobpr:CompletenessCheck]((1.1)Completenesscheck) (c)<br />[ontobpr:CreatingNotificationLetter]((5.4)Creatingnotificationletter) (c)<br />[ontobpr:FormulationOfCondition]((5.3a)Formulationofcondition) (c)<br />[ontobpr:Participation]((3)Participation) (c)<br />[ontobpr:PositivePermitDecision]((5.2a)Positivepermitdecision) (c)<br />[ontobpr:IssuingNotificationLetter]((5)Issuingnotificationletter) (c)<br />[ontobpr:Assignment]((2)Assignment) (c)<br />[ontobpr:ContentReview]((4)Contentreview) (c)<br />[ontobpr:ReviewPreparation]((1.2)Reviewpreparation) (c)<br />[ontobpr:FormalReview]((1)Formalreview) (c)<br />[ontobpr:NegativePermitDecision]((5.2b)Negativepermitdecision) (c)<br />[ontobpr:RequestReviewResults]((5.1)Requestreviewresults) (c)<br />
 In domain of |[ontobpr:afterActivity](afteractivity) (op)<br />
-In range of |[ontobpr:afterActivity](afteractivity) (op)<br />
+In range of |[ontobpr:afterActivity](afteractivity) (op)<br />[ontobpr:hasCurrentActivity](hascurrentactivity) (op)<br />
 ### (2) Assignment
 Property | Value
 --- | ---
@@ -86,8 +90,8 @@ Property | Value
 --- | ---
 IRI | `https://w3id.org/ontobpr#BuildingApplication`
 Is Defined By | https://w3id.org/obpa#BuildingApplication
-Restrictions |[ontobpr:hasBuildingApplicationContainer](hasbuildingapplicationcontainer) (op) **exactly** 1 [ct:ContainerDescription](https://standards.iso.org/iso/21597/-1/ed-1/en/Container#ContainerDescription) (c)<br />[ontobpr:hasStatus](hasstatus) (op) **exactly** 1 [ontobpr:ReviewStatus](Reviewstatus) (c)<br />[ontobpr:hasApplicationDocument](hasapplicationdocument) (op) **some** [ct:Document](https://standards.iso.org/iso/21597/-1/ed-1/en/Container#Document) (c)<br />
-In domain of |[ontobpr:hasStatus](hasstatus) (op)<br />[ontobpr:hasBuildingApplicationContainer](hasbuildingapplicationcontainer) (op)<br />
+Restrictions |[ontobpr:hasCurrentActivity](hascurrentactivity) (op) **exactly** 1 [ontobpr:Activity](Activity) (c)<br />[ontobpr:hasStatement](hasstatement) (op) **some** [ontobpr:ReviewStatement](Reviewstatement) (c)<br />[ontobpr:hasStatus](hasstatus) (op) **exactly** 1 [ontobpr:ReviewStatus](Reviewstatus) (c)<br />[ontobpr:hasCheckingResults](hascheckingresults) (op) **some** [ontobpr:ReviewCheckingResults](https://w3id.org/ontobpr#ReviewCheckingResults) (c)<br />[ontobpr:hasApplicationDocument](hasapplicationdocument) (op) **some** [ct:Document](https://standards.iso.org/iso/21597/-1/ed-1/en/Container#Document) (c)<br />[ontobpr:hasBuildingApplicationContainer](hasbuildingapplicationcontainer) (op) **exactly** 1 [ct:ContainerDescription](https://standards.iso.org/iso/21597/-1/ed-1/en/Container#ContainerDescription) (c)<br />
+In domain of |[ontobpr:hasStatus](hasstatus) (op)<br />[ontobpr:hasBuildingApplicationContainer](hasbuildingapplicationcontainer) (op)<br />[ontobpr:hasCurrentActivity](hascurrentactivity) (op)<br />[ontobpr:hasStatement](hasstatement) (op)<br />
 ### Building authority
 Property | Value
 --- | ---
@@ -99,12 +103,17 @@ Property | Value
 IRI | `https://w3id.org/ontobpr#CompletenessCheck`
 Super-classes |[ontobpr:Activity](Activity) (c)<br />
 Restrictions |[ontobpr:hasShapesSet](hasshapesset) (op) **exactly** 1 [ontobpr:ShaclShapesSet](Shaclshapesset) (c)<br />
+### Condition
+Property | Value
+--- | ---
+IRI | `https://w3id.org/ontobpr#Condition`
+Super-classes |[ontobpr:ReviewStatement](Reviewstatement) (c)<br />
 ### (4) Content review 
 Property | Value
 --- | ---
 IRI | `https://w3id.org/ontobpr#ContentReview`
 Super-classes |[ontobpr:Activity](Activity) (c)<br />
-Restrictions |[ontobpr:hasCheckingResults](hascheckingresults) (op) **min** 1 [sh:ValidationReport](http://www.w3.org/ns/shacl#ValidationReport) (c)<br />[ontobpr:afterActivity](afteractivity) (op) **exactly** 1 [ontobpr:FormalReview]((1)Formalreview) (c)<br />
+Restrictions |[ontobpr:afterActivity](afteractivity) (op) **exactly** 1 [ontobpr:FormalReview]((1)Formalreview) (c)<br />
 ### (5.4) Creating notification letter
 Property | Value
 --- | ---
@@ -121,7 +130,7 @@ Property | Value
 --- | ---
 IRI | `https://w3id.org/ontobpr#FormalReview`
 Super-classes |[ontobpr:Activity](Activity) (c)<br />
-Restrictions |[obpa:hasSubActivity](https://w3id.org/obpa#hasSubActivity) **exactly** 1 [ontobpr:CompletenessCheck]((1.1)Completenesscheck) (c)<br />[ontobpr:hasCheckingResults](hascheckingresults) (op) **some** [sh:ValidationReport](http://www.w3.org/ns/shacl#ValidationReport) (c)<br />[obpa:hasSubActivity](https://w3id.org/obpa#hasSubActivity) **exactly** 1 [ontobpr:ReviewPreparation]((1.2)Reviewpreparation) (c)<br />[ontobpr:reviews](reviews) (op) **exactly** 1 [ontobpr:BuildingApplication](Buildingapplication) (c)<br />
+Restrictions |[obpa:hasSubActivity](https://w3id.org/obpa#hasSubActivity) **exactly** 1 [ontobpr:ReviewPreparation]((1.2)Reviewpreparation) (c)<br />[obpa:hasSubActivity](https://w3id.org/obpa#hasSubActivity) **exactly** 1 [ontobpr:CompletenessCheck]((1.1)Completenesscheck) (c)<br />
 ### (5.3a) Formulation of condition 
 Property | Value
 --- | ---
@@ -133,7 +142,12 @@ Property | Value
 --- | ---
 IRI | `https://w3id.org/ontobpr#IssuingNotificationLetter`
 Super-classes |[ontobpr:Activity](Activity) (c)<br />
-Restrictions |[ontobpr:afterActivity](afteractivity) (op) **max** 1 [ontobpr:Assignment]((2)Assignment) (c)<br />[obpa:hasSubActivity](https://w3id.org/obpa#hasSubActivity) **max** 1 [ontobpr:FormulationOfCondition]((5.3a)Formulationofcondition) (c)<br />[obpa:hasSubActivity](https://w3id.org/obpa#hasSubActivity) **exactly** 1 [ontobpr:CreatingNotificationLetter]((5.4)Creatingnotificationletter) (c)<br />[obpa:hasSubActivity](https://w3id.org/obpa#hasSubActivity) **max** 1 [ontobpr:PositivePermitDecision]((5.2a)Positivepermitdecision) (c)<br />[ontobpr:afterActivity](afteractivity) (op) **max** 1 [ontobpr:ContentReview]((4)Contentreview) (c)<br />[obpa:hasSubActivity](https://w3id.org/obpa#hasSubActivity) **max** 1 [ontobpr:JustificationOfNegativeDecision]((5.3b)Justificationofnegativedecision) (c)<br />[ontobpr:afterActivity](afteractivity) (op) **max** 1 [ontobpr:Participation]((3)Participation) (c)<br />[obpa:hasSubActivity](https://w3id.org/obpa#hasSubActivity) **exactly** 1 [ontobpr:RequestReviewResults]((5.1)Requestreviewresults) (c)<br />[obpa:hasSubActivity](https://w3id.org/obpa#hasSubActivity) **max** 1 [ontobpr:NegativePermitDecision]((5.2b)Negativepermitdecision) (c)<br />
+Restrictions |[ontobpr:afterActivity](afteractivity) (op) **max** 1 [ontobpr:ContentReview]((4)Contentreview) (c)<br />[obpa:hasSubActivity](https://w3id.org/obpa#hasSubActivity) **exactly** 1 [ontobpr:CreatingNotificationLetter]((5.4)Creatingnotificationletter) (c)<br />[obpa:hasSubActivity](https://w3id.org/obpa#hasSubActivity) **max** 1 [ontobpr:JustificationOfNegativeDecision]((5.3b)Justificationofnegativedecision) (c)<br />[obpa:hasSubActivity](https://w3id.org/obpa#hasSubActivity) **max** 1 [ontobpr:PositivePermitDecision]((5.2a)Positivepermitdecision) (c)<br />[ontobpr:afterActivity](afteractivity) (op) **max** 1 [ontobpr:Participation]((3)Participation) (c)<br />[ontobpr:afterActivity](afteractivity) (op) **max** 1 [ontobpr:Assignment]((2)Assignment) (c)<br />[obpa:hasSubActivity](https://w3id.org/obpa#hasSubActivity) **exactly** 1 [ontobpr:RequestReviewResults]((5.1)Requestreviewresults) (c)<br />[obpa:hasSubActivity](https://w3id.org/obpa#hasSubActivity) **max** 1 [ontobpr:FormulationOfCondition]((5.3a)Formulationofcondition) (c)<br />[obpa:hasSubActivity](https://w3id.org/obpa#hasSubActivity) **max** 1 [ontobpr:NegativePermitDecision]((5.2b)Negativepermitdecision) (c)<br />
+### Justification
+Property | Value
+--- | ---
+IRI | `https://w3id.org/ontobpr#Justification`
+Super-classes |[ontobpr:ReviewStatement](Reviewstatement) (c)<br />
 ### (5.3b) Justification of negative decision 
 Property | Value
 --- | ---
@@ -169,6 +183,20 @@ Property | Value
 IRI | `https://w3id.org/ontobpr#ReviewPreparation`
 Super-classes |[ontobpr:Activity](Activity) (c)<br />
 Restrictions |[ontobpr:afterActivity](afteractivity) (op) **exactly** 1 [ontobpr:CompletenessCheck]((1.1)Completenesscheck) (c)<br />
+### Review checking result
+Property | Value
+--- | ---
+IRI | `https://w3id.org/ontobpr#ReviewResult`
+Super-classes |[owl:Thing](http://www.w3.org/2002/07/owl#Thing) (c)<br />
+Restrictions |[dcterms:issued](http://purl.org/dc/terms/issued) **exactly** 1 [xsd:date](http://www.w3.org/2001/XMLSchema#date) (c)<br />[ontobpr:hasCheckingResults](hascheckingresults) (op) **some** [sh:ValidationReport](http://www.w3.org/ns/shacl#ValidationReport) (c)<br />[obpa:hasAgent](https://w3id.org/obpa#hasAgent) **exactly** 1 [obpa:Agent](https://w3id.org/obpa#Agent) (c)<br />
+### Review statement
+Property | Value
+--- | ---
+IRI | `https://w3id.org/ontobpr#ReviewStatement`
+Super-classes |[owl:Thing](http://www.w3.org/2002/07/owl#Thing) (c)<br />
+Restrictions |[dcterms:issued](http://purl.org/dc/terms/issued) **exactly** 1 [xsd:date](http://www.w3.org/2001/XMLSchema#date) (c)<br />[rdfs:comment](http://www.w3.org/2000/01/rdf-schema#comment) **exactly** 1 [xsd:string](http://www.w3.org/2001/XMLSchema#string) (c)<br />[obpa:hasAgent](https://w3id.org/obpa#hasAgent) **exactly** 1 [obpa:Agent](https://w3id.org/obpa#Agent) (c)<br />
+Sub-classes |[ontobpr:Condition](Condition) (c)<br />[ontobpr:Justification](Justification) (c)<br />
+In range of |[ontobpr:hasStatement](hasstatement) (op)<br />
 ### Review status
 Property | Value
 --- | ---
@@ -192,11 +220,12 @@ In range of |[ontobpr:hasShapesSet](hasshapesset) (op)<br />
 [has building application container](#hasbuildingapplicationcontainer),
 [has building document](#hasbuildingdocument),
 [has checking results](#hascheckingresults),
+[has current activity](#hascurrentactivity),
 [has document](#hasdocument),
 [has shapes](#hasshapes),
 [has shapes set](#hasshapesset),
+[has statement](#hasstatement),
 [has status](#hasstatus),
-[reviews](#reviews),
 [](afteractivity)
 ### after activity
 Property | Value
@@ -249,7 +278,14 @@ Property | Value
 --- | ---
 IRI | `https://w3id.org/ontobpr#hasCheckingResults`
 Super-properties |[owl:topObjectProperty](http://www.w3.org/2002/07/owl#topObjectProperty)<br />
-Range(s) |[sh:ValidationReport](http://www.w3.org/ns/shacl#ValidationReport) (c)<br />
+[](hascurrentactivity)
+### has current activity
+Property | Value
+--- | ---
+IRI | `https://w3id.org/ontobpr#hasCurrentActivity`
+Super-properties |[owl:topObjectProperty](http://www.w3.org/2002/07/owl#topObjectProperty)<br />
+Domain(s) |[ontobpr:BuildingApplication](Buildingapplication) (c)<br />
+Range(s) |[ontobpr:Activity](Activity) (c)<br />
 [](hasdocument)
 ### has document
 Property | Value
@@ -271,6 +307,14 @@ Property | Value
 IRI | `https://w3id.org/ontobpr#hasShapesSet`
 Super-properties |[owl:topObjectProperty](http://www.w3.org/2002/07/owl#topObjectProperty)<br />
 Range(s) |[ontobpr:ShaclShapesSet](Shaclshapesset) (c)<br />
+[](hasstatement)
+### has statement
+Property | Value
+--- | ---
+IRI | `https://w3id.org/ontobpr#hasStatement`
+Super-properties |[owl:topObjectProperty](http://www.w3.org/2002/07/owl#topObjectProperty)<br />
+Domain(s) |[ontobpr:BuildingApplication](Buildingapplication) (c)<br />
+Range(s) |[ontobpr:ReviewStatement](Reviewstatement) (c)<br />
 [](hasstatus)
 ### has status
 Property | Value
@@ -279,12 +323,6 @@ IRI | `https://w3id.org/ontobpr#hasStatus`
 Super-properties |[owl:topObjectProperty](http://www.w3.org/2002/07/owl#topObjectProperty)<br />
 Domain(s) |[ontobpr:BuildingApplication](Buildingapplication) (c)<br />
 Range(s) |[ontobpr:ReviewStatus](Reviewstatus) (c)<br />
-[](reviews)
-### reviews
-Property | Value
---- | ---
-IRI | `https://w3id.org/ontobpr#reviews`
-Super-properties |[owl:topObjectProperty](http://www.w3.org/2002/07/owl#topObjectProperty)<br />
 
 ## Named Individuals
 [Accepted](#Accepted),

@@ -133,6 +133,12 @@ ontobpr:BuildingApplication
     ] ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
+      owl:onClass ontobpr:Activity ;
+      owl:onProperty ontobpr:hasCurrentActivity ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
       owl:onClass ontobpr:ReviewStatus ;
       owl:onProperty ontobpr:hasStatus ;
       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
@@ -141,6 +147,16 @@ ontobpr:BuildingApplication
       rdf:type owl:Restriction ;
       owl:onProperty ontobpr:hasApplicationDocument ;
       owl:someValuesFrom ct:Document ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onProperty ontobpr:hasCheckingResults ;
+      owl:someValuesFrom ontobpr:ReviewCheckingResults ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onProperty ontobpr:hasStatement ;
+      owl:someValuesFrom ontobpr:ReviewStatement ;
     ] ;
   owl:equivalentClass obpa:BuildingApplication ;
 .
@@ -161,16 +177,15 @@ ontobpr:CompletenessCheck
       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
     ] ;
 .
+ontobpr:Condition
+  rdf:type owl:Class ;
+  rdfs:label "Condition" ;
+  rdfs:subClassOf ontobpr:ReviewStatement ;
+.
 ontobpr:ContentReview
   rdf:type owl:Class ;
   rdfs:label "(4) Content review " ;
   rdfs:subClassOf ontobpr:Activity ;
-  rdfs:subClassOf [
-      rdf:type owl:Restriction ;
-      owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-      owl:onClass sh:ValidationReport ;
-      owl:onProperty ontobpr:hasCheckingResults ;
-    ] ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:onClass ontobpr:FormalReview ;
@@ -207,12 +222,6 @@ ontobpr:FormalReview
   rdfs:subClassOf ontobpr:Activity ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
-      owl:onClass ontobpr:BuildingApplication ;
-      owl:onProperty ontobpr:reviews ;
-      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-    ] ;
-  rdfs:subClassOf [
-      rdf:type owl:Restriction ;
       owl:onClass ontobpr:CompletenessCheck ;
       owl:onProperty obpa:hasSubActivity ;
       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
@@ -222,11 +231,6 @@ ontobpr:FormalReview
       owl:onClass ontobpr:ReviewPreparation ;
       owl:onProperty obpa:hasSubActivity ;
       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-    ] ;
-  rdfs:subClassOf [
-      rdf:type owl:Restriction ;
-      owl:onProperty ontobpr:hasCheckingResults ;
-      owl:someValuesFrom sh:ValidationReport ;
     ] ;
 .
 ontobpr:FormulationOfCondition
@@ -299,6 +303,11 @@ ontobpr:IssuingNotificationLetter
       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
     ] ;
 .
+ontobpr:Justification
+  rdf:type owl:Class ;
+  rdfs:label "Justification" ;
+  rdfs:subClassOf ontobpr:ReviewStatement ;
+.
 ontobpr:JustificationOfNegativeDecision
   rdf:type owl:Class ;
   rdfs:label "(5.3b) Justification of negative decision " ;
@@ -369,8 +378,53 @@ ontobpr:ReviewPreparation
       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
     ] ;
 .
+ontobpr:ReviewResult
+  rdf:type owl:Class ;
+  rdfs:label "Review checking result" ;
+  rdfs:subClassOf owl:Thing ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onClass xsd:date ;
+      owl:onProperty dcterms:issued ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onClass obpa:Agent ;
+      owl:onProperty obpa:hasAgent ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onProperty ontobpr:hasCheckingResults ;
+      owl:someValuesFrom sh:ValidationReport ;
+    ] ;
+.
+ontobpr:ReviewStatement
+  rdf:type owl:Class ;
+  rdfs:label "Review statement" ;
+  rdfs:subClassOf owl:Thing ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onClass xsd:date ;
+      owl:onProperty dcterms:issued ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onClass xsd:string ;
+      owl:onProperty rdfs:comment ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onClass obpa:Agent ;
+      owl:onProperty obpa:hasAgent ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    ] ;
+.
 ontobpr:ReviewStatus
-  rdf:type rdfs:Class ;
+  rdf:type owl:Class ;
   rdfs:label "Review status" ;
   rdfs:subClassOf owl:Thing ;
 .
@@ -432,7 +486,13 @@ ontobpr:hasBuildingDocument
 ontobpr:hasCheckingResults
   rdf:type owl:ObjectProperty ;
   rdfs:label "has checking results" ;
-  rdfs:range sh:ValidationReport ;
+  rdfs:subPropertyOf owl:topObjectProperty ;
+.
+ontobpr:hasCurrentActivity
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain ontobpr:BuildingApplication ;
+  rdfs:label "has current activity" ;
+  rdfs:range ontobpr:Activity ;
   rdfs:subPropertyOf owl:topObjectProperty ;
 .
 ontobpr:hasDocument
@@ -453,15 +513,17 @@ ontobpr:hasShapesSet
   rdfs:range ontobpr:ShaclShapesSet ;
   rdfs:subPropertyOf owl:topObjectProperty ;
 .
+ontobpr:hasStatement
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain ontobpr:BuildingApplication ;
+  rdfs:label "has statement" ;
+  rdfs:range ontobpr:ReviewStatement ;
+  rdfs:subPropertyOf owl:topObjectProperty ;
+.
 ontobpr:hasStatus
   rdf:type owl:ObjectProperty ;
   rdfs:domain ontobpr:BuildingApplication ;
   rdfs:label "has status" ;
   rdfs:range ontobpr:ReviewStatus ;
-  rdfs:subPropertyOf owl:topObjectProperty ;
-.
-ontobpr:reviews
-  rdf:type owl:ObjectProperty ;
-  rdfs:label "reviews" ;
   rdfs:subPropertyOf owl:topObjectProperty ;
 .
