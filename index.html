@@ -190,7 +190,7 @@
     ],
     "https://schema.org/description": [
       {
-        "@value": "<p>To avoid a digital disruption in planning buildings and structures, this research presents a workflow in which building codes are represented as machine-readable knowledge graphs and ontologies as an integration to the building permit review procedure and the participation process. Therefore, the building permit process was analyzed, and possible applications of ontology-based knowledge representations are explored. An ontology-based building permit review (OntoBPR) is proposed, reusing two existing ontologies for modeling the permit review workflow for representing the building codes. The OntoBPR ontology extends the approach with a connection to Information COntainers for linked Document Delivery (ICDD) that are used for submitten the building application, and the Shapes Constraint Language (SHACL) of which rules are generated from the building code knowledge graphs.</p>"
+        "@value": "<p>To avoid a digital disruption in planning buildings and structures, this research presents a workflow in which building codes are represented as machine-readable knowledge graphs and ontologies as an integration to the building permit review procedure and the participation process. Therefore, the building permit process was analyzed, and possible applications of ontology-based knowledge representations are explored. An ontology-based building permit review (OntoBPR) is proposed, reusing two existing ontologies for modeling the permit review workflow for representing the building codes. The OntoBPR ontology extends the approach with a connection to Information COntainers for linked Document Delivery (ICDD) that are used for submitting the building application, and the Shapes Constraint Language (SHACL) of which rules are generated from the building code knowledge graphs.</p>"
       }
     ],
     "https://schema.org/name": [
@@ -319,7 +319,7 @@
     </dl>
     <h2>Description</h2>
     <div id="description">
-        <p>To avoid a digital disruption in planning buildings and structures, this research presents a workflow in which building codes are represented as machine-readable knowledge graphs and ontologies as an integration to the building permit review procedure and the participation process. Therefore, the building permit process was analyzed, and possible applications of ontology-based knowledge representations are explored. An ontology-based building permit review (OntoBPR) is proposed, reusing two existing ontologies for modeling the permit review workflow for representing the building codes. The OntoBPR ontology extends the approach with a connection to Information COntainers for linked Document Delivery (ICDD) that are used for submitten the building application, and the Shapes Constraint Language (SHACL) of which rules are generated from the building code knowledge graphs.</p>
+        <p>To avoid a digital disruption in planning buildings and structures, this research presents a workflow in which building codes are represented as machine-readable knowledge graphs and ontologies as an integration to the building permit review procedure and the participation process. Therefore, the building permit process was analyzed, and possible applications of ontology-based knowledge representations are explored. An ontology-based building permit review (OntoBPR) is proposed, reusing two existing ontologies for modeling the permit review workflow for representing the building codes. The OntoBPR ontology extends the approach with a connection to Information COntainers for linked Document Delivery (ICDD) that are used for submitting the building application, and the Shapes Constraint Language (SHACL) of which rules are generated from the building code knowledge graphs.</p>
     </div>
 </section>
 <section id="toc">
@@ -330,6 +330,13 @@
         <li><a href="#namespaces">Namespaces</a></li>
         <li><a href="#legend">Legend</a></li>
     </ol>
+</section>
+<section id="overview">
+    <h2>Overview</h2>
+    <div class="figure">
+        <div style="width:500px; height:50px; background-color: lightgrey; border:solid 2px grey; padding:10px;margin-bottom:5px; text-align:center;">Pictures say 1,000 words</div>
+        <div class="caption"><strong>Figure 1:</strong> Ontology overview</div>
+    </div>
 </section>
   <section id="classes">
     <h2>Classes <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
@@ -352,6 +359,7 @@
         <li><a href="#Buildingapplication">Building application</a></li>
         <li><a href="#Buildingauthority">Building authority</a></li>
         <li><a href="#Dictionary">Dictionary</a></li>
+        <li><a href="#Shaclshapesset">Shacl shapes set</a></li>
     </ul>
     <div class="entity class" id="Activity">
         <h3>Activity<sup title="class" class="sup-c">c</sup></h3>
@@ -369,19 +377,19 @@
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#(1.2)Reviewpreparation">ontobpr:ReviewPreparation</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#(5.3b)Justificationofnegativedecision">ontobpr:JustificationOfNegativeDecision</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#(5.2b)Negativepermitdecision">ontobpr:NegativePermitDecision</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#(2)Assignment">ontobpr:Assignment</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#(5.4)Creatingnotificationletter">ontobpr:CreatingNotificationLetter</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#(5.1)Requestreviewresults">ontobpr:RequestReviewResults</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#(1.1)Completenesscheck">ontobpr:CompletenessCheck</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#(5.3a)Formulationofcondition">ontobpr:FormulationOfCondition</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#(4)Contentreview">ontobpr:ContentReview</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#(5.2a)Positivepermitdecision">ontobpr:PositivePermitDecision</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#(5)Issuingnotificationletter">ontobpr:IssuingNotificationLetter</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#(1)Formalreview">ontobpr:FormalReview</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#(5.3b)Justificationofnegativedecision">ontobpr:JustificationOfNegativeDecision</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#(5.4)Creatingnotificationletter">ontobpr:CreatingNotificationLetter</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#(3)Participation">ontobpr:Participation</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#(1.2)Reviewpreparation">ontobpr:ReviewPreparation</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#(1.1)Completenesscheck">ontobpr:CompletenessCheck</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#(1)Formalreview">ontobpr:FormalReview</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#(4)Contentreview">ontobpr:ContentReview</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#(5.2b)Negativepermitdecision">ontobpr:NegativePermitDecision</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#(5.1)Requestreviewresults">ontobpr:RequestReviewResults</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#(5.3a)Formulationofcondition">ontobpr:FormulationOfCondition</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#(5)Issuingnotificationletter">ontobpr:IssuingNotificationLetter</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -484,6 +492,12 @@
                     <a href="#Activity">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
+            <tr>
+                <th>Restrictions</th>
+                <td>
+                    <a href="#hasshapesset">ontobpr:hasShapesSet</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#Shaclshapesset">ontobpr:ShaclShapesSet</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
         </table>
     </div>
     <div class="entity class" id="(4)Contentreview">
@@ -502,8 +516,8 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#hascheckingresults">ontobpr:hasCheckingResults</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1 <a href="http://www.w3.org/ns/shacl#ValidationReport">sh:ValidationReport</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#afteractivity">ontobpr:afterActivity</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#(1)Formalreview">ontobpr:FormalReview</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hascheckingresults">ontobpr:hasCheckingResults</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 1 <a href="http://www.w3.org/ns/shacl#ValidationReport">sh:ValidationReport</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -524,8 +538,8 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#afteractivity">ontobpr:afterActivity</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1 <a href="#(5.3a)Formulationofcondition">ontobpr:FormulationOfCondition</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#afteractivity">ontobpr:afterActivity</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1 <a href="#(5.3b)Justificationofnegativedecision">ontobpr:JustificationOfNegativeDecision</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#afteractivity">ontobpr:afterActivity</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1 <a href="#(5.3a)Formulationofcondition">ontobpr:FormulationOfCondition</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -556,8 +570,8 @@
                 <th>Restrictions</th>
                 <td>
                     <a href="#reviews">ontobpr:reviews</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#Buildingapplication">ontobpr:BuildingApplication</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://w3id.org/obpa#hasSubActivity">obpa:hasSubActivity</a> <span class="cardinality">exactly</span> 1 <a href="#(1.2)Reviewpreparation">ontobpr:ReviewPreparation</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="https://w3id.org/obpa#hasSubActivity">obpa:hasSubActivity</a> <span class="cardinality">exactly</span> 1 <a href="#(1.1)Completenesscheck">ontobpr:CompletenessCheck</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://w3id.org/obpa#hasSubActivity">obpa:hasSubActivity</a> <span class="cardinality">exactly</span> 1 <a href="#(1.2)Reviewpreparation">ontobpr:ReviewPreparation</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#hascheckingresults">ontobpr:hasCheckingResults</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="http://www.w3.org/ns/shacl#ValidationReport">sh:ValidationReport</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
@@ -602,13 +616,13 @@
                 <td>
                     <a href="https://w3id.org/obpa#hasSubActivity">obpa:hasSubActivity</a> <span class="cardinality">exactly</span> 1 <a href="#(5.1)Requestreviewresults">ontobpr:RequestReviewResults</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="https://w3id.org/obpa#hasSubActivity">obpa:hasSubActivity</a> <span class="cardinality">max</span> 1 <a href="#(5.2a)Positivepermitdecision">ontobpr:PositivePermitDecision</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://w3id.org/obpa#hasSubActivity">obpa:hasSubActivity</a> <span class="cardinality">max</span> 1 <a href="#(5.3b)Justificationofnegativedecision">ontobpr:JustificationOfNegativeDecision</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="https://w3id.org/obpa#hasSubActivity">obpa:hasSubActivity</a> <span class="cardinality">exactly</span> 1 <a href="#(5.4)Creatingnotificationletter">ontobpr:CreatingNotificationLetter</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#afteractivity">ontobpr:afterActivity</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1 <a href="#(2)Assignment">ontobpr:Assignment</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#afteractivity">ontobpr:afterActivity</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1 <a href="#(4)Contentreview">ontobpr:ContentReview</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#afteractivity">ontobpr:afterActivity</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1 <a href="#(3)Participation">ontobpr:Participation</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://w3id.org/obpa#hasSubActivity">obpa:hasSubActivity</a> <span class="cardinality">max</span> 1 <a href="#(5.2b)Negativepermitdecision">ontobpr:NegativePermitDecision</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#afteractivity">ontobpr:afterActivity</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1 <a href="#(2)Assignment">ontobpr:Assignment</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="https://w3id.org/obpa#hasSubActivity">obpa:hasSubActivity</a> <span class="cardinality">max</span> 1 <a href="#(5.3a)Formulationofcondition">ontobpr:FormulationOfCondition</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://w3id.org/obpa#hasSubActivity">obpa:hasSubActivity</a> <span class="cardinality">max</span> 1 <a href="#(5.3b)Justificationofnegativedecision">ontobpr:JustificationOfNegativeDecision</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://w3id.org/obpa#hasSubActivity">obpa:hasSubActivity</a> <span class="cardinality">max</span> 1 <a href="#(5.2b)Negativepermitdecision">ontobpr:NegativePermitDecision</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -733,6 +747,39 @@
             </tr>
         </table>
     </div>
+    <div class="entity class" id="Shaclshapesset">
+        <h3>Shacl shapes set<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>https://w3id.org/ontobpr#ShaclShapesSet</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.w3.org/2002/07/owl#Thing">owl:Thing</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Restrictions</th>
+                <td>
+                    <a href="#hasshapes">ontobpr:hasShapes</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="http://www.w3.org/ns/shacl#Shape">sh:Shape</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="#hasshapes">ontobpr:hasShapes</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="#hasshapesset">ontobpr:hasShapesSet</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
 </section>
 <section id="objectproperties">
     <h2>Object Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
@@ -745,6 +792,8 @@
         <li><a href="#hasbuildingdocument">has building document</a></li>
         <li><a href="#hascheckingresults">has checking results</a></li>
         <li><a href="#hasdocument">has document</a></li>
+        <li><a href="#hasshapes">has shapes</a></li>
+        <li><a href="#hasshapesset">has shapes set</a></li>
         <li><a href="#reviews">reviews</a></li>
     </ul>
     <div class="entity property" id="afteractivity">
@@ -935,6 +984,54 @@
                 <th>Super-properties</th>
                 <td>
                     <a href="http://www.w3.org/2002/07/owl#topObjectProperty">owl:topObjectProperty</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="hasshapes">
+        <h3>has shapes<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>https://w3id.org/ontobpr#hasShapes</code></td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://www.w3.org/2002/07/owl#topObjectProperty">owl:topObjectProperty</a>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#Shaclshapesset">ontobpr:ShaclShapesSet</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/ns/shacl#Shape">sh:Shape</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="hasshapesset">
+        <h3>has shapes set<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>https://w3id.org/ontobpr#hasShapesSet</code></td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://www.w3.org/2002/07/owl#topObjectProperty">owl:topObjectProperty</a>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#Shaclshapesset">ontobpr:ShaclShapesSet</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
