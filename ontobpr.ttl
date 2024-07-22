@@ -1,6 +1,6 @@
 # baseURI: https://w3id.org/ontobpr
 # imports: http://www.w3.org/ns/shacl#
-# imports: https://standards.iso.org/iso/21597/-1/ed-1/en/Container
+# imports: https://standards.iso.org/iso/21597/-1/ed-1/en/Container#
 # imports: https://w3id.org/obpa#
 # prefix: ontobpr
 
@@ -78,11 +78,12 @@ obpa:BuildingAuthority
   rdfs:comment "To avoid a digital disruption in planning buildings and structures, this research presents a workflow in which building codes are represented as machine-readable knowledge graphs and ontologies as an integration to the building permit review procedure and the participation process. Therefore, the building permit process was analyzed, and possible applications of ontology-based knowledge representations are explored. An ontology-based building permit review (OntoBPR) is proposed, reusing two existing ontologies for modeling the permit review workflow for representing the building codes. The OntoBPR ontology extends the approach with a connection to Information COntainers for linked Document Delivery (ICDD) that are used for submitting the building application, and the Shapes Constraint Language (SHACL) of which rules are generated from the building code knowledge graphs."@en ;
   rdfs:label "OntoBPR: An ontological workflow for building permit review" ;
   owl:imports sh: ;
-  owl:imports <https://standards.iso.org/iso/21597/-1/ed-1/en/Container> ;
+  owl:imports ct: ;
   owl:imports obpa: ;
 .
 ontobpr:Activity
   rdf:type owl:Class ;
+  rdfs:isDefinedBy obpa:Activity ;
   rdfs:label "Activity" ;
   rdfs:subClassOf owl:Thing ;
   owl:equivalentClass obpa:Activity ;
@@ -100,6 +101,7 @@ ontobpr:Assignment
 .
 ontobpr:Building
   rdf:type owl:Class ;
+  rdfs:isDefinedBy obpa:Building ;
   rdfs:label "Building" ;
   rdfs:subClassOf owl:Thing ;
   rdfs:subClassOf [
@@ -111,6 +113,7 @@ ontobpr:Building
 .
 ontobpr:BuildingApplication
   rdf:type owl:Class ;
+  rdfs:isDefinedBy obpa:BuildingApplication ;
   rdfs:label "Building application" ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
@@ -127,6 +130,7 @@ ontobpr:BuildingApplication
 .
 ontobpr:BuildingAuthority
   rdf:type owl:Class ;
+  rdfs:isDefinedBy obpa:BuildingAuthority ;
   rdfs:label "Building authority" ;
   owl:equivalentClass obpa:BuildingAuthority ;
 .
@@ -177,6 +181,8 @@ ontobpr:CreatingNotificationLetter
 .
 ontobpr:Dictionary
   rdf:type owl:Class ;
+  rdfs:isDefinedBy isoprops:Dictionary ;
+  rdfs:label "Dictionary" ;
   owl:equivalentClass isoprops:Dictionary ;
 .
 ontobpr:FormalReview
