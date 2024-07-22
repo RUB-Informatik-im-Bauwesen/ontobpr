@@ -75,11 +75,21 @@ obpa:BuildingAuthority
   dc:license <https://creativecommons.org/licenses/by/4.0/> ;
   dc:source "https://github.com/RUB-Informatik-im-Bauwesen/ontobpr"^^xsd:anyURI ;
   vann:preferredNamespacePrefix "ontobpr" ;
-  rdfs:comment "To avoid a digital disruption in planning buildings and structures, this research presents a workflow in which building codes are represented as machine-readable knowledge graphs and ontologies as an integration to the building permit review procedure and the participation process. Therefore, the building permit process was analyzed, and possible applications of ontology-based knowledge representations are explored. An ontology-based building permit review (OntoBPR) is proposed, reusing two existing ontologies for modeling the permit review workflow for representing the building codes. The OntoBPR ontology extends the approach with a connection to Information COntainers for linked Document Delivery (ICDD) that are used for submitting the building application, and the Shapes Constraint Language (SHACL) of which rules are generated from the building code knowledge graphs."@en ;
+  rdfs:comment "To avoid a digital disruption in planning buildings and structures, this research presents a workflow in which building codes are represented as machine-readable knowledge graphs and ontologies as an integration to the building permit review procedure and the participation process. Therefore, the building permit process was analyzed, and possible applications of ontology-based knowledge representations are explored. An ontology-based building permit review (OntoBPR) is proposed, reusing two existing ontologies for modeling the permit review workflow for representing the building codes. The OntoBPR ontology extends the approach with a connection to Information Containers for linked Document Delivery (ICDD) that are used for submitting the building application, and the Shapes Constraint Language (SHACL) of which rules are generated from the building code knowledge graphs."@en ;
   rdfs:label "OntoBPR: An ontological workflow for building permit review" ;
   owl:imports sh: ;
   owl:imports ct: ;
   owl:imports obpa: ;
+.
+ontobpr:Accepted
+  rdf:type owl:NamedIndividual ;
+  rdf:type ontobpr:ReviewStatus ;
+  rdfs:label "Accepted" ;
+.
+ontobpr:AcceptedWithConditions
+  rdf:type owl:NamedIndividual ;
+  rdf:type ontobpr:ReviewStatus ;
+  rdfs:label "Accepted with conditions" ;
 .
 ontobpr:Activity
   rdf:type owl:Class ;
@@ -119,6 +129,12 @@ ontobpr:BuildingApplication
       rdf:type owl:Restriction ;
       owl:onClass ct:ContainerDescription ;
       owl:onProperty ontobpr:hasBuildingApplicationContainer ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onClass ontobpr:ReviewStatus ;
+      owl:onProperty ontobpr:hasStatus ;
       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
     ] ;
   rdfs:subClassOf [
@@ -327,6 +343,16 @@ ontobpr:PositivePermitDecision
       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
     ] ;
 .
+ontobpr:Rejected
+  rdf:type owl:NamedIndividual ;
+  rdf:type ontobpr:ReviewStatus ;
+  rdfs:label "Rejected" ;
+.
+ontobpr:RequestInformation
+  rdf:type owl:NamedIndividual ;
+  rdf:type ontobpr:ReviewStatus ;
+  rdfs:label "Request information" ;
+.
 ontobpr:RequestReviewResults
   rdf:type owl:Class ;
   rdfs:label "(5.1) Request review results " ;
@@ -343,6 +369,11 @@ ontobpr:ReviewPreparation
       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
     ] ;
 .
+ontobpr:ReviewStatus
+  rdf:type rdfs:Class ;
+  rdfs:label "Review status" ;
+  rdfs:subClassOf owl:Thing ;
+.
 ontobpr:ShaclShapesSet
   rdf:type owl:Class ;
   rdfs:label "Shacl shapes set" ;
@@ -352,6 +383,11 @@ ontobpr:ShaclShapesSet
       owl:onProperty ontobpr:hasShapes ;
       owl:someValuesFrom sh:Shape ;
     ] ;
+.
+ontobpr:UnderReview
+  rdf:type owl:NamedIndividual ;
+  rdf:type ontobpr:ReviewStatus ;
+  rdfs:label "Under review" ;
 .
 ontobpr:afterActivity
   rdf:type owl:ObjectProperty ;
@@ -415,6 +451,13 @@ ontobpr:hasShapesSet
   rdf:type owl:ObjectProperty ;
   rdfs:label "has shapes set" ;
   rdfs:range ontobpr:ShaclShapesSet ;
+  rdfs:subPropertyOf owl:topObjectProperty ;
+.
+ontobpr:hasStatus
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain ontobpr:BuildingApplication ;
+  rdfs:label "has status" ;
+  rdfs:range ontobpr:ReviewStatus ;
   rdfs:subPropertyOf owl:topObjectProperty ;
 .
 ontobpr:reviews

@@ -25,11 +25,12 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.4
 * **Ontology RDF**
   * RDF ([ontobpr.ttl](turtle))
 ### Description
-<p>To avoid a digital disruption in planning buildings and structures, this research presents a workflow in which building codes are represented as machine-readable knowledge graphs and ontologies as an integration to the building permit review procedure and the participation process. Therefore, the building permit process was analyzed, and possible applications of ontology-based knowledge representations are explored. An ontology-based building permit review (OntoBPR) is proposed, reusing two existing ontologies for modeling the permit review workflow for representing the building codes. The OntoBPR ontology extends the approach with a connection to Information COntainers for linked Document Delivery (ICDD) that are used for submitting the building application, and the Shapes Constraint Language (SHACL) of which rules are generated from the building code knowledge graphs.</p>
+<p>To avoid a digital disruption in planning buildings and structures, this research presents a workflow in which building codes are represented as machine-readable knowledge graphs and ontologies as an integration to the building permit review procedure and the participation process. Therefore, the building permit process was analyzed, and possible applications of ontology-based knowledge representations are explored. An ontology-based building permit review (OntoBPR) is proposed, reusing two existing ontologies for modeling the permit review workflow for representing the building codes. The OntoBPR ontology extends the approach with a connection to Information Containers for linked Document Delivery (ICDD) that are used for submitting the building application, and the Shapes Constraint Language (SHACL) of which rules are generated from the building code knowledge graphs.</p>
 
 ## Table of Contents
 1. [Classes](#classes)
 1. [Object Properties](#objectproperties)
+1. [Named Individuals](#namedindividuals)
 1. [Namespaces](#namespaces)
 1. [Legend](#legend)
 
@@ -56,6 +57,7 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.4
 [Building application](#Buildingapplication),
 [Building authority](#Buildingauthority),
 [Dictionary](#Dictionary),
+[Review status](#Reviewstatus),
 [Shacl shapes set](#Shaclshapesset),
 ### Activity
 Property | Value
@@ -63,7 +65,7 @@ Property | Value
 IRI | `https://w3id.org/ontobpr#Activity`
 Is Defined By | https://w3id.org/obpa#Activity
 Super-classes |[owl:Thing](http://www.w3.org/2002/07/owl#Thing) (c)<br />
-Sub-classes |[ontobpr:FormulationOfCondition]((5.3a)Formulationofcondition) (c)<br />[ontobpr:JustificationOfNegativeDecision]((5.3b)Justificationofnegativedecision) (c)<br />[ontobpr:CompletenessCheck]((1.1)Completenesscheck) (c)<br />[ontobpr:ContentReview]((4)Contentreview) (c)<br />[ontobpr:CreatingNotificationLetter]((5.4)Creatingnotificationletter) (c)<br />[ontobpr:FormalReview]((1)Formalreview) (c)<br />[ontobpr:Assignment]((2)Assignment) (c)<br />[ontobpr:RequestReviewResults]((5.1)Requestreviewresults) (c)<br />[ontobpr:NegativePermitDecision]((5.2b)Negativepermitdecision) (c)<br />[ontobpr:IssuingNotificationLetter]((5)Issuingnotificationletter) (c)<br />[ontobpr:Participation]((3)Participation) (c)<br />[ontobpr:ReviewPreparation]((1.2)Reviewpreparation) (c)<br />[ontobpr:PositivePermitDecision]((5.2a)Positivepermitdecision) (c)<br />
+Sub-classes |[ontobpr:RequestReviewResults]((5.1)Requestreviewresults) (c)<br />[ontobpr:IssuingNotificationLetter]((5)Issuingnotificationletter) (c)<br />[ontobpr:ContentReview]((4)Contentreview) (c)<br />[ontobpr:Assignment]((2)Assignment) (c)<br />[ontobpr:CompletenessCheck]((1.1)Completenesscheck) (c)<br />[ontobpr:JustificationOfNegativeDecision]((5.3b)Justificationofnegativedecision) (c)<br />[ontobpr:CreatingNotificationLetter]((5.4)Creatingnotificationletter) (c)<br />[ontobpr:FormalReview]((1)Formalreview) (c)<br />[ontobpr:Participation]((3)Participation) (c)<br />[ontobpr:ReviewPreparation]((1.2)Reviewpreparation) (c)<br />[ontobpr:PositivePermitDecision]((5.2a)Positivepermitdecision) (c)<br />[ontobpr:NegativePermitDecision]((5.2b)Negativepermitdecision) (c)<br />[ontobpr:FormulationOfCondition]((5.3a)Formulationofcondition) (c)<br />
 In domain of |[ontobpr:afterActivity](afteractivity) (op)<br />
 In range of |[ontobpr:afterActivity](afteractivity) (op)<br />
 ### (2) Assignment
@@ -84,8 +86,8 @@ Property | Value
 --- | ---
 IRI | `https://w3id.org/ontobpr#BuildingApplication`
 Is Defined By | https://w3id.org/obpa#BuildingApplication
-Restrictions |[ontobpr:hasApplicationDocument](hasapplicationdocument) (op) **some** [ct:Document](https://standards.iso.org/iso/21597/-1/ed-1/en/Container#Document) (c)<br />[ontobpr:hasBuildingApplicationContainer](hasbuildingapplicationcontainer) (op) **exactly** 1 [ct:ContainerDescription](https://standards.iso.org/iso/21597/-1/ed-1/en/Container#ContainerDescription) (c)<br />
-In domain of |[ontobpr:hasBuildingApplicationContainer](hasbuildingapplicationcontainer) (op)<br />
+Restrictions |[ontobpr:hasBuildingApplicationContainer](hasbuildingapplicationcontainer) (op) **exactly** 1 [ct:ContainerDescription](https://standards.iso.org/iso/21597/-1/ed-1/en/Container#ContainerDescription) (c)<br />[ontobpr:hasStatus](hasstatus) (op) **exactly** 1 [ontobpr:ReviewStatus](Reviewstatus) (c)<br />[ontobpr:hasApplicationDocument](hasapplicationdocument) (op) **some** [ct:Document](https://standards.iso.org/iso/21597/-1/ed-1/en/Container#Document) (c)<br />
+In domain of |[ontobpr:hasStatus](hasstatus) (op)<br />[ontobpr:hasBuildingApplicationContainer](hasbuildingapplicationcontainer) (op)<br />
 ### Building authority
 Property | Value
 --- | ---
@@ -102,13 +104,13 @@ Property | Value
 --- | ---
 IRI | `https://w3id.org/ontobpr#ContentReview`
 Super-classes |[ontobpr:Activity](Activity) (c)<br />
-Restrictions |[ontobpr:afterActivity](afteractivity) (op) **exactly** 1 [ontobpr:FormalReview]((1)Formalreview) (c)<br />[ontobpr:hasCheckingResults](hascheckingresults) (op) **min** 1 [sh:ValidationReport](http://www.w3.org/ns/shacl#ValidationReport) (c)<br />
+Restrictions |[ontobpr:hasCheckingResults](hascheckingresults) (op) **min** 1 [sh:ValidationReport](http://www.w3.org/ns/shacl#ValidationReport) (c)<br />[ontobpr:afterActivity](afteractivity) (op) **exactly** 1 [ontobpr:FormalReview]((1)Formalreview) (c)<br />
 ### (5.4) Creating notification letter
 Property | Value
 --- | ---
 IRI | `https://w3id.org/ontobpr#CreatingNotificationLetter`
 Super-classes |[ontobpr:Activity](Activity) (c)<br />
-Restrictions |[ontobpr:afterActivity](afteractivity) (op) **max** 1 [ontobpr:FormulationOfCondition]((5.3a)Formulationofcondition) (c)<br />[ontobpr:afterActivity](afteractivity) (op) **max** 1 [ontobpr:JustificationOfNegativeDecision]((5.3b)Justificationofnegativedecision) (c)<br />
+Restrictions |[ontobpr:afterActivity](afteractivity) (op) **max** 1 [ontobpr:JustificationOfNegativeDecision]((5.3b)Justificationofnegativedecision) (c)<br />[ontobpr:afterActivity](afteractivity) (op) **max** 1 [ontobpr:FormulationOfCondition]((5.3a)Formulationofcondition) (c)<br />
 ### Dictionary
 Property | Value
 --- | ---
@@ -131,7 +133,7 @@ Property | Value
 --- | ---
 IRI | `https://w3id.org/ontobpr#IssuingNotificationLetter`
 Super-classes |[ontobpr:Activity](Activity) (c)<br />
-Restrictions |[obpa:hasSubActivity](https://w3id.org/obpa#hasSubActivity) **max** 1 [ontobpr:JustificationOfNegativeDecision]((5.3b)Justificationofnegativedecision) (c)<br />[obpa:hasSubActivity](https://w3id.org/obpa#hasSubActivity) **max** 1 [ontobpr:NegativePermitDecision]((5.2b)Negativepermitdecision) (c)<br />[ontobpr:afterActivity](afteractivity) (op) **max** 1 [ontobpr:ContentReview]((4)Contentreview) (c)<br />[ontobpr:afterActivity](afteractivity) (op) **max** 1 [ontobpr:Participation]((3)Participation) (c)<br />[ontobpr:afterActivity](afteractivity) (op) **max** 1 [ontobpr:Assignment]((2)Assignment) (c)<br />[obpa:hasSubActivity](https://w3id.org/obpa#hasSubActivity) **exactly** 1 [ontobpr:RequestReviewResults]((5.1)Requestreviewresults) (c)<br />[obpa:hasSubActivity](https://w3id.org/obpa#hasSubActivity) **max** 1 [ontobpr:PositivePermitDecision]((5.2a)Positivepermitdecision) (c)<br />[obpa:hasSubActivity](https://w3id.org/obpa#hasSubActivity) **max** 1 [ontobpr:FormulationOfCondition]((5.3a)Formulationofcondition) (c)<br />[obpa:hasSubActivity](https://w3id.org/obpa#hasSubActivity) **exactly** 1 [ontobpr:CreatingNotificationLetter]((5.4)Creatingnotificationletter) (c)<br />
+Restrictions |[ontobpr:afterActivity](afteractivity) (op) **max** 1 [ontobpr:Assignment]((2)Assignment) (c)<br />[obpa:hasSubActivity](https://w3id.org/obpa#hasSubActivity) **max** 1 [ontobpr:FormulationOfCondition]((5.3a)Formulationofcondition) (c)<br />[obpa:hasSubActivity](https://w3id.org/obpa#hasSubActivity) **exactly** 1 [ontobpr:CreatingNotificationLetter]((5.4)Creatingnotificationletter) (c)<br />[obpa:hasSubActivity](https://w3id.org/obpa#hasSubActivity) **max** 1 [ontobpr:PositivePermitDecision]((5.2a)Positivepermitdecision) (c)<br />[ontobpr:afterActivity](afteractivity) (op) **max** 1 [ontobpr:ContentReview]((4)Contentreview) (c)<br />[obpa:hasSubActivity](https://w3id.org/obpa#hasSubActivity) **max** 1 [ontobpr:JustificationOfNegativeDecision]((5.3b)Justificationofnegativedecision) (c)<br />[ontobpr:afterActivity](afteractivity) (op) **max** 1 [ontobpr:Participation]((3)Participation) (c)<br />[obpa:hasSubActivity](https://w3id.org/obpa#hasSubActivity) **exactly** 1 [ontobpr:RequestReviewResults]((5.1)Requestreviewresults) (c)<br />[obpa:hasSubActivity](https://w3id.org/obpa#hasSubActivity) **max** 1 [ontobpr:NegativePermitDecision]((5.2b)Negativepermitdecision) (c)<br />
 ### (5.3b) Justification of negative decision 
 Property | Value
 --- | ---
@@ -167,6 +169,12 @@ Property | Value
 IRI | `https://w3id.org/ontobpr#ReviewPreparation`
 Super-classes |[ontobpr:Activity](Activity) (c)<br />
 Restrictions |[ontobpr:afterActivity](afteractivity) (op) **exactly** 1 [ontobpr:CompletenessCheck]((1.1)Completenesscheck) (c)<br />
+### Review status
+Property | Value
+--- | ---
+IRI | `https://w3id.org/ontobpr#ReviewStatus`
+Super-classes |[owl:Thing](http://www.w3.org/2002/07/owl#Thing) (c)<br />
+In range of |[ontobpr:hasStatus](hasstatus) (op)<br />
 ### Shacl shapes set
 Property | Value
 --- | ---
@@ -187,6 +195,7 @@ In range of |[ontobpr:hasShapesSet](hasshapesset) (op)<br />
 [has document](#hasdocument),
 [has shapes](#hasshapes),
 [has shapes set](#hasshapesset),
+[has status](#hasstatus),
 [reviews](#reviews),
 [](afteractivity)
 ### after activity
@@ -262,6 +271,14 @@ Property | Value
 IRI | `https://w3id.org/ontobpr#hasShapesSet`
 Super-properties |[owl:topObjectProperty](http://www.w3.org/2002/07/owl#topObjectProperty)<br />
 Range(s) |[ontobpr:ShaclShapesSet](Shaclshapesset) (c)<br />
+[](hasstatus)
+### has status
+Property | Value
+--- | ---
+IRI | `https://w3id.org/ontobpr#hasStatus`
+Super-properties |[owl:topObjectProperty](http://www.w3.org/2002/07/owl#topObjectProperty)<br />
+Domain(s) |[ontobpr:BuildingApplication](Buildingapplication) (c)<br />
+Range(s) |[ontobpr:ReviewStatus](Reviewstatus) (c)<br />
 [](reviews)
 ### reviews
 Property | Value
@@ -270,6 +287,41 @@ IRI | `https://w3id.org/ontobpr#reviews`
 Super-properties |[owl:topObjectProperty](http://www.w3.org/2002/07/owl#topObjectProperty)<br />
 
 ## Named Individuals
+[Accepted](#Accepted),
+[Accepted with conditions](#Acceptedwithconditions),
+[Rejected](#Rejected),
+[Request information](#Requestinformation),
+[Under review](#Underreview),
+### Accepted <sup>c</sup>
+Property | Value
+--- | ---
+IRI | `https://w3id.org/ontobpr#Accepted`
+* **Contributor(s)**
+  * [ontobpr:ReviewStatus](https://w3id.org/ontobpr#ReviewStatus)
+### Accepted with conditions <sup>c</sup>
+Property | Value
+--- | ---
+IRI | `https://w3id.org/ontobpr#AcceptedWithConditions`
+* **Contributor(s)**
+  * [ontobpr:ReviewStatus](https://w3id.org/ontobpr#ReviewStatus)
+### Rejected <sup>c</sup>
+Property | Value
+--- | ---
+IRI | `https://w3id.org/ontobpr#Rejected`
+* **Contributor(s)**
+  * [ontobpr:ReviewStatus](https://w3id.org/ontobpr#ReviewStatus)
+### Request information <sup>c</sup>
+Property | Value
+--- | ---
+IRI | `https://w3id.org/ontobpr#RequestInformation`
+* **Contributor(s)**
+  * [ontobpr:ReviewStatus](https://w3id.org/ontobpr#ReviewStatus)
+### Under review <sup>c</sup>
+Property | Value
+--- | ---
+IRI | `https://w3id.org/ontobpr#UnderReview`
+* **Contributor(s)**
+  * [ontobpr:ReviewStatus](https://w3id.org/ontobpr#ReviewStatus)
 ## Namespaces
 * **default (:)**
   * `https://w3id.org/ontobpr#`
