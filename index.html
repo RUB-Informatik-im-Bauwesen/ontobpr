@@ -308,12 +308,6 @@
     (<a href="mailto:jf805@cam.ac.uk">jf805@cam.ac.uk</a>) of 
     <a href="https://www.linkedin.com/in/judith-fauth-5b5137bb">University of Cambridge, GB</a><br/>
         </dd>
-        <dt>Imports</dt>
-        <dd>
-            <a href="http://www.w3.org/ns/shacl#">sh:</a><br/>
-            <a href="https://standards.iso.org/iso/21597/-1/ed-1/en/Container#">ct:</a><br/>
-            <a href="https://w3id.org/obpa#">obpa:</a><br/>
-        </dd>
         <dt>Ontology RDF</dt>
         <dd><a href="ontobpr.ttl">RDF (turtle)</a></dd>
     </dl>
@@ -327,6 +321,7 @@
     <ol>
         <li><a href="#classes">Classes</a></li>
         <li><a href="#objectproperties">Object Properties</a></li>
+        <li><a href="#datatypeproperties">Datatype Properties</a></li>
         <li><a href="#namedindividuals">Named Individuals</a></li>
         <li><a href="#namespaces">Namespaces</a></li>
         <li><a href="#legend">Legend</a></li>
@@ -387,26 +382,33 @@
                 </td>
             </tr>
             <tr>
+                <th>Restrictions</th>
+                <td>
+                    <a href="#iscompleted">ontobpr:isCompleted</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
+                </td>
+            </tr>
+            <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#(4)Contentreview">ontobpr:ContentReview</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#(5.3b)Justificationofnegativedecision">ontobpr:JustificationOfNegativeDecision</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#(2)Assignment">ontobpr:Assignment</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#(1)Formalreview">ontobpr:FormalReview</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#(1.2)Reviewpreparation">ontobpr:ReviewPreparation</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#(5.3a)Formulationofcondition">ontobpr:FormulationOfCondition</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#(5)Issuingnotificationletter">ontobpr:IssuingNotificationLetter</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#(3)Participation">ontobpr:Participation</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#(5.2b)Negativepermitdecision">ontobpr:NegativePermitDecision</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#(5.4)Creatingnotificationletter">ontobpr:CreatingNotificationLetter</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#(5.2a)Positivepermitdecision">ontobpr:PositivePermitDecision</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#(5)Issuingnotificationletter">ontobpr:IssuingNotificationLetter</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#(5.3a)Formulationofcondition">ontobpr:FormulationOfCondition</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#(1.2)Reviewpreparation">ontobpr:ReviewPreparation</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#(1.1)Completenesscheck">ontobpr:CompletenessCheck</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#(5.2b)Negativepermitdecision">ontobpr:NegativePermitDecision</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#(1)Formalreview">ontobpr:FormalReview</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#(5.2a)Positivepermitdecision">ontobpr:PositivePermitDecision</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#(5.3b)Justificationofnegativedecision">ontobpr:JustificationOfNegativeDecision</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#(4)Contentreview">ontobpr:ContentReview</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#(2)Assignment">ontobpr:Assignment</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#(5.1)Requestreviewresults">ontobpr:RequestReviewResults</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#(5.4)Creatingnotificationletter">ontobpr:CreatingNotificationLetter</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
+                    <a href="#iscompleted">ontobpr:isCompleted</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
                     <a href="#afteractivity">ontobpr:afterActivity</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
@@ -483,20 +485,20 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#hasstatus">ontobpr:hasStatus</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#Reviewstatus">ontobpr:ReviewStatus</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#hasstatement">ontobpr:hasStatement</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Reviewstatement">ontobpr:ReviewStatement</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#hascheckingresults">ontobpr:hasCheckingResults</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="https://w3id.org/ontobpr#ReviewCheckingResults">ontobpr:ReviewCheckingResults</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#hascurrentactivity">ontobpr:hasCurrentActivity</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#Activity">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#hasbuildingapplicationcontainer">ontobpr:hasBuildingApplicationContainer</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="https://standards.iso.org/iso/21597/-1/ed-1/en/Container#ContainerDescription">ct:ContainerDescription</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#hasapplicationdocument">ontobpr:hasApplicationDocument</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="https://standards.iso.org/iso/21597/-1/ed-1/en/Container#Document">ct:Document</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hasstatement">ontobpr:hasStatement</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Reviewstatement">ontobpr:ReviewStatement</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hasstatus">ontobpr:hasStatus</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#Reviewstatus">ontobpr:ReviewStatus</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hascheckingresults">ontobpr:hasCheckingResults</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="https://w3id.org/ontobpr#ReviewCheckingResults">ontobpr:ReviewCheckingResults</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hasbuildingapplicationcontainer">ontobpr:hasBuildingApplicationContainer</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="https://standards.iso.org/iso/21597/-1/ed-1/en/Container#ContainerDescription">ct:ContainerDescription</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hascurrentactivity">ontobpr:hasCurrentActivity</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#Activity">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
                     <a href="#hasstatement">ontobpr:hasStatement</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#hasstatus">ontobpr:hasStatus</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#hasbuildingapplicationcontainer">ontobpr:hasBuildingApplicationContainer</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hasstatus">ontobpr:hasStatus</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#hascurrentactivity">ontobpr:hasCurrentActivity</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
@@ -670,15 +672,15 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="https://w3id.org/obpa#hasSubActivity">obpa:hasSubActivity</a> <span class="cardinality">exactly</span> 1 <a href="#(5.4)Creatingnotificationletter">ontobpr:CreatingNotificationLetter</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://w3id.org/obpa#hasSubActivity">obpa:hasSubActivity</a> <span class="cardinality">max</span> 1 <a href="#(5.2a)Positivepermitdecision">ontobpr:PositivePermitDecision</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="https://w3id.org/obpa#hasSubActivity">obpa:hasSubActivity</a> <span class="cardinality">max</span> 1 <a href="#(5.3b)Justificationofnegativedecision">ontobpr:JustificationOfNegativeDecision</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#afteractivity">ontobpr:afterActivity</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1 <a href="#(2)Assignment">ontobpr:Assignment</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#afteractivity">ontobpr:afterActivity</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1 <a href="#(3)Participation">ontobpr:Participation</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://w3id.org/obpa#hasSubActivity">obpa:hasSubActivity</a> <span class="cardinality">max</span> 1 <a href="#(5.2a)Positivepermitdecision">ontobpr:PositivePermitDecision</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="https://w3id.org/obpa#hasSubActivity">obpa:hasSubActivity</a> <span class="cardinality">exactly</span> 1 <a href="#(5.1)Requestreviewresults">ontobpr:RequestReviewResults</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="https://w3id.org/obpa#hasSubActivity">obpa:hasSubActivity</a> <span class="cardinality">max</span> 1 <a href="#(5.3a)Formulationofcondition">ontobpr:FormulationOfCondition</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#afteractivity">ontobpr:afterActivity</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1 <a href="#(4)Contentreview">ontobpr:ContentReview</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#afteractivity">ontobpr:afterActivity</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1 <a href="#(3)Participation">ontobpr:Participation</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="https://w3id.org/obpa#hasSubActivity">obpa:hasSubActivity</a> <span class="cardinality">max</span> 1 <a href="#(5.2b)Negativepermitdecision">ontobpr:NegativePermitDecision</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#afteractivity">ontobpr:afterActivity</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1 <a href="#(4)Contentreview">ontobpr:ContentReview</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://w3id.org/obpa#hasSubActivity">obpa:hasSubActivity</a> <span class="cardinality">exactly</span> 1 <a href="#(5.4)Creatingnotificationletter">ontobpr:CreatingNotificationLetter</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -835,8 +837,8 @@
                 <th>Restrictions</th>
                 <td>
                     <a href="https://w3id.org/obpa#hasAgent">obpa:hasAgent</a> <span class="cardinality">exactly</span> 1 <a href="https://w3id.org/obpa#Agent">obpa:Agent</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://purl.org/dc/terms/issued">dcterms:issued</a> <span class="cardinality">exactly</span> 1 <a href="http://www.w3.org/2001/XMLSchema#date">xsd:date</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#hascheckingresults">ontobpr:hasCheckingResults</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="http://www.w3.org/ns/shacl#ValidationReport">sh:ValidationReport</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://purl.org/dc/terms/issued">dcterms:issued</a> <span class="cardinality">exactly</span> 1 <a href="http://www.w3.org/2001/XMLSchema#date">xsd:date</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -857,9 +859,9 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
+                    <a href="http://purl.org/dc/terms/issued">dcterms:issued</a> <span class="cardinality">exactly</span> 1 <a href="http://www.w3.org/2001/XMLSchema#date">xsd:date</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="https://w3id.org/obpa#hasAgent">obpa:hasAgent</a> <span class="cardinality">exactly</span> 1 <a href="https://w3id.org/obpa#Agent">obpa:Agent</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.w3.org/2000/01/rdf-schema#comment">rdfs:comment</a> <span class="cardinality">exactly</span> 1 <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://purl.org/dc/terms/issued">dcterms:issued</a> <span class="cardinality">exactly</span> 1 <a href="http://www.w3.org/2001/XMLSchema#date">xsd:date</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -1260,6 +1262,40 @@
                 <th>Range(s)</th>
                 <td>
                     <a href="#Reviewstatus">ontobpr:ReviewStatus</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+<section id="datatypeproperties">
+    <h2>Datatype Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#iscompleted">is completed</a></li>
+    </ul>
+    <div class="entity property" id="iscompleted">
+        <h3>is completed<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>IRI</th>
+                <td><code>https://w3id.org/ontobpr#isCompleted</code></td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="http://www.w3.org/2002/07/owl#topDataProperty">owl:topDataProperty</a>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#Activity">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>

@@ -1,7 +1,4 @@
 # baseURI: https://w3id.org/ontobpr
-# imports: http://www.w3.org/ns/shacl#
-# imports: https://standards.iso.org/iso/21597/-1/ed-1/en/Container#
-# imports: https://w3id.org/obpa#
 # prefix: ontobpr
 
 @prefix Container: <https://standards.iso.org/iso/21597/-1/ed-1/en/Container#> .
@@ -77,9 +74,6 @@ obpa:BuildingAuthority
   vann:preferredNamespacePrefix "ontobpr" ;
   rdfs:comment "To avoid a digital disruption in planning buildings and structures, this research presents a workflow in which building codes are represented as machine-readable knowledge graphs and ontologies as an integration to the building permit review procedure and the participation process. Therefore, the building permit process was analyzed, and possible applications of ontology-based knowledge representations are explored. An ontology-based building permit review (OntoBPR) is proposed, reusing two existing ontologies for modeling the permit review workflow for representing the building codes. The OntoBPR ontology extends the approach with a connection to Information Containers for linked Document Delivery (ICDD) that are used for submitting the building application, and the Shapes Constraint Language (SHACL) of which rules are generated from the building code knowledge graphs."@en ;
   rdfs:label "OntoBPR: An ontological workflow for building permit review" ;
-  owl:imports sh: ;
-  owl:imports ct: ;
-  owl:imports obpa: ;
 .
 ontobpr:Accepted
   rdf:type owl:NamedIndividual ;
@@ -96,6 +90,12 @@ ontobpr:Activity
   rdfs:isDefinedBy obpa:Activity ;
   rdfs:label "Activity" ;
   rdfs:subClassOf owl:Thing ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onDataRange xsd:boolean ;
+      owl:onProperty ontobpr:isCompleted ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    ] ;
   owl:equivalentClass obpa:Activity ;
 .
 ontobpr:Assignment
@@ -526,4 +526,11 @@ ontobpr:hasStatus
   rdfs:label "has status" ;
   rdfs:range ontobpr:ReviewStatus ;
   rdfs:subPropertyOf owl:topObjectProperty ;
+.
+ontobpr:isCompleted
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain ontobpr:Activity ;
+  rdfs:label "is completed" ;
+  rdfs:range xsd:boolean ;
+  rdfs:subPropertyOf owl:topDataProperty ;
 .
