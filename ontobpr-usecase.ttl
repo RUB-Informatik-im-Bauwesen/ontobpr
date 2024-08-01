@@ -1,0 +1,131 @@
+# baseURI: http://example.org/ontobpr-usecase
+# imports: https://w3id.org/obpa#
+# imports: https://w3id.org/obpa/0.3
+# imports: https://w3id.org/ontobpr
+# prefix: ontobpr-usecase
+
+@prefix : <http://example.org/ontobpr-usecase#> .
+@prefix obpa: <https://w3id.org/obpa#> .
+@prefix ontobpr: <https://w3id.org/ontobpr#> .
+@prefix ontobpr-usecase: <http://example.org/ontobpr-usecase#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/ontobpr-usecase>
+  rdf:type owl:Ontology ;
+  owl:imports obpa: ;
+  owl:imports <https://w3id.org/obpa/0.3> ;
+  owl:imports <https://w3id.org/ontobpr> ;
+  owl:versionInfo "Created with TopBraid Composer" ;
+.
+ontobpr-usecase:Assignment_1
+  rdf:type ontobpr:Assignment ;
+  rdfs:label "Assignment 1" ;
+  ontobpr:afterActivity ontobpr-usecase:FormalReview_1 ;
+.
+ontobpr-usecase:BuildingApplication_1
+  rdf:type obpa:BuildingApplication ;
+  rdf:type ontobpr:BuildingApplication ;
+  rdfs:label "Building application 1" ;
+  obpa:assigned_by ontobpr-usecase:Reviewer_1 ;
+  obpa:includes ontobpr-usecase:sample_project ;
+  obpa:processed_by ontobpr-usecase:Reviewer_1 ;
+  ontobpr:hasCurrentActivity ontobpr-usecase:FormalReview_1 ;
+  ontobpr:hasStatement ontobpr-usecase:ReviewStatement_1 ;
+  ontobpr:hasStatus ontobpr:UnderReview ;
+.
+ontobpr-usecase:BuildingAuthority_1
+  rdf:type obpa:BuildingAuthority ;
+  rdf:type ontobpr:BuildingAuthority ;
+  rdfs:label "Building authority 1" ;
+  obpa:hasAgent ontobpr-usecase:Reviewer_1 ;
+.
+ontobpr-usecase:CompletenessCheck_1
+  rdf:type ontobpr:CompletenessCheck ;
+  rdfs:label "Completeness check 1" ;
+.
+ontobpr-usecase:ContentReview_1
+  rdf:type ontobpr:ContentReview ;
+  rdfs:label "Content review 1" ;
+  ontobpr:afterActivity ontobpr-usecase:Assignment_1 ;
+.
+ontobpr-usecase:CreatingNotificationLetter_1
+  rdf:type ontobpr:CreatingNotificationLetter ;
+  rdfs:label "Creating notification letter 1" ;
+  ontobpr:afterActivity ontobpr-usecase:FormulationOfCondition_1 ;
+.
+ontobpr-usecase:FormalReview_1
+  rdf:type ontobpr:FormalReview ;
+  rdfs:label "Formal review 1" ;
+  obpa:hasSubActivity ontobpr-usecase:CompletenessCheck_1 ;
+  obpa:hasSubActivity ontobpr-usecase:ReviewPreparation_1 ;
+.
+ontobpr-usecase:FormulationOfCondition_1
+  rdf:type ontobpr:FormulationOfCondition ;
+  rdfs:label "Formulation of condition 1" ;
+  ontobpr:afterActivity ontobpr-usecase:PositivePermitDecision_1 ;
+.
+ontobpr-usecase:IssuingNotificationLetter_1
+  rdf:type ontobpr:IssuingNotificationLetter ;
+  rdfs:label "Issuing notification letter 1" ;
+  obpa:hasSubActivity ontobpr-usecase:CreatingNotificationLetter_1 ;
+  obpa:hasSubActivity ontobpr-usecase:FormulationOfCondition_1 ;
+  obpa:hasSubActivity ontobpr-usecase:PositivePermitDecision_1 ;
+  obpa:hasSubActivity ontobpr-usecase:RequestReviewResults_1 ;
+  ontobpr:afterActivity ontobpr-usecase:ContentReview_1 ;
+  ontobpr:afterActivity ontobpr-usecase:Participation_1 ;
+.
+ontobpr-usecase:Participation_1
+  rdf:type ontobpr:Participation ;
+  rdfs:label "Participation 1" ;
+  ontobpr:afterActivity ontobpr-usecase:Assignment_1 ;
+.
+ontobpr-usecase:PositivePermitDecision_1
+  rdf:type ontobpr:PositivePermitDecision ;
+  rdfs:label "Positive permit decision 1" ;
+  ontobpr:afterActivity ontobpr-usecase:RequestReviewResults_1 ;
+.
+ontobpr-usecase:RequestReviewResults_1
+  rdf:type ontobpr:RequestReviewResults ;
+  rdfs:label "Request review results 1" ;
+.
+ontobpr-usecase:ReviewPreparation_1
+  rdf:type ontobpr:ReviewPreparation ;
+  rdfs:label "Review preparation 1" ;
+  ontobpr:afterActivity ontobpr-usecase:CompletenessCheck_1 ;
+.
+ontobpr-usecase:ReviewStatement_1
+  rdf:type ontobpr:ReviewStatement ;
+  rdfs:comment "Application received" ;
+  rdfs:label "Review statement 1" ;
+  obpa:hasAgent ontobpr-usecase:Reviewer_1 ;
+.
+ontobpr-usecase:Reviewer_1
+  rdf:type obpa:Person ;
+  rdfs:label "Reviewer 1" ;
+  obpa:employed_by ontobpr-usecase:BuildingAuthority_1 ;
+  obpa:hasResponsible ontobpr-usecase:Assignment_1 ;
+  obpa:hasResponsible ontobpr-usecase:CompletenessCheck_1 ;
+  obpa:hasResponsible ontobpr-usecase:ContentReview_1 ;
+  obpa:hasResponsible ontobpr-usecase:CreatingNotificationLetter_1 ;
+  obpa:hasResponsible ontobpr-usecase:FormalReview_1 ;
+  obpa:hasResponsible ontobpr-usecase:FormulationOfCondition_1 ;
+  obpa:hasResponsible ontobpr-usecase:IssuingNotificationLetter_1 ;
+  obpa:hasResponsible ontobpr-usecase:Participation_1 ;
+  obpa:hasResponsible ontobpr-usecase:PositivePermitDecision_1 ;
+  obpa:hasResponsible ontobpr-usecase:RequestReviewResults_1 ;
+  obpa:hasResponsible ontobpr-usecase:ReviewPreparation_1 ;
+.
+ontobpr-usecase:office_building
+  rdf:type owl:NamedIndividual ;
+  rdf:type ontobpr:Building ;
+  rdfs:label "office building" ;
+.
+ontobpr-usecase:sample_project
+  rdf:type owl:NamedIndividual ;
+  rdf:type obpa:ConstructionProject ;
+  obpa:hasBuilding ontobpr-usecase:office_building ;
+.

@@ -422,6 +422,12 @@ ontobpr:ReviewStatement
       owl:onProperty obpa:hasAgent ;
       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
     ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onClass ontobpr:Activity ;
+      owl:onProperty ontobpr:belongsToActivity ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    ] ;
 .
 ontobpr:ReviewStatus
   rdf:type owl:Class ;
@@ -454,6 +460,13 @@ ontobpr:applies
   rdf:type owl:ObjectProperty ;
   rdfs:domain obpa:BuildingApplication ;
   rdfs:range isoprops:Dictionary ;
+  rdfs:subPropertyOf owl:topObjectProperty ;
+.
+ontobpr:belongsToActivity
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain ontobpr:ReviewStatement ;
+  rdfs:label "belongs to activity" ;
+  rdfs:range ontobpr:Activity ;
   rdfs:subPropertyOf owl:topObjectProperty ;
 .
 ontobpr:checks
