@@ -151,7 +151,7 @@ ontobpr:BuildingApplication
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:onProperty ontobpr:hasCheckingResults ;
-      owl:someValuesFrom ontobpr:ReviewCheckingResults ;
+      owl:someValuesFrom ontobpr:ReviewResult ;
     ] ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
