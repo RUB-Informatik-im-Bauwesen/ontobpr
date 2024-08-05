@@ -18,7 +18,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 isoprops:Dictionary
-  owl:equivalentClass ontobpr:Dictionary ;
+  owl:equivalentClass ontobpr:BuildingCodeDictionary ;
 .
 obpa:BuildingApplication
   owl:equivalentClass ontobpr:BuildingApplication ;
@@ -166,6 +166,12 @@ ontobpr:BuildingAuthority
   rdfs:label "Building authority" ;
   owl:equivalentClass obpa:BuildingAuthority ;
 .
+ontobpr:BuildingCodeDictionary
+  rdf:type owl:Class ;
+  rdfs:isDefinedBy isoprops:Dictionary ;
+  rdfs:label "Dictionary" ;
+  owl:equivalentClass isoprops:Dictionary ;
+.
 ontobpr:CompletenessCheck
   rdf:type owl:Class ;
   rdfs:label "(1.1) Completeness check " ;
@@ -209,12 +215,6 @@ ontobpr:CreatingNotificationLetter
       owl:onClass ontobpr:JustificationOfNegativeDecision ;
       owl:onProperty ontobpr:afterActivity ;
     ] ;
-.
-ontobpr:Dictionary
-  rdf:type owl:Class ;
-  rdfs:isDefinedBy isoprops:Dictionary ;
-  rdfs:label "Dictionary" ;
-  owl:equivalentClass isoprops:Dictionary ;
 .
 ontobpr:FormalReview
   rdf:type owl:Class ;
