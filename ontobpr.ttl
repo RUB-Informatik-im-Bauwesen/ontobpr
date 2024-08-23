@@ -509,6 +509,7 @@ ontobpr:UnderReview
 .
 ontobpr:afterActivity
   rdf:type owl:ObjectProperty ;
+  rdf:type owl:TransitiveProperty ;
   rdfs:comment "an activity is executed after another activity" ;
   rdfs:domain ontobpr:Activity ;
   rdfs:label "after activity" ;
