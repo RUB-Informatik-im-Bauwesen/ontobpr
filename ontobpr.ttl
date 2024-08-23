@@ -17,23 +17,8 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-sh:Shape
-  rdf:type owl:Class ;
-.
-sh:ValidationReport
-  rdf:type owl:Class ;
-.
-schema:Person
-  rdf:type owl:Class ;
-.
-ct:ContainerDescription
-  rdf:type owl:Class ;
-.
-ct:Document
-  rdf:type owl:Class ;
-.
+
 isoprops:Dictionary
-  rdf:type owl:Class ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:onClass ontobpr:ShaclShapesSet ;
@@ -43,19 +28,15 @@ isoprops:Dictionary
   owl:equivalentClass ontobpr:BuildingCodeDictionary ;
 .
 obpa:Activity
-  rdf:type owl:Class ;
-  owl:equivalentClass obpa:Activity ;
+  owl:equivalentClass ontobpr:Activity ;
 .
 obpa:Building
-  rdf:type owl:Class ;
-  owl:equivalentClass <https://w3id.org/ontobpr#Building:> ;
+  owl:equivalentClass <https://w3id.org/ontobpr#Building> ;
 .
 obpa:BuildingApplication
-  rdf:type owl:Class ;
   owl:equivalentClass ontobpr:BuildingApplication ;
 .
 obpa:BuildingAuthority
-  rdf:type owl:Class ;
   owl:equivalentClass ontobpr:BuildingAuthority ;
 .
 <https://w3id.org/ontobpr>
@@ -145,7 +126,6 @@ ontobpr:Assignment
 ontobpr:Building
   rdf:type owl:Class ;
   rdfs:comment "The building that is subject of this building application" ;
-  rdfs:isDefinedBy obpa:Building ;
   rdfs:label "Building" ;
   rdfs:subClassOf owl:Thing ;
   rdfs:subClassOf [
