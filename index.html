@@ -330,8 +330,16 @@
 <section id="overview">
     <h2>Overview</h2>
     <div class="figure">
-        <div style="width:500px; height:50px; background-color: lightgrey; border:solid 2px grey; padding:10px;margin-bottom:5px; text-align:center;">Pictures say 1,000 words</div>
+        <img style="width:500px; " src="ontobpr-1.png">
         <div class="caption"><strong>Figure 1:</strong> Ontology overview</div>
+    </div>
+    <div class="figure">
+        <img style="width:500px; " src="ontobpr-2.png">
+        <div class="caption"><strong>Figure 2:</strong> Defined activities</div>
+    </div>
+    <div class="figure">
+        <img style="width:500px; " src="ontobpr-3.png">
+        <div class="caption"><strong>Figure 3:</strong> Content review with OntoBPR</div>
     </div>
 </section>
   <section id="classes">
@@ -351,174 +359,23 @@
         <li><a href="#(5.3b)Justificationofnegativedecision">(5.3b) Justification of negative decision </a></li>
         <li><a href="#(5.4)Creatingnotificationletter">(5.4) Creating notification letter</a></li>
         <li><a href="#Activity">Activity</a></li>
-        <li><a href="#Activity1">Activity</a></li>
         <li><a href="#Building">Building</a></li>
-        <li><a href="#Building1">Building</a></li>
         <li><a href="#Buildingapplication">Building application</a></li>
         <li><a href="#Buildingauthority">Building authority</a></li>
-        <li><a href="#BuildingApplication">BuildingApplication</a></li>
-        <li><a href="#BuildingAuthority">BuildingAuthority</a></li>
         <li><a href="#Condition">Condition</a></li>
-        <li><a href="#ContainerDescription">ContainerDescription</a></li>
         <li><a href="#Dictionary">Dictionary</a></li>
-        <li><a href="#BuildingCodeDictionary">Dictionary</a></li>
-        <li><a href="#Document">Document</a></li>
         <li><a href="#Justification">Justification</a></li>
-        <li><a href="#Person">Person</a></li>
         <li><a href="#Reviewcheckingresult">Review checking result</a></li>
         <li><a href="#Reviewstatement">Review statement</a></li>
         <li><a href="#Reviewstatus">Review status</a></li>
         <li><a href="#SHACLshapesset">SHACL shapes set</a></li>
-        <li><a href="#Shape">Shape</a></li>
-        <li><a href="#ValidationReport">ValidationReport</a></li>
     </ul>
-    <div class="entity class" id="Shape">
-        <h3>Shape<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>http://www.w3.org/ns/shacl#Shape</code></td>
-            </tr>
-            <tr>
-                <th>In range of</th>
-                <td>
-                    <a href="#hasshapes">ontobpr:hasShapes</a><sup class="sup-op" title="object property">op</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="ValidationReport">
-        <h3>ValidationReport<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>http://www.w3.org/ns/shacl#ValidationReport</code></td>
-            </tr>
-            <tr>
-                <th>In range of</th>
-                <td>
-                    <a href="#hascheckingresults">ontobpr:hasCheckingResults</a><sup class="sup-op" title="object property">op</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="Person">
-        <h3>Person<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://schema.org/Person</code></td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="ContainerDescription">
-        <h3>ContainerDescription<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://standards.iso.org/iso/21597/-1/ed-1/en/Container#ContainerDescription</code></td>
-            </tr>
-            <tr>
-                <th>In range of</th>
-                <td>
-                    <a href="#hasbuildingapplicationcontainer">ontobpr:hasBuildingApplicationContainer</a><sup class="sup-op" title="object property">op</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="Document">
-        <h3>Document<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://standards.iso.org/iso/21597/-1/ed-1/en/Container#Document</code></td>
-            </tr>
-            <tr>
-                <th>In range of</th>
-                <td>
-                    <a href="#hasbuildingdocument">ontobpr:hasBuildingDocument</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#hasdocument">ontobpr:hasDocument</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#hasapplicationdocument">ontobpr:hasApplicationDocument</a><sup class="sup-op" title="object property">op</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="Dictionary">
-        <h3>Dictionary<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://w3id.org/isoprops#Dictionary</code></td>
-            </tr>
-            <tr>
-                <th>In range of</th>
-                <td>
-                    <a href="#checks">ontobpr:checks</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#applies">ontobpr:applies</a><sup class="sup-op" title="object property">op</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
     <div class="entity class" id="Activity">
         <h3>Activity<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
-                <td><code>https://w3id.org/obpa#Activity</code></td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="Building">
-        <h3>Building<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://w3id.org/obpa#Building</code></td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="BuildingApplication">
-        <h3>BuildingApplication<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://w3id.org/obpa#BuildingApplication</code></td>
-            </tr>
-            <tr>
-                <th>In domain of</th>
-                <td>
-                    <a href="#applies">ontobpr:applies</a><sup class="sup-op" title="object property">op</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="BuildingAuthority">
-        <h3>BuildingAuthority<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://w3id.org/obpa#BuildingAuthority</code></td>
-            </tr>
-            <tr>
-                <th>In domain of</th>
-                <td>
-                    <a href="#checks">ontobpr:checks</a><sup class="sup-op" title="object property">op</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="Activity1">
-        <h3>Activity<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
                 <td><code>https://w3id.org/ontobpr#Activity</code></td>
-            </tr>
-            <tr>
-                <th>Is Defined By</th>
-                <td>
-                    https://w3id.org/obpa#Activity
-                </td>
             </tr>
             <tr>
                 <th>Description</th>
@@ -541,35 +398,34 @@
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="#(5.4)Creatingnotificationletter">ontobpr:CreatingNotificationLetter</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#(1)Formalreview">ontobpr:FormalReview</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#(5.2b)Negativepermitdecision">ontobpr:NegativePermitDecision</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#(4)Contentreview">ontobpr:ContentReview</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#(1.2)Reviewpreparation">ontobpr:ReviewPreparation</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#(5)Issuingnotificationletter">ontobpr:IssuingNotificationLetter</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#(2)Assignment">ontobpr:Assignment</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#(5.2a)Positivepermitdecision">ontobpr:PositivePermitDecision</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#(3)Participation">ontobpr:Participation</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#(5.1)Requestreviewresults">ontobpr:RequestReviewResults</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#(1.1)Completenesscheck">ontobpr:CompletenessCheck</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#(1.2)Reviewpreparation">ontobpr:ReviewPreparation</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#(5.4)Creatingnotificationletter">ontobpr:CreatingNotificationLetter</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#(5)Issuingnotificationletter">ontobpr:IssuingNotificationLetter</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#(5.3a)Formulationofcondition">ontobpr:FormulationOfCondition</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#(5.3b)Justificationofnegativedecision">ontobpr:JustificationOfNegativeDecision</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#(2)Assignment">ontobpr:Assignment</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#(4)Contentreview">ontobpr:ContentReview</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#(5.1)Requestreviewresults">ontobpr:RequestReviewResults</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#(1.1)Completenesscheck">ontobpr:CompletenessCheck</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#(3)Participation">ontobpr:Participation</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#(5.2b)Negativepermitdecision">ontobpr:NegativePermitDecision</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#(1)Formalreview">ontobpr:FormalReview</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
                     <a href="#iscompleted">ontobpr:isCompleted</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
-                    <a href="#hasshapesset">ontobpr:hasShapesSet</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#afteractivity">ontobpr:afterActivity</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="#afteractivity">ontobpr:afterActivity</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#hascurrentactivity">ontobpr:hasCurrentActivity</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#belongstoactivity">ontobpr:belongsToActivity</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#afteractivity">ontobpr:afterActivity</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -590,7 +446,7 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="#Activity1">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Activity">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -601,18 +457,12 @@
             </tr>
         </table>
     </div>
-    <div class="entity class" id="Building1">
+    <div class="entity class" id="Building">
         <h3>Building<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
                 <td><code>https://w3id.org/ontobpr#Building</code></td>
-            </tr>
-            <tr>
-                <th>Is Defined By</th>
-                <td>
-                    https://w3id.org/obpa#Building
-                </td>
             </tr>
             <tr>
                 <th>Description</th>
@@ -662,25 +512,25 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#hasbuildingapplicationcontainer">ontobpr:hasBuildingApplicationContainer</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="https://standards.iso.org/iso/21597/-1/ed-1/en/Container#ContainerDescription">ct:ContainerDescription</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#hascheckingresults">ontobpr:hasCheckingResults</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Reviewcheckingresult">ontobpr:ReviewResult</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#hasapplicationdocument">ontobpr:hasApplicationDocument</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="https://standards.iso.org/iso/21597/-1/ed-1/en/Container#Document">ct:Document</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#hasstatus">ontobpr:hasStatus</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#Reviewstatus">ontobpr:ReviewStatus</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hasbuildingapplicationcontainer">ontobpr:hasBuildingApplicationContainer</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="https://standards.iso.org/iso/21597/-1/ed-1/en/Container#ContainerDescription">ct:ContainerDescription</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#hasstatement">ontobpr:hasStatement</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Reviewstatement">ontobpr:ReviewStatement</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#hascurrentactivity">ontobpr:hasCurrentActivity</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#Activity1">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hasapplicationdocument">ontobpr:hasApplicationDocument</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="https://standards.iso.org/iso/21597/-1/ed-1/en/Container#Document">ct:Document</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hascurrentactivity">ontobpr:hasCurrentActivity</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#Activity">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#hascheckingresults">ontobpr:hasCheckingResults</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Reviewcheckingresult">ontobpr:ReviewResult</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#hascheckingresults">ontobpr:hasCheckingResults</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#hasbuildingapplicationcontainer">ontobpr:hasBuildingApplicationContainer</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#hascurrentactivity">ontobpr:hasCurrentActivity</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#applies">ontobpr:applies</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#hasapplicationdocument">ontobpr:hasApplicationDocument</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#hasdocument">ontobpr:hasDocument</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#hasstatus">ontobpr:hasStatus</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hascurrentactivity">ontobpr:hasCurrentActivity</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hasapplicationdocument">ontobpr:hasApplicationDocument</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#hasstatement">ontobpr:hasStatement</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hascheckingresults">ontobpr:hasCheckingResults</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#applies">ontobpr:applies</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -712,18 +562,12 @@
             </tr>
         </table>
     </div>
-    <div class="entity class" id="BuildingCodeDictionary">
+    <div class="entity class" id="Dictionary">
         <h3>Dictionary<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
                 <th>IRI</th>
                 <td><code>https://w3id.org/ontobpr#BuildingCodeDictionary</code></td>
-            </tr>
-            <tr>
-                <th>Is Defined By</th>
-                <td>
-                    https://w3id.org/isoprops#Dictionary
-                </td>
             </tr>
             <tr>
                 <th>Description</th>
@@ -768,7 +612,7 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="#Activity1">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Activity">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -816,7 +660,7 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="#Activity1">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Activity">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -843,14 +687,14 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="#Activity1">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Activity">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#afteractivity">ontobpr:afterActivity</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1 <a href="#(5.3b)Justificationofnegativedecision">ontobpr:JustificationOfNegativeDecision</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#afteractivity">ontobpr:afterActivity</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1 <a href="#(5.3a)Formulationofcondition">ontobpr:FormulationOfCondition</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#afteractivity">ontobpr:afterActivity</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1 <a href="#(5.3b)Justificationofnegativedecision">ontobpr:JustificationOfNegativeDecision</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -871,7 +715,7 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="#Activity1">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Activity">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -899,7 +743,7 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="#Activity1">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Activity">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -926,21 +770,21 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="#Activity1">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Activity">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="https://w3id.org/obpa#hasSubActivity">obpa:hasSubActivity</a> <span class="cardinality">max</span> 1 <a href="#(5.2a)Positivepermitdecision">ontobpr:PositivePermitDecision</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#afteractivity">ontobpr:afterActivity</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1 <a href="#(4)Contentreview">ontobpr:ContentReview</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="https://w3id.org/obpa#hasSubActivity">obpa:hasSubActivity</a> <span class="cardinality">max</span> 1 <a href="#(5.3b)Justificationofnegativedecision">ontobpr:JustificationOfNegativeDecision</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://w3id.org/obpa#hasSubActivity">obpa:hasSubActivity</a> <span class="cardinality">max</span> 1 <a href="#(5.2b)Negativepermitdecision">ontobpr:NegativePermitDecision</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://w3id.org/obpa#hasSubActivity">obpa:hasSubActivity</a> <span class="cardinality">exactly</span> 1 <a href="#(5.1)Requestreviewresults">ontobpr:RequestReviewResults</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://w3id.org/obpa#hasSubActivity">obpa:hasSubActivity</a> <span class="cardinality">exactly</span> 1 <a href="#(5.4)Creatingnotificationletter">ontobpr:CreatingNotificationLetter</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#afteractivity">ontobpr:afterActivity</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1 <a href="#(2)Assignment">ontobpr:Assignment</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="https://w3id.org/obpa#hasSubActivity">obpa:hasSubActivity</a> <span class="cardinality">max</span> 1 <a href="#(5.3a)Formulationofcondition">ontobpr:FormulationOfCondition</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="#afteractivity">ontobpr:afterActivity</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1 <a href="#(3)Participation">ontobpr:Participation</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://w3id.org/obpa#hasSubActivity">obpa:hasSubActivity</a> <span class="cardinality">exactly</span> 1 <a href="#(5.4)Creatingnotificationletter">ontobpr:CreatingNotificationLetter</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://w3id.org/obpa#hasSubActivity">obpa:hasSubActivity</a> <span class="cardinality">max</span> 1 <a href="#(5.2b)Negativepermitdecision">ontobpr:NegativePermitDecision</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://w3id.org/obpa#hasSubActivity">obpa:hasSubActivity</a> <span class="cardinality">max</span> 1 <a href="#(5.2a)Positivepermitdecision">ontobpr:PositivePermitDecision</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://w3id.org/obpa#hasSubActivity">obpa:hasSubActivity</a> <span class="cardinality">exactly</span> 1 <a href="#(5.1)Requestreviewresults">ontobpr:RequestReviewResults</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#afteractivity">ontobpr:afterActivity</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1 <a href="#(4)Contentreview">ontobpr:ContentReview</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -982,7 +826,7 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="#Activity1">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Activity">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -1009,7 +853,7 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="#Activity1">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Activity">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -1036,7 +880,7 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="#Activity1">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Activity">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -1063,7 +907,7 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="#Activity1">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Activity">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -1090,7 +934,7 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="#Activity1">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Activity">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1111,7 +955,7 @@
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="#Activity1">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Activity">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -1145,14 +989,8 @@
                 <th>Restrictions</th>
                 <td>
                     <a href="#hascheckingresults">ontobpr:hasCheckingResults</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="http://www.w3.org/ns/shacl#ValidationReport">sh:ValidationReport</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://w3id.org/obpa#hasAgent">obpa:hasAgent</a> <span class="cardinality">exactly</span> 1 <a href="https://w3id.org/obpa#Agent">obpa:Agent</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://purl.org/dc/terms/issued">dcterms:issued</a> <span class="cardinality">exactly</span> 1 <a href="http://www.w3.org/2001/XMLSchema#date">xsd:date</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>In domain of</th>
-                <td>
-                    <a href="#hascheckingresults">ontobpr:hasCheckingResults</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="https://w3id.org/obpa#hasAgent">obpa:hasAgent</a> <span class="cardinality">exactly</span> 1 <a href="https://w3id.org/obpa#Agent">obpa:Agent</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -1185,10 +1023,10 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="#belongstoactivity">ontobpr:belongsToActivity</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#Activity1">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://purl.org/dc/terms/issued">dcterms:issued</a> <span class="cardinality">exactly</span> 1 <a href="http://www.w3.org/2001/XMLSchema#date">xsd:date</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://w3id.org/obpa#hasAgent">obpa:hasAgent</a> <span class="cardinality">exactly</span> 1 <a href="https://w3id.org/obpa#Agent">obpa:Agent</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="http://www.w3.org/2000/01/rdf-schema#comment">rdfs:comment</a> <span class="cardinality">exactly</span> 1 <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://w3id.org/obpa#hasAgent">obpa:hasAgent</a> <span class="cardinality">exactly</span> 1 <a href="https://w3id.org/obpa#Agent">obpa:Agent</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#belongstoactivity">ontobpr:belongsToActivity</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#Activity">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -1319,13 +1157,13 @@
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#Activity1">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#Activity">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#Activity1">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#Activity">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -1359,8 +1197,8 @@
             <tr>
                 <th>Range(s)</th>
                 <td>
+                    <a href="#Dictionary">ontobpr:BuildingCodeDictionary</a><sup class="sup-c" title="class">c</sup>
                     <a href="https://w3id.org/isoprops#Dictionary">isoprops:Dictionary</a><sup class="sup-c" title="class">c</sup>
-                    <a href="#BuildingCodeDictionary">ontobpr:BuildingCodeDictionary</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -1393,7 +1231,7 @@
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#Activity1">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#Activity">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -1420,15 +1258,15 @@
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="https://w3id.org/obpa#BuildingAuthority">obpa:BuildingAuthority</a><sup class="sup-c" title="class">c</sup>
                     <a href="#Buildingauthority">ontobpr:BuildingAuthority</a><sup class="sup-c" title="class">c</sup>
+                    <a href="https://w3id.org/obpa#BuildingAuthority">obpa:BuildingAuthority</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
+                    <a href="#Dictionary">ontobpr:BuildingCodeDictionary</a><sup class="sup-c" title="class">c</sup>
                     <a href="https://w3id.org/isoprops#Dictionary">isoprops:Dictionary</a><sup class="sup-c" title="class">c</sup>
-                    <a href="#BuildingCodeDictionary">ontobpr:BuildingCodeDictionary</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -1450,12 +1288,6 @@
                 <th>Super-properties</th>
                 <td>
                     <a href="#hasdocument">ontobpr:hasDocument</a><sup class="sup-op" title="object property">op</sup>
-                </td>
-            </tr>
-            <tr>
-                <th>Inverse properties</th>
-                <td>
-                    <a href="#hasbuildingdocument">ontobpr:hasBuildingDocument</a><sup class="sup-op" title="object property">op</sup>
                 </td>
             </tr>
             <tr>
@@ -1527,7 +1359,7 @@
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#Building1">ontobpr:Building</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#Building">ontobpr:Building</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
@@ -1561,14 +1393,12 @@
                 <th>Domain(s)</th>
                 <td>
                     <a href="#Buildingapplication">ontobpr:BuildingApplication</a><sup class="sup-c" title="class">c</sup>
-                    <a href="#Reviewcheckingresult">ontobpr:ReviewResult</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
                 <th>Range(s)</th>
                 <td>
                     <a href="#Reviewcheckingresult">ontobpr:ReviewResult</a><sup class="sup-c" title="class">c</sup>
-                    <a href="http://www.w3.org/ns/shacl#ValidationReport">sh:ValidationReport</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -1601,7 +1431,7 @@
             <tr>
                 <th>Range(s)</th>
                 <td>
-                    <a href="#Activity1">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#Activity">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
         </table>
@@ -1694,8 +1524,7 @@
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#BuildingCodeDictionary">ontobpr:BuildingCodeDictionary</a><sup class="sup-c" title="class">c</sup>
-                    <a href="#Activity1">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#Dictionary">ontobpr:BuildingCodeDictionary</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
@@ -1801,7 +1630,7 @@
             <tr>
                 <th>Domain(s)</th>
                 <td>
-                    <a href="#Activity1">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup>
+                    <a href="#Activity">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
