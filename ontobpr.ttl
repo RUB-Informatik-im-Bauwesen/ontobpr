@@ -17,13 +17,39 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+sh:Shape
+  rdf:type owl:Class ;
+.
+sh:ValidationReport
+  rdf:type owl:Class ;
+.
+schema:Person
+  rdf:type owl:Class ;
+.
+ct:ContainerDescription
+  rdf:type owl:Class ;
+.
+ct:Document
+  rdf:type owl:Class ;
+.
 isoprops:Dictionary
+  rdf:type owl:Class ;
   owl:equivalentClass ontobpr:BuildingCodeDictionary ;
 .
+obpa:Activity
+  rdf:type owl:Class ;
+  owl:equivalentClass obpa:Activity ;
+.
+obpa:Building
+  rdf:type owl:Class ;
+  owl:equivalentClass <https://w3id.org/ontobpr#Building:> ;
+.
 obpa:BuildingApplication
+  rdf:type owl:Class ;
   owl:equivalentClass ontobpr:BuildingApplication ;
 .
 obpa:BuildingAuthority
+  rdf:type owl:Class ;
   owl:equivalentClass ontobpr:BuildingAuthority ;
 .
 <https://w3id.org/ontobpr>
@@ -87,6 +113,7 @@ ontobpr:AcceptedWithConditions
 .
 ontobpr:Activity
   rdf:type owl:Class ;
+  rdfs:comment "an Activity executed throughout the building permit review" ;
   rdfs:isDefinedBy obpa:Activity ;
   rdfs:label "Activity" ;
   rdfs:subClassOf owl:Thing ;
@@ -100,6 +127,7 @@ ontobpr:Activity
 .
 ontobpr:Assignment
   rdf:type owl:Class ;
+  rdfs:comment "the Assignment activity" ;
   rdfs:label "(2) Assignment" ;
   rdfs:subClassOf ontobpr:Activity ;
   rdfs:subClassOf [
@@ -111,6 +139,7 @@ ontobpr:Assignment
 .
 ontobpr:Building
   rdf:type owl:Class ;
+  rdfs:comment "The building that is subject of this building application" ;
   rdfs:isDefinedBy obpa:Building ;
   rdfs:label "Building" ;
   rdfs:subClassOf owl:Thing ;
@@ -123,6 +152,7 @@ ontobpr:Building
 .
 ontobpr:BuildingApplication
   rdf:type owl:Class ;
+  rdfs:comment "the building application that is submitted by an applicant for review" ;
   rdfs:isDefinedBy obpa:BuildingApplication ;
   rdfs:label "Building application" ;
   rdfs:subClassOf [
@@ -162,18 +192,27 @@ ontobpr:BuildingApplication
 .
 ontobpr:BuildingAuthority
   rdf:type owl:Class ;
+  rdfs:comment "a building authority that is involved in a building permit review" ;
   rdfs:isDefinedBy obpa:BuildingAuthority ;
   rdfs:label "Building authority" ;
   owl:equivalentClass obpa:BuildingAuthority ;
 .
 ontobpr:BuildingCodeDictionary
   rdf:type owl:Class ;
+  rdfs:comment "A dictionary containing properties and shapes from a building code" ;
   rdfs:isDefinedBy isoprops:Dictionary ;
   rdfs:label "Dictionary" ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onClass ontobpr:ShaclShapesSet ;
+      owl:onProperty ontobpr:hasShapesSet ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    ] ;
   owl:equivalentClass isoprops:Dictionary ;
 .
 ontobpr:CompletenessCheck
   rdf:type owl:Class ;
+  rdfs:comment "the Completeness check activity" ;
   rdfs:label "(1.1) Completeness check " ;
   rdfs:subClassOf ontobpr:Activity ;
   rdfs:subClassOf [
@@ -185,11 +224,14 @@ ontobpr:CompletenessCheck
 .
 ontobpr:Condition
   rdf:type owl:Class ;
+  rdfs:comment "a formulated condition statement of a conditionally accepted application" ;
   rdfs:label "Condition" ;
   rdfs:subClassOf ontobpr:ReviewStatement ;
+  owl:disjointWith ontobpr:Justification ;
 .
 ontobpr:ContentReview
   rdf:type owl:Class ;
+  rdfs:comment "The Content review activity" ;
   rdfs:label "(4) Content review " ;
   rdfs:subClassOf ontobpr:Activity ;
   rdfs:subClassOf [
@@ -201,6 +243,7 @@ ontobpr:ContentReview
 .
 ontobpr:CreatingNotificationLetter
   rdf:type owl:Class ;
+  rdfs:comment "The Creating notification letter activity" ;
   rdfs:label "(5.4) Creating notification letter" ;
   rdfs:subClassOf ontobpr:Activity ;
   rdfs:subClassOf [
@@ -218,6 +261,7 @@ ontobpr:CreatingNotificationLetter
 .
 ontobpr:FormalReview
   rdf:type owl:Class ;
+  rdfs:comment "The Formal review activity" ;
   rdfs:label "(1) Formal review" ;
   rdfs:subClassOf ontobpr:Activity ;
   rdfs:subClassOf [
@@ -235,6 +279,7 @@ ontobpr:FormalReview
 .
 ontobpr:FormulationOfCondition
   rdf:type owl:Class ;
+  rdfs:comment "the Formulation of condition activity" ;
   rdfs:label "(5.3a) Formulation of condition " ;
   rdfs:subClassOf ontobpr:Activity ;
   rdfs:subClassOf [
@@ -246,6 +291,7 @@ ontobpr:FormulationOfCondition
 .
 ontobpr:IssuingNotificationLetter
   rdf:type owl:Class ;
+  rdfs:comment "the Issuing notification letter activity" ;
   rdfs:label "(5) Issuing notification letter " ;
   rdfs:subClassOf ontobpr:Activity ;
   rdfs:subClassOf [
@@ -305,11 +351,14 @@ ontobpr:IssuingNotificationLetter
 .
 ontobpr:Justification
   rdf:type owl:Class ;
+  rdfs:comment "justification statement of a negative building permit review decision" ;
   rdfs:label "Justification" ;
   rdfs:subClassOf ontobpr:ReviewStatement ;
+  owl:disjointWith ontobpr:Condition ;
 .
 ontobpr:JustificationOfNegativeDecision
   rdf:type owl:Class ;
+  rdfs:comment "the Justification of negative decision activity" ;
   rdfs:label "(5.3b) Justification of negative decision " ;
   rdfs:subClassOf ontobpr:Activity ;
   rdfs:subClassOf [
@@ -321,6 +370,7 @@ ontobpr:JustificationOfNegativeDecision
 .
 ontobpr:NegativePermitDecision
   rdf:type owl:Class ;
+  rdfs:comment "the Negative permit decision activity" ;
   rdfs:label "(5.2b) Negative permit decision " ;
   rdfs:subClassOf ontobpr:Activity ;
   rdfs:subClassOf [
@@ -332,6 +382,7 @@ ontobpr:NegativePermitDecision
 .
 ontobpr:Participation
   rdf:type owl:Class ;
+  rdfs:comment "the Participation activity" ;
   rdfs:label "(3) Participation " ;
   rdfs:subClassOf ontobpr:Activity ;
   rdfs:subClassOf [
@@ -343,6 +394,7 @@ ontobpr:Participation
 .
 ontobpr:PositivePermitDecision
   rdf:type owl:Class ;
+  rdfs:comment "the Positive permit decision activity" ;
   rdfs:label "(5.2a) Positive permit decision " ;
   rdfs:subClassOf ontobpr:Activity ;
   rdfs:subClassOf [
@@ -364,11 +416,13 @@ ontobpr:RequestInformation
 .
 ontobpr:RequestReviewResults
   rdf:type owl:Class ;
+  rdfs:comment "the Request review results activity" ;
   rdfs:label "(5.1) Request review results " ;
   rdfs:subClassOf ontobpr:Activity ;
 .
 ontobpr:ReviewPreparation
   rdf:type owl:Class ;
+  rdfs:comment "the Review preparation activity" ;
   rdfs:label "(1.2) Review preparation " ;
   rdfs:subClassOf ontobpr:Activity ;
   rdfs:subClassOf [
@@ -380,6 +434,7 @@ ontobpr:ReviewPreparation
 .
 ontobpr:ReviewResult
   rdf:type owl:Class ;
+  rdfs:comment "the review result of a particular agent incorporating a sh:ValidationReport" ;
   rdfs:label "Review checking result" ;
   rdfs:subClassOf owl:Thing ;
   rdfs:subClassOf [
@@ -402,6 +457,7 @@ ontobpr:ReviewResult
 .
 ontobpr:ReviewStatement
   rdf:type owl:Class ;
+  rdfs:comment "a general review statement for logging events during the building permit review" ;
   rdfs:label "Review statement" ;
   rdfs:subClassOf owl:Thing ;
   rdfs:subClassOf [
@@ -431,12 +487,14 @@ ontobpr:ReviewStatement
 .
 ontobpr:ReviewStatus
   rdf:type owl:Class ;
+  rdfs:comment "the status of the building application within the building permit review" ;
   rdfs:label "Review status" ;
   rdfs:subClassOf owl:Thing ;
 .
 ontobpr:ShaclShapesSet
   rdf:type owl:Class ;
-  rdfs:label "Shacl shapes set" ;
+  rdfs:comment "a set of SHACL shapes for validating data at various activities of the building permit review" ;
+  rdfs:label "SHACL shapes set" ;
   rdfs:subClassOf owl:Thing ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
@@ -451,6 +509,7 @@ ontobpr:UnderReview
 .
 ontobpr:afterActivity
   rdf:type owl:ObjectProperty ;
+  rdfs:comment "an activity is executed after another activity" ;
   rdfs:domain ontobpr:Activity ;
   rdfs:label "after activity" ;
   rdfs:range ontobpr:Activity ;
@@ -458,12 +517,17 @@ ontobpr:afterActivity
 .
 ontobpr:applies
   rdf:type owl:ObjectProperty ;
+  rdfs:comment "BuildingApplication applies a BuildingCodeDictionary for checking" ;
   rdfs:domain obpa:BuildingApplication ;
+  rdfs:domain ontobpr:BuildingApplication ;
+  rdfs:label "applies" ;
   rdfs:range isoprops:Dictionary ;
+  rdfs:range ontobpr:BuildingCodeDictionary ;
   rdfs:subPropertyOf owl:topObjectProperty ;
 .
 ontobpr:belongsToActivity
   rdf:type owl:ObjectProperty ;
+  rdfs:comment "a ReviewStatement belongs to a particular Activity" ;
   rdfs:domain ontobpr:ReviewStatement ;
   rdfs:label "belongs to activity" ;
   rdfs:range ontobpr:Activity ;
@@ -471,12 +535,18 @@ ontobpr:belongsToActivity
 .
 ontobpr:checks
   rdf:type owl:ObjectProperty ;
-  rdfs:domain isoprops:Dictionary ;
-  rdfs:range obpa:BuildingAuthority ;
+  rdfs:comment "BuildingAuthority checks a building regarding a BuildingCodeDictionary" ;
+  rdfs:domain obpa:BuildingAuthority ;
+  rdfs:domain ontobpr:BuildingAuthority ;
+  rdfs:label "checks" ;
+  rdfs:range isoprops:Dictionary ;
+  rdfs:range ontobpr:BuildingCodeDictionary ;
   rdfs:subPropertyOf owl:topObjectProperty ;
 .
 ontobpr:hasApplicationDocument
   rdf:type owl:ObjectProperty ;
+  rdfs:comment "a BuildingApplication has a respective document (e.g. PDF) representing a human-readable version of the application" ;
+  rdfs:domain ontobpr:BuildingApplication ;
   rdfs:label "has application document" ;
   rdfs:range ct:Document ;
   rdfs:subPropertyOf ontobpr:hasDocument ;
@@ -484,6 +554,7 @@ ontobpr:hasApplicationDocument
 .
 ontobpr:hasBuildingApplicationContainer
   rdf:type owl:ObjectProperty ;
+  rdfs:comment "the reference from a BuildingApplication to an ICDD container" ;
   rdfs:domain ontobpr:BuildingApplication ;
   rdfs:label "has building application container" ;
   rdfs:range ct:ContainerDescription ;
@@ -491,6 +562,8 @@ ontobpr:hasBuildingApplicationContainer
 .
 ontobpr:hasBuildingDocument
   rdf:type owl:ObjectProperty ;
+  rdfs:comment "A Building has a document, which is the IFC representation of this Building" ;
+  rdfs:domain ontobpr:Building ;
   rdfs:label "has building document" ;
   rdfs:range ct:Document ;
   rdfs:subPropertyOf ontobpr:hasDocument ;
@@ -498,11 +571,17 @@ ontobpr:hasBuildingDocument
 .
 ontobpr:hasCheckingResults
   rdf:type owl:ObjectProperty ;
+  rdfs:comment "either a BuildingApplication has ReviewResult or a ReviewResult has sh:ValidationReport" ;
+  rdfs:domain ontobpr:BuildingApplication ;
+  rdfs:domain ontobpr:ReviewResult ;
   rdfs:label "has checking results" ;
+  rdfs:range sh:ValidationReport ;
+  rdfs:range ontobpr:ReviewResult ;
   rdfs:subPropertyOf owl:topObjectProperty ;
 .
 ontobpr:hasCurrentActivity
   rdf:type owl:ObjectProperty ;
+  rdfs:comment "a BuildingApplication is in the current Activity" ;
   rdfs:domain ontobpr:BuildingApplication ;
   rdfs:label "has current activity" ;
   rdfs:range ontobpr:Activity ;
@@ -510,11 +589,15 @@ ontobpr:hasCurrentActivity
 .
 ontobpr:hasDocument
   rdf:type owl:ObjectProperty ;
+  rdfs:comment "abstract property grouping hasApplicationDocument and hasBuildingDocument" ;
+  rdfs:domain ontobpr:BuildingApplication ;
   rdfs:label "has document" ;
+  rdfs:range ct:Document ;
   rdfs:subPropertyOf owl:topObjectProperty ;
 .
 ontobpr:hasShapes
   rdf:type owl:ObjectProperty ;
+  rdfs:comment "ShaclShapesSet has sh:Shape instances" ;
   rdfs:domain ontobpr:ShaclShapesSet ;
   rdfs:label "has shapes" ;
   rdfs:range sh:Shape ;
@@ -522,12 +605,16 @@ ontobpr:hasShapes
 .
 ontobpr:hasShapesSet
   rdf:type owl:ObjectProperty ;
+  rdfs:comment "either an Activity or a BuildingCodeDictionary has a ShaclShapesSet" ;
+  rdfs:domain ontobpr:Activity ;
+  rdfs:domain ontobpr:BuildingCodeDictionary ;
   rdfs:label "has shapes set" ;
   rdfs:range ontobpr:ShaclShapesSet ;
   rdfs:subPropertyOf owl:topObjectProperty ;
 .
 ontobpr:hasStatement
   rdf:type owl:ObjectProperty ;
+  rdfs:comment "any ReviewStatement of any reviewer is attached to a BuildingApplication" ;
   rdfs:domain ontobpr:BuildingApplication ;
   rdfs:label "has statement" ;
   rdfs:range ontobpr:ReviewStatement ;
@@ -535,6 +622,7 @@ ontobpr:hasStatement
 .
 ontobpr:hasStatus
   rdf:type owl:ObjectProperty ;
+  rdfs:comment "the ReviewStatus of a BuildingApplication" ;
   rdfs:domain ontobpr:BuildingApplication ;
   rdfs:label "has status" ;
   rdfs:range ontobpr:ReviewStatus ;
@@ -542,6 +630,7 @@ ontobpr:hasStatus
 .
 ontobpr:isCompleted
   rdf:type owl:DatatypeProperty ;
+  rdfs:comment "a boolean property indicating whether an activity is completet or not" ;
   rdfs:domain ontobpr:Activity ;
   rdfs:label "is completed" ;
   rdfs:range xsd:boolean ;
