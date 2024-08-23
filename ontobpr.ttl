@@ -34,6 +34,12 @@ ct:Document
 .
 isoprops:Dictionary
   rdf:type owl:Class ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onClass ontobpr:ShaclShapesSet ;
+      owl:onProperty ontobpr:hasShapesSet ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+    ] ;
   owl:equivalentClass ontobpr:BuildingCodeDictionary ;
 .
 obpa:Activity
@@ -114,7 +120,6 @@ ontobpr:AcceptedWithConditions
 ontobpr:Activity
   rdf:type owl:Class ;
   rdfs:comment "an Activity executed throughout the building permit review" ;
-  rdfs:isDefinedBy obpa:Activity ;
   rdfs:label "Activity" ;
   rdfs:subClassOf owl:Thing ;
   rdfs:subClassOf [
@@ -200,7 +205,6 @@ ontobpr:BuildingAuthority
 ontobpr:BuildingCodeDictionary
   rdf:type owl:Class ;
   rdfs:comment "A dictionary containing properties and shapes from a building code" ;
-  rdfs:isDefinedBy isoprops:Dictionary ;
   rdfs:label "Dictionary" ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
@@ -551,7 +555,7 @@ ontobpr:hasApplicationDocument
   rdfs:label "has application document" ;
   rdfs:range ct:Document ;
   rdfs:subPropertyOf ontobpr:hasDocument ;
-  owl:inverseOf ontobpr:hasBuildingDocument ;
+  owl:propertyDisjointWith ontobpr:hasBuildingDocument ;
 .
 ontobpr:hasBuildingApplicationContainer
   rdf:type owl:ObjectProperty ;
@@ -574,9 +578,7 @@ ontobpr:hasCheckingResults
   rdf:type owl:ObjectProperty ;
   rdfs:comment "either a BuildingApplication has ReviewResult or a ReviewResult has sh:ValidationReport" ;
   rdfs:domain ontobpr:BuildingApplication ;
-  rdfs:domain ontobpr:ReviewResult ;
   rdfs:label "has checking results" ;
-  rdfs:range sh:ValidationReport ;
   rdfs:range ontobpr:ReviewResult ;
   rdfs:subPropertyOf owl:topObjectProperty ;
 .
@@ -607,7 +609,6 @@ ontobpr:hasShapes
 ontobpr:hasShapesSet
   rdf:type owl:ObjectProperty ;
   rdfs:comment "either an Activity or a BuildingCodeDictionary has a ShaclShapesSet" ;
-  rdfs:domain ontobpr:Activity ;
   rdfs:domain ontobpr:BuildingCodeDictionary ;
   rdfs:label "has shapes set" ;
   rdfs:range ontobpr:ShaclShapesSet ;
