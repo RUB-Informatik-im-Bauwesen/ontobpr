@@ -17,7 +17,6 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-
 isoprops:Dictionary
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
@@ -31,7 +30,7 @@ obpa:Activity
   owl:equivalentClass ontobpr:Activity ;
 .
 obpa:Building
-  owl:equivalentClass <https://w3id.org/ontobpr#Building> ;
+  owl:equivalentClass ontobpr:Building ;
 .
 obpa:BuildingApplication
   owl:equivalentClass ontobpr:BuildingApplication ;
@@ -594,6 +593,33 @@ ontobpr:hasShapesSet
   rdfs:range ontobpr:ShaclShapesSet ;
   rdfs:subPropertyOf owl:topObjectProperty ;
 .
+ontobpr:hasSitePlanDocument
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "a BuildingApplication has a respective document that contains the Site plan of the corrensponding construction site" ;
+  rdfs:domain ontobpr:BuildingApplication ;
+  rdfs:label "has site plan document" ;
+  rdfs:range ct:Document ;
+  rdfs:subPropertyOf ontobpr:hasDocument ;
+  owl:propertyDisjointWith ontobpr:hasBuildingDocument ;
+.
+ontobpr:hasSoundInsulationDocument
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "a BuildingApplication has a respective document that contains the sound insulation certificate of the correspoinding building" ;
+  rdfs:domain ontobpr:BuildingApplication ;
+  rdfs:label "has sound insulation document" ;
+  rdfs:range ct:Document ;
+  rdfs:subPropertyOf ontobpr:hasDocument ;
+  owl:propertyDisjointWith ontobpr:hasBuildingDocument ;
+.
+ontobpr:hasStabilityDocument
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "a BuildingApplication has a respective document that contains the stability certificate of the correspoinding building" ;
+  rdfs:domain ontobpr:BuildingApplication ;
+  rdfs:label "has stability document" ;
+  rdfs:range ct:Document ;
+  rdfs:subPropertyOf ontobpr:hasDocument ;
+  owl:propertyDisjointWith ontobpr:hasBuildingDocument ;
+.
 ontobpr:hasStatement
   rdf:type owl:ObjectProperty ;
   rdfs:comment "any ReviewStatement of any reviewer is attached to a BuildingApplication" ;
@@ -609,6 +635,15 @@ ontobpr:hasStatus
   rdfs:label "has status" ;
   rdfs:range ontobpr:ReviewStatus ;
   rdfs:subPropertyOf owl:topObjectProperty ;
+.
+ontobpr:hasThermalInsulationDocument
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "a BuildingApplication has a respective document that contains the stability certificate of the correspoinding building" ;
+  rdfs:domain ontobpr:BuildingApplication ;
+  rdfs:label "has thermal insulation document" ;
+  rdfs:range ct:Document ;
+  rdfs:subPropertyOf ontobpr:hasDocument ;
+  owl:propertyDisjointWith ontobpr:hasBuildingDocument ;
 .
 ontobpr:isCompleted
   rdf:type owl:DatatypeProperty ;
