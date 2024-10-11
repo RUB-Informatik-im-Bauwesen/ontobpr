@@ -653,3 +653,11 @@ ontobpr:isCompleted
   rdfs:range xsd:boolean ;
   rdfs:subPropertyOf owl:topDataProperty ;
 .
+ontobpr:submittedBy
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain ontobpr:BuildingApplication ;
+  rdfs:label "eingereicht von"@de ;
+  rdfs:label "submitted by"@en ;
+  rdfs:range obpa:Person ;
+  rdfs:subPropertyOf owl:topObjectProperty ;
+.

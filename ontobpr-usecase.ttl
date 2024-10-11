@@ -22,6 +22,39 @@
   owl:imports <https://w3id.org/ontobpr> ;
   owl:versionInfo "Created with TopBraid Composer" ;
 .
+ontobpr-usecase:Address01
+  rdf:type owl:NamedIndividual ;
+  rdf:type vcard:Address ;
+  vcard:country-name "Deutschland"@de ;
+  vcard:country-name "Germany"@en ;
+  vcard:locality "Bochum" ;
+  vcard:postal-code 44780 ;
+  vcard:region "Nordrhein-Westfalen"@de ;
+  vcard:region "North Rhine-Westphalia"@en ;
+  vcard:street-address "Universitätsstraße 150" ;
+.
+ontobpr-usecase:Address02
+  rdf:type owl:NamedIndividual ;
+  rdf:type vcard:Address ;
+  vcard:country-name "Deutschland"@de ;
+  vcard:country-name "Germany"@en ;
+  vcard:locality "Bochum" ;
+  vcard:postal-code 44801 ;
+  vcard:region "Nordrhein-Westfalen"@de ;
+  vcard:region "North Rhine-Westphalia"@en ;
+  vcard:street-address "Rober-Koch-Straße 25" ;
+.
+ontobpr-usecase:Address03
+  rdf:type owl:NamedIndividual ;
+  rdf:type vcard:Address ;
+  vcard:country-name "Deutschland"@de ;
+  vcard:country-name "Germany"@en ;
+  vcard:locality "Bochum" ;
+  vcard:postal-code 44787 ;
+  vcard:region "Nordrhein-Westfalen"@de ;
+  vcard:region "North Rhine-Westphalia"@en ;
+  vcard:street-address "Hans-Böckler Straße 19" ;
+.
 ontobpr-usecase:AddressRange01
   rdf:type owl:NamedIndividual ;
   rdf:type vcard:Address ;
@@ -71,35 +104,13 @@ ontobpr-usecase:AdministrativeDivision_Bochum
   rdfs:label "Administrative division"@en ;
   rdfs:label "Verwaltungsabteilung "@de ;
 .
-ontobpr-usecase:Adresse01
-  rdf:type owl:NamedIndividual ;
-  rdf:type vcard:Address ;
-  vcard:country-name "Deutschland"@de ;
-  vcard:country-name "Germany"@en ;
-  vcard:locality "Bochum" ;
-  vcard:postal-code 44780 ;
-  vcard:region "Nordrhein-Westfalen"@de ;
-  vcard:region "North Rhine-Westphalia"@en ;
-  vcard:street-address "Universitätsstraße 150" ;
-.
-ontobpr-usecase:Adresse02
-  rdf:type owl:NamedIndividual ;
-  rdf:type vcard:Address ;
-  vcard:country-name "Deutschland"@de ;
-  vcard:country-name "Germany"@en ;
-  vcard:locality "Bochum" ;
-  vcard:postal-code 44801 ;
-  vcard:region "Nordrhein-Westfalen"@de ;
-  vcard:region "North Rhine-Westphalia"@en ;
-  vcard:street-address "Rober-Koch-Straße 25" ;
-.
 ontobpr-usecase:Applicant01
   rdf:type owl:NamedIndividual ;
   rdf:type foaf:Person ;
   rdf:type obpa:Person ;
   rdfs:label "Applicant01 "@en ;
   rdfs:label "Bewerber01 "@de ;
-  vcard:hasAddress ontobpr-usecase:Adresse02 ;
+  vcard:hasAddress ontobpr-usecase:Address02 ;
   foaf:firstName "Otto" ;
   foaf:lastName "Normalverbraucher" ;
   obpa:hasRole obpa:Applicant ;
@@ -196,7 +207,7 @@ ontobpr-usecase:BuildingApplication_1
   rdf:type obpa:BuildingApplication ;
   rdf:type ontobpr:BuildingApplication ;
   rdfs:label "Building application 1" ;
-  vcard:hasAddress ontobpr-usecase:Adresse01 ;
+  vcard:hasAddress ontobpr-usecase:Address01 ;
   obpa:assigned_by ontobpr-usecase:Reviewer_1 ;
   obpa:includes ontobpr-usecase:sample_project ;
   obpa:processed_by ontobpr-usecase:Reviewer_1 ;
@@ -209,6 +220,7 @@ ontobpr-usecase:BuildingApplication_1
   ontobpr:hasStatement ontobpr-usecase:ReviewStatement_1 ;
   ontobpr:hasStatus ontobpr:UnderReview ;
   ontobpr:hasThermalInsulationDocument <https://icdd.vm.rub.de/dev01/api/v1/projects/RT2Xjlpuakaxob2GBRQmUg/containerTypes/1/containers/c7Rl-FbG4ECl9kww4AFuBA#InternalDocument-c77Ffr_9n0ahlFtIml0oHg> ;
+  ontobpr:submittedBy ontobpr-usecase:Applicant01 ;
 .
 ontobpr-usecase:BuildingAuthority_1
   rdf:type obpa:BuildingAuthority ;
@@ -221,7 +233,7 @@ ontobpr-usecase:BuildingAuthority_Bochum
   rdf:type obpa:BuildingAuthority ;
   rdfs:label "Baugenehmigungsbehörde_Bochum"@de ;
   rdfs:label "BuildingAuthority_Bochum"@en ;
-  vcard:hasAddress ontobpr-usecase:AddressRange03 ;
+  vcard:hasAddress ontobpr-usecase:Address03 ;
   obpa:hasDepartment ontobpr-usecase:AdministrativeDivision_Bochum ;
   obpa:hasDepartment ontobpr-usecase:TechnicalDivision_Bochum ;
   obpa:hasSector ontobpr-usecase:AddressRange01 ;
@@ -332,6 +344,7 @@ ontobpr-usecase:building_law
 .
 ontobpr-usecase:office_building
   rdf:type owl:NamedIndividual ;
+  rdf:type obpa:PublicConstruction ;
   rdf:type ontobpr:Building ;
   rdfs:label "office building" ;
   obpa:BGF "2500.0"^^xsd:double ;
