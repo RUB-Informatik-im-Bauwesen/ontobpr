@@ -6,6 +6,7 @@
 @prefix : <http://example.org/ontobpr-usecase#> .
 @prefix Container: <https://standards.iso.org/iso/21597/-1/ed-1/en/Container#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix obpa: <https://w3id.org/obpa#> .
 @prefix ontobpr: <https://w3id.org/ontobpr#> .
 @prefix ontobpr-usecase: <http://example.org/ontobpr-usecase#> .
@@ -218,6 +219,7 @@ ontobpr-usecase:BuildingApplication_1
   ontobpr:hasSoundInsulationDocument <https://icdd.vm.rub.de/dev01/api/v1/projects/RT2Xjlpuakaxob2GBRQmUg/containerTypes/1/containers/c7Rl-FbG4ECl9kww4AFuBA#InternalDocument-_PQCVrgkr0ucMtJ8SY6Z6Q> ;
   ontobpr:hasStabilityDocument <https://icdd.vm.rub.de/dev01/api/v1/projects/RT2Xjlpuakaxob2GBRQmUg/containerTypes/1/containers/c7Rl-FbG4ECl9kww4AFuBA#InternalDocument-o9HW19fogUmmK8DjoSgaXw> ;
   ontobpr:hasStatement ontobpr-usecase:ReviewStatement_1 ;
+  ontobpr:hasStatement ontobpr-usecase:Condition_1 ;
   ontobpr:hasStatus ontobpr:UnderReview ;
   ontobpr:hasThermalInsulationDocument <https://icdd.vm.rub.de/dev01/api/v1/projects/RT2Xjlpuakaxob2GBRQmUg/containerTypes/1/containers/c7Rl-FbG4ECl9kww4AFuBA#InternalDocument-c77Ffr_9n0ahlFtIml0oHg> ;
   ontobpr:submittedBy ontobpr-usecase:Applicant01 ;
@@ -225,14 +227,15 @@ ontobpr-usecase:BuildingApplication_1
 ontobpr-usecase:BuildingAuthority_1
   rdf:type obpa:BuildingAuthority ;
   rdf:type ontobpr:BuildingAuthority ;
-  rdfs:label "Building authority 1" ;
-  obpa:hasAgent ontobpr-usecase:Reviewer_1 ;
+  rdfs:label "Nature Conservation Authority Bochum"@en ;
+  obpa:hasAgent ontobpr-usecase:Nature_Conservation_Officer_1 ;
+  vcard:hasAddress ontobpr-usecase:AddressRange03 ;
 .
 ontobpr-usecase:BuildingAuthority_Bochum
   rdf:type owl:NamedIndividual ;
   rdf:type obpa:BuildingAuthority ;
-  rdfs:label "Baugenehmigungsbehörde_Bochum"@de ;
-  rdfs:label "BuildingAuthority_Bochum"@en ;
+  rdfs:label "Baugenehmigungsbehörde Bochum"@de ;
+  rdfs:label "Building Authority Bochum"@en ;
   vcard:hasAddress ontobpr-usecase:Address03 ;
   obpa:hasDepartment ontobpr-usecase:AdministrativeDivision_Bochum ;
   obpa:hasDepartment ontobpr-usecase:TechnicalDivision_Bochum ;
@@ -298,7 +301,26 @@ ontobpr-usecase:ReviewStatement_1
   rdfs:comment "Application received" ;
   rdfs:label "Review statement 1" ;
   obpa:hasAgent ontobpr-usecase:Reviewer_1 ;
+  dcterms:issued "2024-08-10"^^xsd:date
 .
+ontobpr-usecase:Condition_1
+  rdf:type ontobpr:Condition ;
+  rdfs:comment "Condition imposed by the Nature Preservation Authority that rainwater on the own property must be allowed to seep away." ;
+  rdfs:label "Condition by the Nature Preservation Authority " ;
+  obpa:hasAgent ontobpr-usecase:Nature_Conservation_Officer_1 ;
+  dcterms:issued "2024-10-14"^^xsd:date
+.
+ontobpr-usecase:Nature_Conservation_Officer_1
+  rdf:type obpa:Person ;
+  rdfs:label "Nature Preservation Officer" ;
+  foaf:firstName "Christine" ;
+  foaf:lastName "Schultz" ;
+  foaf:member ontobpr-usecase:BuildingAuthority_1 ;
+  obpa:employed_by ontobpr-usecase:BuildingAuthority_1 ;  
+  obpa:hasResponsible ontobpr-usecase:ContentReview_1 ;
+    obpa:work_experience 7 ;
+.
+
 ontobpr-usecase:Reviewer_1
   rdf:type obpa:Person ;
   rdfs:label "Reviewer 1" ;
