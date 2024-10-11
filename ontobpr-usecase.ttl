@@ -227,7 +227,7 @@ ontobpr-usecase:BuildingApplication_1
 ontobpr-usecase:BuildingAuthority_1
   rdf:type obpa:BuildingAuthority ;
   rdf:type ontobpr:BuildingAuthority ;
-  rdfs:label "Nature Conservation Authority Bochum"@en ;
+  rdfs:label "Nature Preservation Authority Bochum"@en ;
   obpa:hasAgent ontobpr-usecase:Nature_Conservation_Officer_1 ;
   vcard:hasAddress ontobpr-usecase:AddressRange03 ;
 .
