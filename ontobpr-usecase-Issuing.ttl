@@ -1,0 +1,472 @@
+# baseURI: http://example.org/ontobpr-usecase
+# imports: https://w3id.org/obpa#
+# imports: https://w3id.org/ontobpr
+# prefix: ontobpr-usecase
+
+@prefix : <http://example.org/ontobpr-usecase#> .
+@prefix Container: <https://standards.iso.org/iso/21597/-1/ed-1/en/Container#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix obpa: <https://w3id.org/obpa#> .
+@prefix ontobpr: <https://w3id.org/ontobpr#> .
+@prefix ontobpr-usecase: <http://example.org/ontobpr-usecase#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/ontobpr-usecase>
+  rdf:type owl:Ontology ;
+  owl:imports obpa: ;
+  owl:imports <https://w3id.org/ontobpr> ;
+  owl:versionInfo "Created with TopBraid Composer" ;
+.
+ontobpr-usecase:Address01
+  rdf:type owl:NamedIndividual ;
+  rdf:type vcard:Address ;
+  vcard:country-name "Deutschland"@de ;
+  vcard:country-name "Germany"@en ;
+  vcard:locality "Bochum" ;
+  vcard:postal-code 44780 ;
+  vcard:region "Nordrhein-Westfalen"@de ;
+  vcard:region "North Rhine-Westphalia"@en ;
+  vcard:street-address "Universitätsstraße 150" ;
+.
+ontobpr-usecase:Address02
+  rdf:type owl:NamedIndividual ;
+  rdf:type vcard:Address ;
+  vcard:country-name "Deutschland"@de ;
+  vcard:country-name "Germany"@en ;
+  vcard:locality "Bochum" ;
+  vcard:postal-code 44801 ;
+  vcard:region "Nordrhein-Westfalen"@de ;
+  vcard:region "North Rhine-Westphalia"@en ;
+  vcard:street-address "Rober-Koch-Straße 25" ;
+.
+ontobpr-usecase:Address03
+  rdf:type owl:NamedIndividual ;
+  rdf:type vcard:Address ;
+  vcard:country-name "Deutschland"@de ;
+  vcard:country-name "Germany"@en ;
+  vcard:locality "Bochum" ;
+  vcard:postal-code 44787 ;
+  vcard:region "Nordrhein-Westfalen"@de ;
+  vcard:region "North Rhine-Westphalia"@en ;
+  vcard:street-address "Hans-Böckler Straße 19" ;
+.
+ontobpr-usecase:AddressRange01
+  rdf:type owl:NamedIndividual ;
+  rdf:type vcard:Address ;
+  rdf:type obpa:Sector ;
+  rdfs:label "AdressRange01"@en ;
+  rdfs:label "Adressbereich01"@de ;
+  vcard:country-name "Deutschland"@de ;
+  vcard:country-name "Germany"@en ;
+  vcard:locality "Bochum" ;
+  vcard:postal-code 44787 ;
+  vcard:region "Nordrhein-Westfalen"@de ;
+  vcard:region "North Rhine-Westphalia"@en ;
+.
+ontobpr-usecase:AddressRange02
+  rdf:type owl:NamedIndividual ;
+  rdf:type vcard:Address ;
+  rdf:type obpa:Sector ;
+  rdfs:label "AdressRange02"@en ;
+  rdfs:label "Adressbereich02"@de ;
+  vcard:country-name "Deutschland"@de ;
+  vcard:country-name "Germany"@en ;
+  vcard:locality "Bochum" ;
+  vcard:postal-code 44780 ;
+  vcard:region "Nordrhein-Westfalen"@de ;
+  vcard:region "North Rhine-Westphalia"@en ;
+.
+ontobpr-usecase:AddressRange03
+  rdf:type owl:NamedIndividual ;
+  rdf:type vcard:Address ;
+  rdf:type obpa:Sector ;
+  rdfs:label "AdressRange03"@en ;
+  rdfs:label "Adressbereich03"@de ;
+  vcard:country-name "Deutschland"@de ;
+  vcard:country-name "Germany"@en ;
+  vcard:locality "Bochum" ;
+  vcard:postal-code 44789 ;
+  vcard:region "Nordrhein-Westfalen"@de ;
+  vcard:region "North Rhine-Westphalia"@en ;
+.
+ontobpr-usecase:AdministrativeBuildingOfficial
+  rdf:type owl:NamedIndividual ;
+  rdf:type obpa:BuildingOfficialRole ;
+  rdfs:label "Verwaltungssachbearbeiter"@de ;
+.
+ontobpr-usecase:AdministrativeDivision_Bochum
+  rdf:type obpa:Department ;
+  rdfs:label "Administrative division"@en ;
+  rdfs:label "Verwaltungsabteilung "@de ;
+.
+ontobpr-usecase:Applicant01
+  rdf:type owl:NamedIndividual ;
+  rdf:type foaf:Person ;
+  rdf:type obpa:Person ;
+  rdfs:label "Applicant01 "@en ;
+  rdfs:label "Bewerber01 "@de ;
+  vcard:hasAddress ontobpr-usecase:Address02 ;
+  foaf:firstName "Otto" ;
+  foaf:lastName "Normalverbraucher" ;
+  obpa:hasRole obpa:Applicant ;
+.
+ontobpr-usecase:Assignment_1
+  rdf:type ontobpr:Assignment ;
+  rdfs:label "Assignment 1" ;
+  ontobpr:afterActivity ontobpr-usecase:FormalReview_1 ;
+.
+ontobpr-usecase:BO1
+  rdf:type owl:NamedIndividual ;
+  rdf:type foaf:Person ;
+  rdf:type obpa:Activity ;
+  rdf:type obpa:Person ;
+  rdfs:comment "Bearbeiter01"@de ;
+  rdfs:label "BO1"@en ;
+  foaf:firstName "Max" ;
+  foaf:lastName "Mustermann" ;
+  foaf:member ontobpr-usecase:BuildingAuthority_Bochum ;
+  obpa:employed_by ontobpr-usecase:BuildingAuthority_Bochum ;
+  obpa:hasRole ontobpr-usecase:SupervisoryBuildingOfficial ;
+  obpa:work_experience 8 ;
+.
+ontobpr-usecase:BO2
+  rdf:type owl:NamedIndividual ;
+  rdf:type foaf:Person ;
+  rdf:type obpa:Person ;
+  rdfs:comment "Bearbeiter02"@de ;
+  rdfs:label "BO2"@en ;
+  foaf:firstName "Erika" ;
+  foaf:lastName "Musterfrau" ;
+  foaf:member ontobpr-usecase:AdministrativeDivision_Bochum ;
+  obpa:CoversSector ontobpr-usecase:AddressRange02 ;
+  obpa:employed_by ontobpr-usecase:BuildingAuthority_Bochum ;
+  obpa:hasRole ontobpr-usecase:AdministrativeBuildingOfficial ;
+  obpa:hasSubjectArea ontobpr-usecase:public_administration_law ;
+  obpa:work_experience 7 ;
+.
+ontobpr-usecase:BO3
+  rdf:type owl:NamedIndividual ;
+  rdf:type foaf:Person ;
+  rdf:type obpa:Person ;
+  rdfs:comment "Bearbeiter03"@de ;
+  rdfs:label "BO3"@en ;
+  foaf:firstName "Markus" ;
+  foaf:lastName "Möglich" ;
+  foaf:member ontobpr-usecase:TechnicalDivision_Bochum ;
+  obpa:CoversSector ontobpr-usecase:AddressRange01 ;
+  obpa:employed_by ontobpr-usecase:BuildingAuthority_Bochum ;
+  obpa:hasExpertise ontobpr-usecase:review_industrial_construction ;
+  obpa:hasExpertise ontobpr-usecase:review_residential_construction ;
+  obpa:hasExpertise ontobpr-usecase:review_special_construction ;
+  obpa:hasRole ontobpr-usecase:TechnicalBuildingOfficial ;
+  obpa:hasSubjectArea ontobpr-usecase:building_law ;
+  obpa:hasSubjectArea ontobpr-usecase:planning_law ;
+  obpa:work_experience 7 ;
+.
+ontobpr-usecase:BO4
+  rdf:type owl:NamedIndividual ;
+  rdf:type foaf:Person ;
+  rdf:type obpa:Person ;
+  rdfs:comment "Bearbeiter04"@de ;
+  rdfs:label "BO4"@en ;
+  foaf:firstName "John" ;
+  foaf:lastName "Doe" ;
+  foaf:member ontobpr-usecase:TechnicalDivision_Bochum ;
+  obpa:CoversSector ontobpr-usecase:AddressRange03 ;
+  obpa:employed_by ontobpr-usecase:BuildingAuthority_Bochum ;
+  obpa:hasExpertise ontobpr-usecase:review_industrial_construction ;
+  obpa:hasExpertise ontobpr-usecase:review_residential_construction ;
+  obpa:hasRole ontobpr-usecase:TechnicalBuildingOfficial ;
+  obpa:hasSubjectArea ontobpr-usecase:planning_law ;
+  obpa:work_experience 3 ;
+.
+ontobpr-usecase:BO5
+  rdf:type owl:NamedIndividual ;
+  rdf:type foaf:Person ;
+  rdf:type obpa:Person ;
+  rdfs:comment "Bearbeiter05"@de ;
+  rdfs:label "BO5"@en ;
+  foaf:firstName "Ola" ;
+  foaf:lastName "Nordmann" ;
+  foaf:member ontobpr-usecase:TechnicalDivision_Bochum ;
+  obpa:CoversSector ontobpr-usecase:AddressRange02 ;
+  obpa:employed_by ontobpr-usecase:BuildingAuthority_Bochum ;
+  obpa:hasExpertise ontobpr-usecase:review_industrial_construction ;
+  obpa:hasExpertise ontobpr-usecase:review_residential_construction ;
+  obpa:hasRole ontobpr-usecase:TechnicalBuildingOfficial ;
+  obpa:hasSubjectArea ontobpr-usecase:building_law ;
+  obpa:work_experience 15 ;
+.
+ontobpr-usecase:BuildingApplication_1
+  rdf:type owl:NamedIndividual ;
+  rdf:type obpa:BuildingApplication ;
+  rdf:type ontobpr:BuildingApplication ;
+  rdfs:label "Building application 1" ;
+  vcard:hasAddress ontobpr-usecase:Address01 ;
+  obpa:assigned_by ontobpr-usecase:Reviewer_1 ;
+  obpa:includes ontobpr-usecase:sample_project ;
+  obpa:processed_by ontobpr-usecase:Reviewer_1 ;
+  ontobpr:hasApplicationDocument <https://icdd.vm.rub.de/dev01/api/v1/projects/RT2Xjlpuakaxob2GBRQmUg/containerTypes/1/containers/c7Rl-FbG4ECl9kww4AFuBA#InternalDocument-K4Dm8qqruEqUGz4itwBwiA> ;
+  ontobpr:hasBuildingApplicationContainer <https://icdd.vm.rub.de/dev01/Project/RT2Xjlpuakaxob2GBRQmUg/Container/c7Rl-FbG4ECl9kww4AFuBA> ;
+  ontobpr:hasCurrentActivity ontobpr-usecase:FormalReview_1 ;
+  ontobpr:hasSitePlanDocument <https://icdd.vm.rub.de/dev01/api/v1/projects/RT2Xjlpuakaxob2GBRQmUg/containerTypes/1/containers/c7Rl-FbG4ECl9kww4AFuBA#InternalDocument-WuF9dm-Qr0Oc9NDYdXCNJg> ;
+  ontobpr:hasSoundInsulationDocument <https://icdd.vm.rub.de/dev01/api/v1/projects/RT2Xjlpuakaxob2GBRQmUg/containerTypes/1/containers/c7Rl-FbG4ECl9kww4AFuBA#InternalDocument-_PQCVrgkr0ucMtJ8SY6Z6Q> ;
+  ontobpr:hasStabilityDocument <https://icdd.vm.rub.de/dev01/api/v1/projects/RT2Xjlpuakaxob2GBRQmUg/containerTypes/1/containers/c7Rl-FbG4ECl9kww4AFuBA#InternalDocument-o9HW19fogUmmK8DjoSgaXw> ;
+  ontobpr:hasStatement ontobpr-usecase:ReviewStatement_1 ;
+  ontobpr:hasStatement ontobpr-usecase:Condition_1 ;
+  ontobpr:hasStatus ontobpr:UnderReview ;
+  ontobpr:hasThermalInsulationDocument <https://icdd.vm.rub.de/dev01/api/v1/projects/RT2Xjlpuakaxob2GBRQmUg/containerTypes/1/containers/c7Rl-FbG4ECl9kww4AFuBA#InternalDocument-c77Ffr_9n0ahlFtIml0oHg> ;
+  ontobpr:submittedBy ontobpr-usecase:Applicant01 ;
+.
+ontobpr-usecase:BuildingAuthority_1
+  rdf:type obpa:BuildingAuthority ;
+  rdf:type ontobpr:BuildingAuthority ;
+  rdfs:label "Nature Preservation Authority Bochum"@en ;
+  obpa:hasAgent ontobpr-usecase:Nature_Conservation_Officer_1 ;
+  vcard:hasAddress ontobpr-usecase:AddressRange03 ;
+.
+ontobpr-usecase:BuildingAuthority_Bochum
+  rdf:type owl:NamedIndividual ;
+  rdf:type obpa:BuildingAuthority ;
+  rdfs:label "Baugenehmigungsbehörde Bochum"@de ;
+  rdfs:label "Building Authority Bochum"@en ;
+  vcard:hasAddress ontobpr-usecase:Address03 ;
+  obpa:hasDepartment ontobpr-usecase:AdministrativeDivision_Bochum ;
+  obpa:hasDepartment ontobpr-usecase:TechnicalDivision_Bochum ;
+  obpa:hasSector ontobpr-usecase:AddressRange01 ;
+  obpa:hasSector ontobpr-usecase:AddressRange02 ;
+.
+ontobpr-usecase:CompletenessCheck_1
+  rdf:type ontobpr:CompletenessCheck ;
+  rdfs:label "Completeness check 1" ;
+.
+ontobpr-usecase:ContentReview_1
+  rdf:type ontobpr:ContentReview ;
+  rdfs:label "Content review 1" ;
+  ontobpr:afterActivity ontobpr-usecase:Assignment_1 ;
+.
+ontobpr-usecase:CreatingNotificationLetter_1
+  rdf:type ontobpr:CreatingNotificationLetter ;
+  rdfs:label "Creating notification letter 1" ;
+  ontobpr:afterActivity ontobpr-usecase:FormulationOfCondition_1 ;
+.
+ontobpr-usecase:FormalReview_1
+  rdf:type ontobpr:FormalReview ;
+  rdfs:label "Formal review 1" ;
+  obpa:hasSubActivity ontobpr-usecase:CompletenessCheck_1 ;
+  obpa:hasSubActivity ontobpr-usecase:ReviewPreparation_1 ;
+.
+ontobpr-usecase:FormulationOfCondition_1
+  rdf:type ontobpr:FormulationOfCondition ;
+  rdfs:label "Formulation of condition 1" ;
+  ontobpr:afterActivity ontobpr-usecase:PositivePermitDecision_1 ;
+.
+ontobpr-usecase:IssuingNotificationLetter_1
+  rdf:type ontobpr:IssuingNotificationLetter ;
+  rdfs:label "Issuing notification letter 1" ;
+  obpa:hasSubActivity ontobpr-usecase:CreatingNotificationLetter_1 ;
+  obpa:hasSubActivity ontobpr-usecase:FormulationOfCondition_1 ;
+  obpa:hasSubActivity ontobpr-usecase:PositivePermitDecision_1 ;
+  obpa:hasSubActivity ontobpr-usecase:RequestReviewResults_1 ;
+  ontobpr:afterActivity ontobpr-usecase:ContentReview_1 ;
+  ontobpr:afterActivity ontobpr-usecase:Participation_1 ;
+.
+ontobpr-usecase:Participation_1
+  rdf:type ontobpr:Participation ;
+  rdfs:label "Participation 1" ;
+  ontobpr:afterActivity ontobpr-usecase:Assignment_1 ;
+.
+ontobpr-usecase:PositivePermitDecision_1
+  rdf:type ontobpr:PositivePermitDecision ;
+  rdfs:label "Positive permit decision 1" ;
+  ontobpr:afterActivity ontobpr-usecase:RequestReviewResults_1 ;
+.
+ontobpr-usecase:RequestReviewResults_1
+  rdf:type ontobpr:RequestReviewResults ;
+  rdfs:label "Request review results 1" ;
+.
+ontobpr-usecase:ReviewPreparation_1
+  rdf:type ontobpr:ReviewPreparation ;
+  rdfs:label "Review preparation 1" ;
+  ontobpr:afterActivity ontobpr-usecase:CompletenessCheck_1 ;
+.
+ontobpr-usecase:ReviewStatement_1
+  rdf:type ontobpr:ReviewStatement ;
+  rdfs:comment "Application received" ;
+  rdfs:label "Review statement 1" ;
+  obpa:hasAgent ontobpr-usecase:Reviewer_1 ;
+  dcterms:issued "2024-08-10"^^xsd:date
+.
+ontobpr-usecase:Condition_1
+  rdf:type ontobpr:Condition ;
+  rdfs:comment "Condition imposed by the Nature Preservation Authority that rainwater on the own property must be allowed to seep away." ;
+  rdfs:label "Condition by the Nature Preservation Authority " ;
+  obpa:hasAgent ontobpr-usecase:Nature_Conservation_Officer_1 ;
+  dcterms:issued "2024-10-14"^^xsd:date
+.
+ontobpr-usecase:Nature_Conservation_Officer_1
+  rdf:type obpa:Person ;
+  rdfs:label "Nature Preservation Officer" ;
+  foaf:firstName "Christine" ;
+  foaf:lastName "Schultz" ;
+  foaf:member ontobpr-usecase:BuildingAuthority_1 ;
+  obpa:employed_by ontobpr-usecase:BuildingAuthority_1 ;  
+  obpa:hasResponsible ontobpr-usecase:ContentReview_1 ;
+    obpa:work_experience 7 ;
+.
+
+ontobpr-usecase:Reviewer_1
+  rdf:type obpa:Person ;
+  rdfs:label "Reviewer 1" ;
+  foaf:firstName "Gustav" ;
+  foaf:lastName "Gutachter" ;
+  foaf:member ontobpr-usecase:BuildingAuthority_Bochum ;
+  obpa:employed_by ontobpr-usecase:BuildingAuthority_Bochum ;
+  obpa:hasResponsible ontobpr-usecase:Assignment_1 ;
+  obpa:hasResponsible ontobpr-usecase:CompletenessCheck_1 ;
+  obpa:hasResponsible ontobpr-usecase:ContentReview_1 ;
+  obpa:hasResponsible ontobpr-usecase:CreatingNotificationLetter_1 ;
+  obpa:hasResponsible ontobpr-usecase:FormalReview_1 ;
+  obpa:hasResponsible ontobpr-usecase:FormulationOfCondition_1 ;
+  obpa:hasResponsible ontobpr-usecase:IssuingNotificationLetter_1 ;
+  obpa:hasResponsible ontobpr-usecase:Participation_1 ;
+  obpa:hasResponsible ontobpr-usecase:PositivePermitDecision_1 ;
+  obpa:hasResponsible ontobpr-usecase:RequestReviewResults_1 ;
+  obpa:hasResponsible ontobpr-usecase:ReviewPreparation_1 ;
+  obpa:work_experience 9 ;
+.
+ontobpr-usecase:SupervisoryBuildingOfficial
+  rdf:type owl:NamedIndividual ;
+  rdf:type obpa:BuildingOfficialRole ;
+  rdfs:label "Supervisor"@en ;
+  rdfs:label "Vorgesetzer"@de ;
+.
+ontobpr-usecase:TechnicalBuildingOfficial
+  rdf:type owl:NamedIndividual ;
+  rdf:type obpa:BuildingOfficialRole ;
+  rdfs:label "Technical Building Official"@en ;
+  rdfs:label "TechnischerSacharbeiter"@de ;
+.
+ontobpr-usecase:TechnicalDivision_Bochum
+  rdf:type obpa:Department ;
+  rdfs:label "Technical division"@en ;
+  rdfs:label "Technische Abteilung"@de ;
+.
+ontobpr-usecase:building_law
+  rdf:type owl:NamedIndividual ;
+  rdf:type obpa:TechnicalSubjectArea ;
+  rdfs:label "Bauordnungsrecht"@de ;
+  rdfs:label "BuildingLaw"@en ;
+.
+ontobpr-usecase:office_building
+  rdf:type owl:NamedIndividual ;
+  rdf:type obpa:PublicConstruction ;
+  rdf:type ontobpr:Building ;
+  rdfs:label "office building" ;
+  obpa:BGF "2500.0"^^xsd:double ;
+  obpa:dinstanceToNaturalConservation "45.0"^^xsd:double ;
+  obpa:hasBuildingClass 5 ;
+  ontobpr:hasBuildingDocument <https://icdd.vm.rub.de/dev01/api/v1/projects/RT2Xjlpuakaxob2GBRQmUg/containerTypes/1/containers/c7Rl-FbG4ECl9kww4AFuBA#InternalDocument-F-vWAYF8UEiUEwKMHL20Jg> ;
+.
+ontobpr-usecase:planning_law
+  rdf:type owl:NamedIndividual ;
+  rdf:type obpa:TechnicalSubjectArea ;
+  rdfs:label "Bauplanungsrecht"@de ;
+  rdfs:label "PlanningLaw"@en ;
+.
+ontobpr-usecase:public_administration_law
+  rdf:type owl:NamedIndividual ;
+  rdf:type obpa:AdministrativeSubjectArea ;
+  rdfs:label "Bauverwaltungsrecht"@de ;
+  rdfs:label "PublicAdministrationLaw"@en ;
+.
+ontobpr-usecase:review_commercial_construction
+  rdf:type <http://w3id.org/saro#Expertise> ;
+  rdf:type owl:NamedIndividual ;
+  rdf:type obpa:Expertise ;
+  rdfs:label "prueft_Gewerbebau"@de ;
+  rdfs:label "review_commercial_Construction"@en ;
+.
+ontobpr-usecase:review_heritage
+  rdf:type <http://w3id.org/saro#Expertise> ;
+  rdf:type owl:NamedIndividual ;
+  rdf:type obpa:Expertise ;
+  rdfs:label "prueft_denkmalgeschuetzteBauwerke"@de ;
+  rdfs:label "review_heritage"@en ;
+.
+ontobpr-usecase:review_industrial_construction
+  rdf:type <http://w3id.org/saro#Expertise> ;
+  rdf:type owl:NamedIndividual ;
+  rdf:type obpa:Expertise ;
+  rdfs:label "prueft_Industriebau"@de ;
+  rdfs:label "review_industrial_construction"@en ;
+.
+ontobpr-usecase:review_public_construction
+  rdf:type <http://w3id.org/saro#Expertise> ;
+  rdf:type obpa:Expertise ;
+.
+ontobpr-usecase:review_residential_construction
+  rdf:type <http://w3id.org/saro#Expertise> ;
+  rdf:type owl:NamedIndividual ;
+  rdf:type obpa:Expertise ;
+  rdfs:label "prueft_Wohnungsbau"@de ;
+  rdfs:label "review_residential_construction"@en ;
+.
+ontobpr-usecase:review_special_construction
+  rdf:type <http://w3id.org/saro#Expertise> ;
+  rdf:type owl:NamedIndividual ;
+  rdf:type obpa:Expertise ;
+  rdfs:label "prueft_Sonderbau"@de ;
+  rdfs:label "review_special_construction"@en ;
+.
+ontobpr-usecase:sample_project
+  rdf:type owl:NamedIndividual ;
+  rdf:type obpa:ConstructionProject ;
+  obpa:hasBuilding ontobpr-usecase:office_building ;
+.
+<https://icdd.vm.rub.de/dev01/Project/RT2Xjlpuakaxob2GBRQmUg/Container/c7Rl-FbG4ECl9kww4AFuBA>
+  rdf:type Container:ContainerDescription ;
+  rdfs:label "ICDD Container for the Building Application "@en ;
+  rdfs:label "ICDD-Container für das Bauantragsverfahren"@de ;
+.
+<https://icdd.vm.rub.de/dev01/api/v1/projects/RT2Xjlpuakaxob2GBRQmUg/containerTypes/1/containers/c7Rl-FbG4ECl9kww4AFuBA#InternalDocument-F-vWAYF8UEiUEwKMHL20Jg>
+  rdf:type Container:Document ;
+  rdfs:label "Building model"@en ;
+  rdfs:label "Gebäudemodell"@de ;
+.
+<https://icdd.vm.rub.de/dev01/api/v1/projects/RT2Xjlpuakaxob2GBRQmUg/containerTypes/1/containers/c7Rl-FbG4ECl9kww4AFuBA#InternalDocument-K4Dm8qqruEqUGz4itwBwiA>
+  rdf:type Container:Document ;
+  rdfs:label "Antrag auf Baugenehmigung"@de ;
+  rdfs:label "Building Application Document"@en ;
+.
+<https://icdd.vm.rub.de/dev01/api/v1/projects/RT2Xjlpuakaxob2GBRQmUg/containerTypes/1/containers/c7Rl-FbG4ECl9kww4AFuBA#InternalDocument-WuF9dm-Qr0Oc9NDYdXCNJ>
+  rdf:type Container:Document ;
+  rdfs:label "Lageplan"@de ;
+  rdfs:label "Site plan"@en ;
+.
+<https://icdd.vm.rub.de/dev01/api/v1/projects/RT2Xjlpuakaxob2GBRQmUg/containerTypes/1/containers/c7Rl-FbG4ECl9kww4AFuBA#InternalDocument-WuF9dm-Qr0Oc9NDYdXCNJg>
+  rdf:type Container:Document ;
+  rdfs:label "Lageplan"@de ;
+  rdfs:label "Site plan"@en ;
+.
+<https://icdd.vm.rub.de/dev01/api/v1/projects/RT2Xjlpuakaxob2GBRQmUg/containerTypes/1/containers/c7Rl-FbG4ECl9kww4AFuBA#InternalDocument-_PQCVrgkr0ucMtJ8SY6Z6Q>
+  rdf:type Container:Document ;
+  rdfs:label "Dokument zur Schalldämmung"@de ;
+  rdfs:label "Sound insulation document"@en ;
+.
+<https://icdd.vm.rub.de/dev01/api/v1/projects/RT2Xjlpuakaxob2GBRQmUg/containerTypes/1/containers/c7Rl-FbG4ECl9kww4AFuBA#InternalDocument-c77Ffr_9n0ahlFtIml0oHg>
+  rdf:type Container:Document ;
+  rdfs:label "Dokument zur Wärmedämmung"@de ;
+  rdfs:label "Thermal insulation document"@en ;
+.
+<https://icdd.vm.rub.de/dev01/api/v1/projects/RT2Xjlpuakaxob2GBRQmUg/containerTypes/1/containers/c7Rl-FbG4ECl9kww4AFuBA#InternalDocument-o9HW19fogUmmK8DjoSgaXw>
+  rdf:type Container:Document ;
+  rdfs:label "Document on building statics"@en ;
+  rdfs:label "Dokument zur Gebäudestatik"@de ;
+.
