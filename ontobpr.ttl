@@ -527,11 +527,47 @@ ontobpr:checks
   rdfs:range ontobpr:BuildingCodeDictionary ;
   rdfs:subPropertyOf owl:topObjectProperty ;
 .
+ontobpr:hasAccessibilityDocument
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "a BuildingApplication has a respective document that contains the accessibility report of the correspoinding building" ;
+  rdfs:domain ontobpr:BuildingApplication ;
+  rdfs:label "has accessibility document" ;
+  rdfs:range ct:Document ;
+  rdfs:subPropertyOf ontobpr:hasDocument ;
+  owl:propertyDisjointWith ontobpr:hasBuildingDocument ;
+.
+ontobpr:hasAccessibilityReportDocument
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "Contains the Results of the SHACL-Shapes for checking the buildings accessibility" ;
+  rdfs:domain ontobpr:BuildingApplication ;
+  rdfs:label "has accessibility report document" ;
+  rdfs:range ct:Document ;
+  rdfs:subPropertyOf ontobpr:hasDocument ;
+  owl:propertyDisjointWith ontobpr:hasBuildingDocument ;
+.
+ontobpr:hasAccessibilityShapesDocument
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "Contains SHACL-Shapes for checking the buildings accessibility" ;
+  rdfs:domain ontobpr:BuildingApplication ;
+  rdfs:label "has accessibility shapes document" ;
+  rdfs:range ct:Document ;
+  rdfs:subPropertyOf ontobpr:hasDocument ;
+  owl:propertyDisjointWith ontobpr:hasBuildingDocument ;
+.
 ontobpr:hasApplicationDocument
   rdf:type owl:ObjectProperty ;
   rdfs:comment "a BuildingApplication has a respective document (e.g. PDF) representing a human-readable version of the application" ;
   rdfs:domain ontobpr:BuildingApplication ;
   rdfs:label "has application document" ;
+  rdfs:range ct:Document ;
+  rdfs:subPropertyOf ontobpr:hasDocument ;
+  owl:propertyDisjointWith ontobpr:hasBuildingDocument ;
+.
+ontobpr:hasAssignmentsDocument
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "Contains the Assignments graph" ;
+  rdfs:domain ontobpr:BuildingApplication ;
+  rdfs:label "has assignments document" ;
   rdfs:range ct:Document ;
   rdfs:subPropertyOf ontobpr:hasDocument ;
   owl:propertyDisjointWith ontobpr:hasBuildingDocument ;
@@ -569,6 +605,15 @@ ontobpr:hasCurrentActivity
   rdfs:range ontobpr:Activity ;
   rdfs:subPropertyOf owl:topObjectProperty ;
 .
+ontobpr:hasDecisionDocument
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "Contains the decision of the building permit	" ;
+  rdfs:domain ontobpr:BuildingApplication ;
+  rdfs:label "has decision document" ;
+  rdfs:range ct:Document ;
+  rdfs:subPropertyOf ontobpr:hasDocument ;
+  owl:propertyDisjointWith ontobpr:hasBuildingDocument ;
+.
 ontobpr:hasDocument
   rdf:type owl:ObjectProperty ;
   rdfs:comment "abstract property grouping hasApplicationDocument and hasBuildingDocument" ;
@@ -576,6 +621,24 @@ ontobpr:hasDocument
   rdfs:label "has document" ;
   rdfs:range ct:Document ;
   rdfs:subPropertyOf owl:topObjectProperty ;
+.
+ontobpr:hasNatureConservancyReportDocument
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "Contains the Results of the SHACL-Shapes for checking the buildings accessibility" ;
+  rdfs:domain ontobpr:BuildingApplication ;
+  rdfs:label "has nature conservancy report document" ;
+  rdfs:range ct:Document ;
+  rdfs:subPropertyOf ontobpr:hasDocument ;
+  owl:propertyDisjointWith ontobpr:hasBuildingDocument ;
+.
+ontobpr:hasNatureConservancyShapesDocument
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "Contains SHACL-Shapes for checking the buildings nature conservancy" ;
+  rdfs:domain ontobpr:BuildingApplication ;
+  rdfs:label "has nature conservancy shapes document" ;
+  rdfs:range ct:Document ;
+  rdfs:subPropertyOf ontobpr:hasDocument ;
+  owl:propertyDisjointWith ontobpr:hasBuildingDocument ;
 .
 ontobpr:hasShapes
   rdf:type owl:ObjectProperty ;
