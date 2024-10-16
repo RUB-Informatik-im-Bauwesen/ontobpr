@@ -1,7 +1,6 @@
 # baseURI: http://example.org/ontobpr-usecase-issuing
 # imports: https://w3id.org/obpa#
 # imports: https://w3id.org/ontobpr
-# prefix: ontobpr-usecase-issuing
 
 @prefix : <http://example.org/ontobpr-usecase-issuing#> .
 @prefix Container: <https://standards.iso.org/iso/21597/-1/ed-1/en/Container#> .
@@ -17,6 +16,22 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+ontobpr-usecase:Address03
+  rdf:type owl:NamedIndividual ;
+  rdf:type vcard:Address ;
+  vcard:country-name "Deutschland"@de ;
+  vcard:country-name "Germany"@en ;
+  vcard:locality "Bochum" ;
+  vcard:postal-code 44787 ;
+  vcard:region "Nordrhein-Westfalen"@de ;
+  vcard:region "North Rhine-Westphalia"@en ;
+  vcard:street-address "Hans-Böckler Straße 19" ;
+.
+ontobpr-usecase:AdministrativeBuildingOfficial
+  rdf:type owl:NamedIndividual ;
+  rdf:type obpa:BuildingOfficialRole ;
+  rdfs:label "Verwaltungssachbearbeiter"@de ;
+.
 <http://example.org/ontobpr-usecase-issuing>
   rdf:type owl:Ontology ;
   owl:imports obpa: ;
@@ -43,18 +58,7 @@
   vcard:postal-code 44801 ;
   vcard:region "Nordrhein-Westfalen"@de ;
   vcard:region "North Rhine-Westphalia"@en ;
-  vcard:street-address "Rober-Koch-Straße 25" ;
-.
-ontobpr-usecase:Address03
-  rdf:type owl:NamedIndividual ;
-  rdf:type vcard:Address ;
-  vcard:country-name "Deutschland"@de ;
-  vcard:country-name "Germany"@en ;
-  vcard:locality "Bochum" ;
-  vcard:postal-code 44787 ;
-  vcard:region "Nordrhein-Westfalen"@de ;
-  vcard:region "North Rhine-Westphalia"@en ;
-  vcard:street-address "Hans-Böckler Straße 19" ;
+  vcard:street-address "Robert-Koch-Straße 25" ;
 .
 :AddressRange01
   rdf:type owl:NamedIndividual ;
@@ -94,11 +98,6 @@ ontobpr-usecase:Address03
   vcard:postal-code 44789 ;
   vcard:region "Nordrhein-Westfalen"@de ;
   vcard:region "North Rhine-Westphalia"@en ;
-.
-ontobpr-usecase:AdministrativeBuildingOfficial
-  rdf:type owl:NamedIndividual ;
-  rdf:type obpa:BuildingOfficialRole ;
-  rdfs:label "Verwaltungssachbearbeiter"@de ;
 .
 :AdministrativeDivision_Bochum
   rdf:type obpa:Department ;
@@ -228,7 +227,9 @@ ontobpr-usecase:AdministrativeBuildingOfficial
   ontobpr:hasStabilityDocument <https://icdd.vm.rub.de/dev01/api/v1/projects/RT2Xjlpuakaxob2GBRQmUg/containerTypes/1/containers/c7Rl-FbG4ECl9kww4AFuBA#InternalDocument-o9HW19fogUmmK8DjoSgaXw> ;
   ontobpr:hasStatement :Condition_1 ;
   ontobpr:hasStatement :ReviewStatement_1 ;
-  ontobpr:hasStatus ontobpr:UnderReview ;
+  ontobpr:hasStatement :ReviewStatement_2 ;
+  ontobpr:hasStatement :ReviewStatement_4 ;
+  ontobpr:hasStatus ontobpr:AcceptedWithConditions ;
   ontobpr:hasThermalInsulationDocument <https://icdd.vm.rub.de/dev01/api/v1/projects/RT2Xjlpuakaxob2GBRQmUg/containerTypes/1/containers/c7Rl-FbG4ECl9kww4AFuBA#InternalDocument-c77Ffr_9n0ahlFtIml0oHg> ;
   ontobpr:submittedBy :Applicant01 ;
 .
@@ -239,9 +240,17 @@ ontobpr-usecase:AdministrativeBuildingOfficial
   vcard:hasAddress :AddressRange03 ;
   obpa:hasAgent :Nature_Conservation_Officer_1 ;
 .
+:BuildingAuthority_2
+  rdf:type obpa:BuildingAuthority ;
+  rdf:type ontobpr:BuildingAuthority ;
+  rdfs:label "Office for Structural Engineering Bochum"@en ;
+  vcard:hasAddress :AddressRange03 ;
+  obpa:hasAgent :Structural_Engineer_1 ;
+.
 :BuildingAuthority_Bochum
   rdf:type owl:NamedIndividual ;
   rdf:type obpa:BuildingAuthority ;
+  rdf:type ontobpr:BuildingAuthority ;
   rdfs:label "Baugenehmigungsbehörde Bochum"@de ;
   rdfs:label "Building Authority Bochum"@en ;
   vcard:hasAddress :Address03 ;
@@ -259,6 +268,13 @@ ontobpr-usecase:AdministrativeBuildingOfficial
   dcterms:issued "2024-10-14"^^xsd:date ;
   rdfs:comment "Condition imposed by the Nature Preservation Authority that rainwater on the own property must be allowed to seep away." ;
   rdfs:label "Condition by the Nature Preservation Authority " ;
+  obpa:hasAgent :Nature_Conservation_Officer_1 ;
+.
+:Condition_2
+  rdf:type ontobpr:ReviewStatement ;
+  dcterms:issued "2024-10-12"^^xsd:date ;
+  rdfs:comment "Structural design was successfully tested" ;
+  rdfs:label "Condition by the Office for Structural Engineering" ;
   obpa:hasAgent :Nature_Conservation_Officer_1 ;
 .
 :ContentReview_1
@@ -328,11 +344,25 @@ ontobpr-usecase:AdministrativeBuildingOfficial
   rdfs:label "Review statement 1" ;
   obpa:hasAgent :Reviewer_1 ;
 .
+:ReviewStatement_2
+  rdf:type ontobpr:ReviewStatement ;
+  dcterms:issued "2024-08-13"^^xsd:date ;
+  rdfs:comment "Formal Review completed" ;
+  rdfs:label "Review statement 2" ;
+  obpa:hasAgent :Reviewer_1 ;
+.
+:ReviewStatement_4
+  rdf:type ontobpr:ReviewStatement ;
+  dcterms:issued "2024-08-15"^^xsd:date ;
+  rdfs:comment "Content Review completed" ;
+  rdfs:label "Review statement 4" ;
+  obpa:hasAgent :Reviewer_1 ;
+.
 :Reviewer_1
   rdf:type obpa:Person ;
   rdfs:label "Reviewer 1" ;
   foaf:firstName "Gustav" ;
-  foaf:lastName "Gutachter" ;
+  foaf:lastName "Richter" ;
   foaf:member :BuildingAuthority_Bochum ;
   obpa:employed_by :BuildingAuthority_Bochum ;
   obpa:hasResponsible :Assignment_1 ;
@@ -347,6 +377,16 @@ ontobpr-usecase:AdministrativeBuildingOfficial
   obpa:hasResponsible :RequestReviewResults_1 ;
   obpa:hasResponsible :ReviewPreparation_1 ;
   obpa:work_experience 9 ;
+.
+:Structural_Engineer_1
+  rdf:type obpa:Person ;
+  rdfs:label "Structural Engineer" ;
+  foaf:firstName "Rebecca" ;
+  foaf:lastName "Immendorf" ;
+  foaf:member :BuildingAuthority_2 ;
+  obpa:employed_by :BuildingAuthority_2 ;
+  obpa:hasResponsible :ContentReview_1 ;
+  obpa:work_experience 7 ;
 .
 :SupervisoryBuildingOfficial
   rdf:type owl:NamedIndividual ;
