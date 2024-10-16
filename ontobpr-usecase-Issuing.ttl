@@ -16,17 +16,6 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-ontobpr-usecase:Address03
-  rdf:type owl:NamedIndividual ;
-  rdf:type vcard:Address ;
-  vcard:country-name "Deutschland"@de ;
-  vcard:country-name "Germany"@en ;
-  vcard:locality "Bochum" ;
-  vcard:postal-code 44787 ;
-  vcard:region "Nordrhein-Westfalen"@de ;
-  vcard:region "North Rhine-Westphalia"@en ;
-  vcard:street-address "Hans-Böckler Straße 19" ;
-.
 ontobpr-usecase:AdministrativeBuildingOfficial
   rdf:type owl:NamedIndividual ;
   rdf:type obpa:BuildingOfficialRole ;
@@ -59,6 +48,17 @@ ontobpr-usecase:AdministrativeBuildingOfficial
   vcard:region "Nordrhein-Westfalen"@de ;
   vcard:region "North Rhine-Westphalia"@en ;
   vcard:street-address "Robert-Koch-Straße 25" ;
+.
+:Address03
+  rdf:type owl:NamedIndividual ;
+  rdf:type vcard:Address ;
+  vcard:country-name "Deutschland"@de ;
+  vcard:country-name "Germany"@en ;
+  vcard:locality "Bochum" ;
+  vcard:postal-code 44787 ;
+  vcard:region "Nordrhein-Westfalen"@de ;
+  vcard:region "North Rhine-Westphalia"@en ;
+  vcard:street-address "Hans-Böckler Straße 19" ;
 .
 :AddressRange01
   rdf:type owl:NamedIndividual ;
@@ -229,6 +229,7 @@ ontobpr-usecase:AdministrativeBuildingOfficial
   ontobpr:hasStatement :ReviewStatement_1 ;
   ontobpr:hasStatement :ReviewStatement_2 ;
   ontobpr:hasStatement :ReviewStatement_4 ;
+  ontobpr:hasStatement :ReviewStatement_5 ;
   ontobpr:hasStatus ontobpr:AcceptedWithConditions ;
   ontobpr:hasThermalInsulationDocument <https://icdd.vm.rub.de/dev01/api/v1/projects/RT2Xjlpuakaxob2GBRQmUg/containerTypes/1/containers/c7Rl-FbG4ECl9kww4AFuBA#InternalDocument-c77Ffr_9n0ahlFtIml0oHg> ;
   ontobpr:submittedBy :Applicant01 ;
@@ -268,13 +269,6 @@ ontobpr-usecase:AdministrativeBuildingOfficial
   dcterms:issued "2024-10-14"^^xsd:date ;
   rdfs:comment "Condition imposed by the Nature Preservation Authority that rainwater on the own property must be allowed to seep away." ;
   rdfs:label "Condition by the Nature Preservation Authority " ;
-  obpa:hasAgent :Nature_Conservation_Officer_1 ;
-.
-:Condition_2
-  rdf:type ontobpr:ReviewStatement ;
-  dcterms:issued "2024-10-12"^^xsd:date ;
-  rdfs:comment "Structural design was successfully tested" ;
-  rdfs:label "Condition by the Office for Structural Engineering" ;
   obpa:hasAgent :Nature_Conservation_Officer_1 ;
 .
 :ContentReview_1
@@ -358,6 +352,13 @@ ontobpr-usecase:AdministrativeBuildingOfficial
   rdfs:label "Review statement 4" ;
   obpa:hasAgent :Reviewer_1 ;
 .
+:ReviewStatement_5
+  rdf:type ontobpr:ReviewStatement ;
+  dcterms:issued "2024-10-12"^^xsd:date ;
+  rdfs:comment "Structural design was successfully tested" ;
+  rdfs:label "Review Statement by the Office for Structural Engineering" ;
+  obpa:hasAgent :Structural_Engineer_1 ;
+.
 :Reviewer_1
   rdf:type obpa:Person ;
   rdfs:label "Reviewer 1" ;
@@ -412,7 +413,6 @@ ontobpr-usecase:AdministrativeBuildingOfficial
   rdfs:label "BuildingLaw"@en ;
 .
 :office_building
-  rdf:type owl:NamedIndividual ;
   rdf:type obpa:PublicConstruction ;
   rdf:type ontobpr:Building ;
   rdfs:label "office building" ;
