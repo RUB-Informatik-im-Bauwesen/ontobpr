@@ -372,7 +372,7 @@ ontobpr-usecase:office_building
   obpa:BGF "2500.0"^^xsd:double ;
   obpa:dinstanceToNaturalConservation "45.0"^^xsd:double ;
   obpa:hasBuildingClass 5 ;
-  ontobpr:hasBuildingDocument <https://icdd.vm.rub.de/dev01/api/v1/projects/RT2Xjlpuakaxob2GBRQmUg/containerTypes/1/containers/c7Rl-FbG4ECl9kww4AFuBA#InternalDocument-F-vWAYF8UEiUEwKMHL20Jg> ;
+  ontobpr:hasBuildingDocument <https://icdd.vm.rub.de/dev01/api/v1/projects/RT2Xjlpuakaxob2GBRQmUg/containerTypes/1/containers/c7Rl-FbG4ECl9kww4AFuBA#InternalDocument-uA7kJ4ReLUKb1sMaJ6wfvA> ;
 .
 ontobpr-usecase:planning_law
   rdf:type owl:NamedIndividual ;

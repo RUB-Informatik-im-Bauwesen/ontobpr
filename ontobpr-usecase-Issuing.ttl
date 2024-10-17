@@ -214,7 +214,7 @@ ontobpr-usecase:AdministrativeBuildingOfficial
   ontobpr:hasAccessibilityDocument <https://icdd.vm.rub.de/dev01/api/v1/projects/RT2Xjlpuakaxob2GBRQmUg/containerTypes/1/containers/UyWTzD7nVUaqeXmfBPDCVg#InternalDocument-C-_YMy2u1kCpbJh3ZmBSqQ> ;
   ontobpr:hasAccessibilityReportDocument <https://icdd.vm.rub.de/dev01/api/v1/projects/RT2Xjlpuakaxob2GBRQmUg/containerTypes/1/containers/UyWTzD7nVUaqeXmfBPDCVg#InternalDocument-nrfyfQe4SE2f2xVIfnjPIA> ;
   ontobpr:hasAccessibilityShapesDocument <https://icdd.vm.rub.de/dev01/api/v1/projects/RT2Xjlpuakaxob2GBRQmUg/containerTypes/1/containers/UyWTzD7nVUaqeXmfBPDCVg#InternalDocument-42bxkyL300mLDg_RI4nOLw> ;
-  ontobpr:hasApplicationDocument <https://icdd.vm.rub.de/dev01/api/v1/projects/RT2Xjlpuakaxob2GBRQmUg/containerTypes/1/containers/c7Rl-FbG4ECl9kww4AFuBA#InternalDocument-K4Dm8qqruEqUGz4itwBwiA> ;
+  ontobpr:hasApplicationDocument <https://icdd.vm.rub.de/dev01/api/v1/projects/RT2Xjlpuakaxob2GBRQmUg/containerTypes/1/containers/UyWTzD7nVUaqeXmfBPDCVg#InternalDocument-R5GjXKk2Dkqt2NufcAin1Q> ;
   ontobpr:hasAssignmentsDocument <https://icdd.vm.rub.de/dev01/api/v1/projects/RT2Xjlpuakaxob2GBRQmUg/containerTypes/1/containers/UyWTzD7nVUaqeXmfBPDCVg#InternalDocument-mTRMsyUog0agv5EPgBoBLw> ;
   ontobpr:hasBuildingApplicationContainer <https://icdd.vm.rub.de/dev01/Project/RT2Xjlpuakaxob2GBRQmUg/Container/c7Rl-FbG4ECl9kww4AFuBA> ;
   ontobpr:hasBuildingDocument <https://icdd.vm.rub.de/dev01/api/v1/projects/RT2Xjlpuakaxob2GBRQmUg/containerTypes/1/containers/UyWTzD7nVUaqeXmfBPDCVg#InternalDocument-bttL7N93Ek2wit0c6B2jQg> ;
@@ -222,16 +222,16 @@ ontobpr-usecase:AdministrativeBuildingOfficial
   ontobpr:hasDecisionDocument <https://icdd.vm.rub.de/dev01/api/v1/projects/RT2Xjlpuakaxob2GBRQmUg/containerTypes/1/containers/UyWTzD7nVUaqeXmfBPDCVg#InternalDocument-ek1aj9J5FUGldThovnIMlA> ;
   ontobpr:hasNatureConservancyReportDocument <https://icdd.vm.rub.de/dev01/api/v1/projects/RT2Xjlpuakaxob2GBRQmUg/containerTypes/1/containers/UyWTzD7nVUaqeXmfBPDCVg#InternalDocument-FLNaBEE68UafM6gDhDD33w> ;
   ontobpr:hasNatureConservancyShapesDocument <https://icdd.vm.rub.de/dev01/api/v1/projects/RT2Xjlpuakaxob2GBRQmUg/containerTypes/1/containers/UyWTzD7nVUaqeXmfBPDCVg#InternalDocument-Z4CWylDIlkSYlAVhPgFedw> ;
-  ontobpr:hasSitePlanDocument <https://icdd.vm.rub.de/dev01/api/v1/projects/RT2Xjlpuakaxob2GBRQmUg/containerTypes/1/containers/c7Rl-FbG4ECl9kww4AFuBA#InternalDocument-WuF9dm-Qr0Oc9NDYdXCNJg> ;
-  ontobpr:hasSoundInsulationDocument <https://icdd.vm.rub.de/dev01/api/v1/projects/RT2Xjlpuakaxob2GBRQmUg/containerTypes/1/containers/c7Rl-FbG4ECl9kww4AFuBA#InternalDocument-_PQCVrgkr0ucMtJ8SY6Z6Q> ;
-  ontobpr:hasStabilityDocument <https://icdd.vm.rub.de/dev01/api/v1/projects/RT2Xjlpuakaxob2GBRQmUg/containerTypes/1/containers/c7Rl-FbG4ECl9kww4AFuBA#InternalDocument-o9HW19fogUmmK8DjoSgaXw> ;
+  ontobpr:hasSitePlanDocument <https://icdd.vm.rub.de/dev01/api/v1/projects/RT2Xjlpuakaxob2GBRQmUg/containerTypes/1/containers/UyWTzD7nVUaqeXmfBPDCVg#InternalDocument-csDKDCraIE6sZTPNaS0Y_w> ;
+  ontobpr:hasSoundInsulationDocument <https://icdd.vm.rub.de/dev01/api/v1/projects/RT2Xjlpuakaxob2GBRQmUg/containerTypes/1/containers/UyWTzD7nVUaqeXmfBPDCVg#InternalDocument-MsLqY6T1mkG-DjcxxR0H4w> ;
+  ontobpr:hasStabilityDocument <https://icdd.vm.rub.de/dev01/api/v1/projects/RT2Xjlpuakaxob2GBRQmUg/containerTypes/1/containers/UyWTzD7nVUaqeXmfBPDCVg#InternalDocument-OFQedcgmfUKlNEfbnTyo3g> ;
   ontobpr:hasStatement :Condition_1 ;
   ontobpr:hasStatement :ReviewStatement_1 ;
   ontobpr:hasStatement :ReviewStatement_2 ;
   ontobpr:hasStatement :ReviewStatement_4 ;
   ontobpr:hasStatement :ReviewStatement_5 ;
   ontobpr:hasStatus ontobpr:AcceptedWithConditions ;
-  ontobpr:hasThermalInsulationDocument <https://icdd.vm.rub.de/dev01/api/v1/projects/RT2Xjlpuakaxob2GBRQmUg/containerTypes/1/containers/c7Rl-FbG4ECl9kww4AFuBA#InternalDocument-c77Ffr_9n0ahlFtIml0oHg> ;
+  ontobpr:hasThermalInsulationDocument <https://icdd.vm.rub.de/dev01/api/v1/projects/RT2Xjlpuakaxob2GBRQmUg/containerTypes/1/containers/UyWTzD7nVUaqeXmfBPDCVg#InternalDocument-YFMRKMYxZEKYyzr48fBM7A> ;
   ontobpr:submittedBy :Applicant01 ;
 .
 :BuildingAuthority_1
@@ -419,7 +419,7 @@ ontobpr-usecase:AdministrativeBuildingOfficial
   obpa:BGF "2500.0"^^xsd:double ;
   obpa:dinstanceToNaturalConservation "45.0"^^xsd:double ;
   obpa:hasBuildingClass 5 ;
-  ontobpr:hasBuildingDocument <https://icdd.vm.rub.de/dev01/api/v1/projects/RT2Xjlpuakaxob2GBRQmUg/containerTypes/1/containers/c7Rl-FbG4ECl9kww4AFuBA#InternalDocument-F-vWAYF8UEiUEwKMHL20Jg> ;
+  ontobpr:hasBuildingDocument <https://icdd.vm.rub.de/dev01/api/v1/projects/RT2Xjlpuakaxob2GBRQmUg/containerTypes/1/containers/UyWTzD7nVUaqeXmfBPDCVg#InternalDocument-Wrzw4KjSh0eJaKpu9pFvhg> ;
 .
 :planning_law
   rdf:type owl:NamedIndividual ;
