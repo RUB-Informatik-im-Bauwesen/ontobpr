@@ -1,0 +1,722 @@
+<https://w3id.org/ontobpr> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Ontology> .
+<https://w3id.org/ontobpr> <http://purl.org/dc/elements/1.1/created> "2022-12-23"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://w3id.org/ontobpr> <http://purl.org/dc/elements/1.1/creator> _:genid1 .
+_:genid1 <https://schema.org/name> "Dr. Judith Fauth" .
+_:genid1 <https://schema.org/memberOf> _:genid2 .
+_:genid2 <https://schema.org/name> "University of Cambridge, GB" .
+_:genid2 <https://schema.org/identifier> <https://www.linkedin.com/in/judith-fauth-5b5137bb> .
+_:genid1 <https://schema.org/identifier> <https://orcid.org/0000-0002-9078-8393> .
+_:genid1 <https://schema.org/email> <mailto:jf805@cam.ac.uk> .
+_:genid1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://schema.org/Person> .
+<https://schema.org/Person> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/ontobpr> <http://purl.org/dc/elements/1.1/creator> _:genid3 .
+_:genid3 <https://schema.org/name> "Dr. Philipp Hagedorn" .
+_:genid3 <https://schema.org/memberOf> _:genid4 .
+_:genid4 <https://schema.org/name> "Ruhr University Bochum, DE" .
+_:genid4 <https://schema.org/identifier> <https://www.inf.bi.ruhr-uni-bochum.de/iib/lehrstuhl/mitarbeiter/philipp_hagedorn.html.en> .
+_:genid3 <https://schema.org/identifier> <https://orcid.org/0000-0002-6249-243X> .
+_:genid3 <https://schema.org/email> <mailto:philipp.hagedorn-n6v@rub.de> .
+_:genid3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://schema.org/Person> .
+<https://w3id.org/ontobpr> <http://purl.org/dc/elements/1.1/creator> _:genid5 .
+_:genid5 <https://schema.org/name> "Sebastian Seiss" .
+_:genid5 <https://schema.org/memberOf> _:genid6 .
+_:genid6 <https://schema.org/name> "Bauhaus-Universitaet Weimar, DE" .
+_:genid6 <https://schema.org/identifier> <https://www.uni-weimar.de/de/bau-und-umwelt/professuren/baubetrieb-und-bauverfahren/personen/sebastian-seiss-msc/> .
+_:genid5 <https://schema.org/identifier> <https://orcid.org/0000-0001-5808-695X> .
+_:genid5 <https://schema.org/email> <mailto:sebastian.seiss@uni-weimar.de> .
+_:genid5 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://schema.org/Person> .
+<https://w3id.org/ontobpr> <http://purl.org/dc/elements/1.1/creator> _:genid7 .
+_:genid7 <https://schema.org/name> "Sven Zentgraf" .
+_:genid7 <https://schema.org/memberOf> _:genid8 .
+_:genid8 <https://schema.org/name> "Ruhr University Bochum, DE" .
+_:genid8 <https://schema.org/identifier> <https://www.inf.bi.ruhr-uni-bochum.de/iib/lehrstuhl/mitarbeiter/sven_zentgraf.html.en> .
+_:genid7 <https://schema.org/identifier> <https://orcid.org/0000-0001-6058-7614> .
+_:genid7 <https://schema.org/email> <mailto:sven.zentgraf@rub.de> .
+_:genid7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://schema.org/Person> .
+<https://w3id.org/ontobpr> <http://purl.org/dc/elements/1.1/license> <https://creativecommons.org/licenses/by/4.0/> .
+<https://w3id.org/ontobpr> <http://purl.org/dc/elements/1.1/source> "https://github.com/RUB-Informatik-im-Bauwesen/ontobpr"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
+<https://w3id.org/ontobpr> <http://purl.org/vocab/vann/preferredNamespacePrefix> "ontobpr" .
+<https://w3id.org/ontobpr> <http://www.w3.org/2000/01/rdf-schema#comment> "To avoid a digital disruption in planning buildings and structures, this research presents a workflow in which building codes are represented as machine-readable knowledge graphs and ontologies as an integration to the building permit review procedure and the participation process. Therefore, the building permit process was analyzed, and possible applications of ontology-based knowledge representations are explored. An ontology-based building permit review (OntoBPR) is proposed, reusing two existing ontologies for modeling the permit review workflow for representing the building codes. The OntoBPR ontology extends the approach with a connection to Information Containers for linked Document Delivery (ICDD) that are used for submitting the building application, and the Shapes Constraint Language (SHACL) of which rules are generated from the building code knowledge graphs."@en .
+<https://w3id.org/ontobpr> <http://www.w3.org/2000/01/rdf-schema#label> "OntoBPR: An ontological workflow for building permit review" .
+# 
+# 
+# #################################################################
+# #
+# #    Annotation properties
+# #
+# #################################################################
+# 
+# 
+# http://purl.org/dc/elements/1.1/created
+<http://purl.org/dc/elements/1.1/created> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/elements/1.1/creator
+<http://purl.org/dc/elements/1.1/creator> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/elements/1.1/license
+<http://purl.org/dc/elements/1.1/license> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/dc/elements/1.1/source
+<http://purl.org/dc/elements/1.1/source> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/vocab/vann/preferredNamespacePrefix
+<http://purl.org/vocab/vann/preferredNamespacePrefix> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://www.w3.org/2002/07/owl#maxQualifiedCardinality
+<http://www.w3.org/2002/07/owl#maxQualifiedCardinality> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://www.w3.org/2002/07/owl#qualifiedCardinality
+<http://www.w3.org/2002/07/owl#qualifiedCardinality> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# https://schema.org/email
+<https://schema.org/email> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# https://schema.org/identifier
+<https://schema.org/identifier> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# https://schema.org/memberOf
+<https://schema.org/memberOf> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# https://schema.org/name
+<https://schema.org/name> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Datatypes
+# #
+# #################################################################
+# 
+# 
+# http://www.w3.org/2001/XMLSchema#date
+<http://www.w3.org/2001/XMLSchema#date> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Datatype> .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Object Properties
+# #
+# #################################################################
+# 
+# 
+# https://w3id.org/ontobpr#afterActivity
+<https://w3id.org/ontobpr#afterActivity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/ontobpr#afterActivity> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
+<https://w3id.org/ontobpr#afterActivity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#TransitiveProperty> .
+<https://w3id.org/ontobpr#afterActivity> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/ontobpr#Activity> .
+<https://w3id.org/ontobpr#afterActivity> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/ontobpr#Activity> .
+<https://w3id.org/ontobpr#afterActivity> <http://www.w3.org/2000/01/rdf-schema#comment> "an activity is executed after another activity" .
+<https://w3id.org/ontobpr#afterActivity> <http://www.w3.org/2000/01/rdf-schema#label> "after activity" .
+# 
+# https://w3id.org/ontobpr#applies
+<https://w3id.org/ontobpr#applies> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/ontobpr#applies> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
+<https://w3id.org/ontobpr#applies> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/obpa#BuildingApplication> .
+<https://w3id.org/obpa#BuildingApplication> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/ontobpr#applies> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/ontobpr#BuildingApplication> .
+<https://w3id.org/ontobpr#applies> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/isoprops#Dictionary> .
+<https://w3id.org/isoprops#Dictionary> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/ontobpr#applies> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/ontobpr#BuildingCodeDictionary> .
+<https://w3id.org/ontobpr#applies> <http://www.w3.org/2000/01/rdf-schema#comment> "BuildingApplication applies a BuildingCodeDictionary for checking" .
+<https://w3id.org/ontobpr#applies> <http://www.w3.org/2000/01/rdf-schema#label> "applies" .
+# 
+# https://w3id.org/ontobpr#belongsToActivity
+<https://w3id.org/ontobpr#belongsToActivity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/ontobpr#belongsToActivity> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
+<https://w3id.org/ontobpr#belongsToActivity> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/ontobpr#ReviewStatement> .
+<https://w3id.org/ontobpr#belongsToActivity> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/ontobpr#Activity> .
+<https://w3id.org/ontobpr#belongsToActivity> <http://www.w3.org/2000/01/rdf-schema#comment> "a ReviewStatement belongs to a particular Activity" .
+<https://w3id.org/ontobpr#belongsToActivity> <http://www.w3.org/2000/01/rdf-schema#label> "belongs to activity" .
+# 
+# https://w3id.org/ontobpr#checks
+<https://w3id.org/ontobpr#checks> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/ontobpr#checks> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
+<https://w3id.org/ontobpr#checks> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/obpa#BuildingAuthority> .
+<https://w3id.org/obpa#BuildingAuthority> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/ontobpr#checks> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/ontobpr#BuildingAuthority> .
+<https://w3id.org/ontobpr#checks> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/isoprops#Dictionary> .
+<https://w3id.org/ontobpr#checks> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/ontobpr#BuildingCodeDictionary> .
+<https://w3id.org/ontobpr#checks> <http://www.w3.org/2000/01/rdf-schema#comment> "BuildingAuthority checks a building regarding a BuildingCodeDictionary" .
+<https://w3id.org/ontobpr#checks> <http://www.w3.org/2000/01/rdf-schema#label> "checks" .
+# 
+# https://w3id.org/ontobpr#hasApplicationDocument
+<https://w3id.org/ontobpr#hasApplicationDocument> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/ontobpr#hasApplicationDocument> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://w3id.org/ontobpr#hasDocument> .
+<https://w3id.org/ontobpr#hasApplicationDocument> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/ontobpr#BuildingApplication> .
+<https://w3id.org/ontobpr#hasApplicationDocument> <http://www.w3.org/2000/01/rdf-schema#range> <https://standards.iso.org/iso/21597/-1/ed-1/en/Container#Document> .
+<https://standards.iso.org/iso/21597/-1/ed-1/en/Container#Document> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/ontobpr#hasApplicationDocument> <http://www.w3.org/2002/07/owl#propertyDisjointWith> <https://w3id.org/ontobpr#hasBuildingDocument> .
+<https://w3id.org/ontobpr#hasApplicationDocument> <http://www.w3.org/2000/01/rdf-schema#comment> "a BuildingApplication has a respective document (e.g. PDF) representing a human-readable version of the application" .
+<https://w3id.org/ontobpr#hasApplicationDocument> <http://www.w3.org/2000/01/rdf-schema#label> "has application document" .
+# 
+# https://w3id.org/ontobpr#hasBuildingApplicationContainer
+<https://w3id.org/ontobpr#hasBuildingApplicationContainer> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/ontobpr#hasBuildingApplicationContainer> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
+<https://w3id.org/ontobpr#hasBuildingApplicationContainer> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/ontobpr#BuildingApplication> .
+<https://w3id.org/ontobpr#hasBuildingApplicationContainer> <http://www.w3.org/2000/01/rdf-schema#range> <https://standards.iso.org/iso/21597/-1/ed-1/en/Container#ContainerDescription> .
+<https://standards.iso.org/iso/21597/-1/ed-1/en/Container#ContainerDescription> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/ontobpr#hasBuildingApplicationContainer> <http://www.w3.org/2000/01/rdf-schema#comment> "the reference from a BuildingApplication to an ICDD container" .
+<https://w3id.org/ontobpr#hasBuildingApplicationContainer> <http://www.w3.org/2000/01/rdf-schema#label> "has building application container" .
+# 
+# https://w3id.org/ontobpr#hasBuildingDocument
+<https://w3id.org/ontobpr#hasBuildingDocument> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/ontobpr#hasBuildingDocument> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <https://w3id.org/ontobpr#hasDocument> .
+<https://w3id.org/ontobpr#hasBuildingDocument> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/ontobpr#Building> .
+<https://w3id.org/ontobpr#hasBuildingDocument> <http://www.w3.org/2000/01/rdf-schema#range> <https://standards.iso.org/iso/21597/-1/ed-1/en/Container#Document> .
+<https://w3id.org/ontobpr#hasBuildingDocument> <http://www.w3.org/2000/01/rdf-schema#comment> "A Building has a document, which is the IFC representation of this Building" .
+<https://w3id.org/ontobpr#hasBuildingDocument> <http://www.w3.org/2000/01/rdf-schema#label> "has building document" .
+# 
+# https://w3id.org/ontobpr#hasCheckingResults
+<https://w3id.org/ontobpr#hasCheckingResults> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/ontobpr#hasCheckingResults> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
+<https://w3id.org/ontobpr#hasCheckingResults> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/ontobpr#BuildingApplication> .
+<https://w3id.org/ontobpr#hasCheckingResults> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/ontobpr#ReviewResult> .
+<https://w3id.org/ontobpr#hasCheckingResults> <http://www.w3.org/2000/01/rdf-schema#comment> "either a BuildingApplication has ReviewResult or a ReviewResult has sh:ValidationReport" .
+<https://w3id.org/ontobpr#hasCheckingResults> <http://www.w3.org/2000/01/rdf-schema#label> "has checking results" .
+# 
+# https://w3id.org/ontobpr#hasCurrentActivity
+<https://w3id.org/ontobpr#hasCurrentActivity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/ontobpr#hasCurrentActivity> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
+<https://w3id.org/ontobpr#hasCurrentActivity> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/ontobpr#BuildingApplication> .
+<https://w3id.org/ontobpr#hasCurrentActivity> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/ontobpr#Activity> .
+<https://w3id.org/ontobpr#hasCurrentActivity> <http://www.w3.org/2000/01/rdf-schema#comment> "a BuildingApplication is in the current Activity" .
+<https://w3id.org/ontobpr#hasCurrentActivity> <http://www.w3.org/2000/01/rdf-schema#label> "has current activity" .
+# 
+# https://w3id.org/ontobpr#hasDocument
+<https://w3id.org/ontobpr#hasDocument> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/ontobpr#hasDocument> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
+<https://w3id.org/ontobpr#hasDocument> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/ontobpr#BuildingApplication> .
+<https://w3id.org/ontobpr#hasDocument> <http://www.w3.org/2000/01/rdf-schema#range> <https://standards.iso.org/iso/21597/-1/ed-1/en/Container#Document> .
+<https://w3id.org/ontobpr#hasDocument> <http://www.w3.org/2000/01/rdf-schema#comment> "abstract property grouping hasApplicationDocument and hasBuildingDocument" .
+<https://w3id.org/ontobpr#hasDocument> <http://www.w3.org/2000/01/rdf-schema#label> "has document" .
+# 
+# https://w3id.org/ontobpr#hasDocumentClassification
+<https://w3id.org/ontobpr#hasDocumentClassification> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/ontobpr#hasDocumentClassification> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
+<https://w3id.org/ontobpr#hasDocumentClassification> <http://www.w3.org/2000/01/rdf-schema#domain> <https://standards.iso.org/iso/21597/-1/ed-1/en/Container#Document> .
+<https://w3id.org/ontobpr#hasDocumentClassification> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/ontobpr#DocumentClassification> .
+<https://w3id.org/ontobpr#hasDocumentClassification> <http://www.w3.org/2000/01/rdf-schema#comment> "The classification of a ct:Document in an ICDD container in the context of a building application." .
+<https://w3id.org/ontobpr#hasDocumentClassification> <http://www.w3.org/2000/01/rdf-schema#label> "has document classification" .
+# 
+# https://w3id.org/ontobpr#hasShapes
+<https://w3id.org/ontobpr#hasShapes> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/ontobpr#hasShapes> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
+<https://w3id.org/ontobpr#hasShapes> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/ontobpr#ShaclShapesSet> .
+<https://w3id.org/ontobpr#hasShapes> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/ns/shacl#Shape> .
+<http://www.w3.org/ns/shacl#Shape> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/ontobpr#hasShapes> <http://www.w3.org/2000/01/rdf-schema#comment> "ShaclShapesSet has sh:Shape instances" .
+<https://w3id.org/ontobpr#hasShapes> <http://www.w3.org/2000/01/rdf-schema#label> "has shapes" .
+# 
+# https://w3id.org/ontobpr#hasShapesSet
+<https://w3id.org/ontobpr#hasShapesSet> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/ontobpr#hasShapesSet> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
+<https://w3id.org/ontobpr#hasShapesSet> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/ontobpr#BuildingCodeDictionary> .
+<https://w3id.org/ontobpr#hasShapesSet> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/ontobpr#ShaclShapesSet> .
+<https://w3id.org/ontobpr#hasShapesSet> <http://www.w3.org/2000/01/rdf-schema#comment> "either an Activity or a BuildingCodeDictionary has a ShaclShapesSet" .
+<https://w3id.org/ontobpr#hasShapesSet> <http://www.w3.org/2000/01/rdf-schema#label> "has shapes set" .
+# 
+# https://w3id.org/ontobpr#hasStatement
+<https://w3id.org/ontobpr#hasStatement> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/ontobpr#hasStatement> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
+<https://w3id.org/ontobpr#hasStatement> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/ontobpr#BuildingApplication> .
+<https://w3id.org/ontobpr#hasStatement> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/ontobpr#ReviewStatement> .
+<https://w3id.org/ontobpr#hasStatement> <http://www.w3.org/2000/01/rdf-schema#comment> "any ReviewStatement of any reviewer is attached to a BuildingApplication" .
+<https://w3id.org/ontobpr#hasStatement> <http://www.w3.org/2000/01/rdf-schema#label> "has statement" .
+# 
+# https://w3id.org/ontobpr#hasStatus
+<https://w3id.org/ontobpr#hasStatus> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/ontobpr#hasStatus> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topObjectProperty> .
+<https://w3id.org/ontobpr#hasStatus> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/ontobpr#BuildingApplication> .
+<https://w3id.org/ontobpr#hasStatus> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/ontobpr#ReviewStatus> .
+<https://w3id.org/ontobpr#hasStatus> <http://www.w3.org/2000/01/rdf-schema#comment> "the ReviewStatus of a BuildingApplication" .
+<https://w3id.org/ontobpr#hasStatus> <http://www.w3.org/2000/01/rdf-schema#label> "has status" .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Data properties
+# #
+# #################################################################
+# 
+# 
+# https://w3id.org/ontobpr#isCompleted
+<https://w3id.org/ontobpr#isCompleted> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/ontobpr#isCompleted> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://www.w3.org/2002/07/owl#topDataProperty> .
+<https://w3id.org/ontobpr#isCompleted> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/ontobpr#Activity> .
+<https://w3id.org/ontobpr#isCompleted> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#boolean> .
+<https://w3id.org/ontobpr#isCompleted> <http://www.w3.org/2000/01/rdf-schema#comment> "a boolean property indicating whether an activity is completet or not" .
+<https://w3id.org/ontobpr#isCompleted> <http://www.w3.org/2000/01/rdf-schema#label> "is completed" .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Classes
+# #
+# #################################################################
+# 
+# 
+# http://org.semanticweb.owlapi/error#Error27
+<http://org.semanticweb.owlapi/error#Error27> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# http://org.semanticweb.owlapi/error#Error28
+<http://org.semanticweb.owlapi/error#Error28> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# http://org.semanticweb.owlapi/error#Error29
+<http://org.semanticweb.owlapi/error#Error29> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# http://org.semanticweb.owlapi/error#Error30
+<http://org.semanticweb.owlapi/error#Error30> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# http://org.semanticweb.owlapi/error#Error31
+<http://org.semanticweb.owlapi/error#Error31> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# http://org.semanticweb.owlapi/error#Error32
+<http://org.semanticweb.owlapi/error#Error32> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# http://org.semanticweb.owlapi/error#Error33
+<http://org.semanticweb.owlapi/error#Error33> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# http://org.semanticweb.owlapi/error#Error34
+<http://org.semanticweb.owlapi/error#Error34> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# http://org.semanticweb.owlapi/error#Error35
+<http://org.semanticweb.owlapi/error#Error35> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# http://org.semanticweb.owlapi/error#Error36
+<http://org.semanticweb.owlapi/error#Error36> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# http://org.semanticweb.owlapi/error#Error37
+<http://org.semanticweb.owlapi/error#Error37> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# http://org.semanticweb.owlapi/error#Error38
+<http://org.semanticweb.owlapi/error#Error38> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# http://org.semanticweb.owlapi/error#Error39
+<http://org.semanticweb.owlapi/error#Error39> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# http://www.w3.org/ns/shacl#Shape
+# 
+# http://www.w3.org/ns/shacl#ValidationReport
+<http://www.w3.org/ns/shacl#ValidationReport> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+# 
+# https://schema.org/Person
+# 
+# https://standards.iso.org/iso/21597/-1/ed-1/en/Container#ContainerDescription
+# 
+# https://standards.iso.org/iso/21597/-1/ed-1/en/Container#Document
+# 
+# https://w3id.org/isoprops#Dictionary
+<https://w3id.org/isoprops#Dictionary> <http://www.w3.org/2002/07/owl#equivalentClass> <https://w3id.org/ontobpr#BuildingCodeDictionary> .
+<https://w3id.org/isoprops#Dictionary> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid9 .
+_:genid9 <http://www.w3.org/2002/07/owl#onClass> <https://w3id.org/ontobpr#ShaclShapesSet> .
+_:genid9 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid9 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/ontobpr#hasShapesSet> .
+_:genid9 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+# 
+# https://w3id.org/obpa#Activity
+<https://w3id.org/obpa#Activity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/obpa#Activity> <http://www.w3.org/2002/07/owl#equivalentClass> <https://w3id.org/ontobpr#Activity> .
+# 
+# https://w3id.org/obpa#Building
+<https://w3id.org/obpa#Building> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/obpa#Building> <http://www.w3.org/2002/07/owl#equivalentClass> <https://w3id.org/ontobpr#Building> .
+# 
+# https://w3id.org/obpa#BuildingApplication
+<https://w3id.org/obpa#BuildingApplication> <http://www.w3.org/2002/07/owl#equivalentClass> <https://w3id.org/ontobpr#BuildingApplication> .
+# 
+# https://w3id.org/obpa#BuildingAuthority
+<https://w3id.org/obpa#BuildingAuthority> <http://www.w3.org/2002/07/owl#equivalentClass> <https://w3id.org/ontobpr#BuildingAuthority> .
+# 
+# https://w3id.org/ontobpr#Activity
+<https://w3id.org/ontobpr#Activity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/ontobpr#Activity> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/2002/07/owl#Thing> .
+<https://w3id.org/ontobpr#Activity> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid10 .
+_:genid10 <http://www.w3.org/2002/07/owl#onDataRange> <http://www.w3.org/2001/XMLSchema#boolean> .
+_:genid10 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid10 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/ontobpr#isCompleted> .
+_:genid10 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://w3id.org/ontobpr#Activity> <http://www.w3.org/2000/01/rdf-schema#comment> "an Activity executed throughout the building permit review" .
+<https://w3id.org/ontobpr#Activity> <http://www.w3.org/2000/01/rdf-schema#label> "Activity" .
+# 
+# https://w3id.org/ontobpr#Assignment
+<https://w3id.org/ontobpr#Assignment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/ontobpr#Assignment> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/ontobpr#Activity> .
+<https://w3id.org/ontobpr#Assignment> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid11 .
+_:genid11 <http://www.w3.org/2002/07/owl#onClass> <https://w3id.org/ontobpr#FormalReview> .
+_:genid11 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid11 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/ontobpr#afterActivity> .
+_:genid11 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://w3id.org/ontobpr#Assignment> <http://www.w3.org/2000/01/rdf-schema#comment> "the Assignment activity" .
+<https://w3id.org/ontobpr#Assignment> <http://www.w3.org/2000/01/rdf-schema#label> "(2) Assignment" .
+# 
+# https://w3id.org/ontobpr#Building
+<https://w3id.org/ontobpr#Building> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/ontobpr#Building> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/2002/07/owl#Thing> .
+<https://w3id.org/ontobpr#Building> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid12 .
+_:genid12 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://standards.iso.org/iso/21597/-1/ed-1/en/Container#Document> .
+_:genid12 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/ontobpr#hasBuildingDocument> .
+_:genid12 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://w3id.org/ontobpr#Building> <http://www.w3.org/2000/01/rdf-schema#comment> "The building that is subject of this building application" .
+<https://w3id.org/ontobpr#Building> <http://www.w3.org/2000/01/rdf-schema#label> "Building" .
+# 
+# https://w3id.org/ontobpr#BuildingApplication
+<https://w3id.org/ontobpr#BuildingApplication> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/ontobpr#BuildingApplication> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid13 .
+_:genid13 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://standards.iso.org/iso/21597/-1/ed-1/en/Container#Document> .
+_:genid13 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/ontobpr#hasApplicationDocument> .
+_:genid13 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://w3id.org/ontobpr#BuildingApplication> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid14 .
+_:genid14 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/ontobpr#ReviewResult> .
+_:genid14 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/ontobpr#hasCheckingResults> .
+_:genid14 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://w3id.org/ontobpr#BuildingApplication> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid15 .
+_:genid15 <http://www.w3.org/2002/07/owl#someValuesFrom> <https://w3id.org/ontobpr#ReviewStatement> .
+_:genid15 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/ontobpr#hasStatement> .
+_:genid15 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://w3id.org/ontobpr#BuildingApplication> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid16 .
+_:genid16 <http://www.w3.org/2002/07/owl#onClass> <https://standards.iso.org/iso/21597/-1/ed-1/en/Container#ContainerDescription> .
+_:genid16 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid16 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/ontobpr#hasBuildingApplicationContainer> .
+_:genid16 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://w3id.org/ontobpr#BuildingApplication> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid17 .
+_:genid17 <http://www.w3.org/2002/07/owl#onClass> <https://w3id.org/ontobpr#Activity> .
+_:genid17 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid17 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/ontobpr#hasCurrentActivity> .
+_:genid17 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://w3id.org/ontobpr#BuildingApplication> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid18 .
+_:genid18 <http://www.w3.org/2002/07/owl#onClass> <https://w3id.org/ontobpr#ReviewStatus> .
+_:genid18 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid18 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/ontobpr#hasStatus> .
+_:genid18 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://w3id.org/ontobpr#BuildingApplication> <http://www.w3.org/2000/01/rdf-schema#comment> "the building application that is submitted by an applicant for review" .
+<https://w3id.org/ontobpr#BuildingApplication> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/obpa#BuildingApplication> .
+<https://w3id.org/ontobpr#BuildingApplication> <http://www.w3.org/2000/01/rdf-schema#label> "Building application" .
+# 
+# https://w3id.org/ontobpr#BuildingAuthority
+<https://w3id.org/ontobpr#BuildingAuthority> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/ontobpr#BuildingAuthority> <http://www.w3.org/2000/01/rdf-schema#comment> "a building authority that is involved in a building permit review" .
+<https://w3id.org/ontobpr#BuildingAuthority> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <https://w3id.org/obpa#BuildingAuthority> .
+<https://w3id.org/ontobpr#BuildingAuthority> <http://www.w3.org/2000/01/rdf-schema#label> "Building authority" .
+# 
+# https://w3id.org/ontobpr#BuildingCodeDictionary
+<https://w3id.org/ontobpr#BuildingCodeDictionary> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/ontobpr#BuildingCodeDictionary> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid19 .
+_:genid19 <http://www.w3.org/2002/07/owl#onClass> <https://w3id.org/ontobpr#ShaclShapesSet> .
+_:genid19 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid19 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/ontobpr#hasShapesSet> .
+_:genid19 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://w3id.org/ontobpr#BuildingCodeDictionary> <http://www.w3.org/2000/01/rdf-schema#comment> "A dictionary containing properties and shapes from a building code" .
+<https://w3id.org/ontobpr#BuildingCodeDictionary> <http://www.w3.org/2000/01/rdf-schema#label> "Dictionary" .
+# 
+# https://w3id.org/ontobpr#CompletenessCheck
+<https://w3id.org/ontobpr#CompletenessCheck> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/ontobpr#CompletenessCheck> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/ontobpr#Activity> .
+<https://w3id.org/ontobpr#CompletenessCheck> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid20 .
+_:genid20 <http://www.w3.org/2002/07/owl#onClass> <https://w3id.org/ontobpr#ShaclShapesSet> .
+_:genid20 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid20 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/ontobpr#hasShapesSet> .
+_:genid20 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://w3id.org/ontobpr#CompletenessCheck> <http://www.w3.org/2000/01/rdf-schema#comment> "the Completeness check activity" .
+<https://w3id.org/ontobpr#CompletenessCheck> <http://www.w3.org/2000/01/rdf-schema#label> "(1.1) Completeness check " .
+# 
+# https://w3id.org/ontobpr#Condition
+<https://w3id.org/ontobpr#Condition> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/ontobpr#Condition> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/ontobpr#ReviewStatement> .
+<https://w3id.org/ontobpr#Condition> <http://www.w3.org/2002/07/owl#disjointWith> <https://w3id.org/ontobpr#Justification> .
+<https://w3id.org/ontobpr#Condition> <http://www.w3.org/2000/01/rdf-schema#comment> "a formulated condition statement of a conditionally accepted application" .
+<https://w3id.org/ontobpr#Condition> <http://www.w3.org/2000/01/rdf-schema#label> "Condition" .
+# 
+# https://w3id.org/ontobpr#ContentReview
+<https://w3id.org/ontobpr#ContentReview> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/ontobpr#ContentReview> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/ontobpr#Activity> .
+<https://w3id.org/ontobpr#ContentReview> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid21 .
+_:genid21 <http://www.w3.org/2002/07/owl#onClass> <https://w3id.org/ontobpr#FormalReview> .
+_:genid21 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid21 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/ontobpr#afterActivity> .
+_:genid21 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://w3id.org/ontobpr#ContentReview> <http://www.w3.org/2000/01/rdf-schema#comment> "The Content review activity" .
+<https://w3id.org/ontobpr#ContentReview> <http://www.w3.org/2000/01/rdf-schema#label> "(4) Content review " .
+# 
+# https://w3id.org/ontobpr#CreatingNotificationLetter
+<https://w3id.org/ontobpr#CreatingNotificationLetter> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/ontobpr#CreatingNotificationLetter> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/ontobpr#Activity> .
+<https://w3id.org/ontobpr#CreatingNotificationLetter> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid22 .
+_:genid22 <http://www.w3.org/2002/07/owl#onClass> <https://w3id.org/ontobpr#FormulationOfCondition> .
+_:genid22 <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid22 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/ontobpr#afterActivity> .
+_:genid22 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://w3id.org/ontobpr#CreatingNotificationLetter> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid23 .
+_:genid23 <http://www.w3.org/2002/07/owl#onClass> <https://w3id.org/ontobpr#JustificationOfNegativeDecision> .
+_:genid23 <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid23 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/ontobpr#afterActivity> .
+_:genid23 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://w3id.org/ontobpr#CreatingNotificationLetter> <http://www.w3.org/2000/01/rdf-schema#comment> "The Creating notification letter activity" .
+<https://w3id.org/ontobpr#CreatingNotificationLetter> <http://www.w3.org/2000/01/rdf-schema#label> "(5.4) Creating notification letter" .
+# 
+# https://w3id.org/ontobpr#DocumentClassification
+<https://w3id.org/ontobpr#DocumentClassification> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/ontobpr#DocumentClassification> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/2002/07/owl#Thing> .
+<https://w3id.org/ontobpr#DocumentClassification> <http://www.w3.org/2000/01/rdf-schema#comment> "The classification of a document in the context of a building application." .
+<https://w3id.org/ontobpr#DocumentClassification> <http://www.w3.org/2000/01/rdf-schema#label> "Document classification" .
+# 
+# https://w3id.org/ontobpr#FormalReview
+<https://w3id.org/ontobpr#FormalReview> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/ontobpr#FormalReview> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://org.semanticweb.owlapi/error#Error29> .
+<https://w3id.org/ontobpr#FormalReview> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://org.semanticweb.owlapi/error#Error30> .
+<https://w3id.org/ontobpr#FormalReview> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/ontobpr#Activity> .
+<https://w3id.org/ontobpr#FormalReview> <http://www.w3.org/2000/01/rdf-schema#comment> "The Formal review activity" .
+<https://w3id.org/ontobpr#FormalReview> <http://www.w3.org/2000/01/rdf-schema#label> "(1) Formal review" .
+# 
+# https://w3id.org/ontobpr#FormulationOfCondition
+<https://w3id.org/ontobpr#FormulationOfCondition> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/ontobpr#FormulationOfCondition> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/ontobpr#Activity> .
+<https://w3id.org/ontobpr#FormulationOfCondition> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid24 .
+_:genid24 <http://www.w3.org/2002/07/owl#onClass> <https://w3id.org/ontobpr#PositivePermitDecision> .
+_:genid24 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid24 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/ontobpr#afterActivity> .
+_:genid24 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://w3id.org/ontobpr#FormulationOfCondition> <http://www.w3.org/2000/01/rdf-schema#comment> "the Formulation of condition activity" .
+<https://w3id.org/ontobpr#FormulationOfCondition> <http://www.w3.org/2000/01/rdf-schema#label> "(5.3a) Formulation of condition " .
+# 
+# https://w3id.org/ontobpr#IssuingNotificationLetter
+<https://w3id.org/ontobpr#IssuingNotificationLetter> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/ontobpr#IssuingNotificationLetter> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://org.semanticweb.owlapi/error#Error31> .
+<https://w3id.org/ontobpr#IssuingNotificationLetter> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://org.semanticweb.owlapi/error#Error32> .
+<https://w3id.org/ontobpr#IssuingNotificationLetter> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://org.semanticweb.owlapi/error#Error33> .
+<https://w3id.org/ontobpr#IssuingNotificationLetter> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://org.semanticweb.owlapi/error#Error34> .
+<https://w3id.org/ontobpr#IssuingNotificationLetter> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://org.semanticweb.owlapi/error#Error35> .
+<https://w3id.org/ontobpr#IssuingNotificationLetter> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://org.semanticweb.owlapi/error#Error36> .
+<https://w3id.org/ontobpr#IssuingNotificationLetter> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/ontobpr#Activity> .
+<https://w3id.org/ontobpr#IssuingNotificationLetter> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid25 .
+_:genid25 <http://www.w3.org/2002/07/owl#onClass> <https://w3id.org/ontobpr#Assignment> .
+_:genid25 <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid25 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/ontobpr#afterActivity> .
+_:genid25 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://w3id.org/ontobpr#IssuingNotificationLetter> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid26 .
+_:genid26 <http://www.w3.org/2002/07/owl#onClass> <https://w3id.org/ontobpr#ContentReview> .
+_:genid26 <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid26 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/ontobpr#afterActivity> .
+_:genid26 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://w3id.org/ontobpr#IssuingNotificationLetter> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid27 .
+_:genid27 <http://www.w3.org/2002/07/owl#onClass> <https://w3id.org/ontobpr#Participation> .
+_:genid27 <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid27 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/ontobpr#afterActivity> .
+_:genid27 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://w3id.org/ontobpr#IssuingNotificationLetter> <http://www.w3.org/2000/01/rdf-schema#comment> "the Issuing notification letter activity" .
+<https://w3id.org/ontobpr#IssuingNotificationLetter> <http://www.w3.org/2000/01/rdf-schema#label> "(5) Issuing notification letter " .
+# 
+# https://w3id.org/ontobpr#Justification
+<https://w3id.org/ontobpr#Justification> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/ontobpr#Justification> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/ontobpr#ReviewStatement> .
+<https://w3id.org/ontobpr#Justification> <http://www.w3.org/2000/01/rdf-schema#comment> "justification statement of a negative building permit review decision" .
+<https://w3id.org/ontobpr#Justification> <http://www.w3.org/2000/01/rdf-schema#label> "Justification" .
+# 
+# https://w3id.org/ontobpr#JustificationOfNegativeDecision
+<https://w3id.org/ontobpr#JustificationOfNegativeDecision> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/ontobpr#JustificationOfNegativeDecision> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/ontobpr#Activity> .
+<https://w3id.org/ontobpr#JustificationOfNegativeDecision> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid28 .
+_:genid28 <http://www.w3.org/2002/07/owl#onClass> <https://w3id.org/ontobpr#NegativePermitDecision> .
+_:genid28 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid28 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/ontobpr#afterActivity> .
+_:genid28 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://w3id.org/ontobpr#JustificationOfNegativeDecision> <http://www.w3.org/2000/01/rdf-schema#comment> "the Justification of negative decision activity" .
+<https://w3id.org/ontobpr#JustificationOfNegativeDecision> <http://www.w3.org/2000/01/rdf-schema#label> "(5.3b) Justification of negative decision " .
+# 
+# https://w3id.org/ontobpr#NegativePermitDecision
+<https://w3id.org/ontobpr#NegativePermitDecision> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/ontobpr#NegativePermitDecision> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/ontobpr#Activity> .
+<https://w3id.org/ontobpr#NegativePermitDecision> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid29 .
+_:genid29 <http://www.w3.org/2002/07/owl#onClass> <https://w3id.org/ontobpr#RequestReviewResults> .
+_:genid29 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid29 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/ontobpr#afterActivity> .
+_:genid29 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://w3id.org/ontobpr#NegativePermitDecision> <http://www.w3.org/2000/01/rdf-schema#comment> "the Negative permit decision activity" .
+<https://w3id.org/ontobpr#NegativePermitDecision> <http://www.w3.org/2000/01/rdf-schema#label> "(5.2b) Negative permit decision " .
+# 
+# https://w3id.org/ontobpr#Participation
+<https://w3id.org/ontobpr#Participation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/ontobpr#Participation> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/ontobpr#Activity> .
+<https://w3id.org/ontobpr#Participation> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid30 .
+_:genid30 <http://www.w3.org/2002/07/owl#onClass> <https://w3id.org/ontobpr#FormalReview> .
+_:genid30 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid30 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/ontobpr#afterActivity> .
+_:genid30 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://w3id.org/ontobpr#Participation> <http://www.w3.org/2000/01/rdf-schema#comment> "the Participation activity" .
+<https://w3id.org/ontobpr#Participation> <http://www.w3.org/2000/01/rdf-schema#label> "(3) Participation " .
+# 
+# https://w3id.org/ontobpr#PositivePermitDecision
+<https://w3id.org/ontobpr#PositivePermitDecision> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/ontobpr#PositivePermitDecision> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/ontobpr#Activity> .
+<https://w3id.org/ontobpr#PositivePermitDecision> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid31 .
+_:genid31 <http://www.w3.org/2002/07/owl#onClass> <https://w3id.org/ontobpr#RequestReviewResults> .
+_:genid31 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid31 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/ontobpr#afterActivity> .
+_:genid31 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://w3id.org/ontobpr#PositivePermitDecision> <http://www.w3.org/2000/01/rdf-schema#comment> "the Positive permit decision activity" .
+<https://w3id.org/ontobpr#PositivePermitDecision> <http://www.w3.org/2000/01/rdf-schema#label> "(5.2a) Positive permit decision " .
+# 
+# https://w3id.org/ontobpr#RequestReviewResults
+<https://w3id.org/ontobpr#RequestReviewResults> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/ontobpr#RequestReviewResults> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/ontobpr#Activity> .
+<https://w3id.org/ontobpr#RequestReviewResults> <http://www.w3.org/2000/01/rdf-schema#comment> "the Request review results activity" .
+<https://w3id.org/ontobpr#RequestReviewResults> <http://www.w3.org/2000/01/rdf-schema#label> "(5.1) Request review results " .
+# 
+# https://w3id.org/ontobpr#ReviewPreparation
+<https://w3id.org/ontobpr#ReviewPreparation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/ontobpr#ReviewPreparation> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/ontobpr#Activity> .
+<https://w3id.org/ontobpr#ReviewPreparation> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid32 .
+_:genid32 <http://www.w3.org/2002/07/owl#onClass> <https://w3id.org/ontobpr#CompletenessCheck> .
+_:genid32 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid32 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/ontobpr#afterActivity> .
+_:genid32 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://w3id.org/ontobpr#ReviewPreparation> <http://www.w3.org/2000/01/rdf-schema#comment> "the Review preparation activity" .
+<https://w3id.org/ontobpr#ReviewPreparation> <http://www.w3.org/2000/01/rdf-schema#label> "(1.2) Review preparation " .
+# 
+# https://w3id.org/ontobpr#ReviewResult
+<https://w3id.org/ontobpr#ReviewResult> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/ontobpr#ReviewResult> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://org.semanticweb.owlapi/error#Error27> .
+<https://w3id.org/ontobpr#ReviewResult> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://org.semanticweb.owlapi/error#Error28> .
+<https://w3id.org/ontobpr#ReviewResult> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/2002/07/owl#Thing> .
+<https://w3id.org/ontobpr#ReviewResult> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid33 .
+_:genid33 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/ns/shacl#ValidationReport> .
+_:genid33 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/ontobpr#hasCheckingResults> .
+_:genid33 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://w3id.org/ontobpr#ReviewResult> <http://www.w3.org/2000/01/rdf-schema#comment> "the review result of a particular agent incorporating a sh:ValidationReport" .
+<https://w3id.org/ontobpr#ReviewResult> <http://www.w3.org/2000/01/rdf-schema#label> "Review checking result" .
+# 
+# https://w3id.org/ontobpr#ReviewStatement
+<https://w3id.org/ontobpr#ReviewStatement> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/ontobpr#ReviewStatement> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://org.semanticweb.owlapi/error#Error37> .
+<https://w3id.org/ontobpr#ReviewStatement> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://org.semanticweb.owlapi/error#Error38> .
+<https://w3id.org/ontobpr#ReviewStatement> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://org.semanticweb.owlapi/error#Error39> .
+<https://w3id.org/ontobpr#ReviewStatement> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/2002/07/owl#Thing> .
+<https://w3id.org/ontobpr#ReviewStatement> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid34 .
+_:genid34 <http://www.w3.org/2002/07/owl#onClass> <https://w3id.org/ontobpr#Activity> .
+_:genid34 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid34 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/ontobpr#belongsToActivity> .
+_:genid34 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://w3id.org/ontobpr#ReviewStatement> <http://www.w3.org/2000/01/rdf-schema#comment> "a general review statement for logging events during the building permit review" .
+<https://w3id.org/ontobpr#ReviewStatement> <http://www.w3.org/2000/01/rdf-schema#label> "Review statement" .
+# 
+# https://w3id.org/ontobpr#ReviewStatus
+<https://w3id.org/ontobpr#ReviewStatus> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/ontobpr#ReviewStatus> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/2002/07/owl#Thing> .
+<https://w3id.org/ontobpr#ReviewStatus> <http://www.w3.org/2000/01/rdf-schema#comment> "the status of the building application within the building permit review" .
+<https://w3id.org/ontobpr#ReviewStatus> <http://www.w3.org/2000/01/rdf-schema#label> "Review status" .
+# 
+# https://w3id.org/ontobpr#ShaclShapesSet
+<https://w3id.org/ontobpr#ShaclShapesSet> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/ontobpr#ShaclShapesSet> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/2002/07/owl#Thing> .
+<https://w3id.org/ontobpr#ShaclShapesSet> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:genid35 .
+_:genid35 <http://www.w3.org/2002/07/owl#someValuesFrom> <http://www.w3.org/ns/shacl#Shape> .
+_:genid35 <http://www.w3.org/2002/07/owl#onProperty> <https://w3id.org/ontobpr#hasShapes> .
+_:genid35 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<https://w3id.org/ontobpr#ShaclShapesSet> <http://www.w3.org/2000/01/rdf-schema#comment> "a set of SHACL shapes for validating data at various activities of the building permit review" .
+<https://w3id.org/ontobpr#ShaclShapesSet> <http://www.w3.org/2000/01/rdf-schema#label> "SHACL shapes set" .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Individuals
+# #
+# #################################################################
+# 
+# 
+# https://w3id.org/ontobpr#Accepted
+<https://w3id.org/ontobpr#Accepted> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/ontobpr#Accepted> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/ontobpr#ReviewStatus> .
+<https://w3id.org/ontobpr#Accepted> <http://www.w3.org/2000/01/rdf-schema#label> "Accepted" .
+# 
+# https://w3id.org/ontobpr#AcceptedWithConditions
+<https://w3id.org/ontobpr#AcceptedWithConditions> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/ontobpr#AcceptedWithConditions> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/ontobpr#ReviewStatus> .
+<https://w3id.org/ontobpr#AcceptedWithConditions> <http://www.w3.org/2000/01/rdf-schema#label> "Accepted with conditions" .
+# 
+# https://w3id.org/ontobpr#ApplicationForm
+<https://w3id.org/ontobpr#ApplicationForm> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/ontobpr#ApplicationForm> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/ontobpr#DocumentClassification> .
+<https://w3id.org/ontobpr#ApplicationForm> <http://www.w3.org/2000/01/rdf-schema#comment> "Das Antragsformular umfasst die Stammdaten des Antrags, z.B. Andressdaten, Kontaktdaten des Entwurfsverfassers, die Verfahrensart, Nachbarbeteiligungen, etc."@de .
+<https://w3id.org/ontobpr#ApplicationForm> <http://www.w3.org/2000/01/rdf-schema#comment> "The application form includes the data of the application, e.g., address data, contact details of the design engineer/architect, type of procedure, neighbor participation, etc." .
+<https://w3id.org/ontobpr#ApplicationForm> <http://www.w3.org/2000/01/rdf-schema#label> "Antragsformular"@de .
+<https://w3id.org/ontobpr#ApplicationForm> <http://www.w3.org/2000/01/rdf-schema#label> "Application form" .
+# 
+# https://w3id.org/ontobpr#BuildingDescription
+<https://w3id.org/ontobpr#BuildingDescription> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/ontobpr#BuildingDescription> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/ontobpr#DocumentClassification> .
+<https://w3id.org/ontobpr#BuildingDescription> <http://www.w3.org/2000/01/rdf-schema#comment> "Baubeschreibungen umfassen Informationen zur generellen Funktion des Gebäude (Gebäudetyp, Nutzungsart, etc.) und bei betrieblicher oder landwirtschaftlicher Nutzung auch eine betrieblichiche Beschreibung des Gebäude"@de .
+<https://w3id.org/ontobpr#BuildingDescription> <http://www.w3.org/2000/01/rdf-schema#comment> "Building descriptions include information on the general function of the building (building type, type of use, etc.) and, in the case of commercial or agricultural use, also an operational description of the building." .
+<https://w3id.org/ontobpr#BuildingDescription> <http://www.w3.org/2000/01/rdf-schema#label> "Baubeschreibung"@de .
+<https://w3id.org/ontobpr#BuildingDescription> <http://www.w3.org/2000/01/rdf-schema#label> "Building description" .
+# 
+# https://w3id.org/ontobpr#BuildingModel
+<https://w3id.org/ontobpr#BuildingModel> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/ontobpr#BuildingModel> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/ontobpr#DocumentClassification> .
+<https://w3id.org/ontobpr#BuildingModel> <http://www.w3.org/2000/01/rdf-schema#comment> "Umfasst ein oder mehrere Modelle im Industry Foundation Classes (IFC) Format."@de .
+<https://w3id.org/ontobpr#BuildingModel> <http://www.w3.org/2000/01/rdf-schema#comment> "Includes one or more models in Industry Foundation Classes (IFC) format." .
+<https://w3id.org/ontobpr#BuildingModel> <http://www.w3.org/2000/01/rdf-schema#label> "Bauwerksmodell"@de .
+<https://w3id.org/ontobpr#BuildingModel> <http://www.w3.org/2000/01/rdf-schema#label> "Building model" .
+# 
+# https://w3id.org/ontobpr#EngineeringProofs
+<https://w3id.org/ontobpr#EngineeringProofs> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/ontobpr#EngineeringProofs> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/ontobpr#DocumentClassification> .
+<https://w3id.org/ontobpr#EngineeringProofs> <http://www.w3.org/2000/01/rdf-schema#comment> "Umfassen üblicherweise Dokumente über spezielle Nachweise, z.B. des Brandschutzes, der Statik, des Schallschutzes oder der Barrierefreiheit."@de .
+<https://w3id.org/ontobpr#EngineeringProofs> <http://www.w3.org/2000/01/rdf-schema#comment> "Usually include documents relating to specific certifications or proofs, e.g., fire protection, structural stability, sound insulation, or accessibility." .
+<https://w3id.org/ontobpr#EngineeringProofs> <http://www.w3.org/2000/01/rdf-schema#label> "Bautechnische Nachweise"@de .
+<https://w3id.org/ontobpr#EngineeringProofs> <http://www.w3.org/2000/01/rdf-schema#label> "Engineering proofs" .
+# 
+# https://w3id.org/ontobpr#PlotRelatedPlans
+<https://w3id.org/ontobpr#PlotRelatedPlans> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/ontobpr#PlotRelatedPlans> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/ontobpr#DocumentClassification> .
+<https://w3id.org/ontobpr#PlotRelatedPlans> <http://www.w3.org/2000/01/rdf-schema#comment> "Umfassen Planunterlagen, die das Grundstück und die Lage betreffen (üblicherweise im Maßstab größer als 1:500), z.B. Lageplan, Entwässerungsplan, Abstandsflächenplan"@de .
+<https://w3id.org/ontobpr#PlotRelatedPlans> <http://www.w3.org/2000/01/rdf-schema#comment> "Include planning documents relating to the plot and its location (usually on a scale larger than 1:500), e.g., site plan, drainage plan, setbacks planning." .
+<https://w3id.org/ontobpr#PlotRelatedPlans> <http://www.w3.org/2000/01/rdf-schema#label> "Grundstücksbezogene Planunterlagen"@de .
+<https://w3id.org/ontobpr#PlotRelatedPlans> <http://www.w3.org/2000/01/rdf-schema#label> "Plot related plans" .
+# 
+# https://w3id.org/ontobpr#Rejected
+<https://w3id.org/ontobpr#Rejected> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/ontobpr#Rejected> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/ontobpr#ReviewStatus> .
+<https://w3id.org/ontobpr#Rejected> <http://www.w3.org/2000/01/rdf-schema#label> "Rejected" .
+# 
+# https://w3id.org/ontobpr#RequestInformation
+<https://w3id.org/ontobpr#RequestInformation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/ontobpr#RequestInformation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/ontobpr#ReviewStatus> .
+<https://w3id.org/ontobpr#RequestInformation> <http://www.w3.org/2000/01/rdf-schema#label> "Request information" .
+# 
+# https://w3id.org/ontobpr#TechnicalDrawing
+<https://w3id.org/ontobpr#TechnicalDrawing> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/ontobpr#TechnicalDrawing> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/ontobpr#DocumentClassification> .
+<https://w3id.org/ontobpr#TechnicalDrawing> <http://www.w3.org/2000/01/rdf-schema#comment> "Umfassen technische Zeichnungen, die das Bauwerk betreffen (Maßstäbe üblicherweise 1:100, seltener auch Detailzeichnungen in Maßstab 1:50 oder kleiner), z.B. Ansichten, Schnitte, Grundrisse"@de .
+<https://w3id.org/ontobpr#TechnicalDrawing> <http://www.w3.org/2000/01/rdf-schema#comment> "Include technical drawings relating to the structure (usually on a scale of 1:100, less commonly detailed drawings on a scale of 1:50 or smaller), e.g. elevations, sections, floor plans." .
+<https://w3id.org/ontobpr#TechnicalDrawing> <http://www.w3.org/2000/01/rdf-schema#label> "Bauzeichnung"@de .
+<https://w3id.org/ontobpr#TechnicalDrawing> <http://www.w3.org/2000/01/rdf-schema#label> "Technical drawing" .
+# 
+# https://w3id.org/ontobpr#Unclassified
+<https://w3id.org/ontobpr#Unclassified> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/ontobpr#Unclassified> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/ontobpr#DocumentClassification> .
+<https://w3id.org/ontobpr#Unclassified> <http://www.w3.org/2000/01/rdf-schema#label> "Nicht näher klassifiziert"@de .
+<https://w3id.org/ontobpr#Unclassified> <http://www.w3.org/2000/01/rdf-schema#label> "Unclassified" .
+# 
+# https://w3id.org/ontobpr#UnderReview
+<https://w3id.org/ontobpr#UnderReview> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/ontobpr#UnderReview> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/ontobpr#ReviewStatus> .
+<https://w3id.org/ontobpr#UnderReview> <http://www.w3.org/2000/01/rdf-schema#label> "Under review" .
+# 
+_:genid36 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid37 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid38 <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid39 <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid40 <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid41 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid42 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid43 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid44 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid45 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid46 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid47 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:genid48 <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+# Generated by the OWL API (version 5.1.18) https://github.com/owlcs/owlapi/

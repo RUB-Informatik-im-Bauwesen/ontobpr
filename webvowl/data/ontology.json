@@ -1,0 +1,1611 @@
+{
+  "_comment" : "Created with OWL2VOWL (version 0.3.5), http://vowl.visualdataweb.org",
+  "header" : {
+    "languages" : [ "de", "en", "undefined" ],
+    "baseIris" : [ "https://w3id.org/obpa", "https://w3id.org/isoprops", "http://www.w3.org/1999/02/22-rdf-syntax-ns", "http://www.w3.org/2002/07/owl", "http://www.w3.org/2000/01/rdf-schema", "https://schema.org", "https://standards.iso.org/iso/21597/-1/ed-1/en/Container", "http://www.w3.org/ns/shacl", "http://www.w3.org/2001/XMLSchema", "http://org.semanticweb.owlapi/error", "https://w3id.org/ontobpr" ],
+    "iri" : "https://w3id.org/ontobpr",
+    "author" : [ "_:genid2147483693", "_:genid2147483692", "_:genid2147483691", "_:genid2147483690" ],
+    "labels" : {
+      "undefined" : "OntoBPR: An ontological workflow for building permit review"
+    },
+    "comments" : {
+      "en" : "To avoid a digital disruption in planning buildings and structures, this research presents a workflow in which building codes are represented as machine-readable knowledge graphs and ontologies as an integration to the building permit review procedure and the participation process. Therefore, the building permit process was analyzed, and possible applications of ontology-based knowledge representations are explored. An ontology-based building permit review (OntoBPR) is proposed, reusing two existing ontologies for modeling the permit review workflow for representing the building codes. The OntoBPR ontology extends the approach with a connection to Information Containers for linked Document Delivery (ICDD) that are used for submitting the building application, and the Shapes Constraint Language (SHACL) of which rules are generated from the building code knowledge graphs."
+    },
+    "other" : {
+      "license" : [ {
+        "identifier" : "license",
+        "language" : "undefined",
+        "value" : "https://creativecommons.org/licenses/by/4.0/",
+        "type" : "iri"
+      } ],
+      "creator" : [ {
+        "identifier" : "creator",
+        "language" : "undefined",
+        "value" : "_:genid2147483690",
+        "type" : "label"
+      }, {
+        "identifier" : "creator",
+        "language" : "undefined",
+        "value" : "_:genid2147483691",
+        "type" : "label"
+      }, {
+        "identifier" : "creator",
+        "language" : "undefined",
+        "value" : "_:genid2147483693",
+        "type" : "label"
+      }, {
+        "identifier" : "creator",
+        "language" : "undefined",
+        "value" : "_:genid2147483692",
+        "type" : "label"
+      } ],
+      "created" : [ {
+        "identifier" : "created",
+        "language" : "undefined",
+        "value" : "2022-12-23",
+        "type" : "label"
+      } ],
+      "preferredNamespacePrefix" : [ {
+        "identifier" : "preferredNamespacePrefix",
+        "language" : "undefined",
+        "value" : "ontobpr",
+        "type" : "label"
+      } ],
+      "source" : [ {
+        "identifier" : "source",
+        "language" : "undefined",
+        "value" : "https://github.com/RUB-Informatik-im-Bauwesen/ontobpr",
+        "type" : "label"
+      } ]
+    }
+  },
+  "namespace" : [ ],
+  "class" : [ {
+    "id" : "3",
+    "type" : "owl:Class"
+  }, {
+    "id" : "1",
+    "type" : "owl:Class"
+  }, {
+    "id" : "4",
+    "type" : "owl:equivalentClass"
+  }, {
+    "id" : "29",
+    "type" : "owl:Class"
+  }, {
+    "id" : "43",
+    "type" : "owl:Class"
+  }, {
+    "id" : "44",
+    "type" : "owl:Class"
+  }, {
+    "id" : "40",
+    "type" : "owl:Class"
+  }, {
+    "id" : "55",
+    "type" : "owl:Class"
+  }, {
+    "id" : "58",
+    "type" : "owl:Class"
+  }, {
+    "id" : "57",
+    "type" : "owl:equivalentClass"
+  }, {
+    "id" : "61",
+    "type" : "owl:equivalentClass"
+  }, {
+    "id" : "63",
+    "type" : "owl:Class"
+  }, {
+    "id" : "65",
+    "type" : "owl:Class"
+  }, {
+    "id" : "66",
+    "type" : "owl:Class"
+  }, {
+    "id" : "68",
+    "type" : "owl:Class"
+  }, {
+    "id" : "42",
+    "type" : "owl:Class"
+  }, {
+    "id" : "6",
+    "type" : "owl:Class"
+  }, {
+    "id" : "10",
+    "type" : "owl:Class"
+  }, {
+    "id" : "35",
+    "type" : "owl:Class"
+  }, {
+    "id" : "71",
+    "type" : "owl:Class"
+  }, {
+    "id" : "27",
+    "type" : "owl:Class"
+  }, {
+    "id" : "76",
+    "type" : "owl:Class"
+  }, {
+    "id" : "77",
+    "type" : "owl:Class"
+  }, {
+    "id" : "78",
+    "type" : "owl:Class"
+  }, {
+    "id" : "79",
+    "type" : "owl:Class"
+  }, {
+    "id" : "80",
+    "type" : "owl:Class"
+  }, {
+    "id" : "75",
+    "type" : "owl:Class"
+  }, {
+    "id" : "73",
+    "type" : "owl:Class"
+  }, {
+    "id" : "82",
+    "type" : "owl:equivalentClass"
+  }, {
+    "id" : "83",
+    "type" : "owl:Class"
+  }, {
+    "id" : "54",
+    "type" : "owl:Class"
+  }, {
+    "id" : "64",
+    "type" : "owl:equivalentClass"
+  }, {
+    "id" : "46",
+    "type" : "owl:Class"
+  }, {
+    "id" : "60",
+    "type" : "owl:Class"
+  }, {
+    "id" : "96",
+    "type" : "owl:equivalentClass"
+  }, {
+    "id" : "50",
+    "type" : "owl:Class"
+  }, {
+    "id" : "48",
+    "type" : "owl:Class"
+  }, {
+    "id" : "53",
+    "type" : "owl:Class"
+  }, {
+    "id" : "45",
+    "type" : "owl:Class"
+  }, {
+    "id" : "94",
+    "type" : "owl:Class"
+  }, {
+    "id" : "33",
+    "type" : "owl:Class"
+  }, {
+    "id" : "36",
+    "type" : "owl:Class"
+  }, {
+    "id" : "31",
+    "type" : "owl:Class"
+  }, {
+    "id" : "97",
+    "type" : "owl:equivalentClass"
+  }, {
+    "id" : "98",
+    "type" : "owl:Class"
+  }, {
+    "id" : "99",
+    "type" : "owl:Class"
+  }, {
+    "id" : "8",
+    "type" : "rdfs:Datatype"
+  }, {
+    "id" : "105",
+    "type" : "owl:Class"
+  }, {
+    "id" : "12",
+    "type" : "owl:Thing"
+  }, {
+    "id" : "85",
+    "type" : "rdfs:Literal"
+  }, {
+    "id" : "38",
+    "type" : "owl:Class"
+  }, {
+    "id" : "67",
+    "type" : "owl:equivalentClass"
+  }, {
+    "id" : "2",
+    "type" : "owl:equivalentClass"
+  }, {
+    "id" : "70",
+    "type" : "owl:Class"
+  }, {
+    "id" : "56",
+    "type" : "owl:equivalentClass"
+  } ],
+  "classAttribute" : [ {
+    "iri" : "https://w3id.org/ontobpr#FormulationOfCondition",
+    "baseIri" : "https://w3id.org/ontobpr",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "FormulationOfCondition",
+      "undefined" : "(5.3a) Formulation of condition "
+    },
+    "comment" : {
+      "undefined" : "the Formulation of condition activity"
+    },
+    "id" : "3",
+    "superClasses" : [ "2" ]
+  }, {
+    "iri" : "https://w3id.org/ontobpr#RequestReviewResults",
+    "baseIri" : "https://w3id.org/ontobpr",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "RequestReviewResults",
+      "undefined" : "(5.1) Request review results "
+    },
+    "comment" : {
+      "undefined" : "the Request review results activity"
+    },
+    "id" : "1",
+    "superClasses" : [ "2" ]
+  }, {
+    "iri" : "https://w3id.org/obpa#BuildingAuthority",
+    "baseIri" : "https://w3id.org/obpa",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "BuildingAuthority"
+    },
+    "attributes" : [ "equivalent", "external" ],
+    "id" : "4"
+  }, {
+    "iri" : "https://w3id.org/ontobpr#ReviewPreparation",
+    "baseIri" : "https://w3id.org/ontobpr",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "ReviewPreparation",
+      "undefined" : "(1.2) Review preparation "
+    },
+    "comment" : {
+      "undefined" : "the Review preparation activity"
+    },
+    "id" : "29",
+    "superClasses" : [ "2" ]
+  }, {
+    "iri" : "http://www.w3.org/ns/shacl#Shape",
+    "baseIri" : "http://www.w3.org/ns/shacl",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Shape"
+    },
+    "attributes" : [ "external" ],
+    "id" : "43"
+  }, {
+    "iri" : "https://standards.iso.org/iso/21597/-1/ed-1/en/Container#ContainerDescription",
+    "baseIri" : "https://standards.iso.org/iso/21597/-1/ed-1/en/Container",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "ContainerDescription"
+    },
+    "attributes" : [ "external" ],
+    "id" : "44"
+  }, {
+    "iri" : "https://w3id.org/ontobpr#FormalReview",
+    "baseIri" : "https://w3id.org/ontobpr",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "FormalReview",
+      "undefined" : "(1) Formal review"
+    },
+    "comment" : {
+      "undefined" : "The Formal review activity"
+    },
+    "id" : "40",
+    "superClasses" : [ "45", "2", "46" ]
+  }, {
+    "instances" : 0,
+    "union" : [ "56", "57" ],
+    "attributes" : [ "anonymous", "union" ],
+    "id" : "55"
+  }, {
+    "iri" : "https://w3id.org/ontobpr#JustificationOfNegativeDecision",
+    "baseIri" : "https://w3id.org/ontobpr",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "JustificationOfNegativeDecision",
+      "undefined" : "(5.3b) Justification of negative decision "
+    },
+    "comment" : {
+      "undefined" : "the Justification of negative decision activity"
+    },
+    "id" : "58",
+    "superClasses" : [ "2" ]
+  }, {
+    "iri" : "https://w3id.org/obpa#BuildingApplication",
+    "baseIri" : "https://w3id.org/obpa",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "BuildingApplication"
+    },
+    "attributes" : [ "equivalent", "external" ],
+    "id" : "57"
+  }, {
+    "iri" : "https://w3id.org/isoprops#Dictionary",
+    "baseIri" : "https://w3id.org/isoprops",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Dictionary"
+    },
+    "attributes" : [ "equivalent", "external" ],
+    "id" : "61"
+  }, {
+    "instances" : 0,
+    "union" : [ "61", "64" ],
+    "attributes" : [ "anonymous", "union" ],
+    "id" : "63"
+  }, {
+    "instances" : 0,
+    "union" : [ "61", "64" ],
+    "attributes" : [ "anonymous", "union" ],
+    "id" : "65"
+  }, {
+    "instances" : 0,
+    "union" : [ "4", "67" ],
+    "attributes" : [ "anonymous", "union" ],
+    "id" : "66"
+  }, {
+    "iri" : "https://w3id.org/ontobpr#ReviewStatus",
+    "baseIri" : "https://w3id.org/ontobpr",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "ReviewStatus",
+      "undefined" : "Review status"
+    },
+    "individuals" : [ {
+      "iri" : "https://w3id.org/ontobpr#Accepted",
+      "baseIri" : "https://w3id.org/ontobpr",
+      "labels" : {
+        "IRI-based" : "Accepted",
+        "undefined" : "Accepted"
+      }
+    }, {
+      "iri" : "https://w3id.org/ontobpr#Rejected",
+      "baseIri" : "https://w3id.org/ontobpr",
+      "labels" : {
+        "IRI-based" : "Rejected",
+        "undefined" : "Rejected"
+      }
+    }, {
+      "iri" : "https://w3id.org/ontobpr#RequestInformation",
+      "baseIri" : "https://w3id.org/ontobpr",
+      "labels" : {
+        "IRI-based" : "RequestInformation",
+        "undefined" : "Request information"
+      }
+    }, {
+      "iri" : "https://w3id.org/ontobpr#UnderReview",
+      "baseIri" : "https://w3id.org/ontobpr",
+      "labels" : {
+        "IRI-based" : "UnderReview",
+        "undefined" : "Under review"
+      }
+    }, {
+      "iri" : "https://w3id.org/ontobpr#AcceptedWithConditions",
+      "baseIri" : "https://w3id.org/ontobpr",
+      "labels" : {
+        "IRI-based" : "AcceptedWithConditions",
+        "undefined" : "Accepted with conditions"
+      }
+    } ],
+    "comment" : {
+      "undefined" : "the status of the building application within the building permit review"
+    },
+    "id" : "68"
+  }, {
+    "iri" : "https://w3id.org/ontobpr#ContentReview",
+    "baseIri" : "https://w3id.org/ontobpr",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "ContentReview",
+      "undefined" : "(4) Content review "
+    },
+    "comment" : {
+      "undefined" : "The Content review activity"
+    },
+    "id" : "42",
+    "superClasses" : [ "2" ]
+  }, {
+    "iri" : "https://w3id.org/ontobpr#CreatingNotificationLetter",
+    "baseIri" : "https://w3id.org/ontobpr",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "CreatingNotificationLetter",
+      "undefined" : "(5.4) Creating notification letter"
+    },
+    "comment" : {
+      "undefined" : "The Creating notification letter activity"
+    },
+    "id" : "6",
+    "superClasses" : [ "2" ]
+  }, {
+    "iri" : "https://w3id.org/ontobpr#Assignment",
+    "baseIri" : "https://w3id.org/ontobpr",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Assignment",
+      "undefined" : "(2) Assignment"
+    },
+    "comment" : {
+      "undefined" : "the Assignment activity"
+    },
+    "id" : "10",
+    "superClasses" : [ "2" ]
+  }, {
+    "iri" : "https://w3id.org/ontobpr#Justification",
+    "baseIri" : "https://w3id.org/ontobpr",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Justification",
+      "undefined" : "Justification"
+    },
+    "comment" : {
+      "undefined" : "justification statement of a negative building permit review decision"
+    },
+    "id" : "35",
+    "superClasses" : [ "36" ]
+  }, {
+    "iri" : "https://w3id.org/ontobpr#DocumentClassification",
+    "baseIri" : "https://w3id.org/ontobpr",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "DocumentClassification",
+      "undefined" : "Document classification"
+    },
+    "individuals" : [ {
+      "iri" : "https://w3id.org/ontobpr#TechnicalDrawing",
+      "baseIri" : "https://w3id.org/ontobpr",
+      "comment" : {
+        "de" : "Umfassen technische Zeichnungen, die das Bauwerk betreffen (Maßstäbe üblicherweise 1:100, seltener auch Detailzeichnungen in Maßstab 1:50 oder kleiner), z.B. Ansichten, Schnitte, Grundrisse",
+        "undefined" : "Include technical drawings relating to the structure (usually on a scale of 1:100, less commonly detailed drawings on a scale of 1:50 or smaller), e.g. elevations, sections, floor plans."
+      },
+      "labels" : {
+        "de" : "Bauzeichnung",
+        "IRI-based" : "TechnicalDrawing",
+        "undefined" : "Technical drawing"
+      }
+    }, {
+      "iri" : "https://w3id.org/ontobpr#BuildingModel",
+      "baseIri" : "https://w3id.org/ontobpr",
+      "comment" : {
+        "de" : "Umfasst ein oder mehrere Modelle im Industry Foundation Classes (IFC) Format.",
+        "undefined" : "Includes one or more models in Industry Foundation Classes (IFC) format."
+      },
+      "labels" : {
+        "de" : "Bauwerksmodell",
+        "IRI-based" : "BuildingModel",
+        "undefined" : "Building model"
+      }
+    }, {
+      "iri" : "https://w3id.org/ontobpr#EngineeringProofs",
+      "baseIri" : "https://w3id.org/ontobpr",
+      "comment" : {
+        "de" : "Umfassen üblicherweise Dokumente über spezielle Nachweise, z.B. des Brandschutzes, der Statik, des Schallschutzes oder der Barrierefreiheit.",
+        "undefined" : "Usually include documents relating to specific certifications or proofs, e.g., fire protection, structural stability, sound insulation, or accessibility."
+      },
+      "labels" : {
+        "de" : "Bautechnische Nachweise",
+        "IRI-based" : "EngineeringProofs",
+        "undefined" : "Engineering proofs"
+      }
+    }, {
+      "iri" : "https://w3id.org/ontobpr#Unclassified",
+      "baseIri" : "https://w3id.org/ontobpr",
+      "labels" : {
+        "de" : "Nicht näher klassifiziert",
+        "IRI-based" : "Unclassified",
+        "undefined" : "Unclassified"
+      }
+    }, {
+      "iri" : "https://w3id.org/ontobpr#PlotRelatedPlans",
+      "baseIri" : "https://w3id.org/ontobpr",
+      "comment" : {
+        "de" : "Umfassen Planunterlagen, die das Grundstück und die Lage betreffen (üblicherweise im Maßstab größer als 1:500), z.B. Lageplan, Entwässerungsplan, Abstandsflächenplan",
+        "undefined" : "Include planning documents relating to the plot and its location (usually on a scale larger than 1:500), e.g., site plan, drainage plan, setbacks planning."
+      },
+      "labels" : {
+        "de" : "Grundstücksbezogene Planunterlagen",
+        "IRI-based" : "PlotRelatedPlans",
+        "undefined" : "Plot related plans"
+      }
+    }, {
+      "iri" : "https://w3id.org/ontobpr#ApplicationForm",
+      "baseIri" : "https://w3id.org/ontobpr",
+      "comment" : {
+        "de" : "Das Antragsformular umfasst die Stammdaten des Antrags, z.B. Andressdaten, Kontaktdaten des Entwurfsverfassers, die Verfahrensart, Nachbarbeteiligungen, etc.",
+        "undefined" : "The application form includes the data of the application, e.g., address data, contact details of the design engineer/architect, type of procedure, neighbor participation, etc."
+      },
+      "labels" : {
+        "de" : "Antragsformular",
+        "IRI-based" : "ApplicationForm",
+        "undefined" : "Application form"
+      }
+    }, {
+      "iri" : "https://w3id.org/ontobpr#BuildingDescription",
+      "baseIri" : "https://w3id.org/ontobpr",
+      "comment" : {
+        "de" : "Baubeschreibungen umfassen Informationen zur generellen Funktion des Gebäude (Gebäudetyp, Nutzungsart, etc.) und bei betrieblicher oder landwirtschaftlicher Nutzung auch eine betrieblichiche Beschreibung des Gebäude",
+        "undefined" : "Building descriptions include information on the general function of the building (building type, type of use, etc.) and, in the case of commercial or agricultural use, also an operational description of the building."
+      },
+      "labels" : {
+        "de" : "Baubeschreibung",
+        "IRI-based" : "BuildingDescription",
+        "undefined" : "Building description"
+      }
+    } ],
+    "comment" : {
+      "undefined" : "The classification of a document in the context of a building application."
+    },
+    "id" : "71"
+  }, {
+    "iri" : "https://w3id.org/ontobpr#CompletenessCheck",
+    "baseIri" : "https://w3id.org/ontobpr",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "CompletenessCheck",
+      "undefined" : "(1.1) Completeness check "
+    },
+    "comment" : {
+      "undefined" : "the Completeness check activity"
+    },
+    "id" : "27",
+    "superClasses" : [ "2" ]
+  }, {
+    "iri" : "http://org.semanticweb.owlapi/error#Error35",
+    "baseIri" : "http://org.semanticweb.owlapi/error",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Error35"
+    },
+    "subClasses" : [ "33" ],
+    "attributes" : [ "external" ],
+    "id" : "76"
+  }, {
+    "iri" : "http://org.semanticweb.owlapi/error#Error36",
+    "baseIri" : "http://org.semanticweb.owlapi/error",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Error36"
+    },
+    "subClasses" : [ "33" ],
+    "attributes" : [ "external" ],
+    "id" : "77"
+  }, {
+    "iri" : "http://org.semanticweb.owlapi/error#Error33",
+    "baseIri" : "http://org.semanticweb.owlapi/error",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Error33"
+    },
+    "subClasses" : [ "33" ],
+    "attributes" : [ "external" ],
+    "id" : "78"
+  }, {
+    "iri" : "http://org.semanticweb.owlapi/error#Error34",
+    "baseIri" : "http://org.semanticweb.owlapi/error",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Error34"
+    },
+    "subClasses" : [ "33" ],
+    "attributes" : [ "external" ],
+    "id" : "79"
+  }, {
+    "iri" : "http://org.semanticweb.owlapi/error#Error39",
+    "baseIri" : "http://org.semanticweb.owlapi/error",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Error39"
+    },
+    "subClasses" : [ "36" ],
+    "attributes" : [ "external" ],
+    "id" : "80"
+  }, {
+    "iri" : "http://org.semanticweb.owlapi/error#Error37",
+    "baseIri" : "http://org.semanticweb.owlapi/error",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Error37"
+    },
+    "subClasses" : [ "36" ],
+    "attributes" : [ "external" ],
+    "id" : "75"
+  }, {
+    "iri" : "http://org.semanticweb.owlapi/error#Error38",
+    "baseIri" : "http://org.semanticweb.owlapi/error",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Error38"
+    },
+    "subClasses" : [ "36" ],
+    "attributes" : [ "external" ],
+    "id" : "73"
+  }, {
+    "iri" : "https://w3id.org/obpa#Building",
+    "baseIri" : "https://w3id.org/obpa",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Building"
+    },
+    "attributes" : [ "equivalent", "external" ],
+    "id" : "82"
+  }, {
+    "iri" : "https://w3id.org/ontobpr#Participation",
+    "baseIri" : "https://w3id.org/ontobpr",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Participation",
+      "undefined" : "(3) Participation "
+    },
+    "comment" : {
+      "undefined" : "the Participation activity"
+    },
+    "id" : "83",
+    "superClasses" : [ "2" ]
+  }, {
+    "iri" : "http://org.semanticweb.owlapi/error#Error28",
+    "baseIri" : "http://org.semanticweb.owlapi/error",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Error28"
+    },
+    "subClasses" : [ "53" ],
+    "attributes" : [ "external" ],
+    "id" : "54"
+  }, {
+    "iri" : "https://w3id.org/ontobpr#BuildingCodeDictionary",
+    "equivalent" : [ "61" ],
+    "baseIri" : "https://w3id.org/ontobpr",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "BuildingCodeDictionary",
+      "undefined" : "Dictionary"
+    },
+    "comment" : {
+      "undefined" : "A dictionary containing properties and shapes from a building code"
+    },
+    "attributes" : [ "equivalent" ],
+    "id" : "64"
+  }, {
+    "iri" : "http://org.semanticweb.owlapi/error#Error29",
+    "baseIri" : "http://org.semanticweb.owlapi/error",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Error29"
+    },
+    "subClasses" : [ "40" ],
+    "attributes" : [ "external" ],
+    "id" : "46"
+  }, {
+    "iri" : "http://org.semanticweb.owlapi/error#Error27",
+    "baseIri" : "http://org.semanticweb.owlapi/error",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Error27"
+    },
+    "subClasses" : [ "53" ],
+    "attributes" : [ "external" ],
+    "id" : "60"
+  }, {
+    "iri" : "https://w3id.org/obpa#Activity",
+    "baseIri" : "https://w3id.org/obpa",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Activity"
+    },
+    "attributes" : [ "equivalent", "external" ],
+    "id" : "96"
+  }, {
+    "iri" : "http://org.semanticweb.owlapi/error#Error31",
+    "baseIri" : "http://org.semanticweb.owlapi/error",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Error31"
+    },
+    "subClasses" : [ "33" ],
+    "attributes" : [ "external" ],
+    "id" : "50"
+  }, {
+    "iri" : "http://org.semanticweb.owlapi/error#Error32",
+    "baseIri" : "http://org.semanticweb.owlapi/error",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Error32"
+    },
+    "subClasses" : [ "33" ],
+    "attributes" : [ "external" ],
+    "id" : "48"
+  }, {
+    "iri" : "https://w3id.org/ontobpr#ReviewResult",
+    "baseIri" : "https://w3id.org/ontobpr",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "ReviewResult",
+      "undefined" : "Review checking result"
+    },
+    "comment" : {
+      "undefined" : "the review result of a particular agent incorporating a sh:ValidationReport"
+    },
+    "id" : "53",
+    "superClasses" : [ "54", "60" ]
+  }, {
+    "iri" : "http://org.semanticweb.owlapi/error#Error30",
+    "baseIri" : "http://org.semanticweb.owlapi/error",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Error30"
+    },
+    "subClasses" : [ "40" ],
+    "attributes" : [ "external" ],
+    "id" : "45"
+  }, {
+    "iri" : "https://w3id.org/ontobpr#NegativePermitDecision",
+    "baseIri" : "https://w3id.org/ontobpr",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "NegativePermitDecision",
+      "undefined" : "(5.2b) Negative permit decision "
+    },
+    "comment" : {
+      "undefined" : "the Negative permit decision activity"
+    },
+    "id" : "94",
+    "superClasses" : [ "2" ]
+  }, {
+    "iri" : "https://w3id.org/ontobpr#IssuingNotificationLetter",
+    "baseIri" : "https://w3id.org/ontobpr",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "IssuingNotificationLetter",
+      "undefined" : "(5) Issuing notification letter "
+    },
+    "comment" : {
+      "undefined" : "the Issuing notification letter activity"
+    },
+    "id" : "33",
+    "superClasses" : [ "50", "48", "76", "77", "78", "2", "79" ]
+  }, {
+    "iri" : "https://w3id.org/ontobpr#ReviewStatement",
+    "baseIri" : "https://w3id.org/ontobpr",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "ReviewStatement",
+      "undefined" : "Review statement"
+    },
+    "subClasses" : [ "38", "35" ],
+    "comment" : {
+      "undefined" : "a general review statement for logging events during the building permit review"
+    },
+    "id" : "36",
+    "superClasses" : [ "80", "75", "73" ]
+  }, {
+    "iri" : "https://w3id.org/ontobpr#PositivePermitDecision",
+    "baseIri" : "https://w3id.org/ontobpr",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "PositivePermitDecision",
+      "undefined" : "(5.2a) Positive permit decision "
+    },
+    "comment" : {
+      "undefined" : "the Positive permit decision activity"
+    },
+    "id" : "31",
+    "superClasses" : [ "2" ]
+  }, {
+    "iri" : "https://w3id.org/ontobpr#Building",
+    "equivalent" : [ "82" ],
+    "baseIri" : "https://w3id.org/ontobpr",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Building",
+      "undefined" : "Building"
+    },
+    "comment" : {
+      "undefined" : "The building that is subject of this building application"
+    },
+    "attributes" : [ "equivalent" ],
+    "id" : "97"
+  }, {
+    "iri" : "https://w3id.org/ontobpr#ShaclShapesSet",
+    "baseIri" : "https://w3id.org/ontobpr",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "ShaclShapesSet",
+      "undefined" : "SHACL shapes set"
+    },
+    "comment" : {
+      "undefined" : "a set of SHACL shapes for validating data at various activities of the building permit review"
+    },
+    "id" : "98"
+  }, {
+    "iri" : "http://www.w3.org/ns/shacl#ValidationReport",
+    "baseIri" : "http://www.w3.org/ns/shacl",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "ValidationReport"
+    },
+    "attributes" : [ "external" ],
+    "id" : "99"
+  }, {
+    "iri" : "http://www.w3.org/2001/XMLSchema#boolean",
+    "baseIri" : "http://www.w3.org/2001/XMLSchema",
+    "id" : "8",
+    "label" : {
+      "IRI-based" : "boolean"
+    }
+  }, {
+    "iri" : "https://schema.org/Person",
+    "baseIri" : "https://schema.org",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Person"
+    },
+    "attributes" : [ "external" ],
+    "id" : "105"
+  }, {
+    "iri" : "http://www.w3.org/2002/07/owl#Thing",
+    "baseIri" : "http://owl2vowl.de",
+    "id" : "12",
+    "label" : {
+      "undefined" : "Thing"
+    }
+  }, {
+    "iri" : "http://www.w3.org/2000/01/rdf-schema#Literal",
+    "id" : "85",
+    "label" : {
+      "IRI-based" : "Literal",
+      "undefined" : "Literal"
+    }
+  }, {
+    "iri" : "https://w3id.org/ontobpr#Condition",
+    "baseIri" : "https://w3id.org/ontobpr",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Condition",
+      "undefined" : "Condition"
+    },
+    "comment" : {
+      "undefined" : "a formulated condition statement of a conditionally accepted application"
+    },
+    "id" : "38",
+    "superClasses" : [ "36" ]
+  }, {
+    "iri" : "https://w3id.org/ontobpr#BuildingAuthority",
+    "equivalent" : [ "4" ],
+    "baseIri" : "https://w3id.org/ontobpr",
+    "instances" : 0,
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "https://w3id.org/obpa#BuildingAuthority",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "BuildingAuthority",
+      "undefined" : "Building authority"
+    },
+    "comment" : {
+      "undefined" : "a building authority that is involved in a building permit review"
+    },
+    "attributes" : [ "equivalent" ],
+    "id" : "67"
+  }, {
+    "iri" : "https://w3id.org/ontobpr#Activity",
+    "equivalent" : [ "96" ],
+    "baseIri" : "https://w3id.org/ontobpr",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Activity",
+      "undefined" : "Activity"
+    },
+    "subClasses" : [ "42", "40", "3", "27", "33", "31", "10", "6", "1", "83", "58", "94", "29" ],
+    "comment" : {
+      "undefined" : "an Activity executed throughout the building permit review"
+    },
+    "attributes" : [ "equivalent" ],
+    "id" : "2"
+  }, {
+    "iri" : "https://standards.iso.org/iso/21597/-1/ed-1/en/Container#Document",
+    "baseIri" : "https://standards.iso.org/iso/21597/-1/ed-1/en/Container",
+    "instances" : 0,
+    "label" : {
+      "IRI-based" : "Document"
+    },
+    "attributes" : [ "external" ],
+    "id" : "70"
+  }, {
+    "iri" : "https://w3id.org/ontobpr#BuildingApplication",
+    "equivalent" : [ "57" ],
+    "baseIri" : "https://w3id.org/ontobpr",
+    "instances" : 0,
+    "annotations" : {
+      "isDefinedBy" : [ {
+        "identifier" : "isDefinedBy",
+        "language" : "undefined",
+        "value" : "https://w3id.org/obpa#BuildingApplication",
+        "type" : "iri"
+      } ]
+    },
+    "label" : {
+      "IRI-based" : "BuildingApplication",
+      "undefined" : "Building application"
+    },
+    "comment" : {
+      "undefined" : "the building application that is submitted by an applicant for review"
+    },
+    "attributes" : [ "equivalent" ],
+    "id" : "56"
+  } ],
+  "property" : [ {
+    "id" : "0",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "5",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "7",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "9",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "11",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "26",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "28",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "30",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "32",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "34",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "37",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "39",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "41",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "47",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "49",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "51",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "52",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "59",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "62",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "13",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "69",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "72",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "74",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "15",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "81",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "21",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "84",
+    "type" : "owl:datatypeProperty"
+  }, {
+    "id" : "86",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "87",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "88",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "89",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "90",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "91",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "92",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "93",
+    "type" : "rdfs:SubClassOf"
+  }, {
+    "id" : "18",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "95",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "25",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "19",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "20",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "100",
+    "type" : "owl:someValuesFrom"
+  }, {
+    "id" : "101",
+    "type" : "owl:someValuesFrom"
+  }, {
+    "id" : "102",
+    "type" : "owl:disjointWith"
+  }, {
+    "id" : "103",
+    "type" : "owl:someValuesFrom"
+  }, {
+    "id" : "104",
+    "type" : "owl:someValuesFrom"
+  }, {
+    "id" : "106",
+    "type" : "owl:someValuesFrom"
+  }, {
+    "id" : "107",
+    "type" : "owl:someValuesFrom"
+  }, {
+    "id" : "14",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "16",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "17",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "22",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "24",
+    "type" : "owl:objectProperty"
+  }, {
+    "id" : "23",
+    "type" : "owl:objectProperty"
+  } ],
+  "propertyAttribute" : [ {
+    "range" : "2",
+    "domain" : "1",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "0"
+  }, {
+    "range" : "2",
+    "domain" : "6",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "5"
+  }, {
+    "iri" : "https://w3id.org/ontobpr#isCompleted",
+    "baseIri" : "https://w3id.org/ontobpr",
+    "range" : "8",
+    "label" : {
+      "IRI-based" : "isCompleted",
+      "undefined" : "is completed"
+    },
+    "cardinality" : "1",
+    "domain" : "2",
+    "comment" : {
+      "undefined" : "a boolean property indicating whether an activity is completet or not"
+    },
+    "attributes" : [ "datatype" ],
+    "id" : "7"
+  }, {
+    "range" : "2",
+    "domain" : "10",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "9"
+  }, {
+    "iri" : "http://www.w3.org/2002/07/owl#topObjectProperty",
+    "baseIri" : "http://www.w3.org/2002/07/owl",
+    "range" : "12",
+    "label" : {
+      "IRI-based" : "topObjectProperty"
+    },
+    "domain" : "12",
+    "subproperty" : [ "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25" ],
+    "attributes" : [ "object", "external" ],
+    "id" : "11"
+  }, {
+    "range" : "2",
+    "domain" : "27",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "26"
+  }, {
+    "range" : "2",
+    "domain" : "3",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "28"
+  }, {
+    "range" : "2",
+    "domain" : "31",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "30"
+  }, {
+    "range" : "2",
+    "domain" : "33",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "32"
+  }, {
+    "range" : "36",
+    "domain" : "35",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "34"
+  }, {
+    "range" : "36",
+    "domain" : "38",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "37"
+  }, {
+    "range" : "2",
+    "domain" : "40",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "39"
+  }, {
+    "range" : "2",
+    "domain" : "42",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "41"
+  }, {
+    "range" : "48",
+    "domain" : "33",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "47"
+  }, {
+    "range" : "50",
+    "domain" : "33",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "49"
+  }, {
+    "range" : "45",
+    "domain" : "40",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "51"
+  }, {
+    "range" : "54",
+    "domain" : "53",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "52"
+  }, {
+    "range" : "60",
+    "domain" : "53",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "59"
+  }, {
+    "range" : "46",
+    "domain" : "40",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "62"
+  }, {
+    "iri" : "https://w3id.org/ontobpr#hasStatus",
+    "baseIri" : "https://w3id.org/ontobpr",
+    "range" : "68",
+    "label" : {
+      "IRI-based" : "hasStatus",
+      "undefined" : "has status"
+    },
+    "superproperty" : [ "11" ],
+    "domain" : "56",
+    "comment" : {
+      "undefined" : "the ReviewStatus of a BuildingApplication"
+    },
+    "attributes" : [ "object" ],
+    "id" : "13"
+  }, {
+    "iri" : "https://w3id.org/ontobpr#hasApplicationDocument",
+    "baseIri" : "https://w3id.org/ontobpr",
+    "range" : "70",
+    "label" : {
+      "IRI-based" : "hasApplicationDocument",
+      "undefined" : "has application document"
+    },
+    "superproperty" : [ "18" ],
+    "domain" : "56",
+    "comment" : {
+      "undefined" : "a BuildingApplication has a respective document (e.g. PDF) representing a human-readable version of the application"
+    },
+    "attributes" : [ "object" ],
+    "id" : "69"
+  }, {
+    "range" : "73",
+    "domain" : "36",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "72"
+  }, {
+    "range" : "75",
+    "domain" : "36",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "74"
+  }, {
+    "iri" : "https://w3id.org/ontobpr#hasBuildingApplicationContainer",
+    "baseIri" : "https://w3id.org/ontobpr",
+    "range" : "44",
+    "label" : {
+      "IRI-based" : "hasBuildingApplicationContainer",
+      "undefined" : "has building application container"
+    },
+    "superproperty" : [ "11" ],
+    "domain" : "56",
+    "comment" : {
+      "undefined" : "the reference from a BuildingApplication to an ICDD container"
+    },
+    "attributes" : [ "object" ],
+    "id" : "15"
+  }, {
+    "range" : "80",
+    "domain" : "36",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "81"
+  }, {
+    "iri" : "https://w3id.org/ontobpr#afterActivity",
+    "baseIri" : "https://w3id.org/ontobpr",
+    "range" : "2",
+    "label" : {
+      "IRI-based" : "afterActivity",
+      "undefined" : "after activity"
+    },
+    "superproperty" : [ "11" ],
+    "domain" : "2",
+    "comment" : {
+      "undefined" : "an activity is executed after another activity"
+    },
+    "attributes" : [ "transitive", "object" ],
+    "id" : "21"
+  }, {
+    "iri" : "http://www.w3.org/2002/07/owl#topDataProperty",
+    "baseIri" : "http://www.w3.org/2002/07/owl",
+    "range" : "85",
+    "label" : {
+      "IRI-based" : "topDataProperty"
+    },
+    "domain" : "12",
+    "attributes" : [ "datatype", "external" ],
+    "id" : "84"
+  }, {
+    "range" : "77",
+    "domain" : "33",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "86"
+  }, {
+    "range" : "76",
+    "domain" : "33",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "87"
+  }, {
+    "range" : "79",
+    "domain" : "33",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "88"
+  }, {
+    "range" : "78",
+    "domain" : "33",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "89"
+  }, {
+    "range" : "2",
+    "domain" : "58",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "90"
+  }, {
+    "range" : "2",
+    "domain" : "83",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "91"
+  }, {
+    "range" : "2",
+    "domain" : "29",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "92"
+  }, {
+    "range" : "2",
+    "domain" : "94",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "93"
+  }, {
+    "iri" : "https://w3id.org/ontobpr#hasDocument",
+    "baseIri" : "https://w3id.org/ontobpr",
+    "range" : "70",
+    "label" : {
+      "IRI-based" : "hasDocument",
+      "undefined" : "has document"
+    },
+    "superproperty" : [ "11" ],
+    "domain" : "56",
+    "subproperty" : [ "95", "69" ],
+    "comment" : {
+      "undefined" : "abstract property grouping hasApplicationDocument and hasBuildingDocument"
+    },
+    "attributes" : [ "object" ],
+    "id" : "18"
+  }, {
+    "iri" : "https://w3id.org/ontobpr#hasBuildingDocument",
+    "baseIri" : "https://w3id.org/ontobpr",
+    "range" : "70",
+    "label" : {
+      "IRI-based" : "hasBuildingDocument",
+      "undefined" : "has building document"
+    },
+    "superproperty" : [ "18" ],
+    "domain" : "97",
+    "comment" : {
+      "undefined" : "A Building has a document, which is the IFC representation of this Building"
+    },
+    "attributes" : [ "object" ],
+    "id" : "95"
+  }, {
+    "iri" : "https://w3id.org/ontobpr#belongsToActivity",
+    "baseIri" : "https://w3id.org/ontobpr",
+    "range" : "2",
+    "label" : {
+      "IRI-based" : "belongsToActivity",
+      "undefined" : "belongs to activity"
+    },
+    "superproperty" : [ "11" ],
+    "domain" : "36",
+    "comment" : {
+      "undefined" : "a ReviewStatement belongs to a particular Activity"
+    },
+    "attributes" : [ "object" ],
+    "id" : "25"
+  }, {
+    "iri" : "https://w3id.org/ontobpr#hasCurrentActivity",
+    "baseIri" : "https://w3id.org/ontobpr",
+    "range" : "2",
+    "label" : {
+      "IRI-based" : "hasCurrentActivity",
+      "undefined" : "has current activity"
+    },
+    "superproperty" : [ "11" ],
+    "domain" : "56",
+    "comment" : {
+      "undefined" : "a BuildingApplication is in the current Activity"
+    },
+    "attributes" : [ "object" ],
+    "id" : "19"
+  }, {
+    "iri" : "https://w3id.org/ontobpr#hasStatement",
+    "baseIri" : "https://w3id.org/ontobpr",
+    "range" : "36",
+    "label" : {
+      "IRI-based" : "hasStatement",
+      "undefined" : "has statement"
+    },
+    "superproperty" : [ "11" ],
+    "domain" : "56",
+    "comment" : {
+      "undefined" : "any ReviewStatement of any reviewer is attached to a BuildingApplication"
+    },
+    "attributes" : [ "object" ],
+    "id" : "20"
+  }, {
+    "iri" : "https://w3id.org/ontobpr#hasCheckingResults",
+    "baseIri" : "https://w3id.org/ontobpr",
+    "range" : "53",
+    "label" : {
+      "IRI-based" : "hasCheckingResults",
+      "undefined" : "has checking results"
+    },
+    "superproperty" : [ "11" ],
+    "domain" : "56",
+    "comment" : {
+      "undefined" : "either a BuildingApplication has ReviewResult or a ReviewResult has sh:ValidationReport"
+    },
+    "attributes" : [ "someValues", "object" ],
+    "id" : "100"
+  }, {
+    "iri" : "https://w3id.org/ontobpr#hasApplicationDocument",
+    "baseIri" : "https://w3id.org/ontobpr",
+    "range" : "70",
+    "label" : {
+      "IRI-based" : "hasApplicationDocument",
+      "undefined" : "has application document"
+    },
+    "superproperty" : [ "18" ],
+    "domain" : "56",
+    "comment" : {
+      "undefined" : "a BuildingApplication has a respective document (e.g. PDF) representing a human-readable version of the application"
+    },
+    "attributes" : [ "someValues", "object" ],
+    "id" : "101"
+  }, {
+    "range" : "35",
+    "domain" : "38",
+    "attributes" : [ "anonymous", "object" ],
+    "id" : "102"
+  }, {
+    "iri" : "https://w3id.org/ontobpr#hasCheckingResults",
+    "baseIri" : "https://w3id.org/ontobpr",
+    "range" : "99",
+    "label" : {
+      "IRI-based" : "hasCheckingResults",
+      "undefined" : "has checking results"
+    },
+    "superproperty" : [ "11" ],
+    "domain" : "53",
+    "comment" : {
+      "undefined" : "either a BuildingApplication has ReviewResult or a ReviewResult has sh:ValidationReport"
+    },
+    "attributes" : [ "someValues", "object" ],
+    "id" : "103"
+  }, {
+    "iri" : "https://w3id.org/ontobpr#hasShapes",
+    "baseIri" : "https://w3id.org/ontobpr",
+    "range" : "43",
+    "label" : {
+      "IRI-based" : "hasShapes",
+      "undefined" : "has shapes"
+    },
+    "superproperty" : [ "11" ],
+    "domain" : "98",
+    "comment" : {
+      "undefined" : "ShaclShapesSet has sh:Shape instances"
+    },
+    "attributes" : [ "someValues", "object" ],
+    "id" : "104"
+  }, {
+    "iri" : "https://w3id.org/ontobpr#hasBuildingDocument",
+    "baseIri" : "https://w3id.org/ontobpr",
+    "range" : "70",
+    "label" : {
+      "IRI-based" : "hasBuildingDocument",
+      "undefined" : "has building document"
+    },
+    "superproperty" : [ "18" ],
+    "domain" : "97",
+    "comment" : {
+      "undefined" : "A Building has a document, which is the IFC representation of this Building"
+    },
+    "attributes" : [ "someValues", "object" ],
+    "id" : "106"
+  }, {
+    "iri" : "https://w3id.org/ontobpr#hasStatement",
+    "baseIri" : "https://w3id.org/ontobpr",
+    "range" : "36",
+    "label" : {
+      "IRI-based" : "hasStatement",
+      "undefined" : "has statement"
+    },
+    "superproperty" : [ "11" ],
+    "domain" : "56",
+    "comment" : {
+      "undefined" : "any ReviewStatement of any reviewer is attached to a BuildingApplication"
+    },
+    "attributes" : [ "someValues", "object" ],
+    "id" : "107"
+  }, {
+    "iri" : "https://w3id.org/ontobpr#checks",
+    "baseIri" : "https://w3id.org/ontobpr",
+    "range" : "63",
+    "label" : {
+      "IRI-based" : "checks",
+      "undefined" : "checks"
+    },
+    "superproperty" : [ "11" ],
+    "domain" : "66",
+    "comment" : {
+      "undefined" : "BuildingAuthority checks a building regarding a BuildingCodeDictionary"
+    },
+    "attributes" : [ "object" ],
+    "id" : "14"
+  }, {
+    "iri" : "https://w3id.org/ontobpr#hasCheckingResults",
+    "baseIri" : "https://w3id.org/ontobpr",
+    "range" : "53",
+    "label" : {
+      "IRI-based" : "hasCheckingResults",
+      "undefined" : "has checking results"
+    },
+    "superproperty" : [ "11" ],
+    "domain" : "56",
+    "comment" : {
+      "undefined" : "either a BuildingApplication has ReviewResult or a ReviewResult has sh:ValidationReport"
+    },
+    "attributes" : [ "object" ],
+    "id" : "16"
+  }, {
+    "iri" : "https://w3id.org/ontobpr#applies",
+    "baseIri" : "https://w3id.org/ontobpr",
+    "range" : "65",
+    "label" : {
+      "IRI-based" : "applies",
+      "undefined" : "applies"
+    },
+    "superproperty" : [ "11" ],
+    "domain" : "55",
+    "comment" : {
+      "undefined" : "BuildingApplication applies a BuildingCodeDictionary for checking"
+    },
+    "attributes" : [ "object" ],
+    "id" : "17"
+  }, {
+    "iri" : "https://w3id.org/ontobpr#hasDocumentClassification",
+    "baseIri" : "https://w3id.org/ontobpr",
+    "range" : "71",
+    "label" : {
+      "IRI-based" : "hasDocumentClassification",
+      "undefined" : "has document classification"
+    },
+    "superproperty" : [ "11" ],
+    "domain" : "70",
+    "comment" : {
+      "undefined" : "The classification of a ct:Document in an ICDD container in the context of a building application."
+    },
+    "attributes" : [ "object" ],
+    "id" : "22"
+  }, {
+    "iri" : "https://w3id.org/ontobpr#hasShapesSet",
+    "baseIri" : "https://w3id.org/ontobpr",
+    "range" : "98",
+    "label" : {
+      "IRI-based" : "hasShapesSet",
+      "undefined" : "has shapes set"
+    },
+    "superproperty" : [ "11" ],
+    "domain" : "64",
+    "comment" : {
+      "undefined" : "either an Activity or a BuildingCodeDictionary has a ShaclShapesSet"
+    },
+    "attributes" : [ "object" ],
+    "id" : "24"
+  }, {
+    "iri" : "https://w3id.org/ontobpr#hasShapes",
+    "baseIri" : "https://w3id.org/ontobpr",
+    "range" : "43",
+    "label" : {
+      "IRI-based" : "hasShapes",
+      "undefined" : "has shapes"
+    },
+    "superproperty" : [ "11" ],
+    "domain" : "98",
+    "comment" : {
+      "undefined" : "ShaclShapesSet has sh:Shape instances"
+    },
+    "attributes" : [ "object" ],
+    "id" : "23"
+  } ]
+}

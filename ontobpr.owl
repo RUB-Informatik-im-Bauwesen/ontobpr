@@ -1,0 +1,1264 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="https://w3id.org/ontobpr#"
+     xml:base="https://w3id.org/ontobpr"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:vann="http://purl.org/vocab/vann/"
+     xmlns:schema="https://schema.org/">
+    <owl:Ontology rdf:about="https://w3id.org/ontobpr">
+        <dc:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-12-23</dc:created>
+        <dc:creator rdf:nodeID="genid1"/>
+        <dc:creator rdf:nodeID="genid3"/>
+        <dc:creator rdf:nodeID="genid5"/>
+        <dc:creator rdf:nodeID="genid7"/>
+        <dc:license rdf:resource="https://creativecommons.org/licenses/by/4.0/"/>
+        <dc:source rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://github.com/RUB-Informatik-im-Bauwesen/ontobpr</dc:source>
+        <vann:preferredNamespacePrefix>ontobpr</vann:preferredNamespacePrefix>
+        <rdfs:comment xml:lang="en">To avoid a digital disruption in planning buildings and structures, this research presents a workflow in which building codes are represented as machine-readable knowledge graphs and ontologies as an integration to the building permit review procedure and the participation process. Therefore, the building permit process was analyzed, and possible applications of ontology-based knowledge representations are explored. An ontology-based building permit review (OntoBPR) is proposed, reusing two existing ontologies for modeling the permit review workflow for representing the building codes. The OntoBPR ontology extends the approach with a connection to Information Containers for linked Document Delivery (ICDD) that are used for submitting the building application, and the Shapes Constraint Language (SHACL) of which rules are generated from the building code knowledge graphs.</rdfs:comment>
+        <rdfs:label>OntoBPR: An ontological workflow for building permit review</rdfs:label>
+    </owl:Ontology>
+    <rdf:Description rdf:nodeID="genid1">
+        <rdf:type rdf:resource="https://schema.org/Person"/>
+        <schema:email rdf:resource="mailto:jf805@cam.ac.uk"/>
+        <schema:identifier rdf:resource="https://orcid.org/0000-0002-9078-8393"/>
+        <schema:memberOf rdf:nodeID="genid2"/>
+        <schema:name>Dr. Judith Fauth</schema:name>
+    </rdf:Description>
+    <rdf:Description rdf:nodeID="genid3">
+        <rdf:type rdf:resource="https://schema.org/Person"/>
+        <schema:email rdf:resource="mailto:philipp.hagedorn-n6v@rub.de"/>
+        <schema:identifier rdf:resource="https://orcid.org/0000-0002-6249-243X"/>
+        <schema:memberOf rdf:nodeID="genid4"/>
+        <schema:name>Dr. Philipp Hagedorn</schema:name>
+    </rdf:Description>
+    <rdf:Description rdf:nodeID="genid5">
+        <rdf:type rdf:resource="https://schema.org/Person"/>
+        <schema:email rdf:resource="mailto:sebastian.seiss@uni-weimar.de"/>
+        <schema:identifier rdf:resource="https://orcid.org/0000-0001-5808-695X"/>
+        <schema:memberOf rdf:nodeID="genid6"/>
+        <schema:name>Sebastian Seiss</schema:name>
+    </rdf:Description>
+    <rdf:Description rdf:nodeID="genid7">
+        <rdf:type rdf:resource="https://schema.org/Person"/>
+        <schema:email rdf:resource="mailto:sven.zentgraf@rub.de"/>
+        <schema:identifier rdf:resource="https://orcid.org/0000-0001-6058-7614"/>
+        <schema:memberOf rdf:nodeID="genid8"/>
+        <schema:name>Sven Zentgraf</schema:name>
+    </rdf:Description>
+    <rdf:Description rdf:nodeID="genid2">
+        <schema:identifier rdf:resource="https://www.linkedin.com/in/judith-fauth-5b5137bb"/>
+        <schema:name>University of Cambridge, GB</schema:name>
+    </rdf:Description>
+    <rdf:Description rdf:nodeID="genid4">
+        <schema:identifier rdf:resource="https://www.inf.bi.ruhr-uni-bochum.de/iib/lehrstuhl/mitarbeiter/philipp_hagedorn.html.en"/>
+        <schema:name>Ruhr University Bochum, DE</schema:name>
+    </rdf:Description>
+    <rdf:Description rdf:nodeID="genid6">
+        <schema:identifier rdf:resource="https://www.uni-weimar.de/de/bau-und-umwelt/professuren/baubetrieb-und-bauverfahren/personen/sebastian-seiss-msc/"/>
+        <schema:name>Bauhaus-Universitaet Weimar, DE</schema:name>
+    </rdf:Description>
+    <rdf:Description rdf:nodeID="genid8">
+        <schema:identifier rdf:resource="https://www.inf.bi.ruhr-uni-bochum.de/iib/lehrstuhl/mitarbeiter/sven_zentgraf.html.en"/>
+        <schema:name>Ruhr University Bochum, DE</schema:name>
+    </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/created -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/created"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/creator -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/creator"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/license -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/license"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/source -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/source"/>
+    
+
+
+    <!-- http://purl.org/vocab/vann/preferredNamespacePrefix -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespacePrefix"/>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#maxQualifiedCardinality -->
+
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2002/07/owl#maxQualifiedCardinality"/>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#qualifiedCardinality -->
+
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2002/07/owl#qualifiedCardinality"/>
+    
+
+
+    <!-- https://schema.org/email -->
+
+
+    <owl:AnnotationProperty rdf:about="https://schema.org/email"/>
+    
+
+
+    <!-- https://schema.org/identifier -->
+
+
+    <owl:AnnotationProperty rdf:about="https://schema.org/identifier"/>
+    
+
+
+    <!-- https://schema.org/memberOf -->
+
+
+    <owl:AnnotationProperty rdf:about="https://schema.org/memberOf"/>
+    
+
+
+    <!-- https://schema.org/name -->
+
+
+    <owl:AnnotationProperty rdf:about="https://schema.org/name"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#date -->
+
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#date"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- https://w3id.org/ontobpr#afterActivity -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/ontobpr#afterActivity">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/ontobpr#Activity"/>
+        <rdfs:range rdf:resource="https://w3id.org/ontobpr#Activity"/>
+        <rdfs:comment>an activity is executed after another activity</rdfs:comment>
+        <rdfs:label>after activity</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/ontobpr#applies -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/ontobpr#applies">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/obpa#BuildingApplication"/>
+        <rdfs:domain rdf:resource="https://w3id.org/ontobpr#BuildingApplication"/>
+        <rdfs:range rdf:resource="https://w3id.org/isoprops#Dictionary"/>
+        <rdfs:range rdf:resource="https://w3id.org/ontobpr#BuildingCodeDictionary"/>
+        <rdfs:comment>BuildingApplication applies a BuildingCodeDictionary for checking</rdfs:comment>
+        <rdfs:label>applies</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/ontobpr#belongsToActivity -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/ontobpr#belongsToActivity">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/ontobpr#ReviewStatement"/>
+        <rdfs:range rdf:resource="https://w3id.org/ontobpr#Activity"/>
+        <rdfs:comment>a ReviewStatement belongs to a particular Activity</rdfs:comment>
+        <rdfs:label>belongs to activity</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/ontobpr#checks -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/ontobpr#checks">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/obpa#BuildingAuthority"/>
+        <rdfs:domain rdf:resource="https://w3id.org/ontobpr#BuildingAuthority"/>
+        <rdfs:range rdf:resource="https://w3id.org/isoprops#Dictionary"/>
+        <rdfs:range rdf:resource="https://w3id.org/ontobpr#BuildingCodeDictionary"/>
+        <rdfs:comment>BuildingAuthority checks a building regarding a BuildingCodeDictionary</rdfs:comment>
+        <rdfs:label>checks</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/ontobpr#hasApplicationDocument -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/ontobpr#hasApplicationDocument">
+        <rdfs:subPropertyOf rdf:resource="https://w3id.org/ontobpr#hasDocument"/>
+        <rdfs:domain rdf:resource="https://w3id.org/ontobpr#BuildingApplication"/>
+        <rdfs:range rdf:resource="https://standards.iso.org/iso/21597/-1/ed-1/en/Container#Document"/>
+        <owl:propertyDisjointWith rdf:resource="https://w3id.org/ontobpr#hasBuildingDocument"/>
+        <rdfs:comment>a BuildingApplication has a respective document (e.g. PDF) representing a human-readable version of the application</rdfs:comment>
+        <rdfs:label>has application document</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/ontobpr#hasBuildingApplicationContainer -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/ontobpr#hasBuildingApplicationContainer">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/ontobpr#BuildingApplication"/>
+        <rdfs:range rdf:resource="https://standards.iso.org/iso/21597/-1/ed-1/en/Container#ContainerDescription"/>
+        <rdfs:comment>the reference from a BuildingApplication to an ICDD container</rdfs:comment>
+        <rdfs:label>has building application container</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/ontobpr#hasBuildingDocument -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/ontobpr#hasBuildingDocument">
+        <rdfs:subPropertyOf rdf:resource="https://w3id.org/ontobpr#hasDocument"/>
+        <rdfs:domain rdf:resource="https://w3id.org/ontobpr#Building"/>
+        <rdfs:range rdf:resource="https://standards.iso.org/iso/21597/-1/ed-1/en/Container#Document"/>
+        <rdfs:comment>A Building has a document, which is the IFC representation of this Building</rdfs:comment>
+        <rdfs:label>has building document</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/ontobpr#hasCheckingResults -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/ontobpr#hasCheckingResults">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/ontobpr#BuildingApplication"/>
+        <rdfs:range rdf:resource="https://w3id.org/ontobpr#ReviewResult"/>
+        <rdfs:comment>either a BuildingApplication has ReviewResult or a ReviewResult has sh:ValidationReport</rdfs:comment>
+        <rdfs:label>has checking results</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/ontobpr#hasCurrentActivity -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/ontobpr#hasCurrentActivity">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/ontobpr#BuildingApplication"/>
+        <rdfs:range rdf:resource="https://w3id.org/ontobpr#Activity"/>
+        <rdfs:comment>a BuildingApplication is in the current Activity</rdfs:comment>
+        <rdfs:label>has current activity</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/ontobpr#hasDocument -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/ontobpr#hasDocument">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/ontobpr#BuildingApplication"/>
+        <rdfs:range rdf:resource="https://standards.iso.org/iso/21597/-1/ed-1/en/Container#Document"/>
+        <rdfs:comment>abstract property grouping hasApplicationDocument and hasBuildingDocument</rdfs:comment>
+        <rdfs:label>has document</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/ontobpr#hasDocumentClassification -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/ontobpr#hasDocumentClassification">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="https://standards.iso.org/iso/21597/-1/ed-1/en/Container#Document"/>
+        <rdfs:range rdf:resource="https://w3id.org/ontobpr#DocumentClassification"/>
+        <rdfs:comment>The classification of a ct:Document in an ICDD container in the context of a building application.</rdfs:comment>
+        <rdfs:label>has document classification</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/ontobpr#hasShapes -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/ontobpr#hasShapes">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/ontobpr#ShaclShapesSet"/>
+        <rdfs:range rdf:resource="http://www.w3.org/ns/shacl#Shape"/>
+        <rdfs:comment>ShaclShapesSet has sh:Shape instances</rdfs:comment>
+        <rdfs:label>has shapes</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/ontobpr#hasShapesSet -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/ontobpr#hasShapesSet">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/ontobpr#BuildingCodeDictionary"/>
+        <rdfs:range rdf:resource="https://w3id.org/ontobpr#ShaclShapesSet"/>
+        <rdfs:comment>either an Activity or a BuildingCodeDictionary has a ShaclShapesSet</rdfs:comment>
+        <rdfs:label>has shapes set</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/ontobpr#hasStatement -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/ontobpr#hasStatement">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/ontobpr#BuildingApplication"/>
+        <rdfs:range rdf:resource="https://w3id.org/ontobpr#ReviewStatement"/>
+        <rdfs:comment>any ReviewStatement of any reviewer is attached to a BuildingApplication</rdfs:comment>
+        <rdfs:label>has statement</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/ontobpr#hasStatus -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/ontobpr#hasStatus">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/ontobpr#BuildingApplication"/>
+        <rdfs:range rdf:resource="https://w3id.org/ontobpr#ReviewStatus"/>
+        <rdfs:comment>the ReviewStatus of a BuildingApplication</rdfs:comment>
+        <rdfs:label>has status</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- https://w3id.org/ontobpr#isCompleted -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/ontobpr#isCompleted">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/ontobpr#Activity"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment>a boolean property indicating whether an activity is completet or not</rdfs:comment>
+        <rdfs:label>is completed</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://org.semanticweb.owlapi/error#Error27 -->
+
+
+    <owl:Class rdf:about="http://org.semanticweb.owlapi/error#Error27"/>
+    
+
+
+    <!-- http://org.semanticweb.owlapi/error#Error28 -->
+
+
+    <owl:Class rdf:about="http://org.semanticweb.owlapi/error#Error28"/>
+    
+
+
+    <!-- http://org.semanticweb.owlapi/error#Error29 -->
+
+
+    <owl:Class rdf:about="http://org.semanticweb.owlapi/error#Error29"/>
+    
+
+
+    <!-- http://org.semanticweb.owlapi/error#Error30 -->
+
+
+    <owl:Class rdf:about="http://org.semanticweb.owlapi/error#Error30"/>
+    
+
+
+    <!-- http://org.semanticweb.owlapi/error#Error31 -->
+
+
+    <owl:Class rdf:about="http://org.semanticweb.owlapi/error#Error31"/>
+    
+
+
+    <!-- http://org.semanticweb.owlapi/error#Error32 -->
+
+
+    <owl:Class rdf:about="http://org.semanticweb.owlapi/error#Error32"/>
+    
+
+
+    <!-- http://org.semanticweb.owlapi/error#Error33 -->
+
+
+    <owl:Class rdf:about="http://org.semanticweb.owlapi/error#Error33"/>
+    
+
+
+    <!-- http://org.semanticweb.owlapi/error#Error34 -->
+
+
+    <owl:Class rdf:about="http://org.semanticweb.owlapi/error#Error34"/>
+    
+
+
+    <!-- http://org.semanticweb.owlapi/error#Error35 -->
+
+
+    <owl:Class rdf:about="http://org.semanticweb.owlapi/error#Error35"/>
+    
+
+
+    <!-- http://org.semanticweb.owlapi/error#Error36 -->
+
+
+    <owl:Class rdf:about="http://org.semanticweb.owlapi/error#Error36"/>
+    
+
+
+    <!-- http://org.semanticweb.owlapi/error#Error37 -->
+
+
+    <owl:Class rdf:about="http://org.semanticweb.owlapi/error#Error37"/>
+    
+
+
+    <!-- http://org.semanticweb.owlapi/error#Error38 -->
+
+
+    <owl:Class rdf:about="http://org.semanticweb.owlapi/error#Error38"/>
+    
+
+
+    <!-- http://org.semanticweb.owlapi/error#Error39 -->
+
+
+    <owl:Class rdf:about="http://org.semanticweb.owlapi/error#Error39"/>
+    
+
+
+    <!-- http://www.w3.org/ns/shacl#Shape -->
+
+
+    <owl:Class rdf:about="http://www.w3.org/ns/shacl#Shape"/>
+    
+
+
+    <!-- http://www.w3.org/ns/shacl#ValidationReport -->
+
+
+    <owl:Class rdf:about="http://www.w3.org/ns/shacl#ValidationReport"/>
+    
+
+
+    <!-- https://schema.org/Person -->
+
+
+    <owl:Class rdf:about="https://schema.org/Person"/>
+    
+
+
+    <!-- https://standards.iso.org/iso/21597/-1/ed-1/en/Container#ContainerDescription -->
+
+
+    <owl:Class rdf:about="https://standards.iso.org/iso/21597/-1/ed-1/en/Container#ContainerDescription"/>
+    
+
+
+    <!-- https://standards.iso.org/iso/21597/-1/ed-1/en/Container#Document -->
+
+
+    <owl:Class rdf:about="https://standards.iso.org/iso/21597/-1/ed-1/en/Container#Document"/>
+    
+
+
+    <!-- https://w3id.org/isoprops#Dictionary -->
+
+
+    <owl:Class rdf:about="https://w3id.org/isoprops#Dictionary">
+        <owl:equivalentClass rdf:resource="https://w3id.org/ontobpr#BuildingCodeDictionary"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/ontobpr#hasShapesSet"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://w3id.org/ontobpr#ShaclShapesSet"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/obpa#Activity -->
+
+
+    <owl:Class rdf:about="https://w3id.org/obpa#Activity">
+        <owl:equivalentClass rdf:resource="https://w3id.org/ontobpr#Activity"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/obpa#Building -->
+
+
+    <owl:Class rdf:about="https://w3id.org/obpa#Building">
+        <owl:equivalentClass rdf:resource="https://w3id.org/ontobpr#Building"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/obpa#BuildingApplication -->
+
+
+    <owl:Class rdf:about="https://w3id.org/obpa#BuildingApplication">
+        <owl:equivalentClass rdf:resource="https://w3id.org/ontobpr#BuildingApplication"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/obpa#BuildingAuthority -->
+
+
+    <owl:Class rdf:about="https://w3id.org/obpa#BuildingAuthority">
+        <owl:equivalentClass rdf:resource="https://w3id.org/ontobpr#BuildingAuthority"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/ontobpr#Activity -->
+
+
+    <owl:Class rdf:about="https://w3id.org/ontobpr#Activity">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/ontobpr#isCompleted"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>an Activity executed throughout the building permit review</rdfs:comment>
+        <rdfs:label>Activity</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/ontobpr#Assignment -->
+
+
+    <owl:Class rdf:about="https://w3id.org/ontobpr#Assignment">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/ontobpr#Activity"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/ontobpr#afterActivity"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://w3id.org/ontobpr#FormalReview"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>the Assignment activity</rdfs:comment>
+        <rdfs:label>(2) Assignment</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/ontobpr#Building -->
+
+
+    <owl:Class rdf:about="https://w3id.org/ontobpr#Building">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/ontobpr#hasBuildingDocument"/>
+                <owl:someValuesFrom rdf:resource="https://standards.iso.org/iso/21597/-1/ed-1/en/Container#Document"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>The building that is subject of this building application</rdfs:comment>
+        <rdfs:label>Building</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/ontobpr#BuildingApplication -->
+
+
+    <owl:Class rdf:about="https://w3id.org/ontobpr#BuildingApplication">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/ontobpr#hasApplicationDocument"/>
+                <owl:someValuesFrom rdf:resource="https://standards.iso.org/iso/21597/-1/ed-1/en/Container#Document"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/ontobpr#hasCheckingResults"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/ontobpr#ReviewResult"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/ontobpr#hasStatement"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/ontobpr#ReviewStatement"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/ontobpr#hasBuildingApplicationContainer"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://standards.iso.org/iso/21597/-1/ed-1/en/Container#ContainerDescription"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/ontobpr#hasCurrentActivity"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://w3id.org/ontobpr#Activity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/ontobpr#hasStatus"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://w3id.org/ontobpr#ReviewStatus"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>the building application that is submitted by an applicant for review</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/obpa#BuildingApplication"/>
+        <rdfs:label>Building application</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/ontobpr#BuildingAuthority -->
+
+
+    <owl:Class rdf:about="https://w3id.org/ontobpr#BuildingAuthority">
+        <rdfs:comment>a building authority that is involved in a building permit review</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/obpa#BuildingAuthority"/>
+        <rdfs:label>Building authority</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/ontobpr#BuildingCodeDictionary -->
+
+
+    <owl:Class rdf:about="https://w3id.org/ontobpr#BuildingCodeDictionary">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/ontobpr#hasShapesSet"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://w3id.org/ontobpr#ShaclShapesSet"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>A dictionary containing properties and shapes from a building code</rdfs:comment>
+        <rdfs:label>Dictionary</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/ontobpr#CompletenessCheck -->
+
+
+    <owl:Class rdf:about="https://w3id.org/ontobpr#CompletenessCheck">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/ontobpr#Activity"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/ontobpr#hasShapesSet"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://w3id.org/ontobpr#ShaclShapesSet"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>the Completeness check activity</rdfs:comment>
+        <rdfs:label>(1.1) Completeness check </rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/ontobpr#Condition -->
+
+
+    <owl:Class rdf:about="https://w3id.org/ontobpr#Condition">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/ontobpr#ReviewStatement"/>
+        <owl:disjointWith rdf:resource="https://w3id.org/ontobpr#Justification"/>
+        <rdfs:comment>a formulated condition statement of a conditionally accepted application</rdfs:comment>
+        <rdfs:label>Condition</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/ontobpr#ContentReview -->
+
+
+    <owl:Class rdf:about="https://w3id.org/ontobpr#ContentReview">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/ontobpr#Activity"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/ontobpr#afterActivity"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://w3id.org/ontobpr#FormalReview"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>The Content review activity</rdfs:comment>
+        <rdfs:label>(4) Content review </rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/ontobpr#CreatingNotificationLetter -->
+
+
+    <owl:Class rdf:about="https://w3id.org/ontobpr#CreatingNotificationLetter">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/ontobpr#Activity"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/ontobpr#afterActivity"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="https://w3id.org/ontobpr#FormulationOfCondition"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/ontobpr#afterActivity"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="https://w3id.org/ontobpr#JustificationOfNegativeDecision"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>The Creating notification letter activity</rdfs:comment>
+        <rdfs:label>(5.4) Creating notification letter</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/ontobpr#DocumentClassification -->
+
+
+    <owl:Class rdf:about="https://w3id.org/ontobpr#DocumentClassification">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:comment>The classification of a document in the context of a building application.</rdfs:comment>
+        <rdfs:label>Document classification</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/ontobpr#FormalReview -->
+
+
+    <owl:Class rdf:about="https://w3id.org/ontobpr#FormalReview">
+        <rdfs:subClassOf rdf:resource="http://org.semanticweb.owlapi/error#Error29"/>
+        <rdfs:subClassOf rdf:resource="http://org.semanticweb.owlapi/error#Error30"/>
+        <rdfs:subClassOf rdf:resource="https://w3id.org/ontobpr#Activity"/>
+        <rdfs:comment>The Formal review activity</rdfs:comment>
+        <rdfs:label>(1) Formal review</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/ontobpr#FormulationOfCondition -->
+
+
+    <owl:Class rdf:about="https://w3id.org/ontobpr#FormulationOfCondition">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/ontobpr#Activity"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/ontobpr#afterActivity"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://w3id.org/ontobpr#PositivePermitDecision"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>the Formulation of condition activity</rdfs:comment>
+        <rdfs:label>(5.3a) Formulation of condition </rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/ontobpr#IssuingNotificationLetter -->
+
+
+    <owl:Class rdf:about="https://w3id.org/ontobpr#IssuingNotificationLetter">
+        <rdfs:subClassOf rdf:resource="http://org.semanticweb.owlapi/error#Error31"/>
+        <rdfs:subClassOf rdf:resource="http://org.semanticweb.owlapi/error#Error32"/>
+        <rdfs:subClassOf rdf:resource="http://org.semanticweb.owlapi/error#Error33"/>
+        <rdfs:subClassOf rdf:resource="http://org.semanticweb.owlapi/error#Error34"/>
+        <rdfs:subClassOf rdf:resource="http://org.semanticweb.owlapi/error#Error35"/>
+        <rdfs:subClassOf rdf:resource="http://org.semanticweb.owlapi/error#Error36"/>
+        <rdfs:subClassOf rdf:resource="https://w3id.org/ontobpr#Activity"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/ontobpr#afterActivity"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="https://w3id.org/ontobpr#Assignment"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/ontobpr#afterActivity"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="https://w3id.org/ontobpr#ContentReview"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/ontobpr#afterActivity"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="https://w3id.org/ontobpr#Participation"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>the Issuing notification letter activity</rdfs:comment>
+        <rdfs:label>(5) Issuing notification letter </rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/ontobpr#Justification -->
+
+
+    <owl:Class rdf:about="https://w3id.org/ontobpr#Justification">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/ontobpr#ReviewStatement"/>
+        <rdfs:comment>justification statement of a negative building permit review decision</rdfs:comment>
+        <rdfs:label>Justification</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/ontobpr#JustificationOfNegativeDecision -->
+
+
+    <owl:Class rdf:about="https://w3id.org/ontobpr#JustificationOfNegativeDecision">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/ontobpr#Activity"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/ontobpr#afterActivity"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://w3id.org/ontobpr#NegativePermitDecision"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>the Justification of negative decision activity</rdfs:comment>
+        <rdfs:label>(5.3b) Justification of negative decision </rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/ontobpr#NegativePermitDecision -->
+
+
+    <owl:Class rdf:about="https://w3id.org/ontobpr#NegativePermitDecision">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/ontobpr#Activity"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/ontobpr#afterActivity"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://w3id.org/ontobpr#RequestReviewResults"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>the Negative permit decision activity</rdfs:comment>
+        <rdfs:label>(5.2b) Negative permit decision </rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/ontobpr#Participation -->
+
+
+    <owl:Class rdf:about="https://w3id.org/ontobpr#Participation">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/ontobpr#Activity"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/ontobpr#afterActivity"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://w3id.org/ontobpr#FormalReview"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>the Participation activity</rdfs:comment>
+        <rdfs:label>(3) Participation </rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/ontobpr#PositivePermitDecision -->
+
+
+    <owl:Class rdf:about="https://w3id.org/ontobpr#PositivePermitDecision">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/ontobpr#Activity"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/ontobpr#afterActivity"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://w3id.org/ontobpr#RequestReviewResults"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>the Positive permit decision activity</rdfs:comment>
+        <rdfs:label>(5.2a) Positive permit decision </rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/ontobpr#RequestReviewResults -->
+
+
+    <owl:Class rdf:about="https://w3id.org/ontobpr#RequestReviewResults">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/ontobpr#Activity"/>
+        <rdfs:comment>the Request review results activity</rdfs:comment>
+        <rdfs:label>(5.1) Request review results </rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/ontobpr#ReviewPreparation -->
+
+
+    <owl:Class rdf:about="https://w3id.org/ontobpr#ReviewPreparation">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/ontobpr#Activity"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/ontobpr#afterActivity"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://w3id.org/ontobpr#CompletenessCheck"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>the Review preparation activity</rdfs:comment>
+        <rdfs:label>(1.2) Review preparation </rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/ontobpr#ReviewResult -->
+
+
+    <owl:Class rdf:about="https://w3id.org/ontobpr#ReviewResult">
+        <rdfs:subClassOf rdf:resource="http://org.semanticweb.owlapi/error#Error27"/>
+        <rdfs:subClassOf rdf:resource="http://org.semanticweb.owlapi/error#Error28"/>
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/ontobpr#hasCheckingResults"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/ns/shacl#ValidationReport"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>the review result of a particular agent incorporating a sh:ValidationReport</rdfs:comment>
+        <rdfs:label>Review checking result</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/ontobpr#ReviewStatement -->
+
+
+    <owl:Class rdf:about="https://w3id.org/ontobpr#ReviewStatement">
+        <rdfs:subClassOf rdf:resource="http://org.semanticweb.owlapi/error#Error37"/>
+        <rdfs:subClassOf rdf:resource="http://org.semanticweb.owlapi/error#Error38"/>
+        <rdfs:subClassOf rdf:resource="http://org.semanticweb.owlapi/error#Error39"/>
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/ontobpr#belongsToActivity"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://w3id.org/ontobpr#Activity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>a general review statement for logging events during the building permit review</rdfs:comment>
+        <rdfs:label>Review statement</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/ontobpr#ReviewStatus -->
+
+
+    <owl:Class rdf:about="https://w3id.org/ontobpr#ReviewStatus">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:comment>the status of the building application within the building permit review</rdfs:comment>
+        <rdfs:label>Review status</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/ontobpr#ShaclShapesSet -->
+
+
+    <owl:Class rdf:about="https://w3id.org/ontobpr#ShaclShapesSet">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/ontobpr#hasShapes"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/ns/shacl#Shape"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>a set of SHACL shapes for validating data at various activities of the building permit review</rdfs:comment>
+        <rdfs:label>SHACL shapes set</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- https://w3id.org/ontobpr#Accepted -->
+
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/ontobpr#Accepted">
+        <rdf:type rdf:resource="https://w3id.org/ontobpr#ReviewStatus"/>
+        <rdfs:label>Accepted</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/ontobpr#AcceptedWithConditions -->
+
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/ontobpr#AcceptedWithConditions">
+        <rdf:type rdf:resource="https://w3id.org/ontobpr#ReviewStatus"/>
+        <rdfs:label>Accepted with conditions</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/ontobpr#ApplicationForm -->
+
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/ontobpr#ApplicationForm">
+        <rdf:type rdf:resource="https://w3id.org/ontobpr#DocumentClassification"/>
+        <rdfs:comment xml:lang="de">Das Antragsformular umfasst die Stammdaten des Antrags, z.B. Andressdaten, Kontaktdaten des Entwurfsverfassers, die Verfahrensart, Nachbarbeteiligungen, etc.</rdfs:comment>
+        <rdfs:comment>The application form includes the data of the application, e.g., address data, contact details of the design engineer/architect, type of procedure, neighbor participation, etc.</rdfs:comment>
+        <rdfs:label xml:lang="de">Antragsformular</rdfs:label>
+        <rdfs:label>Application form</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/ontobpr#BuildingDescription -->
+
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/ontobpr#BuildingDescription">
+        <rdf:type rdf:resource="https://w3id.org/ontobpr#DocumentClassification"/>
+        <rdfs:comment xml:lang="de">Baubeschreibungen umfassen Informationen zur generellen Funktion des Gebäude (Gebäudetyp, Nutzungsart, etc.) und bei betrieblicher oder landwirtschaftlicher Nutzung auch eine betrieblichiche Beschreibung des Gebäude</rdfs:comment>
+        <rdfs:comment>Building descriptions include information on the general function of the building (building type, type of use, etc.) and, in the case of commercial or agricultural use, also an operational description of the building.</rdfs:comment>
+        <rdfs:label xml:lang="de">Baubeschreibung</rdfs:label>
+        <rdfs:label>Building description</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/ontobpr#BuildingModel -->
+
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/ontobpr#BuildingModel">
+        <rdf:type rdf:resource="https://w3id.org/ontobpr#DocumentClassification"/>
+        <rdfs:comment xml:lang="de">Umfasst ein oder mehrere Modelle im Industry Foundation Classes (IFC) Format.</rdfs:comment>
+        <rdfs:comment>Includes one or more models in Industry Foundation Classes (IFC) format.</rdfs:comment>
+        <rdfs:label xml:lang="de">Bauwerksmodell</rdfs:label>
+        <rdfs:label>Building model</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/ontobpr#EngineeringProofs -->
+
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/ontobpr#EngineeringProofs">
+        <rdf:type rdf:resource="https://w3id.org/ontobpr#DocumentClassification"/>
+        <rdfs:comment xml:lang="de">Umfassen üblicherweise Dokumente über spezielle Nachweise, z.B. des Brandschutzes, der Statik, des Schallschutzes oder der Barrierefreiheit.</rdfs:comment>
+        <rdfs:comment>Usually include documents relating to specific certifications or proofs, e.g., fire protection, structural stability, sound insulation, or accessibility.</rdfs:comment>
+        <rdfs:label xml:lang="de">Bautechnische Nachweise</rdfs:label>
+        <rdfs:label>Engineering proofs</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/ontobpr#PlotRelatedPlans -->
+
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/ontobpr#PlotRelatedPlans">
+        <rdf:type rdf:resource="https://w3id.org/ontobpr#DocumentClassification"/>
+        <rdfs:comment xml:lang="de">Umfassen Planunterlagen, die das Grundstück und die Lage betreffen (üblicherweise im Maßstab größer als 1:500), z.B. Lageplan, Entwässerungsplan, Abstandsflächenplan</rdfs:comment>
+        <rdfs:comment>Include planning documents relating to the plot and its location (usually on a scale larger than 1:500), e.g., site plan, drainage plan, setbacks planning.</rdfs:comment>
+        <rdfs:label xml:lang="de">Grundstücksbezogene Planunterlagen</rdfs:label>
+        <rdfs:label>Plot related plans</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/ontobpr#Rejected -->
+
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/ontobpr#Rejected">
+        <rdf:type rdf:resource="https://w3id.org/ontobpr#ReviewStatus"/>
+        <rdfs:label>Rejected</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/ontobpr#RequestInformation -->
+
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/ontobpr#RequestInformation">
+        <rdf:type rdf:resource="https://w3id.org/ontobpr#ReviewStatus"/>
+        <rdfs:label>Request information</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/ontobpr#TechnicalDrawing -->
+
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/ontobpr#TechnicalDrawing">
+        <rdf:type rdf:resource="https://w3id.org/ontobpr#DocumentClassification"/>
+        <rdfs:comment xml:lang="de">Umfassen technische Zeichnungen, die das Bauwerk betreffen (Maßstäbe üblicherweise 1:100, seltener auch Detailzeichnungen in Maßstab 1:50 oder kleiner), z.B. Ansichten, Schnitte, Grundrisse</rdfs:comment>
+        <rdfs:comment>Include technical drawings relating to the structure (usually on a scale of 1:100, less commonly detailed drawings on a scale of 1:50 or smaller), e.g. elevations, sections, floor plans.</rdfs:comment>
+        <rdfs:label xml:lang="de">Bauzeichnung</rdfs:label>
+        <rdfs:label>Technical drawing</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/ontobpr#Unclassified -->
+
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/ontobpr#Unclassified">
+        <rdf:type rdf:resource="https://w3id.org/ontobpr#DocumentClassification"/>
+        <rdfs:label xml:lang="de">Nicht näher klassifiziert</rdfs:label>
+        <rdfs:label>Unclassified</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/ontobpr#UnderReview -->
+
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/ontobpr#UnderReview">
+        <rdf:type rdf:resource="https://w3id.org/ontobpr#ReviewStatus"/>
+        <rdfs:label>Under review</rdfs:label>
+    </owl:NamedIndividual>
+    <rdf:Description>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </rdf:Description>
+    <rdf:Description>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </rdf:Description>
+    <rdf:Description>
+        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    </rdf:Description>
+    <rdf:Description>
+        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    </rdf:Description>
+    <rdf:Description>
+        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    </rdf:Description>
+    <rdf:Description>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </rdf:Description>
+    <rdf:Description>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </rdf:Description>
+    <rdf:Description>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </rdf:Description>
+    <rdf:Description>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </rdf:Description>
+    <rdf:Description>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </rdf:Description>
+    <rdf:Description>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </rdf:Description>
+    <rdf:Description>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </rdf:Description>
+    <rdf:Description>
+        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 5.1.18) https://github.com/owlcs/owlapi/ -->
+
+

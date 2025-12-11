@@ -1,1803 +1,1452 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <title>OntoBPR: An ontological workflow for building permit review</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    
-    <style>
-        #pylode {
-            position: fixed;
-            top: 130px;
-            left: -60px;
-            font-size: small;
-            transform: rotate(-90deg);
-            color: grey;
-        }
-        #pylode a {
-            font-size: 2em;
-            font-weight: bold;
-            text-decoration: none;
-            color: #005A9C;
-        }
-        #pylode a:hover {
-            color: #333;
-        }
-
-        .cardinality {
-            font-style: italic;
-            color: #aa00aa;
-        }
-
-        dt {
-            font-weight: bold;
-            padding: 5px 0 5px 0;
-        }
-
-        ul.hlist {
-            list-style-type: none;
-            border: 1px solid navy;
-            padding:5px;
-            background-color: #F4FFFF;
-        }
-
-        ul.hierarchy {
-            border: 1px solid navy;
-            padding: 5px 25px 5px 25px;
-            background-color: #F4FFFF;
-        }
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="resources/primer.css" media="screen"/>
+<link rel="stylesheet" href="resources/rec.css" media="screen"/>
+<link rel="stylesheet" href="resources/extra.css" media="screen"/>
+<link rel="stylesheet" href="resources/owl.css" media="screen"/>
+<link rel="stylesheet" href="resources/dark.css" media="(prefers-color-scheme: dark)"/>
+<link rel="stylesheet" href="resources/light.css" media="(prefers-color-scheme: light)"/>
+<link rel="stylesheet" href="resources/slider.css" media="screen"/>
+<meta name="color-scheme" content="dark light">
+<script type="module" src="resources/dark-mode-toggle.mjs"></script><div class="darkmode">
+	<dark-mode-toggle class="slider"></dark-mode-toggle>
+</div>
+ <title>OntoBPR: An ontological workflow for building permit review</title>
 
 
-        ul.hlist li {
-            display: inline;
-            margin-right: 10px;
-        }
+<!-- SCHEMA.ORG METADATA -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","url":"https://w3id.org/ontobpr","image":"http://vowl.visualdataweb.org/webvowl/#iri=https://w3id.org/ontobpr","name":"OntoBPR: An ontological workflow for building permit review", "headline":"Building permitting is essential for ensuring the safety, sustainability, and societal alignment of construction projects. Despite interest from both practitioners and researchers, the process remains largely manual and fragmented. Ontologies offer a promising solution by managing complexity and enabling automation through semantic information, though current ontologies in the building permit domain are limited to specific aspects like building code checking. On the process level, the OntoBPR framework integrates multiple domain-specific ontologies for a seamless digital permitting process and provides a workflow to automate the lifecycle of the permit review. Therefore, it suggests integrating the submitted building application using standardized information containers. The paper explores how digital applications can be submitted, reviewed, verified for completeness, and forwarded to authorities, and how permit review results can be gathered to support decision-making and automate notification issuance, and it provides a demonstration in a case study. In conclusion, OntoBPR formalizes a multi-layered ontology that advances and aligns the partitioned building permit process and provides an adaptable framework to harmonize diverse legal, informatics, and procedural aspects.", "dateReleased":"23.12.2022", "dateModified":"11.12.2025", "license":"https://creativecommons.org/licenses/by-sa/4.0/", "codeRepository":"https://github.com/RUB-Informatik-im-Bauwesen/ontobpr", "author":[{"@type":"Person","name":"Dr. Judith Fauth"},{"@type":"Person","name":"Dr. Philipp Hagedorn"},{"@type":"Person","name":"Sebastian Seiss"},{"@type":"Person","name":"Sven Zentgraf"}]}</script>
 
-        .entity {
-            border: 1px solid navy;
-            margin:5px 0 5px 0;
-            padding: 5px;
-        }
+<script src="resources/jquery.js"></script> 
+<script src="resources/marked.min.js"></script> 
+    <script> 
+function loadHash() {
+  jQuery(".markdown").each(function(el){jQuery(this).after(marked.parse(jQuery(this).text())).remove()});
+	var hash = location.hash;
+	if($(hash).offset()!=null){
+	  $('html, body').animate({scrollTop: $(hash).offset().top}, 0);
+}
+	loadTOC();
+}
+function loadTOC(){
+	//process toc dynamically
+	  var t='<h2>Table of contents</h2><ul>';i = 1;j=0;
+	  jQuery(".list").each(function(){
+		if(jQuery(this).is('h2')){
+			if(j>0){
+				t+='</ul>';
+				j=0;
+			}
+			t+= '<li>'+i+'. <a href=#'+ jQuery(this).attr('id')+'>'+ jQuery(this).ignore("span").text()+'</a></li>';
+			i++;
+		}
+		if(jQuery(this).is('h3')){
+			if(j==0){
+				t+='<ul>';
+			}
+			j++;
+			t+= '<li>'+(i-1)+'.'+j+'. '+'<a href=#'+ jQuery(this).attr('id')+'>'+ jQuery(this).ignore("span").text()+'</a></li>';
+		}
+	  });
+	  t+='</ul>';
+	  $("#toc").html(t); 
+}
+$(function(){
+    loadHash();
+}); $.fn.ignore = function(sel){
+        return this.clone().find(sel||">*").remove().end();
+ }; 
+   </script> 
+  </head> 
 
-        .entity th {
-            width: 150px;
-            vertical-align: top;
-        }
-
-        .entity th,
-        .entity td {
-            padding-bottom: 20px;
-        }
-
-        .entity table th {
-            text-align: left;
-        }
-
-        section#overview img {
-            max-width: 1000px;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            text-align: left
-        }
-        h1, h2, h3 {
-            color: #005A9C; background: white
-        }
-        h1 {
-            font: 170% sans-serif;
-            line-height: 110%;
-        }
-        h2 {
-            font: 140% sans-serif;
-            margin-top:40px;
-        }
-        h3 {
-            font: 120% sans-serif;
-            margin-top: 3px;
-            padding-bottom: 5px;
-            border-bottom: 1px solid navy;
-        }
-        h4 { font: bold 100% sans-serif }
-        h5 { font: italic 100% sans-serif }
-        h6 { font: small-caps 100% sans-serif }
-
-
-        body {
-            padding: 2em 70px 2em 70px;
-            margin: 0;
-            font-family: sans-serif;
-            color: black;
-            background: white;
-            background-position: top left;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
-            text-align: justify;
-        }
-
-        section {
-            max-width: 1500px;
-        }
-
-        .figure {
-            margin-bottom: 20px;
-        }
-
-        :link { color: #00C; background: transparent }
-        :visited { color: #609; background: transparent }
-        a:active { color: #C00; background: transparent }
-
-        .sup-c,
-        .sup-op,
-        .sup-fp,
-        .sup-dp,
-        .sup-ap,
-        .sup-p,
-        .sup-ni,
-        .sup-cp,
-        .sup-cl {
-            cursor:help;
-            margin-left: 3px;
-        }
-
-        .sup-c {
-            color:orange;
-        }
-
-        .sup-op {
-            color:navy;
-        }
-
-        .sup-fp {
-            color:lightskyblue;
-        }
-
-        .sup-dp {
-            color:green;
-        }
-
-        .sup-ap {
-            color:darkred;
-        }
-
-        .sup-p {
-            color:black;
-        }
-
-        .sup-ni {
-            color:brown;
-        }
-
-        .sup-cp {
-            color:orange;
-        }
-
-        .sup-cl {
-            color:darkred;
-        }
-
-        code {
-            font-size: large;
-            color: darkred;
-        }
-
-    </style>
-    
-    <script type="application/ld+json">
-      [
-  {
-    "@id": "https://w3id.org/ontobpr",
-    "@type": [
-      "https://schema.org/DefinedTermSet"
-    ],
-    "https://schema.org/description": [
-      {
-        "@value": "<p>To avoid a digital disruption in planning buildings and structures, this research presents a workflow in which building codes are represented as machine-readable knowledge graphs and ontologies as an integration to the building permit review procedure and the participation process. Therefore, the building permit process was analyzed, and possible applications of ontology-based knowledge representations are explored. An ontology-based building permit review (OntoBPR) is proposed, reusing two existing ontologies for modeling the permit review workflow for representing the building codes. The OntoBPR ontology extends the approach with a connection to Information Containers for linked Document Delivery (ICDD) that are used for submitting the building application, and the Shapes Constraint Language (SHACL) of which rules are generated from the building code knowledge graphs.</p>"
-      }
-    ],
-    "https://schema.org/name": [
-      {
-        "@value": "OntoBPR: An ontological workflow for building permit review"
-      }
-    ]
-  }
-]
-    </script>
-</head>
 <body>
-  <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
-    <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
-    <span style="font-size:smaller;">2.4</span>
+<div class="container">
+<div class="head">
+<div style="float:right">language <a href="index-en.html"><b>en</b></a> </div>
+<h1>OntoBPR: An ontological workflow for building permit review</h1>
+<h2>Release: 23.12.2022</h2>
+
+
+<dl>
+<dt>Modified on: 11.12.2025</dt>
+<dt>Latest version:</dt>
+<dd><a href="https://w3id.org/ontobpr">https://w3id.org/ontobpr</a></dd>
+<dt>Authors:</dt>
+<dd>Dr. Judith Fauth, Technical University Munich, Germany<a href="mailto:judith.fauth@tum.de">&#9993;</a></dd><dd>Dr. Philipp Hagedorn, Ruhr University Bochum, Germany<a href="mailto:philipp.hagedorn-n6v@rub.de">&#9993;</a></dd><dd>Sebastian Seiss, Bauhaus University Weimar, Germany<a href="mailto:sebastian.seiss@uni-weimar.de">&#9993;</a></dd><dd>Sven Zentgraf, Ruhr University Bochum, Germany<a href="mailto:sven.zentgraf@rub.de">&#9993;</a></dd>
+
+<dt>Extended Ontologies:</dt>
+<dd><a href="https://w3id.org/obpa#">OBPA</a></dd><dd><a href="https://w3id.org/isoprops#">isoprops</a></dd></dd>
+
+<dt>Source:</dt>
+<dd><a href="https://github.com/RUB-Informatik-im-Bauwesen/ontobpr">https://github.com/RUB-Informatik-im-Bauwesen/ontobpr</a></dd>
+
+<dt>See also:</dt>
+<dd><a href="https://doi.org/10.1016/j.aei.2025.103369">https://doi.org/10.1016/j.aei.2025.103369</a></dd>
+
+<dt>Download serialization:</dt><dd><span><a href="ontology.jsonld" target="_blank"><img src="https://img.shields.io/badge/Format-JSON_LD-blue.svg" alt="JSON-LD" /></a> </span><span><a href="ontology.owl" target="_blank"><img src="https://img.shields.io/badge/Format-RDF/XML-blue.svg" alt="RDF/XML" /></a> </span><span><a href="ontology.nt" target="_blank"><img src="https://img.shields.io/badge/Format-N_Triples-blue.svg" alt="N-Triples" /></a> </span><span><a href="ontology.ttl" target="_blank"><img src="https://img.shields.io/badge/Format-TTL-blue.svg" alt="TTL" /></a> </span></dd><dt>License:</dt><dd><a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank"><img src="https://img.shields.io/badge/License-CC%20BY_SA%204.0-blue.svg" alt="https://creativecommons.org/licenses/by-sa/4.0/" /></a>
+</dd><dt>Visualization:</dt><dd><a href="webvowl/index.html#" target="_blank"><img src="https://img.shields.io/badge/Visualize_with-WebVowl-blue.svg" alt="Visualize with WebVowl" /></a></dd>
+<!-- <dt>Evaluation:</dt><dd><a href="OOPSevaluation/oopsEval.html#" target="_blank"><img src="https://img.shields.io/badge/Evaluate_with-OOPS! (OntOlogy Pitfall Scanner!)-blue.svg" alt="Evaluate with OOPS!" /></a></dd> --><dt>Cite as:</dt>
+<dd>P. Hagedorn, J. Fauth, S. Zentgraf, S. Seiß, M. König, and I. Brilakis, "OntoBPR: An ontology-based framework for performing building permit reviews using standardized information containers," Advanced Engineering Informatics, July 2025, no. 66, 2025, doi: 10.1016/j.aei.2025.103369.</dd>
+<dt>DOI:</dt>
+<dd><a href="http://dx.doi.org/10.1016/j.aei.2025.103369"><img src ="https://img.shields.io/badge/DOI-10.1016/j.aei.2025.103369-blue.svg" alt="10.1016/j.aei.2025.103369" /></a></dd>
+<dt>Vocabulary maintained at:</dt>
+<dd><a href="https://github.com/RUB-Informatik-im-Bauwesen/ontobpr">https://github.com/RUB-Informatik-im-Bauwesen/ontobpr</a></dd>
+</dl>
+
+<hr/>
+</div>
+<div class="status">
+<div>
+<span>Ontology Specification Draft</span>
+</div>
+</div>     <div id="abstract"><h2>Abstract</h2><span class="markdown">
+Building permitting is essential for ensuring the safety, sustainability, and societal alignment of construction projects. Despite interest from both practitioners and researchers, the process remains largely manual and fragmented. Ontologies offer a promising solution by managing complexity and enabling automation through semantic information, though current ontologies in the building permit domain are limited to specific aspects like building code checking. On the process level, the OntoBPR framework integrates multiple domain-specific ontologies for a seamless digital permitting process and provides a workflow to automate the lifecycle of the permit review. Therefore, it suggests integrating the submitted building application using standardized information containers. The paper explores how digital applications can be submitted, reviewed, verified for completeness, and forwarded to authorities, and how permit review results can be gathered to support decision-making and automate notification issuance, and it provides a demonstration in a case study. In conclusion, OntoBPR formalizes a multi-layered ontology that advances and aligns the partitioned building permit process and provides an adaptable framework to harmonize diverse legal, informatics, and procedural aspects.</span>
+</div>
+<div id="toc"></div>  
+
+<!--DESCRIPTION SECTION-->
+    <div id="description"><h2 id="desc" class="list">OntoBPR: Description <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+
+<span class="markdown">To avoid a digital disruption in planning buildings and structures, this research presents a workflow in which building codes are represented as machine-readable knowledge graphs and ontologies as an integration to the building permit review procedure and the participation process. Therefore, the building permit process was analyzed, and possible applications of ontology-based knowledge representations are explored. An ontology-based building permit review (OntoBPR) is proposed, reusing two existing ontologies for modeling the permit review workflow for representing the building codes. The OntoBPR ontology extends the approach with a connection to Information Containers for linked Document Delivery (ICDD) that are used for submitting the building application, and the Shapes Constraint Language (SHACL) of which rules are generated from the building code knowledge graphs.</span>
+<img src="ontobpr-1.png" width="70%"/><br/>
+<img src="ontobpr-2.png" width="70%"/><br/>
+<img src="ontobpr-3.png" width="70%"/><br/>
+</div>
+   
+
+<!--CROSSREF SECTION-->
+   <div id="crossref"><h2 id="crossreference" class="list">Cross-reference for OntoBPR classes, object properties and data properties <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+This section provides details for each class and property defined by OntoBPR.
+<div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="classes">
+ <h3 id="classes-headline" class="list">Classes</h3>
+ <ul class="hlist">
+  <li><a href="#FormalReview" title="https://w3id.org/ontobpr#FormalReview">(1) Formal review</a></li>
+  <li><a href="#CompletenessCheck" title="https://w3id.org/ontobpr#CompletenessCheck">(1.1) Completeness check </a></li>
+  <li><a href="#ReviewPreparation" title="https://w3id.org/ontobpr#ReviewPreparation">(1.2) Review preparation </a></li>
+  <li><a href="#Assignment" title="https://w3id.org/ontobpr#Assignment">(2) Assignment</a></li>
+  <li><a href="#Participation" title="https://w3id.org/ontobpr#Participation">(3) Participation </a></li>
+  <li><a href="#ContentReview" title="https://w3id.org/ontobpr#ContentReview">(4) Content review </a></li>
+  <li><a href="#IssuingNotificationLetter" title="https://w3id.org/ontobpr#IssuingNotificationLetter">(5) Issuing notification letter </a></li>
+  <li><a href="#RequestReviewResults" title="https://w3id.org/ontobpr#RequestReviewResults">(5.1) Request review results </a></li>
+  <li><a href="#PositivePermitDecision" title="https://w3id.org/ontobpr#PositivePermitDecision">(5.2a) Positive permit decision </a></li>
+  <li><a href="#NegativePermitDecision" title="https://w3id.org/ontobpr#NegativePermitDecision">(5.2b) Negative permit decision </a></li>
+  <li><a href="#FormulationOfCondition" title="https://w3id.org/ontobpr#FormulationOfCondition">(5.3a) Formulation of condition </a></li>
+  <li><a href="#JustificationOfNegativeDecision" title="https://w3id.org/ontobpr#JustificationOfNegativeDecision">(5.3b) Justification of negative decision </a></li>
+  <li><a href="#CreatingNotificationLetter" title="https://w3id.org/ontobpr#CreatingNotificationLetter">(5.4) Creating notification letter</a></li>
+  <li><a href="#https://w3id.org/obpa#Activity" title="https://w3id.org/obpa#Activity"> <span>Activity</span> </a></li>
+  <li><a href="#Activity" title="https://w3id.org/ontobpr#Activity">Activity</a></li>
+  <li><a href="#https://w3id.org/obpa#Building" title="https://w3id.org/obpa#Building"> <span>Building</span> </a></li>
+  <li><a href="#Building" title="https://w3id.org/ontobpr#Building">Building</a></li>
+  <li><a href="#https://w3id.org/obpa#BuildingApplication" title="https://w3id.org/obpa#BuildingApplication"> <span>Building Application</span> </a></li>
+  <li><a href="#BuildingApplication" title="https://w3id.org/ontobpr#BuildingApplication">Building application</a></li>
+  <li><a href="#https://w3id.org/obpa#BuildingAuthority" title="https://w3id.org/obpa#BuildingAuthority"> <span>Building Authority</span> </a></li>
+  <li><a href="#BuildingAuthority" title="https://w3id.org/ontobpr#BuildingAuthority">Building authority</a></li>
+  <li><a href="#Condition" title="https://w3id.org/ontobpr#Condition">Condition</a></li>
+  <li><a href="#https://w3id.org/isoprops#Dictionary" title="https://w3id.org/isoprops#Dictionary"> <span>Dictionary</span> </a></li>
+  <li><a href="#BuildingCodeDictionary" title="https://w3id.org/ontobpr#BuildingCodeDictionary">Dictionary</a></li>
+  <li><a href="#DocumentClassification" title="https://w3id.org/ontobpr#DocumentClassification">Document classification</a></li>
+  <li><a href="#Justification" title="https://w3id.org/ontobpr#Justification">Justification</a></li>
+  <li><a href="#ReviewResult" title="https://w3id.org/ontobpr#ReviewResult">Review checking result</a></li>
+  <li><a href="#ReviewStatement" title="https://w3id.org/ontobpr#ReviewStatement">Review statement</a></li>
+  <li><a href="#ReviewStatus" title="https://w3id.org/ontobpr#ReviewStatus">Review status</a></li>
+  <li><a href="#ShaclShapesSet" title="https://w3id.org/ontobpr#ShaclShapesSet">SHACL shapes set</a></li>
+ </ul>
+ <div class="entity" id="FormalReview">
+  <h3>(1) Formal review<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#FormalReview</p>
+  <div class="comment">
+   <span class="markdown">The Formal review activity</span>
   </div>
-  <h1>OntoBPR: An ontological workflow for building permit review</h1>
-<section id="metadata">
-    <h2 style="display:none;">Metadata</h2>
-    <dl>
-        <dt>IRI</dt>
-        <dd><code>https://w3id.org/ontobpr</code></dd>
-        <dt>Creator(s)</dt>
-        <dd>
-            
-    <a href="https://orcid.org/0000-0001-5808-695X">Sebastian Seiss</a>
-    <a href="https://orcid.org/0000-0001-5808-695X"><svg width="15px" height="15px" viewBox="0 0 72 72" version="1.1"
-    xmlns="http://www.w3.org/2000/svg"
-    xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Orcid logo</title>
-    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="hero" transform="translate(-924.000000, -72.000000)" fill-rule="nonzero">
-            <g id="Group-4">
-                <g id="vector_iD_icon" transform="translate(924.000000, 72.000000)">
-                    <path d="M72,36 C72,55.884375 55.884375,72 36,72 C16.115625,72 0,55.884375 0,36 C0,16.115625 16.115625,0 36,0 C55.884375,0 72,16.115625 72,36 Z" id="Path" fill="#A6CE39"></path>
-                    <g id="Group" transform="translate(18.868966, 12.910345)" fill="#FFFFFF">
-                        <polygon id="Path" points="5.03734929 39.1250878 0.695429861 39.1250878 0.695429861 9.14431787 5.03734929 9.14431787 5.03734929 22.6930505 5.03734929 39.1250878"></polygon>
-                        <path d="M11.409257,9.14431787 L23.1380784,9.14431787 C34.303014,9.14431787 39.2088191,17.0664074 39.2088191,24.1486995 C39.2088191,31.846843 33.1470485,39.1530811 23.1944669,39.1530811 L11.409257,39.1530811 L11.409257,9.14431787 Z M15.7511765,35.2620194 L22.6587756,35.2620194 C32.49858,35.2620194 34.7541226,27.8438084 34.7541226,24.1486995 C34.7541226,18.1301509 30.8915059,13.0353795 22.4332213,13.0353795 L15.7511765,13.0353795 L15.7511765,35.2620194 Z" id="Shape"></path>
-                        <path d="M5.71401206,2.90182329 C5.71401206,4.441452 4.44526937,5.72914146 2.86638958,5.72914146 C1.28750978,5.72914146 0.0187670918,4.441452 0.0187670918,2.90182329 C0.0187670918,1.33420133 1.28750978,0.0745051096 2.86638958,0.0745051096 C4.44526937,0.0745051096 5.71401206,1.36219458 5.71401206,2.90182329 Z" id="Path"></path>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
-</svg></a>
-    (<a href="mailto:sebastian.seiss@uni-weimar.de">sebastian.seiss@uni-weimar.de</a>) of 
-    <a href="https://www.uni-weimar.de/de/bau-und-umwelt/professuren/baubetrieb-und-bauverfahren/personen/sebastian-seiss-msc/">Bauhaus-Universitaet Weimar, DE</a><br/>
-            
-    <a href="https://orcid.org/0000-0001-6058-7614">Sven Zentgraf</a>
-    <a href="https://orcid.org/0000-0001-6058-7614"><svg width="15px" height="15px" viewBox="0 0 72 72" version="1.1"
-    xmlns="http://www.w3.org/2000/svg"
-    xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Orcid logo</title>
-    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="hero" transform="translate(-924.000000, -72.000000)" fill-rule="nonzero">
-            <g id="Group-4">
-                <g id="vector_iD_icon" transform="translate(924.000000, 72.000000)">
-                    <path d="M72,36 C72,55.884375 55.884375,72 36,72 C16.115625,72 0,55.884375 0,36 C0,16.115625 16.115625,0 36,0 C55.884375,0 72,16.115625 72,36 Z" id="Path" fill="#A6CE39"></path>
-                    <g id="Group" transform="translate(18.868966, 12.910345)" fill="#FFFFFF">
-                        <polygon id="Path" points="5.03734929 39.1250878 0.695429861 39.1250878 0.695429861 9.14431787 5.03734929 9.14431787 5.03734929 22.6930505 5.03734929 39.1250878"></polygon>
-                        <path d="M11.409257,9.14431787 L23.1380784,9.14431787 C34.303014,9.14431787 39.2088191,17.0664074 39.2088191,24.1486995 C39.2088191,31.846843 33.1470485,39.1530811 23.1944669,39.1530811 L11.409257,39.1530811 L11.409257,9.14431787 Z M15.7511765,35.2620194 L22.6587756,35.2620194 C32.49858,35.2620194 34.7541226,27.8438084 34.7541226,24.1486995 C34.7541226,18.1301509 30.8915059,13.0353795 22.4332213,13.0353795 L15.7511765,13.0353795 L15.7511765,35.2620194 Z" id="Shape"></path>
-                        <path d="M5.71401206,2.90182329 C5.71401206,4.441452 4.44526937,5.72914146 2.86638958,5.72914146 C1.28750978,5.72914146 0.0187670918,4.441452 0.0187670918,2.90182329 C0.0187670918,1.33420133 1.28750978,0.0745051096 2.86638958,0.0745051096 C4.44526937,0.0745051096 5.71401206,1.36219458 5.71401206,2.90182329 Z" id="Path"></path>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
-</svg></a>
-    (<a href="mailto:sven.zentgraf@rub.de">sven.zentgraf@rub.de</a>) of 
-    <a href="https://www.inf.bi.ruhr-uni-bochum.de/iib/lehrstuhl/mitarbeiter/sven_zentgraf.html.en">Ruhr University Bochum, DE</a><br/>
-            
-    <a href="https://orcid.org/0000-0002-6249-243X">Dr. Philipp Hagedorn</a>
-    <a href="https://orcid.org/0000-0002-6249-243X"><svg width="15px" height="15px" viewBox="0 0 72 72" version="1.1"
-    xmlns="http://www.w3.org/2000/svg"
-    xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Orcid logo</title>
-    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="hero" transform="translate(-924.000000, -72.000000)" fill-rule="nonzero">
-            <g id="Group-4">
-                <g id="vector_iD_icon" transform="translate(924.000000, 72.000000)">
-                    <path d="M72,36 C72,55.884375 55.884375,72 36,72 C16.115625,72 0,55.884375 0,36 C0,16.115625 16.115625,0 36,0 C55.884375,0 72,16.115625 72,36 Z" id="Path" fill="#A6CE39"></path>
-                    <g id="Group" transform="translate(18.868966, 12.910345)" fill="#FFFFFF">
-                        <polygon id="Path" points="5.03734929 39.1250878 0.695429861 39.1250878 0.695429861 9.14431787 5.03734929 9.14431787 5.03734929 22.6930505 5.03734929 39.1250878"></polygon>
-                        <path d="M11.409257,9.14431787 L23.1380784,9.14431787 C34.303014,9.14431787 39.2088191,17.0664074 39.2088191,24.1486995 C39.2088191,31.846843 33.1470485,39.1530811 23.1944669,39.1530811 L11.409257,39.1530811 L11.409257,9.14431787 Z M15.7511765,35.2620194 L22.6587756,35.2620194 C32.49858,35.2620194 34.7541226,27.8438084 34.7541226,24.1486995 C34.7541226,18.1301509 30.8915059,13.0353795 22.4332213,13.0353795 L15.7511765,13.0353795 L15.7511765,35.2620194 Z" id="Shape"></path>
-                        <path d="M5.71401206,2.90182329 C5.71401206,4.441452 4.44526937,5.72914146 2.86638958,5.72914146 C1.28750978,5.72914146 0.0187670918,4.441452 0.0187670918,2.90182329 C0.0187670918,1.33420133 1.28750978,0.0745051096 2.86638958,0.0745051096 C4.44526937,0.0745051096 5.71401206,1.36219458 5.71401206,2.90182329 Z" id="Path"></path>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
-</svg></a>
-    (<a href="mailto:philipp.hagedorn-n6v@rub.de">philipp.hagedorn-n6v@rub.de</a>) of 
-    <a href="https://www.inf.bi.ruhr-uni-bochum.de/iib/lehrstuhl/mitarbeiter/philipp_hagedorn.html.en">Ruhr University Bochum, DE</a><br/>
-            
-    <a href="https://orcid.org/0000-0002-9078-8393">Dr. Judith Fauth</a>
-    <a href="https://orcid.org/0000-0002-9078-8393"><svg width="15px" height="15px" viewBox="0 0 72 72" version="1.1"
-    xmlns="http://www.w3.org/2000/svg"
-    xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Orcid logo</title>
-    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="hero" transform="translate(-924.000000, -72.000000)" fill-rule="nonzero">
-            <g id="Group-4">
-                <g id="vector_iD_icon" transform="translate(924.000000, 72.000000)">
-                    <path d="M72,36 C72,55.884375 55.884375,72 36,72 C16.115625,72 0,55.884375 0,36 C0,16.115625 16.115625,0 36,0 C55.884375,0 72,16.115625 72,36 Z" id="Path" fill="#A6CE39"></path>
-                    <g id="Group" transform="translate(18.868966, 12.910345)" fill="#FFFFFF">
-                        <polygon id="Path" points="5.03734929 39.1250878 0.695429861 39.1250878 0.695429861 9.14431787 5.03734929 9.14431787 5.03734929 22.6930505 5.03734929 39.1250878"></polygon>
-                        <path d="M11.409257,9.14431787 L23.1380784,9.14431787 C34.303014,9.14431787 39.2088191,17.0664074 39.2088191,24.1486995 C39.2088191,31.846843 33.1470485,39.1530811 23.1944669,39.1530811 L11.409257,39.1530811 L11.409257,9.14431787 Z M15.7511765,35.2620194 L22.6587756,35.2620194 C32.49858,35.2620194 34.7541226,27.8438084 34.7541226,24.1486995 C34.7541226,18.1301509 30.8915059,13.0353795 22.4332213,13.0353795 L15.7511765,13.0353795 L15.7511765,35.2620194 Z" id="Shape"></path>
-                        <path d="M5.71401206,2.90182329 C5.71401206,4.441452 4.44526937,5.72914146 2.86638958,5.72914146 C1.28750978,5.72914146 0.0187670918,4.441452 0.0187670918,2.90182329 C0.0187670918,1.33420133 1.28750978,0.0745051096 2.86638958,0.0745051096 C4.44526937,0.0745051096 5.71401206,1.36219458 5.71401206,2.90182329 Z" id="Path"></path>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
-</svg></a>
-    (<a href="mailto:jf805@cam.ac.uk">jf805@cam.ac.uk</a>) of 
-    <a href="https://www.linkedin.com/in/judith-fauth-5b5137bb">University of Cambridge, GB</a><br/>
-        </dd>
-        <dt>Ontology RDF</dt>
-        <dd><a href="ontobpr.ttl">RDF (turtle)</a></dd>
-    </dl>
-    <h2>Description</h2>
-    <div id="description">
-        <p>To avoid a digital disruption in planning buildings and structures, this research presents a workflow in which building codes are represented as machine-readable knowledge graphs and ontologies as an integration to the building permit review procedure and the participation process. Therefore, the building permit process was analyzed, and possible applications of ontology-based knowledge representations are explored. An ontology-based building permit review (OntoBPR) is proposed, reusing two existing ontologies for modeling the permit review workflow for representing the building codes. The OntoBPR ontology extends the approach with a connection to Information Containers for linked Document Delivery (ICDD) that are used for submitting the building application, and the Shapes Constraint Language (SHACL) of which rules are generated from the building code knowledge graphs.</p>
-        <a href="http://oops.linkeddata.es"><img 
-            src="https://oops.linkeddata.es/images/conformance/oops_free.png" 
-           alt="Free of pitfalls" height="69.6" width="100" />
-    </div>
-</section>
-<section id="toc">
-    <h2>Table of Contents</h2>
-    <ol>
-        <li><a href="#classes">Classes</a></li>
-        <li><a href="#objectproperties">Object Properties</a></li>
-        <li><a href="#datatypeproperties">Datatype Properties</a></li>
-        <li><a href="#namedindividuals">Named Individuals</a></li>
-        <li><a href="#namespaces">Namespaces</a></li>
-        <li><a href="#legend">Legend</a></li>
-    </ol>
-</section>
-<section id="overview">
-    <h2>Overview</h2>
-    <div class="figure">
-        <img style="width:700px; " src="ontobpr-1.png">
-        <div class="caption"><strong>Figure 1:</strong> Ontology overview</div>
-    </div>
-    <div class="figure">
-        <img style="width:700px; " src="ontobpr-2.png">
-        <div class="caption"><strong>Figure 2:</strong> Defined activities</div>
-    </div>
-    <div class="figure">
-        <img style="width:700px; " src="ontobpr-3.png">
-        <div class="caption"><strong>Figure 3:</strong> Content review with OntoBPR</div>
-    </div>
-</section>
-  <section id="classes">
-    <h2>Classes <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
-    <ul class="hlist">
-        <li><a href="#(1)Formalreview">(1) Formal review</a></li>
-        <li><a href="#(1.1)Completenesscheck">(1.1) Completeness check </a></li>
-        <li><a href="#(1.2)Reviewpreparation">(1.2) Review preparation </a></li>
-        <li><a href="#(2)Assignment">(2) Assignment</a></li>
-        <li><a href="#(3)Participation">(3) Participation </a></li>
-        <li><a href="#(4)Contentreview">(4) Content review </a></li>
-        <li><a href="#(5)Issuingnotificationletter">(5) Issuing notification letter </a></li>
-        <li><a href="#(5.1)Requestreviewresults">(5.1) Request review results </a></li>
-        <li><a href="#(5.2a)Positivepermitdecision">(5.2a) Positive permit decision </a></li>
-        <li><a href="#(5.2b)Negativepermitdecision">(5.2b) Negative permit decision </a></li>
-        <li><a href="#(5.3a)Formulationofcondition">(5.3a) Formulation of condition </a></li>
-        <li><a href="#(5.3b)Justificationofnegativedecision">(5.3b) Justification of negative decision </a></li>
-        <li><a href="#(5.4)Creatingnotificationletter">(5.4) Creating notification letter</a></li>
-        <li><a href="#Activity">Activity</a></li>
-        <li><a href="#Building">Building</a></li>
-        <li><a href="#Buildingapplication">Building application</a></li>
-        <li><a href="#Buildingauthority">Building authority</a></li>
-        <li><a href="#Condition">Condition</a></li>
-        <li><a href="#Dictionary">Dictionary</a></li>
-        <li><a href="#Justification">Justification</a></li>
-        <li><a href="#Reviewcheckingresult">Review checking result</a></li>
-        <li><a href="#Reviewstatement">Review statement</a></li>
-        <li><a href="#Reviewstatus">Review status</a></li>
-        <li><a href="#SHACLshapesset">SHACL shapes set</a></li>
-    </ul>
-    <div class="entity class" id="Activity">
-        <h3>Activity<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://w3id.org/ontobpr#Activity</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>an Activity executed throughout the building permit review</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="http://www.w3.org/2002/07/owl#Thing">owl:Thing</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>Restrictions</th>
-                <td>
-                    <a href="#iscompleted">ontobpr:isCompleted</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
-                </td>
-            </tr>
-            <tr>
-                <th>Sub-classes</th>
-                <td>
-                    <a href="#(2)Assignment">ontobpr:Assignment</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#(5.2a)Positivepermitdecision">ontobpr:PositivePermitDecision</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#(1.2)Reviewpreparation">ontobpr:ReviewPreparation</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#(5.4)Creatingnotificationletter">ontobpr:CreatingNotificationLetter</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#(5)Issuingnotificationletter">ontobpr:IssuingNotificationLetter</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#(5.3a)Formulationofcondition">ontobpr:FormulationOfCondition</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#(5.3b)Justificationofnegativedecision">ontobpr:JustificationOfNegativeDecision</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#(4)Contentreview">ontobpr:ContentReview</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#(5.1)Requestreviewresults">ontobpr:RequestReviewResults</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#(1.1)Completenesscheck">ontobpr:CompletenessCheck</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#(3)Participation">ontobpr:Participation</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#(5.2b)Negativepermitdecision">ontobpr:NegativePermitDecision</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#(1)Formalreview">ontobpr:FormalReview</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>In domain of</th>
-                <td>
-                    <a href="#iscompleted">ontobpr:isCompleted</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
-                    <a href="#afteractivity">ontobpr:afterActivity</a><sup class="sup-op" title="object property">op</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>In range of</th>
-                <td>
-                    <a href="#hascurrentactivity">ontobpr:hasCurrentActivity</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#belongstoactivity">ontobpr:belongsToActivity</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#afteractivity">ontobpr:afterActivity</a><sup class="sup-op" title="object property">op</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="(2)Assignment">
-        <h3>(2) Assignment<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://w3id.org/ontobpr#Assignment</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>the Assignment activity</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="#Activity">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>Restrictions</th>
-                <td>
-                    <a href="#afteractivity">ontobpr:afterActivity</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#(1)Formalreview">ontobpr:FormalReview</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="Building">
-        <h3>Building<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://w3id.org/ontobpr#Building</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>The building that is subject of this building application</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="http://www.w3.org/2002/07/owl#Thing">owl:Thing</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>Restrictions</th>
-                <td>
-                    <a href="#hasbuildingdocument">ontobpr:hasBuildingDocument</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="https://standards.iso.org/iso/21597/-1/ed-1/en/Container#Document">ct:Document</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>In domain of</th>
-                <td>
-                    <a href="#hasbuildingdocument">ontobpr:hasBuildingDocument</a><sup class="sup-op" title="object property">op</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="Buildingapplication">
-        <h3>Building application<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://w3id.org/ontobpr#BuildingApplication</code></td>
-            </tr>
-            <tr>
-                <th>Is Defined By</th>
-                <td>
-                    https://w3id.org/obpa#BuildingApplication
-                </td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>the building application that is submitted by an applicant for review</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Restrictions</th>
-                <td>
-                    <a href="#hasstatus">ontobpr:hasStatus</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#Reviewstatus">ontobpr:ReviewStatus</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#hasbuildingapplicationcontainer">ontobpr:hasBuildingApplicationContainer</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="https://standards.iso.org/iso/21597/-1/ed-1/en/Container#ContainerDescription">ct:ContainerDescription</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#hasstatement">ontobpr:hasStatement</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Reviewstatement">ontobpr:ReviewStatement</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#hasapplicationdocument">ontobpr:hasApplicationDocument</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="https://standards.iso.org/iso/21597/-1/ed-1/en/Container#Document">ct:Document</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#hascurrentactivity">ontobpr:hasCurrentActivity</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#Activity">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#hascheckingresults">ontobpr:hasCheckingResults</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="#Reviewcheckingresult">ontobpr:ReviewResult</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>In domain of</th>
-                <td>
-                    <a href="#hasbuildingapplicationcontainer">ontobpr:hasBuildingApplicationContainer</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#hasdocument">ontobpr:hasDocument</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#hasstatus">ontobpr:hasStatus</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#hascurrentactivity">ontobpr:hasCurrentActivity</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#hasapplicationdocument">ontobpr:hasApplicationDocument</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#hasstatement">ontobpr:hasStatement</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#hascheckingresults">ontobpr:hasCheckingResults</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#applies">ontobpr:applies</a><sup class="sup-op" title="object property">op</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="Buildingauthority">
-        <h3>Building authority<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://w3id.org/ontobpr#BuildingAuthority</code></td>
-            </tr>
-            <tr>
-                <th>Is Defined By</th>
-                <td>
-                    https://w3id.org/obpa#BuildingAuthority
-                </td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>a building authority that is involved in a building permit review</p>
-                </td>
-            </tr>
-            <tr>
-                <th>In domain of</th>
-                <td>
-                    <a href="#checks">ontobpr:checks</a><sup class="sup-op" title="object property">op</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="Dictionary">
-        <h3>Dictionary<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://w3id.org/ontobpr#BuildingCodeDictionary</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>A dictionary containing properties and shapes from a building code</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Restrictions</th>
-                <td>
-                    <a href="#hasshapesset">ontobpr:hasShapesSet</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#SHACLshapesset">ontobpr:ShaclShapesSet</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>In domain of</th>
-                <td>
-                    <a href="#hasshapesset">ontobpr:hasShapesSet</a><sup class="sup-op" title="object property">op</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>In range of</th>
-                <td>
-                    <a href="#checks">ontobpr:checks</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#applies">ontobpr:applies</a><sup class="sup-op" title="object property">op</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="(1.1)Completenesscheck">
-        <h3>(1.1) Completeness check <sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://w3id.org/ontobpr#CompletenessCheck</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>the Completeness check activity</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="#Activity">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>Restrictions</th>
-                <td>
-                    <a href="#hasshapesset">ontobpr:hasShapesSet</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#SHACLshapesset">ontobpr:ShaclShapesSet</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="Condition">
-        <h3>Condition<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://w3id.org/ontobpr#Condition</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>a formulated condition statement of a conditionally accepted application</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="#Reviewstatement">ontobpr:ReviewStatement</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="(4)Contentreview">
-        <h3>(4) Content review <sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://w3id.org/ontobpr#ContentReview</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>The Content review activity</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="#Activity">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>Restrictions</th>
-                <td>
-                    <a href="#afteractivity">ontobpr:afterActivity</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#(1)Formalreview">ontobpr:FormalReview</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="(5.4)Creatingnotificationletter">
-        <h3>(5.4) Creating notification letter<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://w3id.org/ontobpr#CreatingNotificationLetter</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>The Creating notification letter activity</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="#Activity">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>Restrictions</th>
-                <td>
-                    <a href="#afteractivity">ontobpr:afterActivity</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1 <a href="#(5.3a)Formulationofcondition">ontobpr:FormulationOfCondition</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#afteractivity">ontobpr:afterActivity</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1 <a href="#(5.3b)Justificationofnegativedecision">ontobpr:JustificationOfNegativeDecision</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="(1)Formalreview">
-        <h3>(1) Formal review<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://w3id.org/ontobpr#FormalReview</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>The Formal review activity</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="#Activity">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>Restrictions</th>
-                <td>
-                    <a href="https://w3id.org/obpa#hasSubActivity">obpa:hasSubActivity</a> <span class="cardinality">exactly</span> 1 <a href="#(1.2)Reviewpreparation">ontobpr:ReviewPreparation</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://w3id.org/obpa#hasSubActivity">obpa:hasSubActivity</a> <span class="cardinality">exactly</span> 1 <a href="#(1.1)Completenesscheck">ontobpr:CompletenessCheck</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="(5.3a)Formulationofcondition">
-        <h3>(5.3a) Formulation of condition <sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://w3id.org/ontobpr#FormulationOfCondition</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>the Formulation of condition activity</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="#Activity">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>Restrictions</th>
-                <td>
-                    <a href="#afteractivity">ontobpr:afterActivity</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#(5.2a)Positivepermitdecision">ontobpr:PositivePermitDecision</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="(5)Issuingnotificationletter">
-        <h3>(5) Issuing notification letter <sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://w3id.org/ontobpr#IssuingNotificationLetter</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>the Issuing notification letter activity</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="#Activity">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>Restrictions</th>
-                <td>
-                    <a href="https://w3id.org/obpa#hasSubActivity">obpa:hasSubActivity</a> <span class="cardinality">max</span> 1 <a href="#(5.3b)Justificationofnegativedecision">ontobpr:JustificationOfNegativeDecision</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://w3id.org/obpa#hasSubActivity">obpa:hasSubActivity</a> <span class="cardinality">exactly</span> 1 <a href="#(5.4)Creatingnotificationletter">ontobpr:CreatingNotificationLetter</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#afteractivity">ontobpr:afterActivity</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1 <a href="#(2)Assignment">ontobpr:Assignment</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://w3id.org/obpa#hasSubActivity">obpa:hasSubActivity</a> <span class="cardinality">max</span> 1 <a href="#(5.3a)Formulationofcondition">ontobpr:FormulationOfCondition</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#afteractivity">ontobpr:afterActivity</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1 <a href="#(3)Participation">ontobpr:Participation</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://w3id.org/obpa#hasSubActivity">obpa:hasSubActivity</a> <span class="cardinality">max</span> 1 <a href="#(5.2b)Negativepermitdecision">ontobpr:NegativePermitDecision</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://w3id.org/obpa#hasSubActivity">obpa:hasSubActivity</a> <span class="cardinality">max</span> 1 <a href="#(5.2a)Positivepermitdecision">ontobpr:PositivePermitDecision</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://w3id.org/obpa#hasSubActivity">obpa:hasSubActivity</a> <span class="cardinality">exactly</span> 1 <a href="#(5.1)Requestreviewresults">ontobpr:RequestReviewResults</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#afteractivity">ontobpr:afterActivity</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1 <a href="#(4)Contentreview">ontobpr:ContentReview</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="Justification">
-        <h3>Justification<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://w3id.org/ontobpr#Justification</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>justification statement of a negative building permit review decision</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="#Reviewstatement">ontobpr:ReviewStatement</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="(5.3b)Justificationofnegativedecision">
-        <h3>(5.3b) Justification of negative decision <sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://w3id.org/ontobpr#JustificationOfNegativeDecision</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>the Justification of negative decision activity</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="#Activity">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>Restrictions</th>
-                <td>
-                    <a href="#afteractivity">ontobpr:afterActivity</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#(5.2b)Negativepermitdecision">ontobpr:NegativePermitDecision</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="(5.2b)Negativepermitdecision">
-        <h3>(5.2b) Negative permit decision <sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://w3id.org/ontobpr#NegativePermitDecision</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>the Negative permit decision activity</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="#Activity">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>Restrictions</th>
-                <td>
-                    <a href="#afteractivity">ontobpr:afterActivity</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#(5.1)Requestreviewresults">ontobpr:RequestReviewResults</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="(3)Participation">
-        <h3>(3) Participation <sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://w3id.org/ontobpr#Participation</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>the Participation activity</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="#Activity">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>Restrictions</th>
-                <td>
-                    <a href="#afteractivity">ontobpr:afterActivity</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#(1)Formalreview">ontobpr:FormalReview</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="(5.2a)Positivepermitdecision">
-        <h3>(5.2a) Positive permit decision <sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://w3id.org/ontobpr#PositivePermitDecision</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>the Positive permit decision activity</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="#Activity">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>Restrictions</th>
-                <td>
-                    <a href="#afteractivity">ontobpr:afterActivity</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#(5.1)Requestreviewresults">ontobpr:RequestReviewResults</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="(5.1)Requestreviewresults">
-        <h3>(5.1) Request review results <sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://w3id.org/ontobpr#RequestReviewResults</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>the Request review results activity</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="#Activity">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="(1.2)Reviewpreparation">
-        <h3>(1.2) Review preparation <sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://w3id.org/ontobpr#ReviewPreparation</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>the Review preparation activity</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="#Activity">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>Restrictions</th>
-                <td>
-                    <a href="#afteractivity">ontobpr:afterActivity</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#(1.1)Completenesscheck">ontobpr:CompletenessCheck</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="Reviewcheckingresult">
-        <h3>Review checking result<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://w3id.org/ontobpr#ReviewResult</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>the review result of a particular agent incorporating a sh:ValidationReport</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="http://www.w3.org/2002/07/owl#Thing">owl:Thing</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>Restrictions</th>
-                <td>
-                    <a href="#hascheckingresults">ontobpr:hasCheckingResults</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="http://www.w3.org/ns/shacl#ValidationReport">sh:ValidationReport</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://purl.org/dc/terms/issued">dcterms:issued</a> <span class="cardinality">exactly</span> 1 <a href="http://www.w3.org/2001/XMLSchema#date">xsd:date</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://w3id.org/obpa#hasAgent">obpa:hasAgent</a> <span class="cardinality">exactly</span> 1 <a href="https://w3id.org/obpa#Agent">obpa:Agent</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>In range of</th>
-                <td>
-                    <a href="#hascheckingresults">ontobpr:hasCheckingResults</a><sup class="sup-op" title="object property">op</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="Reviewstatement">
-        <h3>Review statement<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://w3id.org/ontobpr#ReviewStatement</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>a general review statement for logging events during the building permit review</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="http://www.w3.org/2002/07/owl#Thing">owl:Thing</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>Restrictions</th>
-                <td>
-                    <a href="http://purl.org/dc/terms/issued">dcterms:issued</a> <span class="cardinality">exactly</span> 1 <a href="http://www.w3.org/2001/XMLSchema#date">xsd:date</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="http://www.w3.org/2000/01/rdf-schema#comment">rdfs:comment</a> <span class="cardinality">exactly</span> 1 <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://w3id.org/obpa#hasAgent">obpa:hasAgent</a> <span class="cardinality">exactly</span> 1 <a href="https://w3id.org/obpa#Agent">obpa:Agent</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#belongstoactivity">ontobpr:belongsToActivity</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1 <a href="#Activity">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>Sub-classes</th>
-                <td>
-                    <a href="#Justification">ontobpr:Justification</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="#Condition">ontobpr:Condition</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>In domain of</th>
-                <td>
-                    <a href="#belongstoactivity">ontobpr:belongsToActivity</a><sup class="sup-op" title="object property">op</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>In range of</th>
-                <td>
-                    <a href="#hasstatement">ontobpr:hasStatement</a><sup class="sup-op" title="object property">op</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="Reviewstatus">
-        <h3>Review status<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://w3id.org/ontobpr#ReviewStatus</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>the status of the building application within the building permit review</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="http://www.w3.org/2002/07/owl#Thing">owl:Thing</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>In range of</th>
-                <td>
-                    <a href="#hasstatus">ontobpr:hasStatus</a><sup class="sup-op" title="object property">op</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="SHACLshapesset">
-        <h3>SHACL shapes set<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://w3id.org/ontobpr#ShaclShapesSet</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>a set of SHACL shapes for validating data at various activities of the building permit review</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="http://www.w3.org/2002/07/owl#Thing">owl:Thing</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>Restrictions</th>
-                <td>
-                    <a href="#hasshapes">ontobpr:hasShapes</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">some</span> <a href="http://www.w3.org/ns/shacl#Shape">sh:Shape</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>In domain of</th>
-                <td>
-                    <a href="#hasshapes">ontobpr:hasShapes</a><sup class="sup-op" title="object property">op</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>In range of</th>
-                <td>
-                    <a href="#hasshapesset">ontobpr:hasShapesSet</a><sup class="sup-op" title="object property">op</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-</section>
-<section id="objectproperties">
-    <h2>Object Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
-    <ul class="hlist">
-        <li><a href="#afteractivity">after activity</a></li>
-        <li><a href="#applies">applies</a></li>
-        <li><a href="#belongstoactivity">belongs to activity</a></li>
-        <li><a href="#checks">checks</a></li>
-        <li><a href="#hasapplicationdocument">has application document</a></li>
-        <li><a href="#hasbuildingapplicationcontainer">has building application container</a></li>
-        <li><a href="#hasbuildingdocument">has building document</a></li>
-        <li><a href="#hascheckingresults">has checking results</a></li>
-        <li><a href="#hascurrentactivity">has current activity</a></li>
-        <li><a href="#hasdocument">has document</a></li>
-        <li><a href="#hasshapes">has shapes</a></li>
-        <li><a href="#hasshapesset">has shapes set</a></li>
-        <li><a href="#hasstatement">has statement</a></li>
-        <li><a href="#hasstatus">has status</a></li>
-    </ul>
-    <div class="entity property" id="afteractivity">
-        <h3>after activity<sup title="object property" class="sup-op">op</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://w3id.org/ontobpr#afterActivity</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    an activity is executed after another activity
-                </td>
-            </tr>
-            <tr>
-                <th>Super-properties</th>
-                <td>
-                    <a href="http://www.w3.org/2002/07/owl#topObjectProperty">owl:topObjectProperty</a>
-                </td>
-            </tr>
-            <tr>
-                <th>Domain(s)</th>
-                <td>
-                    <a href="#Activity">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup>
-                </td>
-            </tr>
-            <tr>
-                <th>Range(s)</th>
-                <td>
-                    <a href="#Activity">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity property" id="applies">
-        <h3>applies<sup title="object property" class="sup-op">op</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://w3id.org/ontobpr#applies</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    BuildingApplication applies a BuildingCodeDictionary for checking
-                </td>
-            </tr>
-            <tr>
-                <th>Super-properties</th>
-                <td>
-                    <a href="http://www.w3.org/2002/07/owl#topObjectProperty">owl:topObjectProperty</a>
-                </td>
-            </tr>
-            <tr>
-                <th>Domain(s)</th>
-                <td>
-                    <a href="https://w3id.org/obpa#BuildingApplication">obpa:BuildingApplication</a><sup class="sup-c" title="class">c</sup>
-                    <a href="#Buildingapplication">ontobpr:BuildingApplication</a><sup class="sup-c" title="class">c</sup>
-                </td>
-            </tr>
-            <tr>
-                <th>Range(s)</th>
-                <td>
-                    <a href="#Dictionary">ontobpr:BuildingCodeDictionary</a><sup class="sup-c" title="class">c</sup>
-                    <a href="https://w3id.org/isoprops#Dictionary">isoprops:Dictionary</a><sup class="sup-c" title="class">c</sup>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity property" id="belongstoactivity">
-        <h3>belongs to activity<sup title="object property" class="sup-op">op</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://w3id.org/ontobpr#belongsToActivity</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    a ReviewStatement belongs to a particular Activity
-                </td>
-            </tr>
-            <tr>
-                <th>Super-properties</th>
-                <td>
-                    <a href="http://www.w3.org/2002/07/owl#topObjectProperty">owl:topObjectProperty</a>
-                </td>
-            </tr>
-            <tr>
-                <th>Domain(s)</th>
-                <td>
-                    <a href="#Reviewstatement">ontobpr:ReviewStatement</a><sup class="sup-c" title="class">c</sup>
-                </td>
-            </tr>
-            <tr>
-                <th>Range(s)</th>
-                <td>
-                    <a href="#Activity">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity property" id="checks">
-        <h3>checks<sup title="object property" class="sup-op">op</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://w3id.org/ontobpr#checks</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    BuildingAuthority checks a building regarding a BuildingCodeDictionary
-                </td>
-            </tr>
-            <tr>
-                <th>Super-properties</th>
-                <td>
-                    <a href="http://www.w3.org/2002/07/owl#topObjectProperty">owl:topObjectProperty</a>
-                </td>
-            </tr>
-            <tr>
-                <th>Domain(s)</th>
-                <td>
-                    <a href="#Buildingauthority">ontobpr:BuildingAuthority</a><sup class="sup-c" title="class">c</sup>
-                    <a href="https://w3id.org/obpa#BuildingAuthority">obpa:BuildingAuthority</a><sup class="sup-c" title="class">c</sup>
-                </td>
-            </tr>
-            <tr>
-                <th>Range(s)</th>
-                <td>
-                    <a href="#Dictionary">ontobpr:BuildingCodeDictionary</a><sup class="sup-c" title="class">c</sup>
-                    <a href="https://w3id.org/isoprops#Dictionary">isoprops:Dictionary</a><sup class="sup-c" title="class">c</sup>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity property" id="hasapplicationdocument">
-        <h3>has application document<sup title="object property" class="sup-op">op</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://w3id.org/ontobpr#hasApplicationDocument</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    a BuildingApplication has a respective document (e.g. PDF) representing a human-readable version of the application
-                </td>
-            </tr>
-            <tr>
-                <th>Super-properties</th>
-                <td>
-                    <a href="#hasdocument">ontobpr:hasDocument</a><sup class="sup-op" title="object property">op</sup>
-                </td>
-            </tr>
-            <tr>
-                <th>Domain(s)</th>
-                <td>
-                    <a href="#Buildingapplication">ontobpr:BuildingApplication</a><sup class="sup-c" title="class">c</sup>
-                </td>
-            </tr>
-            <tr>
-                <th>Range(s)</th>
-                <td>
-                    <a href="https://standards.iso.org/iso/21597/-1/ed-1/en/Container#Document">ct:Document</a><sup class="sup-c" title="class">c</sup>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity property" id="hasbuildingapplicationcontainer">
-        <h3>has building application container<sup title="object property" class="sup-op">op</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://w3id.org/ontobpr#hasBuildingApplicationContainer</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    the reference from a BuildingApplication to an ICDD container
-                </td>
-            </tr>
-            <tr>
-                <th>Super-properties</th>
-                <td>
-                    <a href="http://www.w3.org/2002/07/owl#topObjectProperty">owl:topObjectProperty</a>
-                </td>
-            </tr>
-            <tr>
-                <th>Domain(s)</th>
-                <td>
-                    <a href="#Buildingapplication">ontobpr:BuildingApplication</a><sup class="sup-c" title="class">c</sup>
-                </td>
-            </tr>
-            <tr>
-                <th>Range(s)</th>
-                <td>
-                    <a href="https://standards.iso.org/iso/21597/-1/ed-1/en/Container#ContainerDescription">ct:ContainerDescription</a><sup class="sup-c" title="class">c</sup>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity property" id="hasbuildingdocument">
-        <h3>has building document<sup title="object property" class="sup-op">op</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://w3id.org/ontobpr#hasBuildingDocument</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    A Building has a document, which is the IFC representation of this Building
-                </td>
-            </tr>
-            <tr>
-                <th>Super-properties</th>
-                <td>
-                    <a href="#hasdocument">ontobpr:hasDocument</a><sup class="sup-op" title="object property">op</sup>
-                </td>
-            </tr>
-            <tr>
-                <th>Domain(s)</th>
-                <td>
-                    <a href="#Building">ontobpr:Building</a><sup class="sup-c" title="class">c</sup>
-                </td>
-            </tr>
-            <tr>
-                <th>Range(s)</th>
-                <td>
-                    <a href="https://standards.iso.org/iso/21597/-1/ed-1/en/Container#Document">ct:Document</a><sup class="sup-c" title="class">c</sup>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity property" id="hascheckingresults">
-        <h3>has checking results<sup title="object property" class="sup-op">op</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://w3id.org/ontobpr#hasCheckingResults</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    either a BuildingApplication has ReviewResult or a ReviewResult has sh:ValidationReport
-                </td>
-            </tr>
-            <tr>
-                <th>Super-properties</th>
-                <td>
-                    <a href="http://www.w3.org/2002/07/owl#topObjectProperty">owl:topObjectProperty</a>
-                </td>
-            </tr>
-            <tr>
-                <th>Domain(s)</th>
-                <td>
-                    <a href="#Buildingapplication">ontobpr:BuildingApplication</a><sup class="sup-c" title="class">c</sup>
-                </td>
-            </tr>
-            <tr>
-                <th>Range(s)</th>
-                <td>
-                    <a href="#Reviewcheckingresult">ontobpr:ReviewResult</a><sup class="sup-c" title="class">c</sup>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity property" id="hascurrentactivity">
-        <h3>has current activity<sup title="object property" class="sup-op">op</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://w3id.org/ontobpr#hasCurrentActivity</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    a BuildingApplication is in the current Activity
-                </td>
-            </tr>
-            <tr>
-                <th>Super-properties</th>
-                <td>
-                    <a href="http://www.w3.org/2002/07/owl#topObjectProperty">owl:topObjectProperty</a>
-                </td>
-            </tr>
-            <tr>
-                <th>Domain(s)</th>
-                <td>
-                    <a href="#Buildingapplication">ontobpr:BuildingApplication</a><sup class="sup-c" title="class">c</sup>
-                </td>
-            </tr>
-            <tr>
-                <th>Range(s)</th>
-                <td>
-                    <a href="#Activity">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity property" id="hasdocument">
-        <h3>has document<sup title="object property" class="sup-op">op</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://w3id.org/ontobpr#hasDocument</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    abstract property grouping hasApplicationDocument and hasBuildingDocument
-                </td>
-            </tr>
-            <tr>
-                <th>Super-properties</th>
-                <td>
-                    <a href="http://www.w3.org/2002/07/owl#topObjectProperty">owl:topObjectProperty</a>
-                </td>
-            </tr>
-            <tr>
-                <th>Domain(s)</th>
-                <td>
-                    <a href="#Buildingapplication">ontobpr:BuildingApplication</a><sup class="sup-c" title="class">c</sup>
-                </td>
-            </tr>
-            <tr>
-                <th>Range(s)</th>
-                <td>
-                    <a href="https://standards.iso.org/iso/21597/-1/ed-1/en/Container#Document">ct:Document</a><sup class="sup-c" title="class">c</sup>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity property" id="hasshapes">
-        <h3>has shapes<sup title="object property" class="sup-op">op</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://w3id.org/ontobpr#hasShapes</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    ShaclShapesSet has sh:Shape instances
-                </td>
-            </tr>
-            <tr>
-                <th>Super-properties</th>
-                <td>
-                    <a href="http://www.w3.org/2002/07/owl#topObjectProperty">owl:topObjectProperty</a>
-                </td>
-            </tr>
-            <tr>
-                <th>Domain(s)</th>
-                <td>
-                    <a href="#SHACLshapesset">ontobpr:ShaclShapesSet</a><sup class="sup-c" title="class">c</sup>
-                </td>
-            </tr>
-            <tr>
-                <th>Range(s)</th>
-                <td>
-                    <a href="http://www.w3.org/ns/shacl#Shape">sh:Shape</a><sup class="sup-c" title="class">c</sup>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity property" id="hasshapesset">
-        <h3>has shapes set<sup title="object property" class="sup-op">op</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://w3id.org/ontobpr#hasShapesSet</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    either an Activity or a BuildingCodeDictionary has a ShaclShapesSet
-                </td>
-            </tr>
-            <tr>
-                <th>Super-properties</th>
-                <td>
-                    <a href="http://www.w3.org/2002/07/owl#topObjectProperty">owl:topObjectProperty</a>
-                </td>
-            </tr>
-            <tr>
-                <th>Domain(s)</th>
-                <td>
-                    <a href="#Dictionary">ontobpr:BuildingCodeDictionary</a><sup class="sup-c" title="class">c</sup>
-                </td>
-            </tr>
-            <tr>
-                <th>Range(s)</th>
-                <td>
-                    <a href="#SHACLshapesset">ontobpr:ShaclShapesSet</a><sup class="sup-c" title="class">c</sup>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity property" id="hasstatement">
-        <h3>has statement<sup title="object property" class="sup-op">op</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://w3id.org/ontobpr#hasStatement</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    any ReviewStatement of any reviewer is attached to a BuildingApplication
-                </td>
-            </tr>
-            <tr>
-                <th>Super-properties</th>
-                <td>
-                    <a href="http://www.w3.org/2002/07/owl#topObjectProperty">owl:topObjectProperty</a>
-                </td>
-            </tr>
-            <tr>
-                <th>Domain(s)</th>
-                <td>
-                    <a href="#Buildingapplication">ontobpr:BuildingApplication</a><sup class="sup-c" title="class">c</sup>
-                </td>
-            </tr>
-            <tr>
-                <th>Range(s)</th>
-                <td>
-                    <a href="#Reviewstatement">ontobpr:ReviewStatement</a><sup class="sup-c" title="class">c</sup>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity property" id="hasstatus">
-        <h3>has status<sup title="object property" class="sup-op">op</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://w3id.org/ontobpr#hasStatus</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    the ReviewStatus of a BuildingApplication
-                </td>
-            </tr>
-            <tr>
-                <th>Super-properties</th>
-                <td>
-                    <a href="http://www.w3.org/2002/07/owl#topObjectProperty">owl:topObjectProperty</a>
-                </td>
-            </tr>
-            <tr>
-                <th>Domain(s)</th>
-                <td>
-                    <a href="#Buildingapplication">ontobpr:BuildingApplication</a><sup class="sup-c" title="class">c</sup>
-                </td>
-            </tr>
-            <tr>
-                <th>Range(s)</th>
-                <td>
-                    <a href="#Reviewstatus">ontobpr:ReviewStatus</a><sup class="sup-c" title="class">c</sup>
-                </td>
-            </tr>
-        </table>
-    </div>
-</section>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#Activity" title="https://w3id.org/ontobpr#Activity">Activity</a> <sup class="type-c" title="class">c</sup>, <a href="http://org.semanticweb.owlapi/error#Error29" target="_blank" title="http://org.semanticweb.owlapi/error#Error29">Error29</a> <sup class="type-c" title="class">c</sup>, <a href="http://org.semanticweb.owlapi/error#Error30" target="_blank" title="http://org.semanticweb.owlapi/error#Error30">Error30</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="CompletenessCheck">
+  <h3>(1.1) Completeness check <sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#CompletenessCheck</p>
+  <div class="comment">
+   <span class="markdown">the Completeness check activity</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#Activity" title="https://w3id.org/ontobpr#Activity">Activity</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="ReviewPreparation">
+  <h3>(1.2) Review preparation <sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#ReviewPreparation</p>
+  <div class="comment">
+   <span class="markdown">the Review preparation activity</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#Activity" title="https://w3id.org/ontobpr#Activity">Activity</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Assignment">
+  <h3>(2) Assignment<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#Assignment</p>
+  <div class="comment">
+   <span class="markdown">the Assignment activity</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#Activity" title="https://w3id.org/ontobpr#Activity">Activity</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Participation">
+  <h3>(3) Participation <sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#Participation</p>
+  <div class="comment">
+   <span class="markdown">the Participation activity</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#Activity" title="https://w3id.org/ontobpr#Activity">Activity</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="ContentReview">
+  <h3>(4) Content review <sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#ContentReview</p>
+  <div class="comment">
+   <span class="markdown">The Content review activity</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#Activity" title="https://w3id.org/ontobpr#Activity">Activity</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="IssuingNotificationLetter">
+  <h3>(5) Issuing notification letter <sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#IssuingNotificationLetter</p>
+  <div class="comment">
+   <span class="markdown">the Issuing notification letter activity</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#Activity" title="https://w3id.org/ontobpr#Activity">Activity</a> <sup class="type-c" title="class">c</sup>, <a href="http://org.semanticweb.owlapi/error#Error31" target="_blank" title="http://org.semanticweb.owlapi/error#Error31">Error31</a> <sup class="type-c" title="class">c</sup>, <a href="http://org.semanticweb.owlapi/error#Error32" target="_blank" title="http://org.semanticweb.owlapi/error#Error32">Error32</a> <sup class="type-c" title="class">c</sup>, <a href="http://org.semanticweb.owlapi/error#Error33" target="_blank" title="http://org.semanticweb.owlapi/error#Error33">Error33</a> <sup class="type-c" title="class">c</sup>, <a href="http://org.semanticweb.owlapi/error#Error34" target="_blank" title="http://org.semanticweb.owlapi/error#Error34">Error34</a> <sup class="type-c" title="class">c</sup>, <a href="http://org.semanticweb.owlapi/error#Error35" target="_blank" title="http://org.semanticweb.owlapi/error#Error35">Error35</a> <sup class="type-c" title="class">c</sup>, <a href="http://org.semanticweb.owlapi/error#Error36" target="_blank" title="http://org.semanticweb.owlapi/error#Error36">Error36</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="RequestReviewResults">
+  <h3>(5.1) Request review results <sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#RequestReviewResults</p>
+  <div class="comment">
+   <span class="markdown">the Request review results activity</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#Activity" title="https://w3id.org/ontobpr#Activity">Activity</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="PositivePermitDecision">
+  <h3>(5.2a) Positive permit decision <sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#PositivePermitDecision</p>
+  <div class="comment">
+   <span class="markdown">the Positive permit decision activity</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#Activity" title="https://w3id.org/ontobpr#Activity">Activity</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="NegativePermitDecision">
+  <h3>(5.2b) Negative permit decision <sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#NegativePermitDecision</p>
+  <div class="comment">
+   <span class="markdown">the Negative permit decision activity</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#Activity" title="https://w3id.org/ontobpr#Activity">Activity</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="FormulationOfCondition">
+  <h3>(5.3a) Formulation of condition <sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#FormulationOfCondition</p>
+  <div class="comment">
+   <span class="markdown">the Formulation of condition activity</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#Activity" title="https://w3id.org/ontobpr#Activity">Activity</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="JustificationOfNegativeDecision">
+  <h3>(5.3b) Justification of negative decision <sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#JustificationOfNegativeDecision</p>
+  <div class="comment">
+   <span class="markdown">the Justification of negative decision activity</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#Activity" title="https://w3id.org/ontobpr#Activity">Activity</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="CreatingNotificationLetter">
+  <h3>(5.4) Creating notification letter<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#CreatingNotificationLetter</p>
+  <div class="comment">
+   <span class="markdown">The Creating notification letter activity</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#Activity" title="https://w3id.org/ontobpr#Activity">Activity</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="https://w3id.org/obpa#Activity">
+  <h3>Activity<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/obpa#Activity</p>
+  <dl class="description">
+   <dt>
+    is equivalent to
+   </dt>
+   <dd>
+    <a href="#Activity" title="https://w3id.org/ontobpr#Activity">Activity</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Activity">
+  <h3>Activity<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#Activity</p>
+  <div class="comment">
+   <span class="markdown">an Activity executed throughout the building permit review</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2002/07/owl#Thing" target="_blank" title="http://www.w3.org/2002/07/owl#Thing">Thing</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has sub-classes
+   </dt>
+   <dd>
+    <a href="#FormalReview" title="https://w3id.org/ontobpr#FormalReview">(1) Formal review</a> <sup class="type-c" title="class">c</sup>, <a href="#CompletenessCheck" title="https://w3id.org/ontobpr#CompletenessCheck">(1.1) Completeness check </a> <sup class="type-c" title="class">c</sup>, <a href="#ReviewPreparation" title="https://w3id.org/ontobpr#ReviewPreparation">(1.2) Review preparation </a> <sup class="type-c" title="class">c</sup>, <a href="#Assignment" title="https://w3id.org/ontobpr#Assignment">(2) Assignment</a> <sup class="type-c" title="class">c</sup>, <a href="#Participation" title="https://w3id.org/ontobpr#Participation">(3) Participation </a> <sup class="type-c" title="class">c</sup>, <a href="#ContentReview" title="https://w3id.org/ontobpr#ContentReview">(4) Content review </a> <sup class="type-c" title="class">c</sup>, <a href="#IssuingNotificationLetter" title="https://w3id.org/ontobpr#IssuingNotificationLetter">(5) Issuing notification letter </a> <sup class="type-c" title="class">c</sup>, <a href="#RequestReviewResults" title="https://w3id.org/ontobpr#RequestReviewResults">(5.1) Request review results </a> <sup class="type-c" title="class">c</sup>, <a href="#PositivePermitDecision" title="https://w3id.org/ontobpr#PositivePermitDecision">(5.2a) Positive permit decision </a> <sup class="type-c" title="class">c</sup>, <a href="#NegativePermitDecision" title="https://w3id.org/ontobpr#NegativePermitDecision">(5.2b) Negative permit decision </a> <sup class="type-c" title="class">c</sup>, <a href="#FormulationOfCondition" title="https://w3id.org/ontobpr#FormulationOfCondition">(5.3a) Formulation of condition </a> <sup class="type-c" title="class">c</sup>, <a href="#JustificationOfNegativeDecision" title="https://w3id.org/ontobpr#JustificationOfNegativeDecision">(5.3b) Justification of negative decision </a> <sup class="type-c" title="class">c</sup>, <a href="#CreatingNotificationLetter" title="https://w3id.org/ontobpr#CreatingNotificationLetter">(5.4) Creating notification letter</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#afterActivity" title="https://w3id.org/ontobpr#afterActivity">after activity</a> <sup class="type-op" title="object property">op</sup>, <a href="#isCompleted" title="https://w3id.org/ontobpr#isCompleted">is completed</a> <sup class="type-dp" title="data property">dp</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#afterActivity" title="https://w3id.org/ontobpr#afterActivity">after activity</a> <sup class="type-op" title="object property">op</sup>, <a href="#belongsToActivity" title="https://w3id.org/ontobpr#belongsToActivity">belongs to activity</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasCurrentActivity" title="https://w3id.org/ontobpr#hasCurrentActivity">has current activity</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="https://w3id.org/obpa#Building">
+  <h3>Building<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/obpa#Building</p>
+  <dl class="description">
+   <dt>
+    is equivalent to
+   </dt>
+   <dd>
+    <a href="#Building" title="https://w3id.org/ontobpr#Building">Building</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Building">
+  <h3>Building<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#Building</p>
+  <div class="comment">
+   <span class="markdown">The building that is subject of this building application</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2002/07/owl#Thing" target="_blank" title="http://www.w3.org/2002/07/owl#Thing">Thing</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#hasBuildingDocument" title="https://w3id.org/ontobpr#hasBuildingDocument">has building document</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="https://w3id.org/obpa#BuildingApplication">
+  <h3>Building Application<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/obpa#BuildingApplication</p>
+  <dl class="description">
+   <dt>
+    is equivalent to
+   </dt>
+   <dd>
+    <a href="#BuildingApplication" title="https://w3id.org/ontobpr#BuildingApplication">Building application</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#applies" title="https://w3id.org/ontobpr#applies">applies</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="BuildingApplication">
+  <h3>Building application<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#BuildingApplication</p>
+  <div class="comment">
+   <span class="markdown">the building application that is submitted by an applicant for review</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/obpa#BuildingApplication">https://w3id.org/obpa#BuildingApplication</a>
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd></dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#applies" title="https://w3id.org/ontobpr#applies">applies</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasApplicationDocument" title="https://w3id.org/ontobpr#hasApplicationDocument">has application document</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasBuildingApplicationContainer" title="https://w3id.org/ontobpr#hasBuildingApplicationContainer">has building application container</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasCheckingResults" title="https://w3id.org/ontobpr#hasCheckingResults">has checking results</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasCurrentActivity" title="https://w3id.org/ontobpr#hasCurrentActivity">has current activity</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasDocument" title="https://w3id.org/ontobpr#hasDocument">has document</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasStatement" title="https://w3id.org/ontobpr#hasStatement">has statement</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasStatus" title="https://w3id.org/ontobpr#hasStatus">has status</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="https://w3id.org/obpa#BuildingAuthority">
+  <h3>Building Authority<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/obpa#BuildingAuthority</p>
+  <dl class="description">
+   <dt>
+    is equivalent to
+   </dt>
+   <dd>
+    <a href="#BuildingAuthority" title="https://w3id.org/ontobpr#BuildingAuthority">Building authority</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#checks" title="https://w3id.org/ontobpr#checks">checks</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="BuildingAuthority">
+  <h3>Building authority<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#BuildingAuthority</p>
+  <div class="comment">
+   <span class="markdown">a building authority that is involved in a building permit review</span>
+  </div>
+  <dl class="definedBy">
+   <dt>
+    Is defined by
+   </dt>
+   <dd>
+    <a href="https://w3id.org/obpa#BuildingAuthority">https://w3id.org/obpa#BuildingAuthority</a>
+   </dd>
+  </dl>
+  <dl class="description">
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#checks" title="https://w3id.org/ontobpr#checks">checks</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Condition">
+  <h3>Condition<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#Condition</p>
+  <div class="comment">
+   <span class="markdown">a formulated condition statement of a conditionally accepted application</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#ReviewStatement" title="https://w3id.org/ontobpr#ReviewStatement">Review statement</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#Justification" title="https://w3id.org/ontobpr#Justification">Justification</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="https://w3id.org/isoprops#Dictionary">
+  <h3>Dictionary<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/isoprops#Dictionary</p>
+  <dl class="description">
+   <dt>
+    is equivalent to
+   </dt>
+   <dd>
+    <a href="#BuildingCodeDictionary" title="https://w3id.org/ontobpr#BuildingCodeDictionary">Dictionary</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has super-classes
+   </dt>
+   <dd></dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#applies" title="https://w3id.org/ontobpr#applies">applies</a> <sup class="type-op" title="object property">op</sup>, <a href="#checks" title="https://w3id.org/ontobpr#checks">checks</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="BuildingCodeDictionary">
+  <h3>Dictionary<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#BuildingCodeDictionary</p>
+  <div class="comment">
+   <span class="markdown">A dictionary containing properties and shapes from a building code</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd></dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#hasShapesSet" title="https://w3id.org/ontobpr#hasShapesSet">has shapes set</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#applies" title="https://w3id.org/ontobpr#applies">applies</a> <sup class="type-op" title="object property">op</sup>, <a href="#checks" title="https://w3id.org/ontobpr#checks">checks</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="DocumentClassification">
+  <h3>Document classification<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#DocumentClassification</p>
+  <div class="comment">
+   <span class="markdown">The classification of a document in the context of a building application.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2002/07/owl#Thing" target="_blank" title="http://www.w3.org/2002/07/owl#Thing">Thing</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasDocumentClassification" title="https://w3id.org/ontobpr#hasDocumentClassification">has document classification</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    has members
+   </dt>
+   <dd>
+    <a href="#ApplicationForm" title="https://w3id.org/ontobpr#ApplicationForm">Antragsformular</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#BuildingDescription" title="https://w3id.org/ontobpr#BuildingDescription">Baubeschreibung</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#EngineeringProofs" title="https://w3id.org/ontobpr#EngineeringProofs">Bautechnische Nachweise</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#BuildingModel" title="https://w3id.org/ontobpr#BuildingModel">Bauwerksmodell</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#TechnicalDrawing" title="https://w3id.org/ontobpr#TechnicalDrawing">Bauzeichnung</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#PlotRelatedPlans" title="https://w3id.org/ontobpr#PlotRelatedPlans">Grundstücksbezogene Planunterlagen</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#Unclassified" title="https://w3id.org/ontobpr#Unclassified">Nicht näher klassifiziert</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Justification">
+  <h3>Justification<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#Justification</p>
+  <div class="comment">
+   <span class="markdown">justification statement of a negative building permit review decision</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#ReviewStatement" title="https://w3id.org/ontobpr#ReviewStatement">Review statement</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is disjoint with
+   </dt>
+   <dd>
+    <a href="#Condition" title="https://w3id.org/ontobpr#Condition">Condition</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="ReviewResult">
+  <h3>Review checking result<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#ReviewResult</p>
+  <div class="comment">
+   <span class="markdown">the review result of a particular agent incorporating a sh:ValidationReport</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="http://org.semanticweb.owlapi/error#Error27" target="_blank" title="http://org.semanticweb.owlapi/error#Error27">Error27</a> <sup class="type-c" title="class">c</sup>, <a href="http://org.semanticweb.owlapi/error#Error28" target="_blank" title="http://org.semanticweb.owlapi/error#Error28">Error28</a> <sup class="type-c" title="class">c</sup>, <a href="http://www.w3.org/2002/07/owl#Thing" target="_blank" title="http://www.w3.org/2002/07/owl#Thing">Thing</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasCheckingResults" title="https://w3id.org/ontobpr#hasCheckingResults">has checking results</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="ReviewStatement">
+  <h3>Review statement<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#ReviewStatement</p>
+  <div class="comment">
+   <span class="markdown">a general review statement for logging events during the building permit review</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="http://org.semanticweb.owlapi/error#Error37" target="_blank" title="http://org.semanticweb.owlapi/error#Error37">Error37</a> <sup class="type-c" title="class">c</sup>, <a href="http://org.semanticweb.owlapi/error#Error38" target="_blank" title="http://org.semanticweb.owlapi/error#Error38">Error38</a> <sup class="type-c" title="class">c</sup>, <a href="http://org.semanticweb.owlapi/error#Error39" target="_blank" title="http://org.semanticweb.owlapi/error#Error39">Error39</a> <sup class="type-c" title="class">c</sup>, <a href="http://www.w3.org/2002/07/owl#Thing" target="_blank" title="http://www.w3.org/2002/07/owl#Thing">Thing</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has sub-classes
+   </dt>
+   <dd>
+    <a href="#Condition" title="https://w3id.org/ontobpr#Condition">Condition</a> <sup class="type-c" title="class">c</sup>, <a href="#Justification" title="https://w3id.org/ontobpr#Justification">Justification</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#belongsToActivity" title="https://w3id.org/ontobpr#belongsToActivity">belongs to activity</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasStatement" title="https://w3id.org/ontobpr#hasStatement">has statement</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="ReviewStatus">
+  <h3>Review status<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#ReviewStatus</p>
+  <div class="comment">
+   <span class="markdown">the status of the building application within the building permit review</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2002/07/owl#Thing" target="_blank" title="http://www.w3.org/2002/07/owl#Thing">Thing</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasStatus" title="https://w3id.org/ontobpr#hasStatus">has status</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    has members
+   </dt>
+   <dd>
+    <a href="#Accepted" title="https://w3id.org/ontobpr#Accepted">Accepted</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#AcceptedWithConditions" title="https://w3id.org/ontobpr#AcceptedWithConditions">Accepted with conditions</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#Rejected" title="https://w3id.org/ontobpr#Rejected">Rejected</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#RequestInformation" title="https://w3id.org/ontobpr#RequestInformation">Request information</a> <sup class="type-ni" title="named individual">ni</sup>, <a href="#UnderReview" title="https://w3id.org/ontobpr#UnderReview">Under review</a> <sup class="type-ni" title="named individual">ni</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="ShaclShapesSet">
+  <h3>SHACL shapes set<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#ShaclShapesSet</p>
+  <div class="comment">
+   <span class="markdown">a set of SHACL shapes for validating data at various activities of the building permit review</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="http://www.w3.org/2002/07/owl#Thing" target="_blank" title="http://www.w3.org/2002/07/owl#Thing">Thing</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#hasShapes" title="https://w3id.org/ontobpr#hasShapes">has shapes</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasShapesSet" title="https://w3id.org/ontobpr#hasShapesSet">has shapes set</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+</div><div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="objectproperties">
+ <h3 id="properties" class="list">Object Properties</h3>
+ <ul class="hlist">
+  <li><a href="#afterActivity" title="https://w3id.org/ontobpr#afterActivity">after activity</a></li>
+  <li><a href="#applies" title="https://w3id.org/ontobpr#applies">applies</a></li>
+  <li><a href="#belongsToActivity" title="https://w3id.org/ontobpr#belongsToActivity">belongs to activity</a></li>
+  <li><a href="#checks" title="https://w3id.org/ontobpr#checks">checks</a></li>
+  <li><a href="#hasApplicationDocument" title="https://w3id.org/ontobpr#hasApplicationDocument">has application document</a></li>
+  <li><a href="#hasBuildingApplicationContainer" title="https://w3id.org/ontobpr#hasBuildingApplicationContainer">has building application container</a></li>
+  <li><a href="#hasBuildingDocument" title="https://w3id.org/ontobpr#hasBuildingDocument">has building document</a></li>
+  <li><a href="#hasCheckingResults" title="https://w3id.org/ontobpr#hasCheckingResults">has checking results</a></li>
+  <li><a href="#hasCurrentActivity" title="https://w3id.org/ontobpr#hasCurrentActivity">has current activity</a></li>
+  <li><a href="#hasDocument" title="https://w3id.org/ontobpr#hasDocument">has document</a></li>
+  <li><a href="#hasDocumentClassification" title="https://w3id.org/ontobpr#hasDocumentClassification">has document classification</a></li>
+  <li><a href="#hasShapes" title="https://w3id.org/ontobpr#hasShapes">has shapes</a></li>
+  <li><a href="#hasShapesSet" title="https://w3id.org/ontobpr#hasShapesSet">has shapes set</a></li>
+  <li><a href="#hasStatement" title="https://w3id.org/ontobpr#hasStatement">has statement</a></li>
+  <li><a href="#hasStatus" title="https://w3id.org/ontobpr#hasStatus">has status</a></li>
+ </ul>
+ <div class="entity" id="afterActivity">
+  <h3>after activity<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#afterActivity</p>
+  <div class="comment">
+   <span class="markdown">an activity is executed after another activity</span>
+  </div>
+  <div class="description">
+   <p><strong>has characteristics: </strong> transitive</p>
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2002/07/owl#topObjectProperty" target="_blank" title="http://www.w3.org/2002/07/owl#topObjectProperty">top Object Property</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#Activity" title="https://w3id.org/ontobpr#Activity">Activity</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#Activity" title="https://w3id.org/ontobpr#Activity">Activity</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="applies">
+  <h3>applies<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#applies</p>
+  <div class="comment">
+   <span class="markdown">BuildingApplication applies a BuildingCodeDictionary for checking</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2002/07/owl#topObjectProperty" target="_blank" title="http://www.w3.org/2002/07/owl#topObjectProperty">top Object Property</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#https://w3id.org/obpa#BuildingApplication" title="https://w3id.org/obpa#BuildingApplication">Building Application</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dd>
+     <a href="#BuildingApplication" title="https://w3id.org/ontobpr#BuildingApplication">Building application</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#https://w3id.org/isoprops#Dictionary" title="https://w3id.org/isoprops#Dictionary">Dictionary</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dd>
+     <a href="#BuildingCodeDictionary" title="https://w3id.org/ontobpr#BuildingCodeDictionary">Dictionary</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="belongsToActivity">
+  <h3>belongs to activity<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#belongsToActivity</p>
+  <div class="comment">
+   <span class="markdown">a ReviewStatement belongs to a particular Activity</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2002/07/owl#topObjectProperty" target="_blank" title="http://www.w3.org/2002/07/owl#topObjectProperty">top Object Property</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#ReviewStatement" title="https://w3id.org/ontobpr#ReviewStatement">Review statement</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#Activity" title="https://w3id.org/ontobpr#Activity">Activity</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="checks">
+  <h3>checks<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#checks</p>
+  <div class="comment">
+   <span class="markdown">BuildingAuthority checks a building regarding a BuildingCodeDictionary</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2002/07/owl#topObjectProperty" target="_blank" title="http://www.w3.org/2002/07/owl#topObjectProperty">top Object Property</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#https://w3id.org/obpa#BuildingAuthority" title="https://w3id.org/obpa#BuildingAuthority">Building Authority</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dd>
+     <a href="#BuildingAuthority" title="https://w3id.org/ontobpr#BuildingAuthority">Building authority</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#https://w3id.org/isoprops#Dictionary" title="https://w3id.org/isoprops#Dictionary">Dictionary</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dd>
+     <a href="#BuildingCodeDictionary" title="https://w3id.org/ontobpr#BuildingCodeDictionary">Dictionary</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasApplicationDocument">
+  <h3>has application document<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#hasApplicationDocument</p>
+  <div class="comment">
+   <span class="markdown">a BuildingApplication has a respective document (e.g. PDF) representing a human-readable version of the application</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="#hasDocument" title="https://w3id.org/ontobpr#hasDocument">has document</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#BuildingApplication" title="https://w3id.org/ontobpr#BuildingApplication">Building application</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="https://standards.iso.org/iso/21597/-1/ed-1/en/Container#Document" target="_blank" title="https://standards.iso.org/iso/21597/-1/ed-1/en/Container#Document">Document</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasBuildingApplicationContainer">
+  <h3>has building application container<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#hasBuildingApplicationContainer</p>
+  <div class="comment">
+   <span class="markdown">the reference from a BuildingApplication to an ICDD container</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2002/07/owl#topObjectProperty" target="_blank" title="http://www.w3.org/2002/07/owl#topObjectProperty">top Object Property</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#BuildingApplication" title="https://w3id.org/ontobpr#BuildingApplication">Building application</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="https://standards.iso.org/iso/21597/-1/ed-1/en/Container#ContainerDescription" target="_blank" title="https://standards.iso.org/iso/21597/-1/ed-1/en/Container#ContainerDescription">Container Description</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasBuildingDocument">
+  <h3>has building document<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#hasBuildingDocument</p>
+  <div class="comment">
+   <span class="markdown">A Building has a document, which is the IFC representation of this Building</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="#hasDocument" title="https://w3id.org/ontobpr#hasDocument">has document</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#Building" title="https://w3id.org/ontobpr#Building">Building</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="https://standards.iso.org/iso/21597/-1/ed-1/en/Container#Document" target="_blank" title="https://standards.iso.org/iso/21597/-1/ed-1/en/Container#Document">Document</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasCheckingResults">
+  <h3>has checking results<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#hasCheckingResults</p>
+  <div class="comment">
+   <span class="markdown">either a BuildingApplication has ReviewResult or a ReviewResult has sh:ValidationReport</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2002/07/owl#topObjectProperty" target="_blank" title="http://www.w3.org/2002/07/owl#topObjectProperty">top Object Property</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#BuildingApplication" title="https://w3id.org/ontobpr#BuildingApplication">Building application</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#ReviewResult" title="https://w3id.org/ontobpr#ReviewResult">Review checking result</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasCurrentActivity">
+  <h3>has current activity<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#hasCurrentActivity</p>
+  <div class="comment">
+   <span class="markdown">a BuildingApplication is in the current Activity</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2002/07/owl#topObjectProperty" target="_blank" title="http://www.w3.org/2002/07/owl#topObjectProperty">top Object Property</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#BuildingApplication" title="https://w3id.org/ontobpr#BuildingApplication">Building application</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#Activity" title="https://w3id.org/ontobpr#Activity">Activity</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasDocument">
+  <h3>has document<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#hasDocument</p>
+  <div class="comment">
+   <span class="markdown">abstract property grouping hasApplicationDocument and hasBuildingDocument</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2002/07/owl#topObjectProperty" target="_blank" title="http://www.w3.org/2002/07/owl#topObjectProperty">top Object Property</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has sub-properties
+    </dt>
+    <dd>
+     <a href="#hasApplicationDocument" title="https://w3id.org/ontobpr#hasApplicationDocument">has application document</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasBuildingDocument" title="https://w3id.org/ontobpr#hasBuildingDocument">has building document</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#BuildingApplication" title="https://w3id.org/ontobpr#BuildingApplication">Building application</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="https://standards.iso.org/iso/21597/-1/ed-1/en/Container#Document" target="_blank" title="https://standards.iso.org/iso/21597/-1/ed-1/en/Container#Document">Document</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasDocumentClassification">
+  <h3>has document classification<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#hasDocumentClassification</p>
+  <div class="comment">
+   <span class="markdown">The classification of a ct:Document in an ICDD container in the context of a building application.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2002/07/owl#topObjectProperty" target="_blank" title="http://www.w3.org/2002/07/owl#topObjectProperty">top Object Property</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="https://standards.iso.org/iso/21597/-1/ed-1/en/Container#Document" target="_blank" title="https://standards.iso.org/iso/21597/-1/ed-1/en/Container#Document">Document</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#DocumentClassification" title="https://w3id.org/ontobpr#DocumentClassification">Document classification</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasShapes">
+  <h3>has shapes<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#hasShapes</p>
+  <div class="comment">
+   <span class="markdown">ShaclShapesSet has sh:Shape instances</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2002/07/owl#topObjectProperty" target="_blank" title="http://www.w3.org/2002/07/owl#topObjectProperty">top Object Property</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#ShaclShapesSet" title="https://w3id.org/ontobpr#ShaclShapesSet">SHACL shapes set</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/ns/shacl#Shape" target="_blank" title="http://www.w3.org/ns/shacl#Shape">Shape</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasShapesSet">
+  <h3>has shapes set<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#hasShapesSet</p>
+  <div class="comment">
+   <span class="markdown">either an Activity or a BuildingCodeDictionary has a ShaclShapesSet</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2002/07/owl#topObjectProperty" target="_blank" title="http://www.w3.org/2002/07/owl#topObjectProperty">top Object Property</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#BuildingCodeDictionary" title="https://w3id.org/ontobpr#BuildingCodeDictionary">Dictionary</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#ShaclShapesSet" title="https://w3id.org/ontobpr#ShaclShapesSet">SHACL shapes set</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasStatement">
+  <h3>has statement<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#hasStatement</p>
+  <div class="comment">
+   <span class="markdown">any ReviewStatement of any reviewer is attached to a BuildingApplication</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2002/07/owl#topObjectProperty" target="_blank" title="http://www.w3.org/2002/07/owl#topObjectProperty">top Object Property</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#BuildingApplication" title="https://w3id.org/ontobpr#BuildingApplication">Building application</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#ReviewStatement" title="https://w3id.org/ontobpr#ReviewStatement">Review statement</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasStatus">
+  <h3>has status<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#hasStatus</p>
+  <div class="comment">
+   <span class="markdown">the ReviewStatus of a BuildingApplication</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2002/07/owl#topObjectProperty" target="_blank" title="http://www.w3.org/2002/07/owl#topObjectProperty">top Object Property</a> <sup class="type-op" title="object property">op</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#BuildingApplication" title="https://w3id.org/ontobpr#BuildingApplication">Building application</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#ReviewStatus" title="https://w3id.org/ontobpr#ReviewStatus">Review status</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+</div><div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="dataproperties">
+ <h3 id="dataproperties-headline" class="list">Data Properties</h3>
+ <ul class="hlist">
+  <li><a href="#isCompleted" title="https://w3id.org/ontobpr#isCompleted">is completed</a></li>
+ </ul>
+ <div class="entity" id="isCompleted">
+  <h3>is completed<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#isCompleted</p>
+  <div class="comment">
+   <span class="markdown">a boolean property indicating whether an activity is completet or not</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has super-properties
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2002/07/owl#topDataProperty" target="_blank" title="http://www.w3.org/2002/07/owl#topDataProperty">top Data Property</a> <sup class="type-dp" title="data property">dp</sup>
+    </dd>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#Activity" title="https://w3id.org/ontobpr#Activity">Activity</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#boolean" target="_blank" title="http://www.w3.org/2001/XMLSchema#boolean">boolean</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+</div><div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="namedindividuals">
+ <h3 id="namedindividuals" class="list">Named Individuals</h3>
+ <ul class="hlist">
+  <li><a href="#Accepted" title="https://w3id.org/ontobpr#Accepted">Accepted</a></li>
+  <li><a href="#AcceptedWithConditions" title="https://w3id.org/ontobpr#AcceptedWithConditions">Accepted with conditions</a></li>
+  <li><a href="#ApplicationForm" title="https://w3id.org/ontobpr#ApplicationForm">Antragsformular</a></li>
+  <li><a href="#BuildingDescription" title="https://w3id.org/ontobpr#BuildingDescription">Baubeschreibung</a></li>
+  <li><a href="#EngineeringProofs" title="https://w3id.org/ontobpr#EngineeringProofs">Bautechnische Nachweise</a></li>
+  <li><a href="#BuildingModel" title="https://w3id.org/ontobpr#BuildingModel">Bauwerksmodell</a></li>
+  <li><a href="#TechnicalDrawing" title="https://w3id.org/ontobpr#TechnicalDrawing">Bauzeichnung</a></li>
+  <li><a href="#PlotRelatedPlans" title="https://w3id.org/ontobpr#PlotRelatedPlans">Grundstücksbezogene Planunterlagen</a></li>
+  <li><a href="#Unclassified" title="https://w3id.org/ontobpr#Unclassified">Nicht näher klassifiziert</a></li>
+  <li><a href="#Rejected" title="https://w3id.org/ontobpr#Rejected">Rejected</a></li>
+  <li><a href="#RequestInformation" title="https://w3id.org/ontobpr#RequestInformation">Request information</a></li>
+  <li><a href="#UnderReview" title="https://w3id.org/ontobpr#UnderReview">Under review</a></li>
+ </ul>
+ <div class="entity" id="Accepted">
+  <h3>Accepted<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#Accepted</p>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#ReviewStatus" title="https://w3id.org/ontobpr#ReviewStatus">Review status</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="AcceptedWithConditions">
+  <h3>Accepted with conditions<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#AcceptedWithConditions</p>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#ReviewStatus" title="https://w3id.org/ontobpr#ReviewStatus">Review status</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="ApplicationForm">
+  <h3>Antragsformular<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#ApplicationForm</p>
+  <div class="comment">
+   <span class="markdown">Das Antragsformular umfasst die Stammdaten des Antrags, z.B. Andressdaten, Kontaktdaten des Entwurfsverfassers, die Verfahrensart, Nachbarbeteiligungen, etc.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#DocumentClassification" title="https://w3id.org/ontobpr#DocumentClassification">Document classification</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="BuildingDescription">
+  <h3>Baubeschreibung<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#BuildingDescription</p>
+  <div class="comment">
+   <span class="markdown">Baubeschreibungen umfassen Informationen zur generellen Funktion des Gebäude (Gebäudetyp, Nutzungsart, etc.) und bei betrieblicher oder landwirtschaftlicher Nutzung auch eine betrieblichiche Beschreibung des Gebäude</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#DocumentClassification" title="https://w3id.org/ontobpr#DocumentClassification">Document classification</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="EngineeringProofs">
+  <h3>Bautechnische Nachweise<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#EngineeringProofs</p>
+  <div class="comment">
+   <span class="markdown">Umfassen üblicherweise Dokumente über spezielle Nachweise, z.B. des Brandschutzes, der Statik, des Schallschutzes oder der Barrierefreiheit.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#DocumentClassification" title="https://w3id.org/ontobpr#DocumentClassification">Document classification</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="BuildingModel">
+  <h3>Bauwerksmodell<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#BuildingModel</p>
+  <div class="comment">
+   <span class="markdown">Umfasst ein oder mehrere Modelle im Industry Foundation Classes (IFC) Format.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#DocumentClassification" title="https://w3id.org/ontobpr#DocumentClassification">Document classification</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="TechnicalDrawing">
+  <h3>Bauzeichnung<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#TechnicalDrawing</p>
+  <div class="comment">
+   <span class="markdown">Umfassen technische Zeichnungen, die das Bauwerk betreffen (Maßstäbe üblicherweise 1:100, seltener auch Detailzeichnungen in Maßstab 1:50 oder kleiner), z.B. Ansichten, Schnitte, Grundrisse</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#DocumentClassification" title="https://w3id.org/ontobpr#DocumentClassification">Document classification</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="PlotRelatedPlans">
+  <h3>Grundstücksbezogene Planunterlagen<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#PlotRelatedPlans</p>
+  <div class="comment">
+   <span class="markdown">Umfassen Planunterlagen, die das Grundstück und die Lage betreffen (üblicherweise im Maßstab größer als 1:500), z.B. Lageplan, Entwässerungsplan, Abstandsflächenplan</span>
+  </div>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#DocumentClassification" title="https://w3id.org/ontobpr#DocumentClassification">Document classification</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Unclassified">
+  <h3>Nicht näher klassifiziert<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#Unclassified</p>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#DocumentClassification" title="https://w3id.org/ontobpr#DocumentClassification">Document classification</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Rejected">
+  <h3>Rejected<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#Rejected</p>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#ReviewStatus" title="https://w3id.org/ontobpr#ReviewStatus">Review status</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="RequestInformation">
+  <h3>Request information<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#RequestInformation</p>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#ReviewStatus" title="https://w3id.org/ontobpr#ReviewStatus">Review status</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="UnderReview">
+  <h3>Under review<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/ontobpr#UnderReview</p>
+  <dl class="description">
+   <dt>
+    belongs to
+   </dt>
+   <dd>
+    <a href="#ReviewStatus" title="https://w3id.org/ontobpr#ReviewStatus">Review status</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+</div><div id="legend">
+<h2>Legend <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<div   class="entity">
+<sup class="type-c" title="Classes">c</sup>: Classes <br/>
+<sup class="type-op" title="Object Properties">op</sup>: Object Properties <br/>
+<sup class="type-dp" title="Data Properties">dp</sup>: Data Properties <br/>
+<sup class="type-ni" title="Named Individuals">ni</sup>: Named Individuals <br/>
+</div>
+</div>
+</div>
+    
 
-<section id="datatypeproperties">
-    <h2>Datatype Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
-    <ul class="hlist">
-        <li><a href="#iscompleted">is completed</a></li>
-    </ul>
-    <div class="entity property" id="iscompleted">
-        <h3>is completed<sup title="datatype property" class="sup-dp">dp</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td><code>https://w3id.org/ontobpr#isCompleted</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    a boolean property indicating whether an activity is completet or not
-                </td>
-            </tr>
-            <tr>
-                <th>Super-properties</th>
-                <td>
-                    <a href="http://www.w3.org/2002/07/owl#topDataProperty">owl:topDataProperty</a>
-                </td>
-            </tr>
-            <tr>
-                <th>Domain(s)</th>
-                <td>
-                    <a href="#Activity">ontobpr:Activity</a><sup class="sup-c" title="class">c</sup>
-                </td>
-            </tr>
-            <tr>
-                <th>Range(s)</th>
-                <td>
-                    <a href="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</a><sup class="sup-c" title="class">c</sup>
-                </td>
-            </tr>
-        </table>
-    </div>
-</section>
+<!--REFERENCES SECTION-->
+  <div id="references">
+<h2 id="ref" class="list">References <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<span class="markdown">
+Add your references here. It is recommended to have them as a list.</span>
 
-  
-  <section id="namedindividuals">
-    <h2>Named Individuals <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
-    <ul class="hlist">
-        <li><a href="#Accepted">Accepted</a></li>
-        <li><a href="#Acceptedwithconditions">Accepted with conditions</a></li>
-        <li><a href="#Rejected">Rejected</a></li>
-        <li><a href="#Requestinformation">Request information</a></li>
-        <li><a href="#Underreview">Under review</a></li>
-    </ul>
-    <div class="entity named_individual" id="Accepted">
-        <h3>Accepted<sup title="named individual" class="sup-ni">ni</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td>
-                  <code>
-                      https://w3id.org/ontobpr#Accepted
-                  
-                  </code>
-                </td>
-            </tr>
-            <dt>Classes(s)</dt>
-            <dd>
-                <a href="https://w3id.org/ontobpr#ReviewStatus">ontobpr:ReviewStatus</a><br/>
-            </dd>
-        </table>
-    </div>
-    <div class="entity named_individual" id="Acceptedwithconditions">
-        <h3>Accepted with conditions<sup title="named individual" class="sup-ni">ni</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td>
-                  <code>
-                      https://w3id.org/ontobpr#AcceptedWithConditions
-                  
-                  </code>
-                </td>
-            </tr>
-            <dt>Classes(s)</dt>
-            <dd>
-                <a href="https://w3id.org/ontobpr#ReviewStatus">ontobpr:ReviewStatus</a><br/>
-            </dd>
-        </table>
-    </div>
-    <div class="entity named_individual" id="Rejected">
-        <h3>Rejected<sup title="named individual" class="sup-ni">ni</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td>
-                  <code>
-                      https://w3id.org/ontobpr#Rejected
-                  
-                  </code>
-                </td>
-            </tr>
-            <dt>Classes(s)</dt>
-            <dd>
-                <a href="https://w3id.org/ontobpr#ReviewStatus">ontobpr:ReviewStatus</a><br/>
-            </dd>
-        </table>
-    </div>
-    <div class="entity named_individual" id="Requestinformation">
-        <h3>Request information<sup title="named individual" class="sup-ni">ni</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td>
-                  <code>
-                      https://w3id.org/ontobpr#RequestInformation
-                  
-                  </code>
-                </td>
-            </tr>
-            <dt>Classes(s)</dt>
-            <dd>
-                <a href="https://w3id.org/ontobpr#ReviewStatus">ontobpr:ReviewStatus</a><br/>
-            </dd>
-        </table>
-    </div>
-    <div class="entity named_individual" id="Underreview">
-        <h3>Under review<sup title="named individual" class="sup-ni">ni</sup></h3>
-        <table>
-            <tr>
-                <th>IRI</th>
-                <td>
-                  <code>
-                      https://w3id.org/ontobpr#UnderReview
-                  
-                  </code>
-                </td>
-            </tr>
-            <dt>Classes(s)</dt>
-            <dd>
-                <a href="https://w3id.org/ontobpr#ReviewStatus">ontobpr:ReviewStatus</a><br/>
-            </dd>
-        </table>
-    </div>
-</section>
-  
-  <section id="namespaces">
-    <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
-    <dl>
-        <dt><em>default (:)</em></dt>
-        <dd><code>https://w3id.org/ontobpr#</code></dd>
-        <dt>ct</dt>
-        <dd><code>https://standards.iso.org/iso/21597/-1/ed-1/en/Container#</code></dd>
-        <dt>dc</dt>
-        <dd><code>http://purl.org/dc/elements/1.1/</code></dd>
-        <dt>dcterms</dt>
-        <dd><code>http://purl.org/dc/terms/</code></dd>
-        <dt>isoprops</dt>
-        <dd><code>https://w3id.org/isoprops#</code></dd>
-        <dt>obpa</dt>
-        <dd><code>https://w3id.org/obpa#</code></dd>
-        <dt>ontobpr</dt>
-        <dd><code>https://w3id.org/ontobpr#</code></dd>
-        <dt>owl</dt>
-        <dd><code>http://www.w3.org/2002/07/owl#</code></dd>
-        <dt>prov</dt>
-        <dd><code>http://www.w3.org/ns/prov#</code></dd>
-        <dt>rdf</dt>
-        <dd><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></dd>
-        <dt>rdfs</dt>
-        <dd><code>http://www.w3.org/2000/01/rdf-schema#</code></dd>
-        <dt>sdo</dt>
-        <dd><code>https://schema.org/</code></dd>
-        <dt>sh</dt>
-        <dd><code>http://www.w3.org/ns/shacl#</code></dd>
-        <dt>skos</dt>
-        <dd><code>http://www.w3.org/2004/02/skos/core#</code></dd>
-        <dt>vann</dt>
-        <dd><code>http://purl.org/vocab/vann/</code></dd>
-        <dt>xml</dt>
-        <dd><code>http://www.w3.org/XML/1998/namespace</code></dd>
-        <dt>xsd</dt>
-        <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
-    </dl>
-</section>
-  <section id="legend">
-      <h2>Legend</h2>
-      <table class="entity">
-          <tr><td><sup class="sup-c" title="Classes">c</sup></td><td>Classes</td></tr>
-          <tr><td><sup class="sup-op" title="Object Properties">op</sup></td><td>Object Properties</td></tr>
-          <tr><td><sup class="sup-fp" title="Functional Properties">fp</sup></td><td>Functional Properties</td></tr>
-          <tr><td><sup class="sup-dp" title="Data Properties">dp</sup></td><td>Data Properties</td></tr>
-          <tr><td><sup class="sup-ap" title="Annotation Properties">dp</sup></td><td>Annotation Properties</td></tr>
-          <tr><td><sup class="sup-p" title="Properties">p</sup></td><td>Properties</td></tr>
-          <tr><td><sup class="sup-ni" title="Named Individuals">ni</sup></td><td>Named Individuals</td></tr>
-      </table>
-  </section>
+</div>
+<div id="acknowledgments">
+<h2 id="ack" class="list">Acknowledgments <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<p>
+The authors would like to thank <a href="http://www.essepuntato.it/">Silvio Peroni</a> for developing <a href="http://www.essepuntato.it/lode">LODE</a>, a Live OWL Documentation Environment, which is used for representing the Cross Referencing Section of this document and <a href="https://w3id.org/people/dgarijo">Daniel Garijo</a> for developing <a href="https://github.com/dgarijo/Widoco">Widoco</a>, the program used to create the template used in this documentation.</p>
+</div>
+
+
+</div>
 </body>
 </html>
